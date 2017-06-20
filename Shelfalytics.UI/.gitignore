@@ -1,27 +1,35 @@
-.tmp
-.publish
-.deploy
-node_modules
-bower_components
-releases
+# See http://help.github.com/ignore-files/ for more about ignoring files.
 
-*~
-*#
-.DS_STORE
-Thumbs.db
-.netbeans
-nbproject
-.idea
-.node_history
+# compiled output
+/dist
+/tmp
 
+# dependencies
+/node_modules
+/bower_components
 
-lib-cov
-*.seed
-*.log
-*.out
-*.pid
+# IDEs and editors
+/.idea
+/.vscode
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage/*
+/libpeerconnection.log
 npm-debug.log
+testem.log
+/typings
 
-*.iml
+# e2e
+/e2e/*.js
+/e2e/*.map
 
-/.env
+#System Files
+.DS_Store
+Thumbs.db

@@ -269,6 +269,7 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="LoginCallback.ashx" />
+    <None Include="Properties\PublishProfiles\develop deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

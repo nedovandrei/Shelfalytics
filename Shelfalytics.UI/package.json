@@ -1,59 +1,47 @@
 {
-  "name": "modular-admin-html",
-  "version": "1.1.0",
-  "description": "ModularAdmin: Free Dashboard Theme; html version",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/modularcode/modular-admin-html.git"
+  "name": "shelfalytics-ui",
+  "version": "0.0.0",
+  "license": "MIT",
+  "angular-cli": {},
+  "scripts": {
+    "start": "ng serve",
+    "lint": "tslint \"src/**/*.ts\"",
+    "test": "ng test",
+    "pree2e": "webdriver-manager update",
+    "e2e": "protractor"
   },
-  "author": "ModularCode",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/modularcode/modular-admin-html/issues"
-  },
-  "homepage": "https://github.com/modularcode/modular-admin-html",
+  "private": true,
   "dependencies": {
-    "opencollective": "^1.0.3"
+    "@angular/common": "^2.1.0",
+    "@angular/compiler": "^2.1.0",
+    "@angular/core": "^2.1.0",
+    "@angular/forms": "^2.1.0",
+    "@angular/http": "^2.1.0",
+    "@angular/platform-browser": "^2.1.0",
+    "@angular/platform-browser-dynamic": "^2.1.0",
+    "@angular/router": "^3.1.0",
+    "core-js": "^2.4.1",
+    "rxjs": "5.0.0-beta.12",
+    "ts-helpers": "^1.1.1",
+    "zone.js": "^0.6.23"
   },
   "devDependencies": {
-    "dotenv": "^2.0.0",
-    "front-matter": "^2.0.5",
-    "fs-extra": "^0.26.4",
-    "glob": "^5.0.14",
-    "gulp": "^3.9.0",
-    "gulp-autoprefixer": "^2.3.1",
-    "gulp-compile-handlebars": "^0.5.0",
-    "gulp-concat": "^2.6.0",
-    "gulp-connect": "^2.2.0",
-    "gulp-data": "^1.2.0",
-    "gulp-flatten": "^0.1.0",
-    "gulp-front-matter": "^1.2.3",
-    "gulp-gh-pages": "^0.5.2",
-    "gulp-hb": "^2.6.1",
-    "gulp-less": "^3.0.3",
-    "gulp-load-plugins": "^1.0.0-rc.1",
-    "gulp-prettify": "^0.4.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^2.1.0",
-    "gulp-uglify": "^1.2.0",
-    "gulp-util": "^3.0.6",
-    "gulp-watch": "^4.3.4",
-    "handlebars": "^4.0.5",
-    "handlebars-layouts": "^3.1.0",
-    "handlebars-registrar": "^1.5.2",
-    "main-bower-files": "^2.9.0",
-    "through2": "^2.0.0",
-    "vinyl": "^1.1.0"
-  },
-  "scripts": {
-    "gulp": "gulp --gulpfile build/gulpfile.js",
-    "start": "npm run gulp",
-    "deploy": "npm run gulp deploy",
-    "postinstall": "opencollective postinstall"
-  },
-  "collective": {
-    "type": "opencollective",
-    "url": "https://opencollective.com/modular-admin-html",
-    "logo": "https://opencollective.com/opencollective/logo.txt"
+    "@angular/compiler-cli": "^2.1.0",
+    "@types/jasmine": "^2.2.30",
+    "@types/node": "^6.0.42",
+    "angular-cli": "1.0.0-beta.20-4",
+    "codelyzer": "~1.0.0-beta.3",
+    "jasmine-core": "2.4.1",
+    "jasmine-spec-reporter": "2.5.0",
+    "karma": "1.2.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-cli": "^1.0.1",
+    "karma-jasmine": "^1.0.2",
+    "karma-remap-istanbul": "^0.2.1",
+    "protractor": "4.0.9",
+    "ts-node": "1.2.1",
+    "tslint": "3.13.0",
+    "typescript": "~2.0.3",
+    "webdriver-manager": "10.2.5"
   }
 }
