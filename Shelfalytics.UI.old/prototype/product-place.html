@@ -151,7 +151,7 @@
                                     </ul>
                                 </li>
                                 <li> <a href="">
-    						<i class="fa fa-bar-chart"></i> Charts 
+    						<i class="fa fa-bar-chart"></i> Charts
     						<i class="fa arrow"></i>
     					</a>
                                     <ul>
@@ -328,9 +328,9 @@
                             </form>
                         </div>
                     </div>
-                    <div class="card items">
-                        <ul class="item-list striped">
-                            <li class="item item-list-header hidden-sm-down">
+                    <div class="card items ">
+                        <ul class="item-list striped list-group-sortable">
+                            <li class="item item-list-header hidden-sm-down list-group-item">
                                 <div class="item-row">
                                     <div class="item-col fixed item-col-check"> <label class="item-check" id="select-all-items">
 						<input type="checkbox" class="checkbox">
@@ -360,7 +360,7 @@
                                     <div class="item-col item-col-header fixed item-col-actions-dropdown"> </div>
                                 </div>
                             </li>
-                            <li class="item">
+                            <li class="item list-group-item">
                                 <div class="item-row">
                                     <div class="item-col fixed item-col-check"> <label class="item-check" id="select-all-items">
 							<input type="checkbox" class="checkbox">
@@ -424,7 +424,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="item">
+                            <li class="item list-group-item">
                                 <div class="item-row">
                                     <div class="item-col fixed item-col-check"> <label class="item-check" id="select-all-items">
 							<input type="checkbox" class="checkbox">
@@ -488,7 +488,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="item">
+                            <li class="item list-group-item">
                                 <div class="item-row">
                                     <div class="item-col fixed item-col-check"> <label class="item-check" id="select-all-items">
 							<input type="checkbox" class="checkbox">
@@ -539,7 +539,7 @@
 								</span>
 							</a>
                                             <div class="item-actions-block">
-                                                <ul class="item-actions-list">
+                                                <ul class="item-actions-list ">
                                                     <li> <a class="remove" href="#" data-toggle="modal" data-target="#confirm-modal">
                                             <i class="fa fa-trash-o "></i>
                                         </a> </li>
@@ -552,7 +552,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="item">
+                            <li class="item list-group-item">
                                 <div class="item-row">
                                     <div class="item-col fixed item-col-check"> <label class="item-check" id="select-all-items">
 							<input type="checkbox" class="checkbox">
@@ -616,7 +616,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="item">
+                            <li class="item list-group-item">
                                 <div class="item-row">
                                     <div class="item-col fixed item-col-check"> <label class="item-check" id="select-all-items">
 							<input type="checkbox" class="checkbox">
@@ -680,7 +680,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="item">
+                            <li class="item list-group-item">
                                 <div class="item-row">
                                     <div class="item-col fixed item-col-check"> <label class="item-check" id="select-all-items">
 							<input type="checkbox" class="checkbox">
@@ -851,6 +851,32 @@
         </div>
         <script src="js/vendor.js"></script>
         <script src="js/app.js"></script>
+        <script src="jquery.sortable.js"></script>
+        <script>
+          $(function() {
+                  $('.thumbnail-sortable').sortable({
+                      placeholderClass: 'col-sm-6 col-md-4'
+                  });
+                  $('.table-sortable tbody').sortable({
+                      handle: 'span'
+                  });
+                  $('.list-group-sortable').sortable({
+                      placeholderClass: 'list-group-item'
+                  });
+                  $('.list-group-sortable-exclude').sortable({
+                      placeholderClass: 'list-group-item',
+                      items: ':not(.disabled)'
+                  });
+                  $('.list-group-sortable-handles').sortable({
+                      placeholderClass: 'list-group-item',
+                      handle: 'span'
+                  });
+                  $('.list-group-sortable-connected').sortable({
+                      placeholderClass: 'list-group-item',
+                      connectWith: '.connected'
+                  });
+          });
+        </script>
     </body>
 
 </html>
