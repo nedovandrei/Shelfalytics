@@ -22,6 +22,7 @@ import { PieChartService } from './pieChart/pieChart.service';
 import { TodoService } from './todo/todo.service';
 import { TrafficChartService } from './trafficChart/trafficChart.service';
 import { UsersMapService } from './usersMap/usersMap.service';
+import { ControlsModule } from "../../shared/controls/controls.module";
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import { UsersMapService } from './usersMap/usersMap.service';
     FormsModule,
     AppTranslationModule,
     NgaModule,
-    routing
+    routing,
+    ControlsModule
   ],
   declarations: [
     PopularApp,
