@@ -10,12 +10,10 @@ namespace Shelfalytics.Model.DbModels
         public uint TaxCode { get; set; }
         [Required]
         [MaxLength(200)]
-        public string CustomerName { get; set; }
+        public string PointOfSaleName { get; set; }
         [Required]
         [MaxLength(300)]
         public string Address { get; set; }
-        [Required]
-        public string BankDetails { get; set; } //TODO: Clarify
         [Required]
         [MaxLength(100)]
         public string ContactPersonName { get; set; }

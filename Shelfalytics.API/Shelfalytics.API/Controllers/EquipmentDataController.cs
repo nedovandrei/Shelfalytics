@@ -6,26 +6,27 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Shelfalytics.RepositoryInterface.Repositories;
+using Shelfalytics.ServiceInterface;
 
 namespace Shelfalytics.API.Controllers
 {
     public class EquipmentDataController : ApiController
     {
-        private readonly IEquipmentDataRepository _equipmentDataRepository;
+        private readonly IEquipmentDataService _equipmentDataService;
 
-        public EquipmentDataController(IEquipmentDataRepository equipmentDataRepository)
+        public EquipmentDataController(IEquipmentDataService equipmentDataService)
         {
-            if (equipmentDataRepository == null)
+            if (equipmentDataService == null)
             {
-                throw new ArgumentNullException(nameof(equipmentDataRepository));
+                throw new ArgumentNullException(nameof(equipmentDataService));
             }
-            _equipmentDataRepository = equipmentDataRepository;
+            _equipmentDataService = equipmentDataService;
         }
 
         [HttpGet]
         public async Task<HttpResponseMessage> GetLatestEquipmentData(int equipmentId)
         {
-            var response = await _equipmentDataRepository.GetLatestEquipmentData(equipmentId);
+            var response = await _equipmentDataService.GetLatestEquipmentData(equipmentId);
             return Request.CreateResponse(response);
         }
     }

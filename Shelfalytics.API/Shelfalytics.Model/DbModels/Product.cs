@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Shelfalytics.Model.DbModelHelpers;
 
@@ -9,7 +10,7 @@ namespace Shelfalytics.Model.DbModels
         [Key]
         public int Id { get; set; }
         [Required]
-        public int EAN { get; set; }
+        public string EAN { get; set; }
         [Required]
         public string SKUName { get; set; }
         [Required]

@@ -13,13 +13,7 @@ namespace Shelfalytics.Model.DbModels
         [ForeignKey("EquipmentId")]
         public Equipment Equipment { get; set; }
         public DateTime TimeSpamp { get; set; }
-        public int OpenCloseCount { get; set; }
+        public bool WasOpened { get; set; }
         public int Temperature { get; set; }
-        public int Distance1 { get; set; }
-        public int Distance2 { get; set; }
-        public int Distance3 { get; set; }
-        //and so on
-
-
     }
 }

@@ -12,7 +12,6 @@ namespace Shelfalytics.Model.DbModels
         [Required]
         [MaxLength(200)]
         public string Address { get; set; }
-        public string BankDetails { get; set; } //TODO: Clarify
         [Required]
         [MaxLength(100)]
         public string ContactPersonName { get; set; }

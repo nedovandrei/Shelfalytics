@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{567F5714-9FE3-4DCA-8AC2-F7AEF09E093E}</ProjectGuid>
+    <ProjectGuid>{A70A8B48-7B52-481F-8FA0-2CE31F71B6A9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Shelfalytics.Repository</RootNamespace>
-    <AssemblyName>Shelfalytics.Repository</AssemblyName>
+    <RootNamespace>Shelfalytics.ServiceInterface</RootNamespace>
+    <AssemblyName>Shelfalytics.ServiceInterface</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,16 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -49,28 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Repositories\EquipmentDataRepository.cs" />
-    <Compile Include="Repositories\ProductDataRepository.cs" />
-    <Compile Include="UnitOfWorkFactory.cs" />
+    <Compile Include="IEquipmentDataService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Shelfalytics.DbContext\Shelfalytics.DbContext.csproj">
-      <Project>{102C4042-AE1E-4CB7-BE5F-E994E6ECDE22}</Project>
-      <Name>Shelfalytics.DbContext</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Shelfalytics.Model\Shelfalytics.Model.csproj">
-      <Project>{6E394A17-8960-4766-9391-81A3C3754767}</Project>
-      <Name>Shelfalytics.Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Shelfalytics.RepositoryInterface\Shelfalytics.RepositoryInterface.csproj">
-      <Project>{4E08E9F5-0792-4BF8-B0D0-A8B452F6B800}</Project>
-      <Name>Shelfalytics.RepositoryInterface</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
+    <Compile Include="ViewModels\EquipmentReadingsViewModel.cs" />
+    <Compile Include="ViewModels\EquipmentRowInfoViewModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

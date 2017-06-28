@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using Shelfalytics.Model.DbModels;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Shelfalytics.RepositoryInterface.DTO
+namespace Shelfalytics.ServiceInterface.ViewModels
 {
-    public class EqiupmentDataDTO
+    public class EquipmentReadingsViewModel
     {
         public int Id { get; set; }
         public string ClientName { get; set; }
@@ -14,8 +16,7 @@ namespace Shelfalytics.RepositoryInterface.DTO
         public int Temperature { get; set; }
         public int OpenCloseCountToday { get; set; }
         public int RowCount { get; set; }
-        public IEnumerable<EquipmentDistanceReading> DistanceReadings { get; set; }
+        public IEnumerable<EquipmentRowInfoViewModel> RowInfo { get; set; }
         public DateTime TimeStamp { get; set; }
-
     }
 }

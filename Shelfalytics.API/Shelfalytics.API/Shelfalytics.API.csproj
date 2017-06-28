@@ -290,6 +290,14 @@
       <Project>{567f5714-9fe3-4dca-8ac2-f7aef09e093e}</Project>
       <Name>Shelfalytics.Repository</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Shelfalytics.ServiceInterface\Shelfalytics.ServiceInterface.csproj">
+      <Project>{A70A8B48-7B52-481F-8FA0-2CE31F71B6A9}</Project>
+      <Name>Shelfalytics.ServiceInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shelfalytics.Service\Shelfalytics.Service.csproj">
+      <Project>{2558293B-285F-4BD7-8E0A-2E6DAA7DF57E}</Project>
+      <Name>Shelfalytics.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

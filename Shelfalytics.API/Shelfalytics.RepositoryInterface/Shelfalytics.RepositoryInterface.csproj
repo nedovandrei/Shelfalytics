@@ -50,15 +50,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTO\EqiupmentDataDTO.cs" />
+    <Compile Include="DTO\EquipmentPlanogramDTO.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="IUnitOfWorkFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IEquipmentDataRepository.cs" />
+    <Compile Include="Repositories\IProductDataRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Shelfalytics.Model\Shelfalytics.Model.csproj">
+      <Project>{6E394A17-8960-4766-9391-81A3C3754767}</Project>
+      <Name>Shelfalytics.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

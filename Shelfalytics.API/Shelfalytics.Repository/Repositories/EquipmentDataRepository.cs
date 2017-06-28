@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Shelfalytics.Model.DbModels;
 using Shelfalytics.RepositoryInterface;
@@ -13,7 +12,7 @@ namespace Shelfalytics.Repository.Repositories
 {
     public class EquipmentDataRepository : IEquipmentDataRepository
     {
-        private readonly int _fullStockDistance = 85;
+        
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;
 
         public EquipmentDataRepository(IUnitOfWorkFactory unitOfWorkFactory)
@@ -27,24 +26,31 @@ namespace Shelfalytics.Repository.Repositories
 
         public async Task<IEnumerable<EqiupmentDataDTO>> GetLatestEquipmentData(int equipmentId)
         {
+            var today = DateTime.Today;
+            var tomorrow = DateTime.Today.AddDays(1);
             using (var uow = _unitOfWorkFactory.GetShelfalyticsDbContext())
             {
-                var query = from equipment in uow.Set<Equipment>()
+                var query = (from equipment in uow.Set<Equipment>()
                     join equipmentReading in uow.Set<EquipmentReading>() on equipment.Id equals
                     equipmentReading.EquipmentId
+                             join er in uow.Set<EquipmentReading>() on equipment.Id equals
+                             er.EquipmentId into ers
+                    join distanceReading in uow.Set<EquipmentDistanceReading>() on equipmentReading.Id equals distanceReading.EquipmentReadingId into distanceReadings
                     where equipment.Id == equipmentId
+                    orderby equipmentReading.TimeSpamp descending
                     select new EqiupmentDataDTO
                     {
                         Id = equipment.Id,
                         ClientName = equipment.Client.ClientName,
                         EquipmentType = equipment.EquipmentType.Name,
                         ModelName = equipment.ModelName,
-                        Planogram = equipment.Planogram,
-                        OpenCloseCount = equipmentReading.OpenCloseCount,
-                        PercentageLine1 = equipmentReading.Distance1 / _fullStockDistance * 100,
-                        PercentageLine2 = equipmentReading.Distance2 / _fullStockDistance * 100,
-                        PercentageLine3 = equipmentReading.Distance3 / _fullStockDistance * 100
-                    };
+                        PointOfSaleName = equipment.PointOfSale.PointOfSaleName,
+                        OpenCloseCountToday = ers.Count(x => x.WasOpened && x.TimeSpamp > today && x.TimeSpamp < tomorrow),
+                        Temperature = equipmentReading.Temperature,
+                        TimeStamp = equipmentReading.TimeSpamp,
+                        RowCount = equipment.RowCount,
+                        DistanceReadings = distanceReadings
+                    }).Take(1);
                 return await query.ToListAsync();
             }
         }

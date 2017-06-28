@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Web.Http.Controllers;
 using Autofac;
 using Autofac.Integration.WebApi;
@@ -7,6 +6,8 @@ using Shelfalytics.Repository;
 using Shelfalytics.Repository.Repositories;
 using Shelfalytics.RepositoryInterface;
 using Shelfalytics.RepositoryInterface.Repositories;
+using Shelfalytics.Service;
+using Shelfalytics.ServiceInterface;
 
 namespace Shelfalytics.API.App_Start
 {
@@ -23,6 +24,8 @@ namespace Shelfalytics.API.App_Start
             builder.RegisterType<UnitOfWorkFactory>().As<IUnitOfWorkFactory>().InstancePerLifetimeScope();
 
             builder.RegisterType<EquipmentDataRepository>().As<IEquipmentDataRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<ProductDataRepository>().As<IProductDataRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<EquipmentDataService>().As<IEquipmentDataService>().InstancePerLifetimeScope();
             var container = builder.Build();
             var resolver = new AutofacWebApiDependencyResolver(container);
 

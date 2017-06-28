@@ -61,6 +61,46 @@
     <Compile Include="Migrations\201706201841161_otherChanges.Designer.cs">
       <DependentUpon>201706201841161_otherChanges.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706281737523_RemovedBankDetailsChangedEANType.cs" />
+    <Compile Include="Migrations\201706281737523_RemovedBankDetailsChangedEANType.Designer.cs">
+      <DependentUpon>201706281737523_RemovedBankDetailsChangedEANType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706281802102_AddedEquipmentPlanogramTable.cs" />
+    <Compile Include="Migrations\201706281802102_AddedEquipmentPlanogramTable.Designer.cs">
+      <DependentUpon>201706281802102_AddedEquipmentPlanogramTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706281803297_RemovePlanogramFieldFromEquipment.cs" />
+    <Compile Include="Migrations\201706281803297_RemovePlanogramFieldFromEquipment.Designer.cs">
+      <DependentUpon>201706281803297_RemovePlanogramFieldFromEquipment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706281805279_EquipmentPlanograms.cs" />
+    <Compile Include="Migrations\201706281805279_EquipmentPlanograms.Designer.cs">
+      <DependentUpon>201706281805279_EquipmentPlanograms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706281822151_AddedEquipmentDistanceReading.cs" />
+    <Compile Include="Migrations\201706281822151_AddedEquipmentDistanceReading.Designer.cs">
+      <DependentUpon>201706281822151_AddedEquipmentDistanceReading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706281845234_PointOfSaleIdForEquipment.cs" />
+    <Compile Include="Migrations\201706281845234_PointOfSaleIdForEquipment.Designer.cs">
+      <DependentUpon>201706281845234_PointOfSaleIdForEquipment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706281856345_RemovedDistanceFromEquipmentReadings.cs" />
+    <Compile Include="Migrations\201706281856345_RemovedDistanceFromEquipmentReadings.Designer.cs">
+      <DependentUpon>201706281856345_RemovedDistanceFromEquipmentReadings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706281908032_ChangedToWasOpenedBoolean.cs" />
+    <Compile Include="Migrations\201706281908032_ChangedToWasOpenedBoolean.Designer.cs">
+      <DependentUpon>201706281908032_ChangedToWasOpenedBoolean.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706281910238_RemovedEquipmentReadingidFromDistanceReading.cs" />
+    <Compile Include="Migrations\201706281910238_RemovedEquipmentReadingidFromDistanceReading.Designer.cs">
+      <DependentUpon>201706281910238_RemovedEquipmentReadingidFromDistanceReading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706281911379_AddedRowFieldForDistanceReadings.cs" />
+    <Compile Include="Migrations\201706281911379_AddedRowFieldForDistanceReadings.Designer.cs">
+      <DependentUpon>201706281911379_AddedRowFieldForDistanceReadings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ShelfalyticsDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -88,6 +128,36 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706201841161_otherChanges.resx">
       <DependentUpon>201706201841161_otherChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706281737523_RemovedBankDetailsChangedEANType.resx">
+      <DependentUpon>201706281737523_RemovedBankDetailsChangedEANType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706281802102_AddedEquipmentPlanogramTable.resx">
+      <DependentUpon>201706281802102_AddedEquipmentPlanogramTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706281803297_RemovePlanogramFieldFromEquipment.resx">
+      <DependentUpon>201706281803297_RemovePlanogramFieldFromEquipment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706281805279_EquipmentPlanograms.resx">
+      <DependentUpon>201706281805279_EquipmentPlanograms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706281822151_AddedEquipmentDistanceReading.resx">
+      <DependentUpon>201706281822151_AddedEquipmentDistanceReading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706281845234_PointOfSaleIdForEquipment.resx">
+      <DependentUpon>201706281845234_PointOfSaleIdForEquipment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706281856345_RemovedDistanceFromEquipmentReadings.resx">
+      <DependentUpon>201706281856345_RemovedDistanceFromEquipmentReadings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706281908032_ChangedToWasOpenedBoolean.resx">
+      <DependentUpon>201706281908032_ChangedToWasOpenedBoolean.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706281910238_RemovedEquipmentReadingidFromDistanceReading.resx">
+      <DependentUpon>201706281910238_RemovedEquipmentReadingidFromDistanceReading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706281911379_AddedRowFieldForDistanceReadings.resx">
+      <DependentUpon>201706281911379_AddedRowFieldForDistanceReadings.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
