@@ -1,0 +1,27 @@
+<div *ngIf="initFlag">
+  <div class="row">
+    <div class="col-md-12">
+      <ba-card>
+        <p>POS: {{posData.PointOfSaleName}}</p>
+        <p>POS Address: {{posData.PointOfSaleAddress}}</p>
+        <p>POS Telephone: {{posData.PointOfSaleTelephone}}</p>
+        <p>Contact Person Name: {{posData.ContactPersonName}}</p>
+        <p>Schedule: {{openHours}} - {{closeHours}}</p>
+      </ba-card>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="nav nav-pills nav-fill">
+        <li class="nav-item" *ngFor="let equipment of posData.EquipmentIds; let i = index" (click)="changeEquipmentInFocus(equipment)">
+          <a [ngClass]="{ 'active': equipment === equipmentInFocus }" class="nav-link">{{i + 1}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+      <equipment-info *ngIf="equipmentInFocus > 0 && initFlag" [equipmentId]="equipmentInFocus"></equipment-info>
+    </div>
+  </div>
+</div>

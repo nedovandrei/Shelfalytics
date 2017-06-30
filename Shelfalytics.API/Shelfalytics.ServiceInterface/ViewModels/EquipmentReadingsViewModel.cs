@@ -11,6 +11,8 @@ namespace Shelfalytics.ServiceInterface.ViewModels
         public int Id { get; set; }
         public string ClientName { get; set; }
         public string PointOfSaleName { get; set; }
+        public string PointOfSaleAddress { get; set; }
+        public string PointOfSaleTelephone { get; set; }
         public string EquipmentType { get; set; }
         public string ModelName { get; set; }
         public int Temperature { get; set; }

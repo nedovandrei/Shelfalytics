@@ -25,7 +25,9 @@ namespace Shelfalytics.API.App_Start
 
             builder.RegisterType<EquipmentDataRepository>().As<IEquipmentDataRepository>().InstancePerLifetimeScope();
             builder.RegisterType<ProductDataRepository>().As<IProductDataRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<PointOfSaleRepository>().As<IPointOfSaleRepository>().InstancePerLifetimeScope();
             builder.RegisterType<EquipmentDataService>().As<IEquipmentDataService>().InstancePerLifetimeScope();
+            builder.RegisterType<PointOfSaleService>().As<IPointOfSaleService>().InstancePerLifetimeScope();
             var container = builder.Build();
             var resolver = new AutofacWebApiDependencyResolver(container);
 

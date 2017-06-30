@@ -101,6 +101,14 @@
     <Compile Include="Migrations\201706281911379_AddedRowFieldForDistanceReadings.Designer.cs">
       <DependentUpon>201706281911379_AddedRowFieldForDistanceReadings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706300055130_AddScheduleToPOS.cs" />
+    <Compile Include="Migrations\201706300055130_AddScheduleToPOS.Designer.cs">
+      <DependentUpon>201706300055130_AddScheduleToPOS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706300058539_DividedScheduleTo2Fileds.cs" />
+    <Compile Include="Migrations\201706300058539_DividedScheduleTo2Fileds.Designer.cs">
+      <DependentUpon>201706300058539_DividedScheduleTo2Fileds.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ShelfalyticsDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -158,6 +166,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706281911379_AddedRowFieldForDistanceReadings.resx">
       <DependentUpon>201706281911379_AddedRowFieldForDistanceReadings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706300055130_AddScheduleToPOS.resx">
+      <DependentUpon>201706300055130_AddScheduleToPOS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706300058539_DividedScheduleTo2Fileds.resx">
+      <DependentUpon>201706300058539_DividedScheduleTo2Fileds.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

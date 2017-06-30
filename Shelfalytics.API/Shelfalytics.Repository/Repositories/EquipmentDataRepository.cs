@@ -45,12 +45,27 @@ namespace Shelfalytics.Repository.Repositories
                         EquipmentType = equipment.EquipmentType.Name,
                         ModelName = equipment.ModelName,
                         PointOfSaleName = equipment.PointOfSale.PointOfSaleName,
+                        PointOfSaleAddress = equipment.PointOfSale.Address,
+                        PointOfSaleTelephone = equipment.PointOfSale.Telephone,
                         OpenCloseCountToday = ers.Count(x => x.WasOpened && x.TimeSpamp > today && x.TimeSpamp < tomorrow),
                         Temperature = equipmentReading.Temperature,
                         TimeStamp = equipmentReading.TimeSpamp,
                         RowCount = equipment.RowCount,
                         DistanceReadings = distanceReadings
                     }).Take(1);
+                return await query.ToListAsync();
+            }
+        }
+
+        public async Task<IEnumerable<int>> GetPointOfSaleEquipment(int posId)
+        {
+            using (var uow = _unitOfWorkFactory.GetShelfalyticsDbContext())
+            {
+                var query = from eq in uow.Set<Equipment>()
+                    where eq.PointOfSaleId == posId
+                    //&& (eq.UserId == userId) TODO: implement user 
+                    select eq.Id;
+
                 return await query.ToListAsync();
             }
         }

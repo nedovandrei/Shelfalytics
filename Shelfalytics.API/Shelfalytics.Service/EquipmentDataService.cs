@@ -59,6 +59,8 @@ namespace Shelfalytics.Service
                     Id = equipmentData.Id,
                     ClientName = equipmentData.ClientName,
                     PointOfSaleName = equipmentData.PointOfSaleName,
+                    PointOfSaleAddress = equipmentData.PointOfSaleAddress,
+                    PointOfSaleTelephone = equipmentData.PointOfSaleTelephone,
                     EquipmentType = equipmentData.EquipmentType,
                     ModelName = equipmentData.ModelName,
                     Temperature = equipmentData.Temperature,

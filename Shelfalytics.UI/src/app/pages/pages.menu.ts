@@ -348,6 +348,17 @@ export const PAGES_MENU = [
             target: '_blank'
           }
         }
+      },
+      {
+        path: "test",
+        data: {
+          menu: {
+            title: "Test",
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        }
       }
     ]
   }

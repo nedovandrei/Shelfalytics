@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Shelfalytics.Model.DbModels
 {
@@ -23,5 +24,9 @@ namespace Shelfalytics.Model.DbModels
         [Required]
         [EmailAddress]
         public string Email { get; set; }
+        [Required]
+        public DateTime OpeningHour { get; set; }
+        [Required]
+        public DateTime ClosingHour { get; set; }
     }
 }

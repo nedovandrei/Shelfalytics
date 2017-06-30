@@ -12,7 +12,9 @@
     width: 100%;
     min-width: $resMin;
     padding: 0 32px 0 40px;
-
+    img{
+      max-height: 50px;
+    }
     .dropdown-toggle::after {
       display: none;
     }
@@ -33,7 +35,7 @@
     float: left;
     outline: none !important;
     line-height: 60px;
-
+    min-width: 115px;
     span {
       color: $primary;
     }

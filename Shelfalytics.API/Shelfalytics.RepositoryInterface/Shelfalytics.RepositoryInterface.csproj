@@ -51,11 +51,13 @@
   <ItemGroup>
     <Compile Include="DTO\EqiupmentDataDTO.cs" />
     <Compile Include="DTO\EquipmentPlanogramDTO.cs" />
+    <Compile Include="DTO\PointOfSaleDataDTO.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="IUnitOfWorkFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IEquipmentDataRepository.cs" />
+    <Compile Include="Repositories\IPointOfSaleRepository.cs" />
     <Compile Include="Repositories\IProductDataRepository.cs" />
   </ItemGroup>
   <ItemGroup>

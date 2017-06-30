@@ -7,5 +7,6 @@ namespace Shelfalytics.RepositoryInterface.Repositories
     public interface IEquipmentDataRepository
     {
         Task<IEnumerable<EqiupmentDataDTO>> GetLatestEquipmentData(int equipmentId);
+        Task<IEnumerable<int>> GetPointOfSaleEquipment(int posId);
     }
 }
