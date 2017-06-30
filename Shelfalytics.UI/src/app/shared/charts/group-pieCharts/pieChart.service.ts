@@ -21,11 +21,13 @@ export class PieChartService {
           description: data[i].ProductName,
           name: data[i].SKUName,
           stats: data[i].Percentage,
+          row: i + 1,
           icon: "beer"
         }
       } else {
         arrayData = {
-          isEmpty: true
+          isEmpty: true,
+          row: i + 1
         }
       }
 
