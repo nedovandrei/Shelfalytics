@@ -21,10 +21,11 @@ export class EasyPieChartComponent implements OnInit {
   ngAfterViewInit() {
     this._loadPieCharts();
     // this._updatePieCharts();
-    
+
   }
 
   private _loadPieCharts() {
+    
     console.log("easypiechart chartData", this.chartData);
     jQuery('.easy-pie-chart').easyPieChart({
       easing: 'easeOutBounce',
@@ -39,6 +40,9 @@ export class EasyPieChartComponent implements OnInit {
       lineWidth: 15,
       lineCap: 'round',
     });
+
+
+
   }
 
   private _updatePieCharts() {
