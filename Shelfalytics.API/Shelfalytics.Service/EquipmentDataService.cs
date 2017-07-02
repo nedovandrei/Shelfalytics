@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Shelfalytics.RepositoryInterface.Repositories;
 using Shelfalytics.ServiceInterface;
+using Shelfalytics.ServiceInterface.Constants;
 using Shelfalytics.ServiceInterface.ViewModels;
 
 namespace Shelfalytics.Service
@@ -11,9 +12,9 @@ namespace Shelfalytics.Service
     public class EquipmentDataService : IEquipmentDataService
     {
         //predefined
-        private readonly int _emptyDistance = 85;
-        private readonly int _fullStockDistance = 2;
-        private readonly int _oneBottleLength = 7;
+        private readonly int _emptyDistance = GlobalConstants.EmptyDistance;
+        private readonly int _fullStockDistance = GlobalConstants.FullStockDistance;
+        private readonly int _oneBottleLength = GlobalConstants.OneBottleLength;
 
         private readonly IEquipmentDataRepository _equipmentDataRepository;
         private readonly IProductDataRepository _productDataRepository;

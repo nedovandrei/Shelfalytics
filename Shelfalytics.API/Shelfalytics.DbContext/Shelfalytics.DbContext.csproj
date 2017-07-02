@@ -109,6 +109,10 @@
     <Compile Include="Migrations\201706300058539_DividedScheduleTo2Fileds.Designer.cs">
       <DependentUpon>201706300058539_DividedScheduleTo2Fileds.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707021159022_AddedUserEquipmentTie.cs" />
+    <Compile Include="Migrations\201707021159022_AddedUserEquipmentTie.Designer.cs">
+      <DependentUpon>201707021159022_AddedUserEquipmentTie.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ShelfalyticsDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -172,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706300058539_DividedScheduleTo2Fileds.resx">
       <DependentUpon>201706300058539_DividedScheduleTo2Fileds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707021159022_AddedUserEquipmentTie.resx">
+      <DependentUpon>201707021159022_AddedUserEquipmentTie.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

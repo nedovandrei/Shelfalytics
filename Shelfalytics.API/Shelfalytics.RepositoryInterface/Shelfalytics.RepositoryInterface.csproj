@@ -52,6 +52,7 @@
     <Compile Include="DTO\EqiupmentDataDTO.cs" />
     <Compile Include="DTO\EquipmentPlanogramDTO.cs" />
     <Compile Include="DTO\PointOfSaleDataDTO.cs" />
+    <Compile Include="Helpers\GlobalFilter.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="IUnitOfWorkFactory.cs" />

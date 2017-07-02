@@ -26,14 +26,13 @@ export class GroupPieChart implements OnInit {
   }
 
   ngAfterViewInit() {
-    console.log("lol")
     this._loadPieCharts();
-    this._updatePieCharts();
+    // this._updatePieCharts();
   }
 
   private _loadPieCharts() {
 
-    jQuery('.chart').each(function () {
+    jQuery('.group-chart').each(function () {
       let chart = jQuery(this);
       chart.easyPieChart({
         easing: 'easeOutBounce',
@@ -52,12 +51,7 @@ export class GroupPieChart implements OnInit {
   }
 
   private _updatePieCharts() {
-    let getRandomArbitrary = (min, max) => { return Math.random() * (max - min) + min; };
-
-    jQuery('.pie-charts .chart').each(function(index, chart) {
-      console.log("update Pie, chart", chart);
-      console.log("parseInt", parseInt(jQuery(chart).attr("data-percent")));
-
+    jQuery('.pie-charts .group-chart').each(function(index, chart) {
       jQuery(chart).data('easyPieChart').update(parseInt(jQuery(chart).attr("data-percent")));
     });
   }

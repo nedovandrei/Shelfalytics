@@ -40,8 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants\GlobalConstants.cs" />
     <Compile Include="IEquipmentDataService.cs" />
     <Compile Include="IPointOfSaleService.cs" />
+    <Compile Include="IStatisticsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\EquipmentReadingsViewModel.cs" />
     <Compile Include="ViewModels\EquipmentRowInfoViewModel.cs" />

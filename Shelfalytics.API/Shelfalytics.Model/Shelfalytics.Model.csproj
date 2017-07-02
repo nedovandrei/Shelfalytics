@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbModelHelpers\UserEquipmentTie.cs" />
     <Compile Include="DbModelHelpers\UserRole.cs" />
     <Compile Include="DbModelHelpers\EquipmentType.cs" />
     <Compile Include="DbModelHelpers\PackagingType.cs" />

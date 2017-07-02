@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { global } from "../../global";
 import { AjaxService } from "../../shared/services/ajax.service";
 import { Observable } from "rxjs/Observable";
+import * as moment from "moment";
 
 @Injectable()
 export class TestService {
@@ -17,6 +18,11 @@ export class TestService {
       return this.ajaxService.get(global.apiPath + "PointOfSale", { posId: 1 });
   }
 
-
+  getOOSPercentage(equipmentId: number){
+    return this.ajaxService.post(global.apiPath + "Statistics?equipmentId=" + equipmentId, {
+      StartTime: moment().subtract(2, "months"),
+      EndTime: moment()
+    });
+  }
 
 }

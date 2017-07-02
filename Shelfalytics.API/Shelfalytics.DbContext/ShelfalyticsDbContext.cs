@@ -30,6 +30,7 @@ namespace Shelfalytics.DbContext
         public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<EquipmentType> EquipmentTypes { get; set; }
         public DbSet<PackagingType> PackagintTypes { get; set; }
+        public DbSet<UserEquipmentTie> UserEquipmentTies { get; set; }
 
 
         public async Task CommitAsync()

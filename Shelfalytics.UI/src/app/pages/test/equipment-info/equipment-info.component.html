@@ -1,8 +1,10 @@
-<ba-card>
-  <p>Model: {{equipmentData.ModelName}}</p>
-  <p>Equipment Type: {{equipmentData.EquipmentType}}</p>
-  <p>Temperature: {{equipmentData.Temperature}}</p>
-  <p>Open Count - Today: {{equipmentData.OpenCloseCountToday}}</p>
-  <p>Last Ping: {{timeStamp}}</p>
-</ba-card>
-<pie-chart *ngIf="initFlag" [chartData]="equipmentData.RowInfo" [rowCount]="equipmentData.RowCount"></pie-chart>
+<div *ngIf="initFlag">
+  <ba-card>
+    <p>Model: {{equipmentData.ModelName}}</p>
+    <p>Equipment Type: {{equipmentData.EquipmentType}}</p>
+    <p>Temperature: {{equipmentData.Temperature}}</p>
+    <p>Open Count - Today: {{equipmentData.OpenCloseCountToday}}</p>
+    <p>Last Ping: {{timeStamp}}</p>
+  </ba-card>
+  <pie-chart *ngIf="initFlag" [chartData]="equipmentData.RowInfo" [rowCount]="equipmentData.RowCount"></pie-chart>
+</div>

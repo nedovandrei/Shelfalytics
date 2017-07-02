@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Shelfalytics.Model.DbModels;
 using Shelfalytics.RepositoryInterface;
 using Shelfalytics.RepositoryInterface.DTO;
+using Shelfalytics.RepositoryInterface.Helpers;
 using Shelfalytics.RepositoryInterface.Repositories;
 
 namespace Shelfalytics.Repository.Repositories
@@ -69,5 +70,38 @@ namespace Shelfalytics.Repository.Repositories
                 return await query.ToListAsync();
             }
         }
+
+        public async Task<IEnumerable<EqiupmentDataDTO>> GetFilteredEquipmentData(int equipmentId, GlobalFilter filter)
+        {
+            using (var uow = _unitOfWorkFactory.GetShelfalyticsDbContext())
+            {
+                var query = from equipment in uow.Set<Equipment>()
+                    join equipmentReading in uow.Set<EquipmentReading>() on equipment.Id equals
+                    equipmentReading.EquipmentId
+                    join equipmentDistanceReading in uow.Set<EquipmentDistanceReading>() on equipmentReading.Id equals
+                    equipmentDistanceReading.EquipmentReadingId into distanceReadings
+                    where
+                    equipment.Id == equipmentId && equipmentReading.TimeSpamp >= filter.StartTime &&
+                    equipmentReading.TimeSpamp <= filter.EndTime
+                    select new EqiupmentDataDTO
+                    {
+                        Id = equipment.Id,
+                        RowCount = equipment.RowCount,
+                        ClientName = equipment.Client.ClientName,
+                        EquipmentType = equipment.EquipmentType.Name,
+                        ModelName = equipment.ModelName,
+                        PointOfSaleName = equipment.PointOfSale.PointOfSaleName,
+                        PointOfSaleAddress = equipment.PointOfSale.Address,
+                        PointOfSaleTelephone = equipment.PointOfSale.Telephone,
+                        Temperature = equipmentReading.Temperature,
+                        TimeStamp = equipmentReading.TimeSpamp,
+                        DistanceReadings = distanceReadings,
+                    };
+                return await query.ToListAsync();
+
+            }
+        }
+        
+
     }
 }
