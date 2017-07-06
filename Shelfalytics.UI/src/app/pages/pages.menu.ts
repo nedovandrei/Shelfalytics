@@ -350,13 +350,14 @@ export const PAGES_MENU = [
         }
       },
       {
-        path: "test",
+        path: "points-of-sale",
         data: {
           menu: {
-            title: "Test",
+            title: "Points of Sale",
             selected: false,
             expanded: false,
-            order: 0
+            order: 0,
+            icon: 'fa fa-building'
           }
         }
       }

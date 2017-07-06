@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { TestService } from "./test.service";
-import * as moment from "moment";
+import { PosInfoService } from './pos-info.service';
+import * as moment from 'moment';
 
 @Component({
-  selector: 'app-test',
-  templateUrl: './test.component.html',
-  styleUrls: ['./test.component.scss'],
-  providers: [TestService]
+  selector: 'pos-info',
+  templateUrl: './pos-info.component.html',
+  styleUrls: ['./pos-info.component.scss'],
+  providers: [PosInfoService]
 })
-export class TestComponent implements OnInit {
+export class PosInfoComponent implements OnInit {
 
-  constructor(private _testService: TestService) { }
+  constructor(private posInfoService: PosInfoService) { }
 
   private initFlag: boolean = false;
   private posData: any;
@@ -23,25 +23,26 @@ export class TestComponent implements OnInit {
   //   series: []
   // }
 
-  private OOSChartData = {}
+  private OOSChartData = {};
 
   ngOnInit() {
-    this._testService.getPointOfSaleData().subscribe((data: any) =>{
+    this.posInfoService.getPointOfSaleData().subscribe((data: any) => {
       this.posData = data[0];
       this.equipmentInFocus = this.posData.EquipmentIds[0];
 
-      this.openHours = moment(this.posData.OpeningHours).format("hh:mm A");
-      this.closeHours = moment(this.posData.ClosingHours).format("hh:mm A");
+      this.openHours = moment(this.posData.OpeningHours).format('hh:mm A');
+      this.closeHours = moment(this.posData.ClosingHours).format('hh:mm A');
 
       
-      this._testService.getOOSPercentage(this.equipmentInFocus).subscribe((percentage: number) => {
+      this.posInfoService.getOOSPercentage(this.equipmentInFocus).subscribe((percentage: number) => {
         // this.OOSChartOptions.series.push(percentage);
         // this.OOSChartOptions.series.push(100);
 
         this.OOSChartData = {
           data: percentage,
-          color: percentage < 20 ? "rgba(255, 255, 255, 1)" : percentage < 50 ? "rgba(244,198,61, 1)" : "rgba(215,2,6, 1)"
-        }
+          color: percentage < 20 ? 'rgba(255, 255, 255, 1)' : 
+            percentage < 50 ? 'rgba(244,198,61, 1)' : 'rgba(215,2,6, 1)'
+        };
 
         this.initFlag = true;
       });

@@ -1,16 +1,16 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { TestService } from "../test.service";
-import * as moment from "moment";
+import { PosInfoService } from '../pos-info.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'equipment-info',
   templateUrl: './equipment-info.component.html',
   styleUrls: ['./equipment-info.component.scss'],
-  providers: [TestService]
+  providers: [PosInfoService],
 })
-export class EquipmentInfoComponent implements OnInit {
+export class EquipmentInfoComponent implements OnInit, OnChanges {
 
-  constructor(private testService: TestService) { }
+  constructor(private posInfoService: PosInfoService) { }
 
   @Input() equipmentId: number;
 
@@ -22,16 +22,16 @@ export class EquipmentInfoComponent implements OnInit {
 
   }
 
-  ngOnChanges(){
+  ngOnChanges() {
     this.initFlag = false;
     this.init();
   }
 
-  private init(){
-    this.testService.getShelfData(this.equipmentId).subscribe((data: any) => {
+  private init() {
+    this.posInfoService.getShelfData(this.equipmentId).subscribe((data: any) => {
       this.equipmentData = data[0];
       
-      this.timeStamp = moment(data[0].TimeStamp).format("hh:mm:ss A, dddd, Do MMMM YYYY");
+      this.timeStamp = moment(data[0].TimeStamp).format('hh:mm:ss A, dddd, Do MMMM YYYY');
       this.initFlag = true;
     });
   }
