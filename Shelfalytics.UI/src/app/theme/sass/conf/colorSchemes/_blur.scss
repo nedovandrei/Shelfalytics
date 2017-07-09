@@ -1,5 +1,5 @@
 $default: rgba(#000000, 0.2);
-$body-bg: #F0F3F4;
+$body-bg: rgba(44,154,255, 0.7);
 
 $default-text: #ffffff;
 $content-text: $default-text;
@@ -29,7 +29,7 @@ $bootstrap-panel-header-bg: $bootstrap-panel-bg;
 $bootstrap-panel-header-border: 1px solid rgba(0, 0, 0, 0.12);
 $bootstrap-panel-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.25);
 
-$primary: #209e91 !default;
+$primary: #2c9aff !default;
 $info: #2dacd1 !default;
 $success: #90b900 !default;
 $warning: #dfb81c !default;
@@ -59,7 +59,7 @@ $hoverlink: $primary-dark;
 @mixin body-bg() {
   background-color: $body-bg;
 
-  $mainBgUrl: $assets-root + $images-root + 'blur-bg.jpg';
+  $mainBgUrl: $assets-root + $images-root + '1511.jpg';
 
   &::before {
     content: '';
@@ -71,7 +71,7 @@ $hoverlink: $primary-dark;
     background: url($mainBgUrl) no-repeat center center;
     background-size: cover;
     will-change: transform;
-    z-index: 0;
+    z-index: -1;
   }
 }
 @mixin additional-bg() {

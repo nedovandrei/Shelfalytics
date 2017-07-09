@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-md-2">
-    <a [routerLink]="['pos-info', 2]">Check Pos-info</a>
+
+    <a [routerLink]="['pos-info', 2]"><button class="btn btn-primary mb-3">Check Pos-info</button></a>
   </div>
 </div>
 <div class="row">
@@ -8,8 +9,3 @@
     <smart-table *ngIf="initFlag" [tableColumns]="tableColumns" [tableData]="tableData"></smart-table>
   </div>
 </div>
-<ba-card>
-  <amchart *ngIf="initFlag" [chartData]="sampleChartData"></amchart>
-</ba-card>
-
-

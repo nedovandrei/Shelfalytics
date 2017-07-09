@@ -1,16 +1,16 @@
 <div class="row pie-charts">
 
   <ba-card *ngFor="let chart of charts" class="pie-chart-item-container col-xlg-3 col-lg-3 col-md-6 col-sm-12 col-12" [ngClass]="{ 'undefined-row': chart.isEmpty, 'empty-row': chart.stats === 0 }">
-    
+
     <div *ngIf="!chart.isEmpty" class="pie-chart-item">
       <div class="group-chart" [attr.data-rel]="chart.color" [attr.data-percent]="chart.stats">
         <span class="percent"></span>
       </div>
-      <div class="description">
+      <div class="">
         <p>Row {{chart.row}}</p>
         <div translate>{{ chart.description }}</div>
       </div>
-      <i class="chart-icon fa fa-3x fa-{{ chart.icon }}"></i>
+      <!-- <i class="chart-icon fa fa-3x fa-{{ chart.icon }}"></i> -->
     </div>
 
 
