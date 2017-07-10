@@ -72,24 +72,5 @@ export class PosListComponent implements OnInit, AfterViewInit {
     }
   }
 
-  private sampleChartData = {
-    dataProvider: [
-      {
-        year: '2005',
-        value: 35,
-      },
-      {
-        year: '2006',
-        value: 43,
-      },
-      {
-        year: "2007",
-        value: 24,
-      },
-      {
-        year: "2008",
-        value: 28,
-      },
-    ],
-  };
+  
 }

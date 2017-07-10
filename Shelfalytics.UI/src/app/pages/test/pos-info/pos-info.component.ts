@@ -25,6 +25,31 @@ export class PosInfoComponent implements OnInit {
 
   private OOSChartData = {};
 
+  private sampleChartData = {
+    dataProvider: [
+      {
+        year: '2005',
+        valueLol: 35,
+        valueKek: 12
+      },
+      {
+        year: '2006',
+        valueLol: 43,
+        valueKek: 9,
+      },
+      {
+        year: '2007',
+        valueLol: 24,
+        valueKek: 89,
+      },
+      {
+        year: "2008",
+        valueLol: 77,
+        valueKek: 28,
+      },
+    ],
+  };
+
   ngOnInit() {
     this.posInfoService.getPointOfSaleData().subscribe((data: any) => {
       this.posData = data[0];

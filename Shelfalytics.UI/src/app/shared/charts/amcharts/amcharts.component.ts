@@ -20,17 +20,30 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges {
                     "axisAlpha": 0,
                     "position": "left"
                 }],
-                "graphs": [{
-                    "id":"g1",
-                    "balloonText": "[[category]]<br><b><span style='font-size:14px;'>[[value]]</span></b>",
-                    "bullet": "round",
-                    "bulletSize": 8,
-                    "lineColor": "#d1655d",
-                    "lineThickness": 2,
-                    "negativeLineColor": "#637bb6",
-                    "type": "smoothedLine",
-                    "valueField": "value"
-                }],
+                "graphs": [
+                    {
+                        "id":"g1",
+                        "balloonText": "[[category]]<br><b><span style='font-size:14px;'>[[value]]</span></b>",
+                        "bullet": "round",
+                        "bulletSize": 8,
+                        "lineColor": "#d1655d",
+                        "lineThickness": 2,
+                        "negativeLineColor": "#637bb6",
+                        "type": "smoothedLine",
+                        "valueField": "valueLol"
+                    },
+                    {
+                        "id":"g2",
+                        "balloonText": "[[category]]<br><b><span style='font-size:14px;'>[[value]]</span></b>",
+                        "bullet": "round",
+                        "bulletSize": 8,
+                        "lineColor": "yellow",
+                        "lineThickness": 2,
+                        "negativeLineColor": "blue",
+                        "type": "smoothedLine",
+                        "valueField": "valueKek"
+                    },
+                ],
                 "chartScrollbar": {
                     "graph":"g1",
                     "gridAlpha":0,
@@ -76,7 +89,9 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges {
     ngOnInit() {
         console.log('amChart chartData', this.chartData);
         if (this.chartData !== undefined) {
-            this.chart.dataProvider = this.chartData.dataProvider;
+            this.amChartsService.updateChart( this.chart, () => {
+                this.chart.dataProvider = this.chartData.dataProvider;
+            });
             this.initFlag = true;
         }
         
@@ -84,7 +99,7 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges {
 
     ngOnChanges() {
         if (this.chartData !== undefined) {
-                this.amChartsService.updateChart( this.chart, () => {
+            this.amChartsService.updateChart( this.chart, () => {
                 this.chart.dataProvider = this.chartData.dataProvider;
             });
         }
