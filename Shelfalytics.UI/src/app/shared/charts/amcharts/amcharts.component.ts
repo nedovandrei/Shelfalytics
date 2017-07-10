@@ -61,7 +61,11 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges {
                     "graphLineColor":"#c2c2c2",
                     "selectedGraphLineColor":"#ffffff",
                     "selectedGraphLineAlpha":1,
+<<<<<<< HEAD
                     
+=======
+                    "dragIcon": "../../assets/icon/android-icon-192x192.png",
+>>>>>>> 3c6e70074c4dffb360a58fb1ee5bd2d03ad688f2
                 },
                 "chartCursor": {
                     "categoryBalloonDateFormat": "YYYY",
