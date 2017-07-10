@@ -27,5 +27,14 @@ namespace Shelfalytics.API.Controllers
 
             return Request.CreateResponse(res);
         }
+
+        [HttpGet]
+        [Route("api/PointOfSale/GetPointsOfSales")]
+        public async Task<HttpResponseMessage> GetPointsOfSales()
+        {
+            var res = await _pointOfSaleService.GetPointsOfSales();
+
+            return Request.CreateResponse(res);
+        }
     }
 }

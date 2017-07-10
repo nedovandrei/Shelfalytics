@@ -7,5 +7,6 @@ namespace Shelfalytics.ServiceInterface
     public interface IPointOfSaleService
     {
         Task<IEnumerable<PointOfSaleDataDTO>> GetPointOfSaleData(int posId);
+        Task<IEnumerable<PointOfSaleDataDTO>> GetPointsOfSales();
     }
 }

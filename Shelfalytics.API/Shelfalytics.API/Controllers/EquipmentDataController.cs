@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using Shelfalytics.API.Models;
 using Shelfalytics.RepositoryInterface.Repositories;
 using Shelfalytics.ServiceInterface;
 
@@ -28,6 +29,12 @@ namespace Shelfalytics.API.Controllers
         {
             var response = await _equipmentDataService.GetLatestEquipmentData(equipmentId);
             return Request.CreateResponse(response);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage TestEquipmentReadingSave(EquipmentReadingModel obj)
+        {
+            return Request.CreateResponse(obj.Message);
         }
     }
 }

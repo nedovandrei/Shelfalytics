@@ -1,16 +1,16 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { LocalDataSource } from 'ng2-smart-table';
+import { Component, Input, OnInit, OnChanges } from "@angular/core";
+import { LocalDataSource } from "ng2-smart-table";
 
 @Component({
-  selector: 'smart-table',
-  templateUrl: './smart-table.html',
-  styleUrls: ['./smart-table.scss']
+  selector: "smart-table",
+  templateUrl: "./smart-table.html",
+  styleUrls: ["./smart-table.scss"]
 })
-export class SmartTableComponent implements OnInit {
+export class SmartTableComponent implements OnInit, OnChanges {
 
   @Input() tableColumns: any;
   @Input() tableData: any;
-  query: string = '';
+  query: string = "";
   private initFlag: boolean = false;
 
   private settings = {
@@ -43,6 +43,13 @@ export class SmartTableComponent implements OnInit {
       this.source.load(this.tableData);
     }
     this.initFlag = true;
+  }
+
+  ngOnChanges() {
+    if (this.tableData !== undefined) {
+      this.source.load(this.tableData);
+    }
+    
   }
 
   onDeleteConfirm(event): void {

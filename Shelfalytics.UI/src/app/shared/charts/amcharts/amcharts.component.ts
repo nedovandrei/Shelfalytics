@@ -60,7 +60,8 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges {
                     "graphLineAlpha":0.2,
                     "graphLineColor":"#c2c2c2",
                     "selectedGraphLineColor":"#ffffff",
-                    "selectedGraphLineAlpha":1
+                    "selectedGraphLineAlpha":1,
+                    
                 },
                 "chartCursor": {
                     "categoryBalloonDateFormat": "YYYY",

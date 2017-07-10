@@ -33,5 +33,19 @@ namespace Shelfalytics.Service
 
             return posData;
         }
+
+        public async Task<IEnumerable<PointOfSaleDataDTO>> GetPointsOfSales()
+        {
+            var posData = await _pointOfSaleRepository.GetPointsOfSales();
+            
+
+            foreach (var pos in posData)
+            {
+                var equipmentIds = await _equipmentDataRepository.GetPointOfSaleEquipment(pos.PointOfSaleId);
+                pos.EquipmentIds = equipmentIds;
+            }
+
+            return posData;
+        }
     }
 }
