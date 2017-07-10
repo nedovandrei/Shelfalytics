@@ -1,76 +1,72 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input } from "@angular/core";
+import { PosListService } from "./pos-list.service";
+
+// @Component({
+//   selector: "equipment-count-view",
+//   template: "<span>{{renderValue.length}}</span>"
+// })
+// export class EquipmentCountViewComponent implements OnInit {
+//   @Input() value: any;
+
+//   private renderValue: any;
+//   ngOnInit() {
+//     console.log("ulalala");
+//     this.renderValue = this.value;
+//   }
+
+// }
+
 
 @Component({
-  selector: 'pos-list',
-  templateUrl: './pos-list.component.html',
-  styleUrls: ['./pos-list.component.scss']
+  selector: "pos-list",
+  templateUrl: "./pos-list.component.html",
+  styleUrls: ["./pos-list.component.scss"],
+  providers: [PosListService],
 })
 export class PosListComponent implements OnInit, AfterViewInit {
 
-  constructor() { }
+  constructor(private posListService: PosListService) { }
 
+  private tableData: any[];
   private initFlag = false;
 
   ngOnInit() {
+    this.posListService.getPointsOfSales().subscribe((data: any[]) => {
+      console.log("posListService ", data);
+      this.tableData = data;
+    });
   }
 
   ngAfterViewInit() {
     this.initFlag = true;
   }
 
-  private tableData = [
-    {
-      id: 1,
-      firstName: 'Mark',
-      lastName: 'Otto',
-      username: '@mdo',
-      email: 'mdo@gmail.com',
-      age: '28'
-    },
-    {
-      id: 2,
-      firstName: 'Jacob',
-      lastName: 'Thornton',
-      username: '@fat',
-      email: 'fat@yandex.ru',
-      age: '45'
-    },
-    {
-      id: 3,
-      firstName: 'Larry',
-      lastName: 'Bird',
-      username: '@twitter',
-      email: 'twitter@outlook.com',
-      age: '18'
-    },
-  ]
-
   private tableColumns = {
-    id: {
-      title: 'ID',
-      type: 'number'
+    PointOfSaleName: {
+      title: "POS Name",
+      type: "string"
     },
-    firstName: {
-      title: 'First Name',
-      type: 'string'
+    PointOfSaleAddress: {
+      title: "POS Address",
+      type: "string",
     },
-    lastName: {
-      title: 'Last Name',
-      type: 'string'
+    PointOfSaleTelephone: {
+      title: "POS Telephone",
+      type: "string"
     },
-    username: {
-      title: 'Username',
-      type: 'string'
+    ContactPersonName: {
+      title: "Comtact Person Name",
+      type: "string"
     },
-    email: {
-      title: 'E-mail',
-      type: 'string'
-    },
-    age: {
-      title: 'Age',
-      type: 'number'
-    }
-  }
+    // Equipment: {
+    //   title: "Equipment Count",
+    //   type: "string",
+    //   renderComponent: EquipmentCountViewComponent,
+    //   onComponentInitFunction(instance) {
+
+    //   }
+    // }
+  };
 
   
 }

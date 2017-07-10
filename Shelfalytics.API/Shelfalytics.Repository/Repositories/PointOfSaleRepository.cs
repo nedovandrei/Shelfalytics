@@ -42,5 +42,26 @@ namespace Shelfalytics.Repository.Repositories
                 return await query.ToListAsync();
             }
         }
+
+        public async Task<IEnumerable<PointOfSaleDataDTO>> GetPointsOfSales()
+        {
+            using (var uow = _unitOfWorkFactory.GetShelfalyticsDbContext())
+            {
+                var query = from pos in uow.Set<PointOfSale>()
+                            join equipment in uow.Set<Equipment>() on pos.Id equals equipment.PointOfSaleId into equipmentArray
+                            select new PointOfSaleDataDTO
+                            {
+                                PointOfSaleId = pos.Id,
+                                PointOfSaleAddress = pos.Address,
+                                PointOfSaleTelephone = pos.Telephone,
+                                PointOfSaleName = pos.PointOfSaleName,
+                                ContactPersonName = pos.ContactPersonName,
+                                OpeningHours = pos.OpeningHour,
+                                ClosingHours = pos.ClosingHour,
+                                Equipment = equipmentArray
+                            };
+                return await query.ToListAsync();
+            }
+        }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Shelfalytics.Model.DbModels;
 
 namespace Shelfalytics.RepositoryInterface.DTO
 {
@@ -16,5 +17,6 @@ namespace Shelfalytics.RepositoryInterface.DTO
         public DateTime OpeningHours { get; set; }
         public DateTime ClosingHours { get; set; }
         public IEnumerable<int> EquipmentIds { get; set; }
+        public IEnumerable<Equipment> Equipment { get; set; }
     }
 }
