@@ -9,13 +9,14 @@ import { AmChartsService } from '@amcharts/amcharts3-angular';
 })
 export class AmChartsComponent implements OnInit, OnDestroy, OnChanges {
 
-    constructor(private amChartsService: AmChartsService) { 
+    constructor(private amChartsService: AmChartsService) {
         this.chart = this.amChartsService.makeChart('chartdiv', {
                 "type": "serial",
                 "theme": "light",
                 "marginTop":0,
                 "marginRight": 80,
                 "dataProvider": [],
+
                 "valueAxes": [{
                     "axisAlpha": 0,
                     "position": "left"
@@ -45,6 +46,7 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges {
                     },
                 ],
                 "chartScrollbar": {
+                    "dragIcon": "../../assets/icon/dragIconRoundBig",
                     "graph":"g1",
                     "gridAlpha":0,
                     "color":"#ffffff",
@@ -94,7 +96,7 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges {
             });
             this.initFlag = true;
         }
-        
+
     }
 
     ngOnChanges() {
@@ -103,10 +105,10 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges {
                 this.chart.dataProvider = this.chartData.dataProvider;
             });
         }
-        
+
     }
 
-    ngOnDestroy() { 
+    ngOnDestroy() {
         this.amChartsService.destroyChart(this.chart);
     }
 

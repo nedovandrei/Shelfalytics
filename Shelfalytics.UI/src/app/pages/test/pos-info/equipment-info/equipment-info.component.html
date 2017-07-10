@@ -6,5 +6,6 @@
     <p>Open Count - Today: {{equipmentData.OpenCloseCountToday}}</p>
     <p>Last Ping: {{timeStamp}}</p>
   </ba-card>
+  
   <pie-chart *ngIf="initFlag" [chartData]="equipmentData.RowInfo" [rowCount]="equipmentData.RowCount"></pie-chart>
 </div>
