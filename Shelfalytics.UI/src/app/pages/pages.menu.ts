@@ -3,6 +3,28 @@ export const PAGES_MENU = [
     path: 'pages',
     children: [
       {
+        path: "main",
+        data: {
+          menu: {
+            title: "Main",
+            icon: "fa fa-home",
+            selected: false
+          }
+        }
+      },
+      {
+        path: "points-of-sale",
+        data: {
+          menu: {
+            title: "Points of Sale",
+            selected: false,
+            expanded: false,
+            order: 0,
+            icon: 'fa fa-building'
+          }
+        }
+      },
+      {
         path: 'dashboard',
         data: {
           menu: {
@@ -348,19 +370,7 @@ export const PAGES_MENU = [
             target: '_blank'
           }
         }
-      },
-      {
-        path: "points-of-sale",
-        data: {
-          menu: {
-            title: "Points of Sale",
-            selected: false,
-            expanded: false,
-            order: 0,
-            icon: 'fa fa-building'
-          }
-        }
-      }
+      }      
     ]
   }
 ];

@@ -1,7 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 import { Pages } from './pages.component';
 import { ModuleWithProviders } from '@angular/core';
-// import { TestComponent } from "./test/test.component";
+import { MainComponent } from "./main/main.component";
 // noinspection TypeScriptValidateTypes
 
 // export function loadChildren(path) { return System.import(path); };
@@ -28,10 +28,11 @@ export const routes: Routes = [
       { path: 'forms', loadChildren: './forms/forms.module#FormsModule' },
       { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },
       { path: 'maps', loadChildren: './maps/maps.module#MapsModule' },
-      // { path: "test", component: TestComponent },
-      { path: 'points-of-sale', loadChildren: './test/points-of-sale.module#PointsOfSaleModule'}
+      { path: 'points-of-sale', loadChildren: './test/points-of-sale.module#PointsOfSaleModule'},
+      { path: "main", component: MainComponent }
     ]
-  }
+  },
+  
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forChild(routes);
