@@ -5,7 +5,7 @@ export interface IAmChartConfig {
     marginRight?: number;
     valueAxes: IAmChartValueAxis[];
     graphs: IAmChartGraph[];
-    chartScrollBar: IAmChartScrollBar;
+    chartScrollbar: IAmChartScrollBar;
     chartCursor: IAmChartCursor;
     dataDateFormat?: string;
     categoryField: string;
@@ -76,7 +76,7 @@ export class AmChartConfig implements IAmChartConfig {
     marginRight?: number;
     valueAxes: IAmChartValueAxis[];
     graphs: IAmChartGraph[];
-    chartScrollBar: IAmChartScrollBar;
+    chartScrollbar: IAmChartScrollBar;
     chartCursor: IAmChartCursor;
     dataDateFormat?: string;
     categoryField: string;
@@ -117,7 +117,7 @@ export class AmChartConfig implements IAmChartConfig {
                 "valueField": "valueKek"
             }
         ];
-        this.chartScrollBar = {
+        this.chartScrollbar = {
             "dragIcon": "../../assets/icon/dragIconRoundBig",
             "graph": "g1",
             "gridAlpha": 0,
