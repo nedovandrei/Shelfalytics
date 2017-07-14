@@ -9,5 +9,10 @@ namespace Shelfalytics.Repository
         {
             return new ShelfalyticsDbContext();
         }
+
+        public System.Data.Entity.DbContext GetShelfalyticsIdentityDbContext()
+        {
+            return new ShelfalyticsIdentityDbContext();
+        }
     }
 }

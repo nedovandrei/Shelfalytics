@@ -16,9 +16,9 @@ namespace Shelfalytics.DbContext
         //main models
         public DbSet<Product> Products { get; set; }
         public DbSet<Client> Clients { get; set; }
-        public DbSet<User> Users { get; set; }
+        //public DbSet<User> Users { get; set; }
         public DbSet<PointOfSale> PointOfSales { get; set; }
-        
+
 
         //equipment
         public DbSet<Equipment> Equipments { get; set; }
@@ -27,7 +27,7 @@ namespace Shelfalytics.DbContext
         public DbSet<EquipmentDistanceReading> EquipmentDistanceReadings { get; set; }
 
         //helpers
-        public DbSet<UserRole> UserRoles { get; set; }
+        //public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<EquipmentType> EquipmentTypes { get; set; }
         public DbSet<PackagingType> PackagintTypes { get; set; }
         public DbSet<UserEquipmentTie> UserEquipmentTies { get; set; }
