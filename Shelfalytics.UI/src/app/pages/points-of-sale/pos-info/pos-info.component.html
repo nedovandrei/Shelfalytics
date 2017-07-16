@@ -42,12 +42,6 @@
               <p><i class="fa fa-ravelry"></i>Schedule: {{openHours}} - {{closeHours}}</p>
           </div>
         </div>
-
-
-
-
-
-
       </ba-card>
     </div>
   </div>
@@ -64,7 +58,7 @@
     <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-9">
 
         <equipment-info *ngIf="equipmentInFocus > 0 && initFlag" [equipmentId]="equipmentInFocus"></equipment-info>
-
+        <angular2-grid></angular2-grid>
     </div>
     <div class="col-md-3 col-xl-3">
       <ba-card>
