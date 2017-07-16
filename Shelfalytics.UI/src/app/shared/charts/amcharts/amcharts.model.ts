@@ -99,9 +99,9 @@ export class AmChartConfig implements IAmChartConfig {
                 "balloonText": "[[category]]<br><b><span style='font-size:14px;'>[[value]]</span></b>",
                 "bullet": "round",
                 "bulletSize": 8,
-                "lineColor": "#d1655d",
+                "lineColor": "#2dacd1",
                 "lineThickness": 2,
-                "negativeLineColor": "#637bb6",
+                "negativeLineColor": "#2dacd1",
                 "type": "smoothedLine",
                 "valueField": "valueLol"
             },
@@ -110,9 +110,9 @@ export class AmChartConfig implements IAmChartConfig {
                 "balloonText": "[[category]]<br><b><span style='font-size:14px;'>[[value]]</span></b>",
                 "bullet": "round",
                 "bulletSize": 8,
-                "lineColor": "yellow",
+                "lineColor": "#90b900",
                 "lineThickness": 2,
-                "negativeLineColor": "blue",
+                "negativeLineColor": "#90b900",
                 "type": "smoothedLine",
                 "valueField": "valueKek"
             }

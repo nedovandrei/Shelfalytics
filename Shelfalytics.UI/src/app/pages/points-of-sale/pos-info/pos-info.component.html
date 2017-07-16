@@ -26,20 +26,25 @@
     <div class="col-md-12">
       <ba-card>
         <div class="row">
-          <div class="col-lg-6 col-sm-12 col-12 text-center">
-              <p><i class="fa fa-ravelry"></i>POS: {{posData.PointOfSaleName}}</p>
+          <div class="col-lg-6 col-sm-12 col-12 ">
+            <h2><i class="fa fa-ravelry"></i>POS:</h2>
+              <p class="text-info"> {{posData.PointOfSaleName}}</p>
           </div>
-          <div class="col-lg-6 col-sm-12 col-12 text-center">
-                <p><i class="fa fa-ravelry"></i>POS Address: {{posData.PointOfSaleAddress}}</p>
+          <div class="col-lg-6 col-sm-12 col-12 ">
+            <h2><i class="fa fa-ravelry"></i>POS Address:</h2>
+                <p class="text-info"> {{posData.PointOfSaleAddress}}</p>
           </div>
-          <div class="col-lg-6 col-sm-12 col-12 text-center">
-              <p><i class="fa fa-ravelry"></i>POS Telephone: {{posData.PointOfSaleTelephone}}</p>
+          <div class="col-lg-6 col-sm-12 col-12 ">
+            <h2><i class="fa fa-ravelry"></i>POS Telephone:</h2>
+              <p class="text-info"> {{posData.PointOfSaleTelephone}}</p>
           </div>
-          <div class="col-lg-6 col-sm-12 col-12 text-center">
-              <p><i class="fa fa-ravelry"></i>Contact Person Name: {{posData.ContactPersonName}}</p>
+          <div class="col-lg-6 col-sm-12 col-12 ">
+            <h2><i class="fa fa-ravelry"></i>Contact Person Name:</h2>
+              <p class="text-info"> {{posData.ContactPersonName}}</p>
           </div>
-          <div class="col-lg-6 col-sm-12 col-12 text-center">
-              <p><i class="fa fa-ravelry"></i>Schedule: {{openHours}} - {{closeHours}}</p>
+          <div class="col-lg-6 col-sm-12 col-12 ">
+            <h2><i class="fa fa-ravelry"></i>Schedule: </h2>
+              <p class="text-info">{{openHours}} - {{closeHours}}</p>
           </div>
         </div>
       </ba-card>
@@ -58,6 +63,7 @@
     <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-9">
 
         <equipment-info *ngIf="equipmentInFocus > 0 && initFlag" [equipmentId]="equipmentInFocus"></equipment-info>
+        
         <angular2-grid></angular2-grid>
     </div>
     <div class="col-md-3 col-xl-3">
