@@ -56,6 +56,8 @@ export interface IAmChartCursor {
     valueLineBalloonEnabled?: boolean;
     valueLineAlpha?: number;
     fullWidth?: boolean;
+    categoryBalloonColor?: string;
+    cursorColor?: string;
 }
 
 export interface IAmChartCategoryAxis {
@@ -63,6 +65,7 @@ export interface IAmChartCategoryAxis {
     parseDates?: boolean;
     minorGridAlpha?: number;
     minorGridEnabled?: boolean;
+    axisColor?: string;
 }
 
 export interface IAmChartExportParam {
@@ -140,15 +143,18 @@ export class AmChartConfig implements IAmChartConfig {
             "valueLineEnabled": true,
             "valueLineBalloonEnabled": true,
             "valueLineAlpha": 0.5,
-            "fullWidth": true
+            "fullWidth": true,
+            "categoryBalloonColor": "#000000", //цвет заливки указателей
+            "cursorColor": "#000000" //цвет линии, тоже желательно менять под стать верхнему
         };
         this.dataDateFormat = "YYYY";
         this.categoryField = "year";
         this.categoryAxis = {
             "minPeriod": "YYYY",
             "parseDates": true,
-            "minorGridAlpha": 0.1,
-            "minorGridEnabled": true
+            "minorGridAlpha": 0.9,
+            "minorGridEnabled": true,
+            "axisColor": "#FFFFFF"
         };
         this.export = {
             enabled: true
