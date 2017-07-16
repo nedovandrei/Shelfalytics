@@ -144,8 +144,8 @@ export class AmChartConfig implements IAmChartConfig {
             "valueLineBalloonEnabled": true,
             "valueLineAlpha": 0.5,
             "fullWidth": true,
-            "categoryBalloonColor": "#000000", //цвет заливки указателей
-            "cursorColor": "#000000" //цвет линии, тоже желательно менять под стать верхнему
+            "categoryBalloonColor": "#2dacd1", //цвет заливки указателей
+            "cursorColor": "#2dacd1" //цвет линии, тоже желательно менять под стать верхнему
         };
         this.dataDateFormat = "YYYY";
         this.categoryField = "year";
