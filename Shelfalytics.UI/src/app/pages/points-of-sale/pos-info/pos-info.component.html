@@ -4,14 +4,50 @@
   </div>
 </div>
 <div *ngIf="initFlag">
+    <div class="row">
+        <ba-card class="col-xlg-6 col-xl-6 col-lg-6 col-sm-12 col-12 text-center">
+          <h1>1233</h1>
+          <div class="row">
+            <div class="offset-3 col-xlg-6 col-xl-6 col-lg-6 col-sm-12 col-12">
+              <easy-pie-chart [chartData]="OOSChartData"></easy-pie-chart>
+            </div>
+          </div>
+        </ba-card>
+        <ba-card class="col-xlg-6 col-xl-6 col-lg-6 col-sm-12 col-12 text-center">
+          <h1>1233</h1>
+          <div class="row">
+            <div class="offset-3 col-xlg-6 col-xl-6 col-lg-6 col-sm-12 col-12">
+              <easy-pie-chart [chartData]="OOSChartData"></easy-pie-chart>
+            </div>
+          </div>
+        </ba-card>
+    </div>
   <div class="row">
     <div class="col-md-12">
       <ba-card>
-        <p>POS: {{posData.PointOfSaleName}}</p>
-        <p>POS Address: {{posData.PointOfSaleAddress}}</p>
-        <p>POS Telephone: {{posData.PointOfSaleTelephone}}</p>
-        <p>Contact Person Name: {{posData.ContactPersonName}}</p>
-        <p>Schedule: {{openHours}} - {{closeHours}}</p>
+        <div class="row">
+          <div class="col-lg-6 col-sm-12 col-12 text-center">
+              <p><i class="fa fa-ravelry"></i>POS: {{posData.PointOfSaleName}}</p>
+          </div>
+          <div class="col-lg-6 col-sm-12 col-12 text-center">
+                <p><i class="fa fa-ravelry"></i>POS Address: {{posData.PointOfSaleAddress}}</p>
+          </div>
+          <div class="col-lg-6 col-sm-12 col-12 text-center">
+              <p><i class="fa fa-ravelry"></i>POS Telephone: {{posData.PointOfSaleTelephone}}</p>
+          </div>
+          <div class="col-lg-6 col-sm-12 col-12 text-center">
+              <p><i class="fa fa-ravelry"></i>Contact Person Name: {{posData.ContactPersonName}}</p>
+          </div>
+          <div class="col-lg-6 col-sm-12 col-12 text-center">
+              <p><i class="fa fa-ravelry"></i>Schedule: {{openHours}} - {{closeHours}}</p>
+          </div>
+        </div>
+
+
+
+
+
+
       </ba-card>
     </div>
   </div>
@@ -28,9 +64,13 @@
     <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-9">
 
         <equipment-info *ngIf="equipmentInFocus > 0 && initFlag" [equipmentId]="equipmentInFocus"></equipment-info>
-        
+
     </div>
     <div class="col-md-3 col-xl-3">
+      <ba-card>
+        <p>Out Of Stock</p>
+        <easy-pie-chart [chartData]="OOSChartData"></easy-pie-chart>
+      </ba-card>
       <ba-card>
         <p>Out Of Stock</p>
         <easy-pie-chart [chartData]="OOSChartData"></easy-pie-chart>
