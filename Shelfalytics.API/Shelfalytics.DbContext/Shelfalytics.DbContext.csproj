@@ -85,84 +85,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201706161323399_Initial.cs" />
-    <Compile Include="Migrations\201706161323399_Initial.Designer.cs">
-      <DependentUpon>201706161323399_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706181942451_RenamedEmployeeToUserAddedFields.cs" />
-    <Compile Include="Migrations\201706181942451_RenamedEmployeeToUserAddedFields.Designer.cs">
-      <DependentUpon>201706181942451_RenamedEmployeeToUserAddedFields.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706201841161_otherChanges.cs" />
-    <Compile Include="Migrations\201706201841161_otherChanges.Designer.cs">
-      <DependentUpon>201706201841161_otherChanges.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706281737523_RemovedBankDetailsChangedEANType.cs" />
-    <Compile Include="Migrations\201706281737523_RemovedBankDetailsChangedEANType.Designer.cs">
-      <DependentUpon>201706281737523_RemovedBankDetailsChangedEANType.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706281802102_AddedEquipmentPlanogramTable.cs" />
-    <Compile Include="Migrations\201706281802102_AddedEquipmentPlanogramTable.Designer.cs">
-      <DependentUpon>201706281802102_AddedEquipmentPlanogramTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706281803297_RemovePlanogramFieldFromEquipment.cs" />
-    <Compile Include="Migrations\201706281803297_RemovePlanogramFieldFromEquipment.Designer.cs">
-      <DependentUpon>201706281803297_RemovePlanogramFieldFromEquipment.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706281805279_EquipmentPlanograms.cs" />
-    <Compile Include="Migrations\201706281805279_EquipmentPlanograms.Designer.cs">
-      <DependentUpon>201706281805279_EquipmentPlanograms.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706281822151_AddedEquipmentDistanceReading.cs" />
-    <Compile Include="Migrations\201706281822151_AddedEquipmentDistanceReading.Designer.cs">
-      <DependentUpon>201706281822151_AddedEquipmentDistanceReading.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706281845234_PointOfSaleIdForEquipment.cs" />
-    <Compile Include="Migrations\201706281845234_PointOfSaleIdForEquipment.Designer.cs">
-      <DependentUpon>201706281845234_PointOfSaleIdForEquipment.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706281856345_RemovedDistanceFromEquipmentReadings.cs" />
-    <Compile Include="Migrations\201706281856345_RemovedDistanceFromEquipmentReadings.Designer.cs">
-      <DependentUpon>201706281856345_RemovedDistanceFromEquipmentReadings.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706281908032_ChangedToWasOpenedBoolean.cs" />
-    <Compile Include="Migrations\201706281908032_ChangedToWasOpenedBoolean.Designer.cs">
-      <DependentUpon>201706281908032_ChangedToWasOpenedBoolean.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706281910238_RemovedEquipmentReadingidFromDistanceReading.cs" />
-    <Compile Include="Migrations\201706281910238_RemovedEquipmentReadingidFromDistanceReading.Designer.cs">
-      <DependentUpon>201706281910238_RemovedEquipmentReadingidFromDistanceReading.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706281911379_AddedRowFieldForDistanceReadings.cs" />
-    <Compile Include="Migrations\201706281911379_AddedRowFieldForDistanceReadings.Designer.cs">
-      <DependentUpon>201706281911379_AddedRowFieldForDistanceReadings.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706300055130_AddScheduleToPOS.cs" />
-    <Compile Include="Migrations\201706300055130_AddScheduleToPOS.Designer.cs">
-      <DependentUpon>201706300055130_AddScheduleToPOS.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706300058539_DividedScheduleTo2Fileds.cs" />
-    <Compile Include="Migrations\201706300058539_DividedScheduleTo2Fileds.Designer.cs">
-      <DependentUpon>201706300058539_DividedScheduleTo2Fileds.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707021159022_AddedUserEquipmentTie.cs" />
-    <Compile Include="Migrations\201707021159022_AddedUserEquipmentTie.Designer.cs">
-      <DependentUpon>201707021159022_AddedUserEquipmentTie.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707141843270_AddedIdentityUserTable.cs" />
-    <Compile Include="Migrations\201707141843270_AddedIdentityUserTable.Designer.cs">
-      <DependentUpon>201707141843270_AddedIdentityUserTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Migrations\Identity\201707141905568_initial.cs" />
-    <Compile Include="Migrations\Identity\201707141905568_initial.Designer.cs">
-      <DependentUpon>201707141905568_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Identity\201707141928550_OverridenPhoneNumber.cs" />
-    <Compile Include="Migrations\Identity\201707141928550_OverridenPhoneNumber.Designer.cs">
-      <DependentUpon>201707141928550_OverridenPhoneNumber.cs</DependentUpon>
+    <Compile Include="Migrations\Identity\201707181902365_Init.cs" />
+    <Compile Include="Migrations\Identity\201707181902365_Init.Designer.cs">
+      <DependentUpon>201707181902365_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Identity\Configuration.cs" />
+    <Compile Include="Migrations\Main\201707181900199_Init.cs" />
+    <Compile Include="Migrations\Main\201707181900199_Init.Designer.cs">
+      <DependentUpon>201707181900199_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Main\201707182045239_AddedExceptionTime.cs" />
+    <Compile Include="Migrations\Main\201707182045239_AddedExceptionTime.Designer.cs">
+      <DependentUpon>201707182045239_AddedExceptionTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Main\201707182048483_AddedExceptionType.cs" />
+    <Compile Include="Migrations\Main\201707182048483_AddedExceptionType.Designer.cs">
+      <DependentUpon>201707182048483_AddedExceptionType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Main\201707182121168_AddedExceptionResponseFiled.cs" />
+    <Compile Include="Migrations\Main\201707182121168_AddedExceptionResponseFiled.Designer.cs">
+      <DependentUpon>201707182121168_AddedExceptionResponseFiled.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Main\Configuration.cs" />
     <Compile Include="ShelfalyticsDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShelfalyticsIdentityDbContext.cs" />
@@ -182,62 +126,20 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201706161323399_Initial.resx">
-      <DependentUpon>201706161323399_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\Identity\201707181902365_Init.resx">
+      <DependentUpon>201707181902365_Init.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706181942451_RenamedEmployeeToUserAddedFields.resx">
-      <DependentUpon>201706181942451_RenamedEmployeeToUserAddedFields.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\Main\201707181900199_Init.resx">
+      <DependentUpon>201707181900199_Init.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706201841161_otherChanges.resx">
-      <DependentUpon>201706201841161_otherChanges.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\Main\201707182045239_AddedExceptionTime.resx">
+      <DependentUpon>201707182045239_AddedExceptionTime.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706281737523_RemovedBankDetailsChangedEANType.resx">
-      <DependentUpon>201706281737523_RemovedBankDetailsChangedEANType.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\Main\201707182048483_AddedExceptionType.resx">
+      <DependentUpon>201707182048483_AddedExceptionType.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706281802102_AddedEquipmentPlanogramTable.resx">
-      <DependentUpon>201706281802102_AddedEquipmentPlanogramTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706281803297_RemovePlanogramFieldFromEquipment.resx">
-      <DependentUpon>201706281803297_RemovePlanogramFieldFromEquipment.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706281805279_EquipmentPlanograms.resx">
-      <DependentUpon>201706281805279_EquipmentPlanograms.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706281822151_AddedEquipmentDistanceReading.resx">
-      <DependentUpon>201706281822151_AddedEquipmentDistanceReading.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706281845234_PointOfSaleIdForEquipment.resx">
-      <DependentUpon>201706281845234_PointOfSaleIdForEquipment.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706281856345_RemovedDistanceFromEquipmentReadings.resx">
-      <DependentUpon>201706281856345_RemovedDistanceFromEquipmentReadings.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706281908032_ChangedToWasOpenedBoolean.resx">
-      <DependentUpon>201706281908032_ChangedToWasOpenedBoolean.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706281910238_RemovedEquipmentReadingidFromDistanceReading.resx">
-      <DependentUpon>201706281910238_RemovedEquipmentReadingidFromDistanceReading.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706281911379_AddedRowFieldForDistanceReadings.resx">
-      <DependentUpon>201706281911379_AddedRowFieldForDistanceReadings.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706300055130_AddScheduleToPOS.resx">
-      <DependentUpon>201706300055130_AddScheduleToPOS.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706300058539_DividedScheduleTo2Fileds.resx">
-      <DependentUpon>201706300058539_DividedScheduleTo2Fileds.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707021159022_AddedUserEquipmentTie.resx">
-      <DependentUpon>201707021159022_AddedUserEquipmentTie.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707141843270_AddedIdentityUserTable.resx">
-      <DependentUpon>201707141843270_AddedIdentityUserTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\Identity\201707141905568_initial.resx">
-      <DependentUpon>201707141905568_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\Identity\201707141928550_OverridenPhoneNumber.resx">
-      <DependentUpon>201707141928550_OverridenPhoneNumber.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\Main\201707182121168_AddedExceptionResponseFiled.resx">
+      <DependentUpon>201707182121168_AddedExceptionResponseFiled.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

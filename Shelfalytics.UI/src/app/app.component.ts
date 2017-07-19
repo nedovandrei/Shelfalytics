@@ -1,10 +1,11 @@
-import { Component, ViewContainerRef } from '@angular/core';
+import { Component, ViewContainerRef, AfterViewInit } from '@angular/core';
 import * as $ from 'jquery';
 
 import { GlobalState } from './global.state';
 import { BaImageLoaderService, BaThemePreloader, BaThemeSpinner } from './theme/services';
 import { BaThemeConfig } from './theme/theme.config';
 import { layoutPaths } from './theme/theme.constants';
+import { JwtHelper } from "angular2-jwt";
 
 /*
  * App Component
@@ -20,7 +21,7 @@ import { layoutPaths } from './theme/theme.constants';
     </main>
   `
 })
-export class App {
+export class App implements AfterViewInit {
 
   isMenuCollapsed: boolean = false;
 
@@ -39,12 +40,26 @@ export class App {
     });
   }
 
-  public ngAfterViewInit(): void {
+  jwtHelper: JwtHelper = new JwtHelper();
+
+  ngAfterViewInit(): void {
     // hide spinner once all loaders are completed
     BaThemePreloader.load().then((values) => {
       this._spinner.hide();
     });
+
+    this.useJwtHelper();
   }
+
+  useJwtHelper() {
+  const token = localStorage.getItem("token");
+
+  console.log(
+    this.jwtHelper.decodeToken(token),
+    this.jwtHelper.getTokenExpirationDate(token),
+    this.jwtHelper.isTokenExpired(token)
+  );
+}
 
   private _loadImages(): void {
     // register some loaders

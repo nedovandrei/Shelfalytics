@@ -1,0 +1,102 @@
+<div class="container theme-showcase" role="main">
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-striped table-bordered">
+        <tr>
+          <th>#</th>
+          <th>Type</th>
+          <th>Exception</th>
+          <th>Request</th>
+          <th>Response</th>
+          <th>Time Stamp</th>
+          <th>#</th>
+        </tr>
+        <tr class="ex-info-data-row" (click)="exceptionInfo.show(); getExceptionInfo(exception.Id);" *ngFor="let exception of exceptionsList">
+          <td>{{exception.Id}}</td>
+          <td>{{exception.Type}}</td>
+          <td>{{exception.Exception | trim}}</td>
+          <td>{{exception.Request | trim}}</td>
+          <td>{{exception.Response | trim}}</td>
+          <td>{{exception.TimeStamp | date:'short'}}</td>
+          <td>
+            <!-- <button class="btn btn-info" (click)="exceptionInfo.show(); getExceptionInfo(exception.Id);">Info</button> -->
+            <button class="btn btn-danger" (click)="logDelete(exception.Id)">Delete</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <button class="btn btn-warning" (click)="clearConfirm.show()">Clear Logs</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade bd-example-modal-lg" bsModal tabindex="-1" #exceptionInfo="bs-modal" [config]="{backdrop: 'static'}">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Exception Data</h5>
+        <button type="button" class="close" (click)="exceptionInfo.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" *ngIf="exceptionInFocus !== undefined">
+        <div class="row">
+          <div class="col-md-12">
+            <h3>Type</h3>
+            <p>{{exceptionInFocus.Type}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h3>Exception</h3>
+            <p>{{exceptionInFocus.Exception}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h3>Request</h3>
+            <p>{{exceptionInFocus.Request}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h3>Response</h3>
+            <p>{{exceptionInFocus.Response}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h3>Time Stamp</h3>
+            <p>{{exceptionInFocus.TimeStamp | date:'medium'}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="exceptionInfo.hide()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade bd-example-modal-sm" bsModal tabindex="-1" #clearConfirm="bs-modal" [config]="{backdrop: 'static'}">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Clear All Logs</h5>
+        <button type="button" class="close" (click)="clearConfirm.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" >
+        <h2>Are You Sure?</h2>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" (click)="clearConfirm.hide()">No</button>
+        <button type="button" class="btn btn-danger" (click)="clearConfirm.hide(); clearLogs();">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>

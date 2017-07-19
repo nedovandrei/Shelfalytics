@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="Repositories\AuthRepository.cs" />
     <Compile Include="Repositories\EquipmentDataRepository.cs" />
+    <Compile Include="Repositories\ExceptionLogRepository.cs" />
     <Compile Include="Repositories\PointOfSaleRepository.cs" />
     <Compile Include="Repositories\ProductDataRepository.cs" />
     <Compile Include="UnitOfWorkFactory.cs" />

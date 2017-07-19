@@ -10,6 +10,7 @@ using Shelfalytics.Repository;
 using Shelfalytics.Repository.Repositories;
 using Shelfalytics.RepositoryInterface.DTO;
 using Shelfalytics.RepositoryInterface.Repositories;
+using Microsoft.AspNet.Identity;
 
 namespace Shelfalytics.API.Providers
 {
@@ -18,13 +19,15 @@ namespace Shelfalytics.API.Providers
 
         public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         {
+
+
             context.Validated();
         }
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
             var _repo = new AuthRepository(new UnitOfWorkFactory());
-            context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
+            //context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
            
             var loginUser = new UserLoginDTO
             {
@@ -39,7 +42,6 @@ namespace Shelfalytics.API.Providers
                 context.SetError("invalid_grant", "The user name or password is incorrect.");
                 return;
             }
-            
 
             var identity = new ClaimsIdentity(context.Options.AuthenticationType);
             identity.AddClaim(new Claim("sub", context.UserName));
