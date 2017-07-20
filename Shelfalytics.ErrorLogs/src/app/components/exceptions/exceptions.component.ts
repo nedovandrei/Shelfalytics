@@ -47,4 +47,8 @@ export class ExceptionsComponent implements OnInit, AfterViewInit {
       this.getData();
     });
   }
+
+  private refresh(){
+    this.getData();
+  }
 }

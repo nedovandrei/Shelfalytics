@@ -14,8 +14,8 @@ export class PosInfoService {
     
   }
 
-  getPointOfSaleData() {
-    return this.ajaxService.get(global.apiPath + 'PointOfSale', { posId: 1 });
+  getPointOfSaleData(id: number) {
+    return this.ajaxService.get(global.apiPath + 'PointOfSale', { posId: id });
   }
 
   getOOSPercentage(equipmentId: number) {

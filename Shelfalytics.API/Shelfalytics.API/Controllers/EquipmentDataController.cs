@@ -33,6 +33,7 @@ namespace Shelfalytics.API.Controllers
             return Request.CreateResponse(response);
         }
 
+        [Authorize]
         [HttpPost]
         public HttpResponseMessage TestEquipmentReadingSave(EquipmentReadingModel obj)
         {

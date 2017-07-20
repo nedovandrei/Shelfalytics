@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PosInfoService } from './pos-info.service';
+import { ActivatedRoute } from "@angular/router";
 import * as moment from 'moment';
 
 @Component({
@@ -8,15 +9,17 @@ import * as moment from 'moment';
   styleUrls: ['./pos-info.component.scss'],
   providers: [PosInfoService]
 })
-export class PosInfoComponent implements OnInit {
+export class PosInfoComponent implements OnInit, OnDestroy {
 
-  constructor(private posInfoService: PosInfoService) { }
+  constructor(private posInfoService: PosInfoService, private route: ActivatedRoute) { }
 
   private initFlag: boolean = false;
   private posData: any;
   private equipmentInFocus: number = 0;
   private openHours: string;
   private closeHours: string;
+  private paramSubscription: any;
+  private id: number;
 
   // private OOSChartOptions = {
   //   // labels: [ "Out Of Stock" ],
@@ -51,27 +54,37 @@ export class PosInfoComponent implements OnInit {
   };
 
   ngOnInit() {
-    this.posInfoService.getPointOfSaleData().subscribe((data: any) => {
-      this.posData = data[0];
-      this.equipmentInFocus = this.posData.EquipmentIds[0];
+    this.paramSubscription = this.route.params.subscribe(params => {
+       this.id = parseInt(params['id']); // (+) converts string 'id' to a number
 
-      this.openHours = moment(this.posData.OpeningHours).format('hh:mm A');
-      this.closeHours = moment(this.posData.ClosingHours).format('hh:mm A');
+       this.posInfoService.getPointOfSaleData(this.id).subscribe((data: any) => {
+        this.posData = data[0];
+        this.equipmentInFocus = this.posData.EquipmentIds[0];
 
-      
-      this.posInfoService.getOOSPercentage(this.equipmentInFocus).subscribe((percentage: number) => {
-        // this.OOSChartOptions.series.push(percentage);
-        // this.OOSChartOptions.series.push(100);
+        this.openHours = moment(this.posData.OpeningHours).format('hh:mm A');
+        this.closeHours = moment(this.posData.ClosingHours).format('hh:mm A');
 
-        this.OOSChartData = {
-          data: percentage,
-          color: percentage < 20 ? 'rgba(255, 255, 255, 1)' : 
-            percentage < 50 ? 'rgba(244,198,61, 1)' : 'rgba(215,2,6, 1)'
-        };
+        if (this.equipmentInFocus) {
+          this.posInfoService.getOOSPercentage(this.equipmentInFocus).subscribe((percentage: number) => {
+            // this.OOSChartOptions.series.push(percentage);
+            // this.OOSChartOptions.series.push(100);
 
-        this.initFlag = true;
+            this.OOSChartData = {
+              data: percentage,
+              color: percentage < 20 ? 'rgba(255, 255, 255, 1)' : 
+                percentage < 50 ? 'rgba(244,198,61, 1)' : 'rgba(215,2,6, 1)'
+            };
+
+            this.initFlag = true;
+          });
+        } else {
+          this.initFlag = true;
+        }
+        
       });
     });
+
+    
 
     
 
@@ -81,8 +94,12 @@ export class PosInfoComponent implements OnInit {
     // });
   }
 
-  private changeEquipmentInFocus(equipmentId: number){
+  private changeEquipmentInFocus(equipmentId: number) {
     this.equipmentInFocus = equipmentId;
+  }
+
+  ngOnDestroy() {
+    this.paramSubscription.unsubscribe();
   }
 
 }
