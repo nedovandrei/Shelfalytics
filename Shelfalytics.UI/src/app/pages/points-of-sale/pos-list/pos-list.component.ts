@@ -1,5 +1,16 @@
 import { Component, OnInit, AfterViewInit, Input } from "@angular/core";
 import { PosListService } from "./pos-list.service";
+import { Subscription } from "rxjs";
+import { Observable } from "rxjs/Observable";
+import "rxjs/Rx";
+import { 
+  IADTableOptions, 
+  IMColumn, 
+  IMData, 
+  IMTableState, 
+  MColumnDataType,
+  MTableType
+} from "../../../shared/controls/adtable/adtable.models";
 
 // @Component({
 //   selector: "equipment-count-view",
@@ -30,15 +41,69 @@ export class PosListComponent implements OnInit, AfterViewInit {
   private tableData: any[];
   private initFlag = false;
 
+  private posTable: IADTableOptions = {
+    columns: [
+      {
+        title: "POS Name",
+        name: "PointOfSaleName",
+        dataType: MColumnDataType.string,
+        filterable: true,
+        sortable: false
+      },
+      {
+        title: "POS Address",
+        name: "PointOfSaleAddress",
+        dataType: MColumnDataType.string,
+        filterable: true,
+        sortable: false
+      },
+      {
+        title: "POS Telephone",
+        name: "PointOfSaleTelephone",
+        dataType: MColumnDataType.string,
+        filterable: true,
+        sortable: false
+      },
+      {
+        title: "Contact Person Name",
+        name: "ContactPersonName",
+        dataType: MColumnDataType.string,
+        filterable: true,
+        sortable: false
+      }
+      
+    ],
+    load: (tableState: IMTableState) => this.getTableData(),
+    dataTypeName: "Points of Sale",
+    tableType: MTableType.details,
+    pagination: false,
+    filterable: true,
+    isDataLoading: true,
+    pageData: {
+      currentPage: 1,
+      itemsPerPage: 10
+    }
+  };
+
   ngOnInit() {
+    this.getData();
+  }
+
+  ngAfterViewInit() {
+    this.initFlag = true;
+  }
+
+  private getData() {
     this.posListService.getPointsOfSales().subscribe((data: any[]) => {
       console.log("posListService ", data);
       this.tableData = data;
     });
   }
 
-  ngAfterViewInit() {
-    this.initFlag = true;
+  private getTableData(): Observable<IMData> {
+    return this.posListService.getPOSTableData().do((i): any => {
+      this.posTable.isDataLoading = false;
+    });
   }
 
   private tableColumns = {

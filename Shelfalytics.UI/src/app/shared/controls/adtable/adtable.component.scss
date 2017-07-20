@@ -1,0 +1,163 @@
+﻿.table{
+
+    &.loading{
+        tbody{
+            opacity:0.2;
+        }
+    }
+
+    thead{
+        tr{
+            th{
+                &.sortable{
+                    position:relative;
+                    cursor:pointer;
+
+                    &:hover{
+                        background-color:#eee;
+                    }
+
+                    &:after{
+                        font-family: FontAwesome;
+                        content: "\f0dc";
+                        position: absolute;
+                        right: 8px;
+                        opacity: 0.5;
+                    }
+
+                    &.asc{
+                        &:after{
+                            content: "\f0de";
+                            opacity: 1;
+                        }
+                    }
+
+                    &.desc{
+                        &:after{
+                            content: "\f0dd";
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    tfoot{
+        background-color: #E7E7E7;
+        tr{
+            td{
+                text-align: center;
+                .pagination{
+
+                    li{
+                        a{
+                            min-width:41px;
+                            input{
+                                height:20px;
+                                width:50px;
+                                border: none;
+                                text-align: center;
+                                padding-right: 5px;
+                            }                            
+                            input[type="number"]::-webkit-outer-spin-button,
+                            input[type="number"]::-webkit-inner-spin-button {
+                                -webkit-appearance: none;
+                                margin: 0;
+                            }
+                            input[type="number"]{
+                                -moz-appearance: textfield;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@import "../../../theme/sass/conf/conf";
+
+:host /deep/ .widgets {
+  .smart-table-container {
+    width: 100%;
+  }
+}
+
+
+  
+    th, td {
+      border: 1px solid $border-light !important;
+      line-height: 35px;
+      vertical-align: middle;
+    }
+
+    table tr td {
+      padding: 0 8px;
+    }
+    
+    
+
+    input {
+      line-height: 1.5 !important;
+    }
+
+    ng2-smart-table-cell {
+      color: $default-text;
+      line-height: 35px;
+    }
+
+    tbody {
+      tr {
+        color: $default-text;
+      }
+      tr:hover {
+        background: rgba(0, 0, 0, 0.03);
+      }
+    }
+
+    a.ng2-smart-sort-link {
+      font-size: 14px !important;
+      color: $default-text;
+      font-weight: $font-bolder;
+      &.sort {
+        font-weight: $font-bolder !important;
+
+        &::after {
+          border-bottom-color: $default-text !important;
+        }
+      }
+    }
+
+    .ng2-smart-actions {
+      width: 70px;
+      text-align: center;
+      .actions {
+        float: none;
+        text-align: center;
+      }
+    }
+
+    .ng2-smart-actions-title-add {
+      text-align: center;
+    }
+
+    a.ng2-smart-action, .ng2-smart-title {
+      font-size: 14px !important;
+      color: $default-text;
+      padding: 0 5px;
+      display: inline-block;
+
+      &.ng2-smart-action-add-add {
+        font-size: 25px !important;
+      }
+    }
+
+    nav.ng2-smart-pagination-nav {
+      display: flex;
+      justify-content: center;
+    }
+  
+
+
+

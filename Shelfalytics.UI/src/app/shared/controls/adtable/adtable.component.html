@@ -1,0 +1,87 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-lg-8">
+        <div *ngIf="showHeadingWithFilter">
+            <h4 class="table-header print-page-break" *ngIf="totalRecordCounter===0">Details - No {{moptions.dataTypeName}}</h4>
+            <h4 class="table-header print-page-break" *ngIf="totalRecordCounter>0">
+                {{moptions.tableType}} - Showing&nbsp;
+                <b *ngIf="totalRecordCounter >= rowsOnPage">{{displayedItemFirstIndex}}</b>
+                <b *ngIf="totalRecordCounter < rowsOnPage">{{displayedItemFirstIndex}}</b>
+                &nbsp;to&nbsp;
+                <b>{{displayedItemLastIndex}}</b>&nbsp;
+                of&nbsp;
+                <b>{{totalRecordCounter}}</b>&nbsp;{{moptions.dataTypeName}}
+            </h4>
+        </div>
+    </div>
+    <div class="text-right col-xs-12 col-lg-4" *ngIf="moptions.filterable">
+        <button class="btn btn-white" (click)="toggleFilter()" [disabled]="loadState === loadStates.fail || totalRecordCounter===0">
+            Filter Data<i class="glyphicon glyphicon-filter"></i>
+        </button>
+    </div>
+</div>
+<table class="table table-striped table-bordered" [ngClass]="{'loading': !isDataLoaded || moptions.isDataLoading}">
+    <thead>
+        <tr>
+            <th *ngFor="let column of columns" [ngClass]="getColumnHeaderCssClasses(column)"
+                [ngStyle]="{'width': column.width+'%'}" (click)="onSortDirectionChange(column)">
+                {{column.title}}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngIf="isFilterVisible">
+            <td *ngFor="let column of columns">
+                <input *ngIf="column.filterable" [ngModel]="column.filterValue" [formControl]="column.filterValueControl"
+                       [attr.type]="column.inputType" class="form-control" [attr.placeholder]="'Search for ' + column.title"
+                       name="{{column.name}}" />
+            </td>
+        </tr>
+        <tr *ngIf="((!data.rows || data.rows.length === 0) && loadState === loadStates.success && !moptions.isDataLoading)">
+            <td [attr.colspan]="columns.length">No data.</td>
+        </tr>
+        <tr *ngIf="moptions.isDataLoading || (loadState === loadStates.pending && (!data.rows || data.rows.length === 0))">
+            <td [attr.colspan]="columns.length">
+                <div style="text-align: center;">
+                    Loading data...
+                    <div>
+                        <span class="loader loader-inline loader-small"></span>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr *ngIf="loadState === loadStates.fail">
+            <td [attr.colspan]="columns.length">Error when trying to load</td>
+        </tr>
+        <tr *ngFor="let row of data.rows" (click)="selectRow(row)" [class.info]="row[moptions.selectPropertyName]==true">
+            <td *ngFor="let column of columns">
+                <span [innerHtml]="sanitizer.bypassSecurityTrustHtml(column.getColumnTemplate(row, column))"></span>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr *ngIf="moptions.pagination && totalPages > 1">
+            <td [attr.colspan]="columns.length">
+                <ul class="pagination">
+                    <li [ngClass]="{'disabled': pageData.currentPage === 1 }" title="First page">
+                        <a href="" (click)="pageData.currentPage !== 1 && onPageChange($event,1)">&lt;&lt;</a>
+                    </li>
+                    <li [ngClass]="{'disabled': pageData.currentPage === 1 }" title="Previous page">
+                        <a href="" (click)="pageData.currentPage !== 1 && onPageChange($event,pageData.currentPage-1)">&lt;</a>
+                    </li>
+                    <li>
+                        <a>
+                            <input [ngModel]="pageData.currentPage" [formControl]="pageData.currentPageControl" type="number">
+                        </a>
+                    </li>
+                    <li [ngClass]="{'disabled': pageData.currentPage === totalPages }" title="Next page">
+                        <a href="" (click)="pageData.currentPage !== totalPages && onPageChange($event,pageData.currentPage+1)">&gt;</a>
+                    </li>
+                    <li [ngClass]="{'disabled': pageData.currentPage === totalPages }" title="Last page">
+                        <a href="" (click)="pageData.currentPage !== totalPages && onPageChange($event,totalPages)">&gt;&gt;</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    </tfoot>
+</table>
+

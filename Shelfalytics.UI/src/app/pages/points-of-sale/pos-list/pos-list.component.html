@@ -9,3 +9,7 @@
     <smart-table *ngIf="initFlag" [tableColumns]="tableColumns" [tableData]="tableData"></smart-table>
   </div>
 </div>
+
+<ba-card title="Points of Sale">
+  <adtable [moptions]="posTable" *ngIf="initFlag"></adtable>
+</ba-card>
