@@ -21,7 +21,7 @@ import {
 @Component({
     selector: "adtable",
     templateUrl: "adtable.component.html",
-    encapsulation: ViewEncapsulation.None,
+    // encapsulation: ViewEncapsulation.None,
     styleUrls: ["adtable.component.scss"],
     providers: [CurrencyPipe, DecimalPipe, DatePipe]
 })
@@ -39,6 +39,7 @@ export class ADTableComponent implements OnInit {
     private cachedData: IMData = { rows: [], totalRows: 0 };
     private tableState: IMTableState = { data: this.data, columns: [] };
     private pageData: MPageData;
+    private rowLink: string;
     private isFilterVisible = false;
     private isDataLoaded = false;
     private eventTriggerDebounceTime = 500;
@@ -77,6 +78,9 @@ export class ADTableComponent implements OnInit {
             this.loadType = this.moptions.loadType;
         }
 
+        if (this.moptions.rowLink) {
+            this.rowLink = this.moptions.rowLink;
+        }
         this.moptions.refresh = new Subject<any>();
         this.moptions.refresh.subscribe(() => { this.loadData(); });
 
@@ -237,7 +241,7 @@ export class ADTableComponent implements OnInit {
 
     private setDefaultSortDirection() {
         console.log("setDefaultSortDirection");
-        let column = this.columns.find(x => x.sortable && x.sortDirection != null);
+        let column = this.columns.find(x => x.sortable && x.sortDirection !== null);
         if (column === null) {
             column = this.columns.find(x => x.sortable);
             if (column === null) {
@@ -371,6 +375,10 @@ export class ADTableComponent implements OnInit {
                 this.loadData(true);
             }
         }
+    }
+
+    private generateRouterLink(rowData: any): string {
+        return `['${this.rowLink}', ${rowData.PointOfSaleId}]`;
     }
 
     // private serverErrorToast() {

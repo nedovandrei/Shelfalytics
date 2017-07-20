@@ -48,7 +48,7 @@ export class PosListComponent implements OnInit, AfterViewInit {
         name: "PointOfSaleName",
         dataType: MColumnDataType.string,
         filterable: true,
-        sortable: false
+        sortable: true
       },
       {
         title: "POS Address",
@@ -78,11 +78,13 @@ export class PosListComponent implements OnInit, AfterViewInit {
     tableType: MTableType.details,
     pagination: false,
     filterable: true,
+    sortable: true,
     isDataLoading: true,
     pageData: {
       currentPage: 1,
       itemsPerPage: 10
-    }
+    },
+    rowLink: "pos-info"
   };
 
   ngOnInit() {

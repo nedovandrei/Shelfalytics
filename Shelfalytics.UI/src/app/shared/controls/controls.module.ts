@@ -5,6 +5,7 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { NgaModule } from '../../theme/nga.module';
 import { NgGridModule, NgGridItem, NgGridConfig, NgGridItemConfig, NgGridItemEvent} from 'angular2-grid';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule } from "@angular/router";
 
 import { GridstackComponent } from './gridstack/gridstack.component';
 import { SmartTableComponent } from './smart-table/smart-table.component';
@@ -20,7 +21,8 @@ import { DefaultModalComponent } from './default-modal/default-modal.component';
     NgGridModule,
     NgbModalModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   declarations: [
     GridstackComponent, 

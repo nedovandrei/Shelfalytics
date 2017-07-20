@@ -15,6 +15,7 @@ export interface IADTableOptions {
     onRowSelected?: (row: any) => void;
     selectPropertyName?: string;
     loadType?: MTableLoadType;
+    rowLink?: string;
 }
 
 export interface IMColumn {

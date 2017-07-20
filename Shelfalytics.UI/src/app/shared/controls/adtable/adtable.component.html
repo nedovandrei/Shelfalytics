@@ -52,7 +52,7 @@
         <tr *ngIf="loadState === loadStates.fail">
             <td [attr.colspan]="columns.length">Error when trying to load</td>
         </tr>
-        <tr *ngFor="let row of data.rows" (click)="selectRow(row)" [class.info]="row[moptions.selectPropertyName]==true">
+        <tr *ngFor="let row of data.rows" (click)="selectRow(row)" [routerLink]="rowLink ? [rowLink, row.PointOfSaleId] : []" [class.info]="row[moptions.selectPropertyName]==true">
             <td *ngFor="let column of columns">
                 <span [innerHtml]="sanitizer.bypassSecurityTrustHtml(column.getColumnTemplate(row, column))"></span>
             </td>

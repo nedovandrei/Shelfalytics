@@ -1,79 +1,4 @@
-﻿.table{
-
-    &.loading{
-        tbody{
-            opacity:0.2;
-        }
-    }
-
-    thead{
-        tr{
-            th{
-                &.sortable{
-                    position:relative;
-                    cursor:pointer;
-
-                    &:hover{
-                        background-color:#eee;
-                    }
-
-                    &:after{
-                        font-family: FontAwesome;
-                        content: "\f0dc";
-                        position: absolute;
-                        right: 8px;
-                        opacity: 0.5;
-                    }
-
-                    &.asc{
-                        &:after{
-                            content: "\f0de";
-                            opacity: 1;
-                        }
-                    }
-
-                    &.desc{
-                        &:after{
-                            content: "\f0dd";
-                            opacity: 1;
-                        }
-                    }
-                }
-            }
-        }
-    }
-    tfoot{
-        background-color: #E7E7E7;
-        tr{
-            td{
-                text-align: center;
-                .pagination{
-
-                    li{
-                        a{
-                            min-width:41px;
-                            input{
-                                height:20px;
-                                width:50px;
-                                border: none;
-                                text-align: center;
-                                padding-right: 5px;
-                            }                            
-                            input[type="number"]::-webkit-outer-spin-button,
-                            input[type="number"]::-webkit-inner-spin-button {
-                                -webkit-appearance: none;
-                                margin: 0;
-                            }
-                            input[type="number"]{
-                                -moz-appearance: textfield;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
+﻿
 
 
 @import "../../../theme/sass/conf/conf";
@@ -161,3 +86,79 @@
 
 
 
+.table{
+
+    &.loading{
+        tbody{
+            opacity:0.2;
+        }
+    }
+
+    thead{
+        tr{
+            th{
+                &.sortable{
+                    position:relative;
+                    cursor:pointer;
+
+                    &:hover{
+                        background-color:rgba(44,154,255, 0.3);
+                    }
+
+                    &:after{
+                        font-family: FontAwesome;
+                        content: "\f0dc";
+                        position: absolute;
+                        right: 8px;
+                        opacity: 0.5;
+                    }
+
+                    &.asc{
+                        &:after{
+                            content: "\f0de";
+                            opacity: 1;
+                        }
+                    }
+
+                    &.desc{
+                        &:after{
+                            content: "\f0dd";
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    tfoot{
+        background-color: #E7E7E7;
+        tr{
+            td{
+                text-align: center;
+                .pagination{
+
+                    li{
+                        a{
+                            min-width:41px;
+                            input{
+                                height:20px;
+                                width:50px;
+                                border: none;
+                                text-align: center;
+                                padding-right: 5px;
+                            }                            
+                            input[type="number"]::-webkit-outer-spin-button,
+                            input[type="number"]::-webkit-inner-spin-button {
+                                -webkit-appearance: none;
+                                margin: 0;
+                            }
+                            input[type="number"]{
+                                -moz-appearance: textfield;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
