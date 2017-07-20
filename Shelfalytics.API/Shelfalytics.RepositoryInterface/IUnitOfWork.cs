@@ -9,6 +9,7 @@ namespace Shelfalytics.RepositoryInterface
     public interface IUnitOfWork : IDisposable
     {
         Task CommitAsync();
+        void Commit();
         IQueryable<TEntity> Set<TEntity>() where TEntity : class;
         Task<List<TEntity>> ToListAsync<TEntity>(IQueryable<TEntity> set) where TEntity : class;
         Task<int> CountAsync<TEntity>(IQueryable<TEntity> set);

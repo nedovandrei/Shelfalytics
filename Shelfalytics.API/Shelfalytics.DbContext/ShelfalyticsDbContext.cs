@@ -32,10 +32,17 @@ namespace Shelfalytics.DbContext
         public DbSet<PackagingType> PackagintTypes { get; set; }
         public DbSet<UserEquipmentTie> UserEquipmentTies { get; set; }
 
+        //exception logger
+        public DbSet<ExceptionLog> ExceptionLogs { get; set; }
 
         public async Task CommitAsync()
         {
             await SaveChangesAsync();
+        }
+
+        public void Commit()
+        {
+            SaveChanges();
         }
 
         public new IQueryable<TEntity> Set<TEntity>() where TEntity : class

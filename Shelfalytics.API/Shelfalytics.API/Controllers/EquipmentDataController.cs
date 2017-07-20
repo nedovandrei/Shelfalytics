@@ -26,7 +26,7 @@ namespace Shelfalytics.API.Controllers
         }
 
         [HttpGet]
-        [Authorize]
+        
         public async Task<HttpResponseMessage> GetLatestEquipmentData(int equipmentId)
         {
             var response = await _equipmentDataService.GetLatestEquipmentData(equipmentId);
@@ -34,7 +34,6 @@ namespace Shelfalytics.API.Controllers
         }
 
         [HttpPost]
-        [Authorize]
         public HttpResponseMessage TestEquipmentReadingSave(EquipmentReadingModel obj)
         {
             return Request.CreateResponse(obj.Message);
