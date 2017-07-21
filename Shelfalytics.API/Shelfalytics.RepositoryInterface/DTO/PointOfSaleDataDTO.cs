@@ -16,6 +16,8 @@ namespace Shelfalytics.RepositoryInterface.DTO
         public string ContactPersonName { get; set; }
         public DateTime OpeningHours { get; set; }
         public DateTime ClosingHours { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
         public IEnumerable<int> EquipmentIds { get; set; }
         public IEnumerable<Equipment> Equipment { get; set; }
     }

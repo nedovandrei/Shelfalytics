@@ -106,6 +106,10 @@
     <Compile Include="Migrations\Main\201707182121168_AddedExceptionResponseFiled.Designer.cs">
       <DependentUpon>201707182121168_AddedExceptionResponseFiled.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Main\201707212301315_AddedLatitudeAndLongitude.cs" />
+    <Compile Include="Migrations\Main\201707212301315_AddedLatitudeAndLongitude.Designer.cs">
+      <DependentUpon>201707212301315_AddedLatitudeAndLongitude.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Main\Configuration.cs" />
     <Compile Include="ShelfalyticsDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -140,6 +144,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Main\201707182121168_AddedExceptionResponseFiled.resx">
       <DependentUpon>201707182121168_AddedExceptionResponseFiled.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\Main\201707212301315_AddedLatitudeAndLongitude.resx">
+      <DependentUpon>201707212301315_AddedLatitudeAndLongitude.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

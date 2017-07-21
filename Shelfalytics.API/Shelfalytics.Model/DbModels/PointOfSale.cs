@@ -28,5 +28,10 @@ namespace Shelfalytics.Model.DbModels
         public DateTime OpeningHour { get; set; }
         [Required]
         public DateTime ClosingHour { get; set; }
+        [Required]
+        public double Latitude { get; set; }
+        [Required]
+        public double Longitude { get; set; }
+        
     }
 }

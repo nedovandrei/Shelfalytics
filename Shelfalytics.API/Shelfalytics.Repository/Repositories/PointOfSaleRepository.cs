@@ -36,7 +36,9 @@ namespace Shelfalytics.Repository.Repositories
                         PointOfSaleName = pos.PointOfSaleName,
                         ContactPersonName = pos.ContactPersonName,
                         OpeningHours = pos.OpeningHour,
-                        ClosingHours = pos.ClosingHour
+                        ClosingHours = pos.ClosingHour,
+                        Latitude = pos.Latitude,
+                        Longitude = pos.Longitude
                     };
 
                 return await query.ToListAsync();
@@ -58,7 +60,9 @@ namespace Shelfalytics.Repository.Repositories
                                 ContactPersonName = pos.ContactPersonName,
                                 OpeningHours = pos.OpeningHour,
                                 ClosingHours = pos.ClosingHour,
-                                Equipment = equipmentArray
+                                Equipment = equipmentArray,
+                                Latitude = pos.Latitude,
+                                Longitude = pos.Longitude
                             };
                 return await query.ToListAsync();
             }
