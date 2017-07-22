@@ -13,3 +13,6 @@
 <ba-card title="Points of Sale">
   <adtable [moptions]="posTable" *ngIf="initFlag"></adtable>
 </ba-card>
+<ba-card title="POS on Map">
+  <google-maps *ngIf="mapInit" [mapData]="mapSettings"></google-maps>
+</ba-card>

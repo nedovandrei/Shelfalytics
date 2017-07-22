@@ -11,6 +11,8 @@ import {
   MColumnDataType,
   MTableType
 } from "../../../shared/controls/adtable/adtable.models";
+import { IGoogleMapsData, ICoordinates, IMarker } from "../../../shared/maps/google-maps/google-maps.model";
+import * as _ from "underscore";
 
 // @Component({
 //   selector: "equipment-count-view",
@@ -40,6 +42,7 @@ export class PosListComponent implements OnInit, AfterViewInit {
 
   private tableData: any[];
   private initFlag = false;
+  private mapInit = false;
 
   private posTable: IADTableOptions = {
     columns: [
@@ -87,6 +90,16 @@ export class PosListComponent implements OnInit, AfterViewInit {
     rowLink: "pos-info"
   };
 
+  private mapSettings: IGoogleMapsData = {
+    center: {
+      lat: 0,
+      lng: 0
+    },
+    // zoom: 16,
+    markers: [],
+    zoomControl: true
+  };
+
   ngOnInit() {
     this.getData();
   }
@@ -97,8 +110,40 @@ export class PosListComponent implements OnInit, AfterViewInit {
 
   private getData() {
     this.posListService.getPointsOfSales().subscribe((data: any[]) => {
-      console.log("posListService ", data);
+
       this.tableData = data;
+
+      for (let i = 0; i < data.length; i++) {
+
+        const marker: IMarker = {
+          coordinates: {
+            lat: data[i].Latitude,
+            lng: data[i].Longitude
+          },
+          title: data[i].PointOfSaleName,
+          markerDraggable: false,
+          label: data[i].PointOfSaleName.slice(0, 1),
+          opacity: 1,
+          visible: true,
+          infoWindowContent: `${data[i].PointOfSaleName}, ${data[i].PointOfSaleAddress}`,
+          linkUrl: "pos-info",
+          linkUrlId: data[i].PointOfSaleId
+        };
+
+        this.mapSettings.markers.push(marker);
+      }
+
+      this.mapSettings.center.lat = _.reduce(this.mapSettings.markers, (memo: number, item: any) => {
+        return memo + item.coordinates.lat;
+      }, 0) / (this.mapSettings.markers.length === 0 ? 1 : this.mapSettings.markers.length);
+
+      this.mapSettings.center.lng = _.reduce(this.mapSettings.markers, (memo: number, item: any) => {
+        return memo + item.coordinates.lng;
+      }, 0) / (this.mapSettings.markers.length === 0 ? 1 : this.mapSettings.markers.length);
+
+      console.log("mapSettings", this.mapSettings);
+
+      this.mapInit = true;
     });
   }
 

@@ -6,6 +6,7 @@ import { PointsOfSaleComponent } from './points-of-sale.component';
 import { NgaModule } from '../../theme/nga.module';
 import { ControlsModule } from '../../shared/controls/controls.module';
 import { ChartsModule } from '../../shared/charts/charts.module';
+import { MapsModule } from "../../shared/maps/maps.module";
 
 import { AjaxService } from '../../shared/services/ajax.service';
 import { PosInfoComponent } from './pos-info/pos-info.component';
@@ -19,6 +20,7 @@ import { PosListComponent } from './pos-list/pos-list.component';
     CommonModule,
     ChartsModule,
     ControlsModule,
+    MapsModule
   ],
   declarations: [PointsOfSaleComponent, PosInfoComponent, EquipmentInfoComponent, PosListComponent],
   providers: [AjaxService]
