@@ -13,6 +13,16 @@ export const PAGES_MENU = [
         }
       },
       {
+        path: "statistics",
+        data: {
+          menu: {
+            title: "Statistics",
+            icon: "fa fa-bar-chart",
+            selected: false
+          }
+        }
+      },
+      {
         path: "points-of-sale",
         data: {
           menu: {
@@ -370,7 +380,7 @@ export const PAGES_MENU = [
             target: '_blank'
           }
         }
-      }      
+      }
     ]
   }
 ];
