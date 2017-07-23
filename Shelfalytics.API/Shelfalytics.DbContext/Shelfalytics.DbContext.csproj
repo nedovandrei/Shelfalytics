@@ -113,6 +113,14 @@
     <Compile Include="Migrations\Main\201707212301315_AddedLatitudeAndLongitude.Designer.cs">
       <DependentUpon>201707212301315_AddedLatitudeAndLongitude.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Main\201707232226316_AddSalesTable.cs" />
+    <Compile Include="Migrations\Main\201707232226316_AddSalesTable.Designer.cs">
+      <DependentUpon>201707232226316_AddSalesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Main\201707232232519_AddedXandYaxisToEquipmentData.cs" />
+    <Compile Include="Migrations\Main\201707232232519_AddedXandYaxisToEquipmentData.Designer.cs">
+      <DependentUpon>201707232232519_AddedXandYaxisToEquipmentData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Main\Configuration.cs" />
     <Compile Include="ShelfalyticsDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -150,6 +158,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Main\201707212301315_AddedLatitudeAndLongitude.resx">
       <DependentUpon>201707212301315_AddedLatitudeAndLongitude.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\Main\201707232226316_AddSalesTable.resx">
+      <DependentUpon>201707232226316_AddSalesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\Main\201707232232519_AddedXandYaxisToEquipmentData.resx">
+      <DependentUpon>201707232232519_AddedXandYaxisToEquipmentData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

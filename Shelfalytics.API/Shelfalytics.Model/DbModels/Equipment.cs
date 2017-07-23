@@ -8,6 +8,7 @@ namespace Shelfalytics.Model.DbModels
     {
         [Key]
         public int Id { get; set; }
+        public string IMEI { get; set; }
         [Required]
         public int PointOfSaleId { get; set; }
         [ForeignKey("PointOfSaleId")]
@@ -25,6 +26,7 @@ namespace Shelfalytics.Model.DbModels
         public string ModelName { get; set; }
         [Required]
         public int RowCount { get; set; }
-        //public int UserId { get; set; } TODO: relation with user
+        public int XCount { get; set; }
+        public int YCount { get; set; }
     }
 }

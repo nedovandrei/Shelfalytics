@@ -18,6 +18,7 @@ namespace Shelfalytics.DbContext
         public DbSet<Client> Clients { get; set; }
         //public DbSet<User> Users { get; set; }
         public DbSet<PointOfSale> PointOfSales { get; set; }
+        public DbSet<Sale> Sales { get; set; }
 
 
         //equipment

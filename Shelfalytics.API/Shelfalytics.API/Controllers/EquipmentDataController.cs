@@ -6,11 +6,13 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Shelfalytics.API.Models;
+using Shelfalytics.RepositoryInterface.DTO;
 using Shelfalytics.RepositoryInterface.Repositories;
 using Shelfalytics.ServiceInterface;
 
 namespace Shelfalytics.API.Controllers
 {
+    [RoutePrefix("api/EquipmentData")]
     public class EquipmentDataController : ApiController
     {
         private readonly IEquipmentDataService _equipmentDataService;
@@ -35,9 +37,33 @@ namespace Shelfalytics.API.Controllers
 
         [Authorize]
         [HttpPost]
-        public HttpResponseMessage TestEquipmentReadingSave(EquipmentReadingModel obj)
+        public HttpResponseMessage TestEquipmentReadingSave(EquipmentReadingTest obj)
         {
             return Request.CreateResponse(obj.Message);
+        }
+
+        [Route("register")]
+        [Authorize]
+        [HttpPost]
+        public async Task<HttpResponseMessage> EquipmentReadingSave(EquipmentReadingModel model)
+        {
+            var dataToSend = new EquipmentReadingDTO()
+            {
+                IMEI = model.IMEI,
+                Temperature = model.Temperature,
+                DistanceSensors = model.DistanceSensors.Select(x => new EquipmentDistanceReadingDTO
+                {
+                    Row = x.Row,
+                    Distance = x.Distance
+                }),
+                IsPoweredOn = model.IsPoweredOn
+            };
+
+            await _equipmentDataService.RegisterReading(dataToSend);
+
+
+            return Request.CreateResponse(HttpStatusCode.OK);
+            
         }
     }
 }

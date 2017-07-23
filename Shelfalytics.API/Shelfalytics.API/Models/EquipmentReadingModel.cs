@@ -7,6 +7,9 @@ namespace Shelfalytics.API.Models
 {
     public class EquipmentReadingModel
     {
-        public string Message { get; set; }
+        public string IMEI { get; set; }
+        public int Temperature { get; set; }
+        public IEnumerable<EquipmentDistanceReadingModel> DistanceSensors { get; set; }
+        public bool IsPoweredOn { get; set; }
     }
 }

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Shelfalytics.Model.DbModels;
+using Shelfalytics.RepositoryInterface.DTO;
 using Shelfalytics.RepositoryInterface.Repositories;
 using Shelfalytics.ServiceInterface;
 using Shelfalytics.ServiceInterface.Constants;
@@ -18,15 +20,17 @@ namespace Shelfalytics.Service
 
         private readonly IEquipmentDataRepository _equipmentDataRepository;
         private readonly IProductDataRepository _productDataRepository;
+        private readonly ISaleRepository _saleRepository;
 
         public EquipmentDataService(IEquipmentDataRepository equipmentDataRepository,
-            IProductDataRepository productDataRepository)
+            IProductDataRepository productDataRepository, ISaleRepository saleRepository)
         {
             if (equipmentDataRepository == null) throw new ArgumentNullException(nameof(equipmentDataRepository));
             if (productDataRepository == null) throw new ArgumentNullException(nameof(productDataRepository));
 
             _equipmentDataRepository = equipmentDataRepository;
             _productDataRepository = productDataRepository;
+            _saleRepository = saleRepository;
         }
 
         public async Task<IEnumerable<EquipmentReadingsViewModel>> GetLatestEquipmentData(int equipmentId)
@@ -73,6 +77,83 @@ namespace Shelfalytics.Service
                 viewModelList.Add(viewModel);
             }
             return viewModelList;
+        }
+
+        public async Task RegisterReading(EquipmentReadingDTO reading)
+        {
+            var equipment = await _equipmentDataRepository.GetEquipmentByIMEI(reading.IMEI);
+            var equipmentHasReadings = await _equipmentDataRepository.EquipmentHasReadings(equipment.Id);
+
+
+            var readingModel = new EquipmentReading
+            {
+                EquipmentId = equipment.Id,
+                Temperature = reading.Temperature,
+                TimeSpamp = DateTime.Now,
+                WasOpened = true
+            };
+
+            var planogramData = await _productDataRepository.GetEquipmentPlanogram(equipment.Id);
+
+
+            var previousReading = new EquipmentReadingGetDTO();
+            if (equipmentHasReadings)
+            {
+                 previousReading = await _equipmentDataRepository.GetLatestReading(equipment.Id);
+            }
+            
+
+            var registeredReading = await _equipmentDataRepository.RegisterEquipmentReading(readingModel);
+
+            var distanceReadingsList = new List<EquipmentDistanceReading>();
+            for(var i = 0; i < reading.DistanceSensors.Count(); i++)
+            {
+                // sales registration logic
+                if (equipmentHasReadings && i != previousReading.SensorReadings.Count())
+                {
+                    // calculate difference between new reading data and previous
+                    var delta = previousReading.SensorReadings.ToList()[i].Distance - reading.DistanceSensors.ToList()[i].Distance;
+
+                    // if difference is higher than 3/4 of predefined one bottle length;
+                    // just a precaution, since the code below will result 0 in any case that
+                    // Delta is below _oneBottleLength
+                    if (delta < -(_oneBottleLength / 1.5))
+                    {
+                        delta *= -1;
+                        var salesQtyUnrounded = Math.Round((double)delta / _oneBottleLength, 1);
+
+                        // the whole point of the code below is to shift the Round Logic
+                        // so that the midpoint of Round is 0.7.
+                        // Anything below 0.7 will be floored, anything above - ceiled
+                        var salesQty = salesQtyUnrounded % Math.Floor(salesQtyUnrounded) >= 0.7 ?
+                            (int)Math.Round(salesQtyUnrounded) : (int)Math.Floor(salesQtyUnrounded);
+                        if (salesQty != 0)
+                        {
+                            var product = planogramData.First(x => x.Row == reading.DistanceSensors.ToList()[i].Row);
+                            var saleRecord = new Sale
+                            {
+                                ProductId = product.ProductId,
+                                Quantity = salesQty,
+                                TimeStamp = DateTime.Now
+                            };
+                            await _saleRepository.RegisterSale(saleRecord);
+                        }
+                    }
+                    
+                }
+                
+                var distRead = new EquipmentDistanceReading
+                {
+                    EquipmentReadingId = registeredReading.Id,
+                    Row = reading.DistanceSensors.ToList()[i].Row,
+                    Distance = reading.DistanceSensors.ToList()[i].Distance
+                };
+
+                distanceReadingsList.Add(distRead);
+            }
+
+            await _equipmentDataRepository.RegisterEquipmentDistanceReadings(distanceReadingsList);
+
         }
     }
 }

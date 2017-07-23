@@ -62,6 +62,7 @@
     <Compile Include="Repositories\ExceptionLogRepository.cs" />
     <Compile Include="Repositories\PointOfSaleRepository.cs" />
     <Compile Include="Repositories\ProductDataRepository.cs" />
+    <Compile Include="Repositories\SaleRepository.cs" />
     <Compile Include="UnitOfWorkFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

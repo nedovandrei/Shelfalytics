@@ -101,7 +101,72 @@ namespace Shelfalytics.Repository.Repositories
 
             }
         }
-        
+
+        public async Task<EquipmentDTO> GetEquipmentByIMEI(string imei)
+        {
+            using (var uow = _unitOfWorkFactory.GetShelfalyticsDbContext())
+            {
+                var query = from st in uow.Set<Equipment>()
+                    where st.IMEI.Contains(imei)
+                    select new EquipmentDTO
+                    {
+                        Id = st.Id,
+                        IMEI = st.IMEI,
+                        PointOfSaleId = st.PointOfSaleId,
+                        ClientId = st.ClientId,
+                        ModelName = st.ModelName,
+                        RowCount = st.RowCount
+                    };
+                return await query.FirstAsync();
+            }
+        }
+
+        public async Task<EquipmentReading> RegisterEquipmentReading(EquipmentReading reading)
+        {
+            using (var uow = _unitOfWorkFactory.GetShelfalyticsDbContext())
+            {
+                uow.Add(reading);
+                await uow.CommitAsync();
+            }
+
+            return reading;
+        }
+
+        public async Task<EquipmentReadingGetDTO> GetLatestReading(int equipmentId)
+        {
+            using (var uow = _unitOfWorkFactory.GetShelfalyticsDbContext())
+            {
+                var query = from er in uow.Set<EquipmentReading>()
+                    join edr in uow.Set<EquipmentDistanceReading>() on er.Id equals edr.EquipmentReadingId into edrSet
+                    where er.EquipmentId == equipmentId
+                    orderby er.Id descending
+                    select new EquipmentReadingGetDTO
+                    {
+                        Id = er.Id,
+                        TimeSpamp = er.TimeSpamp,
+                        SensorReadings = edrSet,
+                        Temperature = er.Temperature
+                    };
+                return await query.FirstAsync();
+            }
+        }
+
+        public async Task RegisterEquipmentDistanceReadings(IEnumerable<EquipmentDistanceReading> distanceReadings)
+        {
+            using (var uow = _unitOfWorkFactory.GetShelfalyticsDbContext())
+            {
+                uow.AddRange(distanceReadings);
+                await uow.CommitAsync();
+            }
+        }
+
+        public async Task<bool> EquipmentHasReadings(int equipmentId)
+        {
+            using (var uow = _unitOfWorkFactory.GetShelfalyticsDbContext())
+            {
+                return await uow.Set<EquipmentReading>().AnyAsync(x => x.EquipmentId == equipmentId);
+            }
+        }
 
     }
 }

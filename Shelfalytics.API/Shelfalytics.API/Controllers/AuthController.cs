@@ -21,7 +21,7 @@ namespace Shelfalytics.API.Controllers
             _authRepository = authRepository;
         }
 
-        [AllowAnonymous]
+        [Authorize]
         [Route("Register")]
         public async Task<HttpResponseMessage> RegisterUser(UserDTO user)
         {

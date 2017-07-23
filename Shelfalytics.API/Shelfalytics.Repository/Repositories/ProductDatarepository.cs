@@ -30,6 +30,8 @@ namespace Shelfalytics.Repository.Repositories
                     where pl.EquipmentId == equipmentId
                     select new EquipmentPlanogramDTO
                     {
+                        ProductId = product.Id,
+                        EquipmentId = equipmentId,
                         Row = pl.Row,
                         ProductName = product.TradeMark,
                         SKUName = product.SKUName
