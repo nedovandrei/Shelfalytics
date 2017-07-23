@@ -186,8 +186,8 @@ button.btn.btn-inverse {
   }
 
   .progress {
-    background-color: darken($btnColor, 10);
-    box-shadow: 0 1px 0 darken($btnColor, 10);
+    background-color: darken($primary, 10);
+    box-shadow: 0 1px 0 darken($primary, 10);
   }
 
   .progress-inner {
@@ -304,4 +304,19 @@ button.progress-button {
   .btn {
     transition: none;
   }
+}
+.nav-link{
+  //new style
+  // background-color: $primary-light;
+  border:1px solid $primary-light;
+  // border-radius: 0!important;
+  &:hover, &.active{
+    border-color: $primary;
+    background-color: $primary!important;
+  }
+}
+.nav-item + .nav-item{
+.nav-link{
+  margin-left: 0.25rem!important;
+}
 }

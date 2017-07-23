@@ -51,7 +51,7 @@
   <div class="row">
     <div class="col-md-12">
       <ul class="nav nav-pills nav-fill">
-        <li class="nav-item" *ngFor="let equipment of posData.EquipmentIds; let i = index" (click)="changeEquipmentInFocus(equipment)">
+        <li class="nav-item mb-1" *ngFor="let equipment of posData.EquipmentIds; let i = index" (click)="changeEquipmentInFocus(equipment)">
           <a [ngClass]="{ 'active': equipment === equipmentInFocus }" class="nav-link">{{i + 1}}</a>
         </li>
       </ul>

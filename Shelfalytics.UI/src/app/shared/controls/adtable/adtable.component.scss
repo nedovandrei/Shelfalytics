@@ -10,18 +10,19 @@
 }
 
 
-  
+
     th, td {
       border: 1px solid $border-light !important;
-      line-height: 35px;
+      // line-height: 35px;
       vertical-align: middle;
+      text-align: left!important;
     }
 
     table tr td {
       padding: 0 8px;
     }
-    
-    
+
+
 
     input {
       line-height: 1.5 !important;
@@ -82,7 +83,7 @@
       display: flex;
       justify-content: center;
     }
-  
+
 
 
 
@@ -134,7 +135,7 @@
         background-color: #E7E7E7;
         tr{
             td{
-                text-align: center;
+                // text-align: center;
                 .pagination{
 
                     li{
@@ -146,7 +147,7 @@
                                 border: none;
                                 text-align: center;
                                 padding-right: 5px;
-                            }                            
+                            }
                             input[type="number"]::-webkit-outer-spin-button,
                             input[type="number"]::-webkit-inner-spin-button {
                                 -webkit-appearance: none;

@@ -1,8 +1,8 @@
 ﻿<div class="row">
     <div class="col-xs-12 col-lg-8">
         <div *ngIf="showHeadingWithFilter">
-            <h4 class="table-header print-page-break" *ngIf="totalRecordCounter===0">Details - No {{moptions.dataTypeName}}</h4>
-            <h4 class="table-header print-page-break" *ngIf="totalRecordCounter>0">
+            <h4 class="table-header print-page-break mb-0" *ngIf="totalRecordCounter===0">Details - No {{moptions.dataTypeName}}</h4>
+            <h4 class="table-header print-page-break mb-0" *ngIf="totalRecordCounter>0">
                 {{moptions.tableType}} - Showing&nbsp;
                 <b *ngIf="totalRecordCounter >= rowsOnPage">{{displayedItemFirstIndex}}</b>
                 <b *ngIf="totalRecordCounter < rowsOnPage">{{displayedItemFirstIndex}}</b>
@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="text-right col-xs-12 col-lg-4" *ngIf="moptions.filterable">
-        <button class="btn btn-white" (click)="toggleFilter()" [disabled]="loadState === loadStates.fail || totalRecordCounter===0">
+        <button class="btn btn-primary mb-3" (click)="toggleFilter()" [disabled]="loadState === loadStates.fail || totalRecordCounter===0">
             Filter Data<i class="glyphicon glyphicon-filter"></i>
         </button>
     </div>
@@ -84,4 +84,3 @@
         </tr>
     </tfoot>
 </table>
-
