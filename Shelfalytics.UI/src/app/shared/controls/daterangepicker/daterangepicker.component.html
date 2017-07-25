@@ -1,0 +1,13 @@
+<div class="input-group" daterangepicker (selected)="selectedDate($event, mainInput)"
+            (cancelDaterangepicker)="calendarEventsHandler($event)"
+            (applyDaterangepicker)="calendarEventsHandler($event)"
+            (hideDaterangepicker)="calendarEventsHandler($event)"
+            (showDaterangepicker)="calendarEventsHandler($event)"
+            >
+    <span class="form-control uneditable-input"  name="daterange" >
+        {{ defaultDate.start | date:'M/dd/y' }} - {{ defaultDate.end| date:'M/dd/y' }}
+    </span>
+    <span class="input-group-btn">
+        <a type="button" class="btn btn-default"><i style="color: black;" class="ion-arrow-down-b"></i></a>
+    </span>
+</div>

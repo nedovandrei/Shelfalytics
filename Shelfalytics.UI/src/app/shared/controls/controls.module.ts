@@ -8,6 +8,7 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from "@angular/router";
 import { SlimScrollModule } from 'ng2-slimscroll';
 import { SlimScrollOptions } from 'ng2-slimscroll';
+import { Daterangepicker } from "ng2-daterangepicker";
 
 import { GridstackComponent } from './gridstack/gridstack.component';
 import { SmartTableComponent } from './smart-table/smart-table.component';
@@ -15,6 +16,7 @@ import { AngularGridComponent } from './angular2-grid/angular2-grid.component';
 import { ADTableComponent } from "./adtable/adtable.component";
 import { DefaultModalComponent } from './default-modal/default-modal.component';
 import { DatePickerComponent } from './ng2-datepicker/ng2-datepicker.component';
+import { DaterangepickerComponent } from './daterangepicker/daterangepicker.component';
 
 @NgModule({
   imports: [
@@ -26,7 +28,8 @@ import { DatePickerComponent } from './ng2-datepicker/ng2-datepicker.component';
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    SlimScrollModule
+    SlimScrollModule,
+    Daterangepicker
   ],
   declarations: [
     GridstackComponent,
@@ -34,8 +37,19 @@ import { DatePickerComponent } from './ng2-datepicker/ng2-datepicker.component';
     AngularGridComponent,
     DefaultModalComponent,
     ADTableComponent,
-    DatePickerComponent
+    DatePickerComponent,
+    DaterangepickerComponent
   ],
-  exports: [GridstackComponent, SmartTableComponent, AngularGridComponent, DefaultModalComponent, ADTableComponent, DatePickerComponent, SlimScrollModule, FormsModule],
+  exports: [
+    GridstackComponent, 
+    SmartTableComponent, 
+    AngularGridComponent, 
+    DefaultModalComponent, 
+    ADTableComponent, 
+    DatePickerComponent, 
+    SlimScrollModule, 
+    FormsModule,
+    DaterangepickerComponent
+  ],
 })
 export class ControlsModule { }
