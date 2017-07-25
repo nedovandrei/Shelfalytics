@@ -17,3 +17,15 @@ button.close {
     opacity: .5;
   }
 }
+
+
+
+.daterangepicker{
+  background-color: $info-dark!important;
+  &:after{
+    border-bottom-color:$info-dark!important;
+  }
+  .input-mini{
+    background-color: $default-text!important;
+  }
+}

@@ -39,7 +39,7 @@
 //@include icon-png-class('arrival-icon', 11, 11);
 
 
-.fa{
+.fa + *{
   //new style
-  margin-right: 0.3em;
+  margin-left: 0.3em;
 }
