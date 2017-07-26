@@ -9,6 +9,10 @@ import { RouterModule } from "@angular/router";
 import { SlimScrollModule } from 'ng2-slimscroll';
 import { SlimScrollOptions } from 'ng2-slimscroll';
 import { Daterangepicker } from "ng2-daterangepicker";
+import { ModalModule } from 'angular2-modal';
+import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
+import { Overlay } from 'angular2-modal';
+import { Modal } from 'angular2-modal/plugins/bootstrap';
 
 import { GridstackComponent } from './gridstack/gridstack.component';
 import { SmartTableComponent } from './smart-table/smart-table.component';
@@ -17,6 +21,8 @@ import { ADTableComponent } from "./adtable/adtable.component";
 import { DefaultModalComponent } from './default-modal/default-modal.component';
 import { DatePickerComponent } from './ng2-datepicker/ng2-datepicker.component';
 import { DaterangepickerComponent } from './daterangepicker/daterangepicker.component';
+import { Angular2ModalComponent } from './angular2-modal/angular2-modal.component';
+
 
 @NgModule({
   imports: [
@@ -29,7 +35,9 @@ import { DaterangepickerComponent } from './daterangepicker/daterangepicker.comp
     ReactiveFormsModule,
     RouterModule,
     SlimScrollModule,
-    Daterangepicker
+    Daterangepicker,
+    ModalModule,
+    BootstrapModalModule
   ],
   declarations: [
     GridstackComponent,
@@ -38,18 +46,20 @@ import { DaterangepickerComponent } from './daterangepicker/daterangepicker.comp
     DefaultModalComponent,
     ADTableComponent,
     DatePickerComponent,
-    DaterangepickerComponent
+    DaterangepickerComponent,
+    Angular2ModalComponent
   ],
   exports: [
-    GridstackComponent, 
-    SmartTableComponent, 
-    AngularGridComponent, 
-    DefaultModalComponent, 
-    ADTableComponent, 
-    DatePickerComponent, 
-    SlimScrollModule, 
+    GridstackComponent,
+    SmartTableComponent,
+    AngularGridComponent,
+    DefaultModalComponent,
+    ADTableComponent,
+    DatePickerComponent,
+    SlimScrollModule,
     FormsModule,
-    DaterangepickerComponent
+    DaterangepickerComponent,
+    Angular2ModalComponent
   ],
 })
 export class ControlsModule { }

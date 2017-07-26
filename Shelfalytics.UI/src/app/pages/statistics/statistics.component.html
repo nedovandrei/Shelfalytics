@@ -1,24 +1,10 @@
-<ba-card title="Button Dropdowns" baCardClass="with-scroll">
+<ba-card title="Фильтр">
   <div class="row btns-row">
-    <!-- <ng2-datepicker></ng2-datepicker> -->
+      <!-- <daterangepicker></daterangepicker> -->
   </div>
 <div class="row btns-row">
   <div class="col-sm-4 col-6">
     <div class="btn-group" ngbDropdown>
-      <button type="button" class="btn btn-default" ngbDropdowToggle>
-        Default
-      </button>
-      <ul class="dropdown-menu">
-        <li class="dropdown-item"><a href="#">Action</a></li>
-        <li class="dropdown-item"><a href="#">Another action</a></li>
-        <li class="dropdown-item"><a href="#">Something else here</a></li>
-        <li class="dropdown-divider"></li>
-        <li class="dropdown-item"><a href="#">Separated link</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="col-sm-4 col-6">
-    <div class="btn-group" ngbDropdown>
       <button type="button" class="btn btn-default" ngbDropdownToggle>
         Default
       </button>
@@ -31,22 +17,6 @@
       </ul>
     </div>
   </div>
-  <div class="col-sm-4 col-6">
-    <div class="btn-group" ngbDropdown>
-      <button type="button" class="btn btn-default" ngbDropdownToggle>
-        Default
-      </button>
-      <ul class="dropdown-menu">
-        <li class="dropdown-item"><a href="#">Action</a></li>
-        <li class="dropdown-item"><a href="#">Another action</a></li>
-        <li class="dropdown-item"><a href="#">Something else here</a></li>
-        <li class="dropdown-divider"></li>
-        <li class="dropdown-item"><a href="#">Separated link</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
-<div class="row btns-row mt-3 mb-5">
   <div class="col-sm-4 col-6">
     <div class="btn-group" ngbDropdown>
       <button type="button" class="btn btn-default" ngbDropdownToggle>
@@ -76,5 +46,71 @@
     </div>
   </div>
 </div>
-
+<div class="row btns-row mt-3">
+  <div class="col-sm-4 col-6">
+    <div class="btn-group" ngbDropdown>
+      <button type="button" class="btn btn-default" ngbDropdownToggle>
+        Default
+      </button>
+      <ul class="dropdown-menu">
+        <li class="dropdown-item"><a href="#">Action</a></li>
+        <li class="dropdown-item"><a href="#">Another action</a></li>
+        <li class="dropdown-item"><a href="#">Something else here</a></li>
+        <li class="dropdown-divider"></li>
+        <li class="dropdown-item"><a href="#">Separated link</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-sm-4 col-6">
+    <div class="btn-group" ngbDropdown>
+      <button type="button" class="btn btn-default" ngbDropdownToggle>
+        Default
+      </button>
+      <ul class="dropdown-menu">
+        <li class="dropdown-item"><a href="#">Action</a></li>
+        <li class="dropdown-item"><a href="#">Another action</a></li>
+        <li class="dropdown-item"><a href="#">Something else here</a></li>
+        <li class="dropdown-divider"></li>
+        <li class="dropdown-item"><a href="#">Separated link</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+</ba-card>
+<ba-card title="Типы отчётов">
+<fieldset class="form-group">
+  <div class="form-check">
+    <label class="form-check-label">
+      <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+      OOS по количеству недопроданных штук
+    </label>
+  </div>
+  <div class="form-check">
+    <label class="form-check-label">
+      <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option1" checked>
+        OOS по сумме недопроданных товар - потенциали потери в деньгах за счёт OOS
+    </label>
+  </div>
+  <div class="form-check">
+    <label class="form-check-label">
+      <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option1" checked>
+      Продажи в пушерах ( Sales by pusher ) - продажи из каждого пушера
+    </label>
+  </div>
+  <div class="form-check">
+    <label class="form-check-label">
+      <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios4" value="option1" checked>
+    Кол-во продаж ( штук ) / Открывание дверей
+    </label>
+  </div>
+  <div class="form-check">
+    <label class="form-check-label">
+      <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios5" value="option1" checked>
+      Кол-во продаж детально / Открывание дверей
+    </label>
+  </div>
+  <button type="button" class="btn btn-primary" >
+    Сделать отчет
+  </button>
+</fieldset>
 </ba-card>

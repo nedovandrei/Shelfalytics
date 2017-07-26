@@ -62,6 +62,7 @@
     "angular2-datatable": "0.6.0",
     "angular2-grid": "^2.0.6",
     "angular2-jwt": "^0.2.3",
+    "angular2-modal": "^3.0.1",
     "angular2-progressbar": "^0.5.1",
     "animate.css": "3.5.2",
     "bootstrap": "4.0.0-alpha.6",

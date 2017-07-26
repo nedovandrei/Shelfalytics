@@ -71,7 +71,7 @@ export class PosInfoComponent implements OnInit, OnDestroy {
 
             this.OOSChartData = {
               data: percentage,
-              color: percentage < 20 ? 'rgba(255, 255, 255, 1)' : 
+              color: percentage < 20 ? 'rgba(255, 255, 255, 1)' :
                 percentage < 50 ? 'rgba(244,198,61, 1)' : 'rgba(215,2,6, 1)'
             };
 
@@ -80,13 +80,13 @@ export class PosInfoComponent implements OnInit, OnDestroy {
         } else {
           this.initFlag = true;
         }
-        
+
       });
     });
 
-    
 
-    
+
+
 
     // this._testService.getShelfData().subscribe((data: any) => {
     //   this.equipmentData = data[0];
@@ -101,5 +101,5 @@ export class PosInfoComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.paramSubscription.unsubscribe();
   }
-
+  
 }
