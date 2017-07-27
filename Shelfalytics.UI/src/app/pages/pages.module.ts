@@ -5,6 +5,7 @@ import { NgbDropdownModule, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { routing } from "./pages.routing";
 import { NgaModule } from "../theme/nga.module";
 import { AppTranslationModule } from "../app.translation.module";
+import { ControlsModule } from "../shared/controls/controls.module";
 
 import { Pages } from "./pages.component";
 
@@ -12,7 +13,7 @@ import { MainComponent } from "./main/main.component";
 import { StatisticsComponent } from "./statistics/statistics.component";
 
 @NgModule({
-  imports: [CommonModule, AppTranslationModule, NgaModule, routing, NgbDropdownModule, NgbModalModule],
+  imports: [CommonModule, AppTranslationModule, NgaModule, routing, NgbDropdownModule, NgbModalModule, ControlsModule],
   declarations: [Pages, MainComponent, StatisticsComponent],
 
 })
