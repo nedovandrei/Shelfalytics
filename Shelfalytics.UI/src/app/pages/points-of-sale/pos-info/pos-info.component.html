@@ -2,9 +2,7 @@
   <div class="col-md-2">
     <button class="btn btn-primary mb-3" routerLink="/pages/points-of-sale">Back</button>
   </div>
-  <div class="col-md-4">
-    <daterangepicker></daterangepicker>
-  </div>
+  
 </div>
 <div *ngIf="initFlag">
   <div class="row">
@@ -65,7 +63,7 @@
 
         <equipment-info *ngIf="equipmentInFocus > 0 && initFlag" [equipmentId]="equipmentInFocus"></equipment-info>
         <!-- <angular2-grid></angular2-grid> -->
-        
+
     </div>
     <div class="col-md-3 col-xl-3">
       <ba-card title="CK Filling">
