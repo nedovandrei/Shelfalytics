@@ -1,9 +1,17 @@
 .d-flex{
   .card{
     width: 100%;
+
+  }
+
+}
+.old-alert{
+  .d-flex{
+    .card{
+        background-color: $danger-dark!important;
+    }
   }
 }
-
 
 .table {
   margin-bottom: 0px;
