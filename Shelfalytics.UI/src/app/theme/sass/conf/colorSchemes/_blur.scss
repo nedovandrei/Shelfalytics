@@ -39,7 +39,7 @@ $danger: #e85656 !default;
 $danger-rgba:rgba(232,86,86, 0.5);
 $warning-rgba:rgba(223,184,28, 0.5);
 $info-rgba:rgba(45,172,209, 0.5);
-$warning-old-rgba:rgba(247,247,247, 0.5);
+$warning-old-rgba:rgba(0,0,0, 0.5);
 
 $primary-light: tint($primary, 30%);
 $info-light: tint($info, 30%);
