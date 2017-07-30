@@ -138,25 +138,30 @@
 
   .search {
     text-shadow: none;
-    font-size: 13px;
+    font-size: 12px;
     line-height: 25px;
     transition: all 0.5s ease;
     white-space: nowrap;
     overflow: hidden;
     width: 400px;
     float: left;
-    margin: 20px 0 0 30px;
-
+    margin: 15px 0 0 calc((100% - 115px - 40px - 400px)/2);
+    .btn:hover {
+      transform: scale(1)!important;
+      margin: 0;
+    }
     label {
       cursor: pointer;
     }
     i {
-      width: 16px;
+      // width: 16px;
       display: inline-block;
       cursor: pointer;
-      padding-left: 1px;
-      font-size: 16px;
-      margin-right: 13px;
+      // padding-left: 1px;
+      font-size: 18px;
+      // font-size: 16px;
+      line-height: 42px;
+      margin-left: 9px;
     }
     input {
       color: $sidebar-text;
