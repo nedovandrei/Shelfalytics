@@ -1,13 +1,16 @@
-<div class="input-group" daterangepicker (selected)="selectedDate($event, mainInput)"
-            (cancelDaterangepicker)="calendarEventsHandler($event)"
-            (applyDaterangepicker)="calendarEventsHandler($event)"
-            (hideDaterangepicker)="calendarEventsHandler($event)"
-            (showDaterangepicker)="calendarEventsHandler($event)"
-            >
+<div *ngIf="datesInitialized" class="input-group" daterangepicker (selected)="onDateSelect($event, mainInput)" [options]="daterangepickerOptions">
     <span class="form-control uneditable-input"  name="daterange" >
-        {{ defaultDate.start | date:'M/dd/y' }} - {{ defaultDate.end| date:'M/dd/y' }}
+        {{ selectedDate.startDate | date:'dd.M.y' }} - {{ selectedDate.endDate | date:'dd.M.y' }}
     </span>
 
         <button class="btn btn-primary" ><i class="fa fa-calendar"></i></button>
 
 </div>
+
+
+<!-- (cancelDaterangepicker)="calendarEventsHandler($event)"
+            (applyDaterangepicker)="calendarEventsHandler($event)"
+            (hideDaterangepicker)="calendarEventsHandler($event)"
+            (showDaterangepicker)="calendarEventsHandler($event)" 
+
+        datepicker events -->

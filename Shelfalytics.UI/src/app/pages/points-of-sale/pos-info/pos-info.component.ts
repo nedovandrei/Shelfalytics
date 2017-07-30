@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PosInfoService } from './pos-info.service';
 import { ActivatedRoute } from "@angular/router";
+import { GlobalFilter } from "../../../shared/services/global-filter.service";
 import * as moment from 'moment';
 
 @Component({
@@ -11,7 +12,11 @@ import * as moment from 'moment';
 })
 export class PosInfoComponent implements OnInit, OnDestroy {
 
-  constructor(private posInfoService: PosInfoService, private route: ActivatedRoute) { }
+  constructor(
+    private posInfoService: PosInfoService, 
+    private route: ActivatedRoute, 
+    private globalFilter: GlobalFilter
+  ) { }
 
   private initFlag: boolean = false;
   private posData: any;
@@ -57,41 +62,47 @@ export class PosInfoComponent implements OnInit, OnDestroy {
     this.paramSubscription = this.route.params.subscribe(params => {
        this.id = parseInt(params['id']); // (+) converts string 'id' to a number
 
-       this.posInfoService.getPointOfSaleData(this.id).subscribe((data: any) => {
-        this.posData = data[0];
-        this.equipmentInFocus = this.posData.EquipmentIds[0];
-
-        this.openHours = moment(this.posData.OpeningHours).format('hh:mm A');
-        this.closeHours = moment(this.posData.ClosingHours).format('hh:mm A');
-
-        if (this.equipmentInFocus) {
-          this.posInfoService.getOOSPercentage(this.equipmentInFocus).subscribe((percentage: number) => {
-            // this.OOSChartOptions.series.push(percentage);
-            // this.OOSChartOptions.series.push(100);
-
-            this.OOSChartData = {
-              data: percentage,
-              color: percentage < 20 ? 'rgba(255, 255, 255, 1)' :
-                percentage < 50 ? 'rgba(244,198,61, 1)' : 'rgba(215,2,6, 1)'
-            };
-
-            this.initFlag = true;
-          });
-        } else {
-          this.initFlag = true;
-        }
-
-      });
+       this.loadData();
     });
 
-
-
-
+    this.globalFilter.onDateRangeChanged.subscribe((dateTimeValue: any) => {
+      console.log("fired onDateRangeChange event");
+      this.loadData();
+    });
 
     // this._testService.getShelfData().subscribe((data: any) => {
     //   this.equipmentData = data[0];
     //   this.initFlag = true;
     // });
+  }
+
+  private loadData() {
+    this.initFlag = false;
+    this.posInfoService.getPointOfSaleData(this.id).subscribe((data: any) => {
+      this.posData = data[0];
+      this.equipmentInFocus = this.posData.EquipmentIds[0];
+
+      this.openHours = moment(this.posData.OpeningHours).format('hh:mm A');
+      this.closeHours = moment(this.posData.ClosingHours).format('hh:mm A');
+
+      if (this.equipmentInFocus) {
+        this.posInfoService.getOOSPercentage(this.equipmentInFocus).subscribe((percentage: number) => {
+          // this.OOSChartOptions.series.push(percentage);
+          // this.OOSChartOptions.series.push(100);
+
+          this.OOSChartData = {
+            data: percentage,
+            color: percentage < 20 ? 'rgba(255, 255, 255, 1)' :
+              percentage < 50 ? 'rgba(244,198,61, 1)' : 'rgba(215,2,6, 1)'
+          };
+
+          this.initFlag = true;
+        });
+      } else {
+        this.initFlag = true;
+      }
+
+    });
   }
 
   private changeEquipmentInFocus(equipmentId: number) {

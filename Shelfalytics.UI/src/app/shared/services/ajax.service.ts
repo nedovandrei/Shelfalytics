@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 import { Observable } from "rxjs/Observable";
 
 @Injectable()
@@ -30,7 +30,7 @@ export class AjaxService {
                         subscriber.error(xhr);
                     }
                 }
-            }
+            };
             xhr.send(JSON.stringify(data));
         });
     }
