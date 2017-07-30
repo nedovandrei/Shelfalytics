@@ -8,12 +8,12 @@
   color: $content-text;
   .empty-row{
     .card{
-      border:1px solid red!important;
+      background-color: $warning-rgba!important;
     }
   }
   .undefined-row{
     .card{
-      border: 1px solid rgba(255, 0 , 0,  0.5);
+      background-color: $danger-rgba!important;
     }
   }
   .pie-chart-item-container {
