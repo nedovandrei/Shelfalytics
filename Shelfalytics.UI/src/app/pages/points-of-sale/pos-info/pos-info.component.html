@@ -2,7 +2,7 @@
   <div class="col-md-2">
     <button class="btn btn-primary mb-3" routerLink="/pages/points-of-sale">Back</button>
   </div>
-  
+
 </div>
 <div *ngIf="initFlag">
   <div class="row">
@@ -10,23 +10,23 @@
       <ba-card>
         <div class="row">
           <div class="col-lg-6 col-sm-12 col-12 ">
-            <h2><i class="fa fa-ravelry"></i>POS:</h2>
+            <h2><i class="fa fa-map-marker"></i>POS:</h2>
               <p class="text-info"> {{posData.PointOfSaleName}}</p>
           </div>
           <div class="col-lg-6 col-sm-12 col-12 ">
-            <h2><i class="fa fa-ravelry"></i>POS Address:</h2>
+            <h2><i class="fa fa-map"></i>POS Address:</h2>
                 <p class="text-info"> {{posData.PointOfSaleAddress}}</p>
           </div>
           <div class="col-lg-6 col-sm-12 col-12 ">
-            <h2><i class="fa fa-ravelry"></i>POS Telephone:</h2>
+            <h2><i class="fa fa-phone"></i>POS Telephone:</h2>
               <p class="text-info"> {{posData.PointOfSaleTelephone}}</p>
           </div>
           <div class="col-lg-6 col-sm-12 col-12 ">
-            <h2><i class="fa fa-ravelry"></i>Contact Person Name:</h2>
+            <h2><i class="fa fa-user-o"></i>Contact Person Name:</h2>
               <p class="text-info"> {{posData.ContactPersonName}}</p>
           </div>
           <div class="col-lg-6 col-sm-12 col-12 ">
-            <h2><i class="fa fa-ravelry"></i>Schedule: </h2>
+            <h2><i class="fa fa-calendar-check-o"></i>Schedule: </h2>
               <p class="text-info">{{openHours}} - {{closeHours}}</p>
           </div>
         </div>

@@ -1,10 +1,10 @@
 <div *ngIf="initFlag">
   <ba-card>
-    <h4><i class="fa fa-ravelry"></i>Model: <span class="text-info">{{equipmentData.ModelName}}</span></h4>
-    <h4><i class="fa fa-ravelry"></i>Equipment Type: <span class="text-info">{{equipmentData.EquipmentType}}</span></h4>
-    <h4><i class="fa fa-ravelry"></i>Temperature: <span class="text-info">{{equipmentData.Temperature}}</span></h4>
-    <h4><i class="fa fa-ravelry"></i>Open Count - Today: <span class="text-info">{{equipmentData.OpenCloseCountToday}}</span></h4>
-    <h4><i class="fa fa-ravelry"></i>Last Ping: <span class="text-info">{{timeStamp}}</span></h4>
+    <h4><i class="ion ion-information"></i>Model: <span class="text-info">{{equipmentData.ModelName}}</span></h4>
+    <h4><i class="ion ion-cube"></i>Equipment Type: <span class="text-info">{{equipmentData.EquipmentType}}</span></h4>
+    <h4><i class="fa fa-thermometer"></i>Temperature: <span class="text-info">{{equipmentData.Temperature}}</span></h4>
+    <h4><i class="ion ion-speedometer"></i>Open Count - Today: <span class="text-info">{{equipmentData.OpenCloseCountToday}}</span></h4>
+    <h4><i class="fa fa-calendar-check-o"></i>Last Ping: <span class="text-info">{{timeStamp}}</span></h4>
   </ba-card>
 
   <pie-chart *ngIf="initFlag" [chartData]="equipmentData.RowInfo" [rowCount]="equipmentData.RowCount"></pie-chart>
