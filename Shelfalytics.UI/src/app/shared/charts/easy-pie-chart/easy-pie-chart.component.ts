@@ -47,7 +47,7 @@ export class EasyPieChartComponent implements OnInit {
 
   private _updatePieCharts() {
     jQuery('.pie-charts .easy-pie-chart').each(function(index, chart) {
-      jQuery(chart).data('easyPieChart').update(parseInt(jQuery(chart).attr("data-percent")));
+      jQuery(chart).data('easyPieChart').update(parseFloat(jQuery(chart).attr("data-percent")));
     });
   }
 }

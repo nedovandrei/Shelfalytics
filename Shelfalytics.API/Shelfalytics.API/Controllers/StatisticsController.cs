@@ -10,6 +10,7 @@ using Shelfalytics.ServiceInterface;
 
 namespace Shelfalytics.API.Controllers
 {
+    [RoutePrefix("api/Statistics")]
     public class StatisticsController : ApiController
     {
         private readonly IStatisticsService _statisticsService;
@@ -22,9 +23,26 @@ namespace Shelfalytics.API.Controllers
         }
 
         [HttpPost]
+        [Route("EquipmentOOS")]
         public async Task<HttpResponseMessage> GetEquipmentsOOSPercentage(int equipmentId, GlobalFilter filter)
         {
             var res = await _statisticsService.GetEquipmentOOS(equipmentId, filter);
+            return Request.CreateResponse(res);
+        }
+
+        [Route("ProductSales")]
+        [HttpPost]
+        public async Task<HttpResponseMessage> GetProductSalesData(int equipmentId, GlobalFilter filter)
+        {
+            var res = await _statisticsService.GetProductSalesData(equipmentId, filter);
+            return Request.CreateResponse(res);
+        }
+
+        [HttpPost]
+        [Route("POSOOS")]
+        public async Task<HttpResponseMessage> GetPosOOS(int posId, GlobalFilter filter)
+        {
+            var res = await _statisticsService.GetPOSOOS(posId, filter);
             return Request.CreateResponse(res);
         }
     }

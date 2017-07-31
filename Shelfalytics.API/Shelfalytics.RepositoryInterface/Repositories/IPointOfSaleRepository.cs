@@ -8,5 +8,6 @@ namespace Shelfalytics.RepositoryInterface.Repositories
     {
         Task<IEnumerable<PointOfSaleDataDTO>> GetPointOfSaleData(int posId);
         Task<IEnumerable<PointOfSaleDataDTO>> GetPointsOfSales();
+        Task<IEnumerable<int>> GetPosEquipment(int posId);
     }
 }

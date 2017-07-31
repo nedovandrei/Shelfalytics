@@ -67,5 +67,17 @@ namespace Shelfalytics.Repository.Repositories
                 return await query.ToListAsync();
             }
         }
+
+        public async Task<IEnumerable<int>> GetPosEquipment(int posId)
+        {
+            using (var uow = _unitOfWorkFactory.GetShelfalyticsDbContext())
+            {
+                var query = from eq in uow.Set<Equipment>()
+                    where eq.PointOfSaleId == posId
+                    select eq.Id;
+
+                return await query.ToListAsync();
+            }
+        }
     }
 }

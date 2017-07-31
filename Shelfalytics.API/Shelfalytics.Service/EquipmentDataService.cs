@@ -132,6 +132,7 @@ namespace Shelfalytics.Service
                             var product = planogramData.First(x => x.Row == reading.DistanceSensors.ToList()[i].Row);
                             var saleRecord = new Sale
                             {
+                                EquipmentId = equipment.Id,
                                 ProductId = product.ProductId,
                                 Quantity = salesQty,
                                 TimeStamp = DateTime.Now

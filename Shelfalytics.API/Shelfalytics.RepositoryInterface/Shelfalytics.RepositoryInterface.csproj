@@ -64,6 +64,7 @@
     <Compile Include="DTO\EquipmentDistanceReadingDTO.cs" />
     <Compile Include="DTO\EquipmentDTO.cs" />
     <Compile Include="DTO\EquipmentPlanogramDTO.cs" />
+    <Compile Include="DTO\EquipmentProductSalesDTO.cs" />
     <Compile Include="DTO\EquipmentReadingDTO.cs" />
     <Compile Include="DTO\EquipmentReadingGetDTO.cs" />
     <Compile Include="DTO\ExceptionLogDTO.cs" />

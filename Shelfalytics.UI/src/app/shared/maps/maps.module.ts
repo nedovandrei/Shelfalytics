@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { AgmCoreModule } from '@agm/core';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { AgmCoreModule } from "@agm/core";
 import { GoogleMapsComponent } from "./google-maps/google-maps.component";
 import { RouterModule } from "@angular/router";
 import { global } from "../../global";

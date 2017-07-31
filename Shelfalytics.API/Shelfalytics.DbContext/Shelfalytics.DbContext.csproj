@@ -121,6 +121,14 @@
     <Compile Include="Migrations\Main\201707232232519_AddedXandYaxisToEquipmentData.Designer.cs">
       <DependentUpon>201707232232519_AddedXandYaxisToEquipmentData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Main\201707302123585_AddedEquipmentIdToSale.cs" />
+    <Compile Include="Migrations\Main\201707302123585_AddedEquipmentIdToSale.Designer.cs">
+      <DependentUpon>201707302123585_AddedEquipmentIdToSale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Main\201707302125035_AddedEquipmentIdToSale2.cs" />
+    <Compile Include="Migrations\Main\201707302125035_AddedEquipmentIdToSale2.Designer.cs">
+      <DependentUpon>201707302125035_AddedEquipmentIdToSale2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Main\Configuration.cs" />
     <Compile Include="ShelfalyticsDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -164,6 +172,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Main\201707232232519_AddedXandYaxisToEquipmentData.resx">
       <DependentUpon>201707232232519_AddedXandYaxisToEquipmentData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\Main\201707302123585_AddedEquipmentIdToSale.resx">
+      <DependentUpon>201707302123585_AddedEquipmentIdToSale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\Main\201707302125035_AddedEquipmentIdToSale2.resx">
+      <DependentUpon>201707302125035_AddedEquipmentIdToSale2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

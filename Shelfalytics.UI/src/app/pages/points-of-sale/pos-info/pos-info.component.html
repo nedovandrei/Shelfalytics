@@ -37,14 +37,14 @@
         <ba-card class="col-xlg-6 col-xl-6 col-lg-6 col-sm-12 col-12 text-center" title="CK Filling(P.O.S)">
           <div class="row">
             <div class="offset-3 col-xlg-6 col-xl-6 col-lg-6 col-sm-12 col-12">
-              <easy-pie-chart [chartData]="OOSChartData"></easy-pie-chart>
+              <easy-pie-chart [chartData]="POSOOSChartData"></easy-pie-chart>
             </div>
           </div>
         </ba-card>
         <ba-card class="col-xlg-6 col-xl-6 col-lg-6 col-sm-12 col-12 text-center" title="Out Of Stoc(P.O.S)">
           <div class="row">
             <div class="offset-3 col-xlg-6 col-xl-6 col-lg-6 col-sm-12 col-12">
-              <easy-pie-chart [chartData]="OOSChartData"></easy-pie-chart>
+              <easy-pie-chart [chartData]="POSOOSChartData"></easy-pie-chart>
             </div>
           </div>
         </ba-card>
@@ -61,29 +61,29 @@
   <div class="row">
     <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-9">
 
-        <equipment-info *ngIf="equipmentInFocus > 0 && initFlag" [equipmentId]="equipmentInFocus"></equipment-info>
+        <equipment-info *ngIf="equipmentInFocus > 0 && equipmentInitFlag" [equipmentId]="equipmentInFocus"></equipment-info>
         <!-- <angular2-grid></angular2-grid> -->
 
     </div>
     <div class="col-md-3 col-xl-3">
-      <ba-card title="CK Filling">
-        <easy-pie-chart [chartData]="OOSChartData"></easy-pie-chart>
+      <ba-card *ngIf="equipmentInitFlag" title="CK Filling">
+        <easy-pie-chart [chartData]="equipmentOOSChartData"></easy-pie-chart>
       </ba-card>
-      <ba-card title="Out Of Stock">
-        <easy-pie-chart [chartData]="OOSChartData"></easy-pie-chart>
+      <ba-card *ngIf="equipmentInitFlag" title="Out Of Stock">
+        <easy-pie-chart [chartData]="equipmentOOSChartData"></easy-pie-chart>
       </ba-card>
     </div>
   </div>
 </div>
 <div class="row">
   <div class="col-md-12">
-    <ba-card *ngIf="initFlag" title="Sales by day">
-      <amchart [chartData]="sampleChartData"></amchart>
+    <ba-card *ngIf="equipmentInitFlag" title="Sales by day">
+      <amchart [chartData]="salesChartData"></amchart>
     </ba-card>
   </div>
 </div>
 
-<div class="row">
+<div class="row" *ngIf="equipmentInitFlag">
   <div class="col-md-6">
       <ba-card title="Details on Out Of Stock(Now)">
         <div class="horizontal-scroll">

@@ -19,6 +19,7 @@ export class PosInfoComponent implements OnInit, OnDestroy {
   ) { }
 
   private initFlag: boolean = false;
+  private equipmentInitFlag: boolean = false;
   private posData: any;
   private equipmentInFocus: number = 0;
   private openHours: string;
@@ -31,32 +32,10 @@ export class PosInfoComponent implements OnInit, OnDestroy {
   //   series: []
   // }
 
-  private OOSChartData = {};
+  private equipmentOOSChartData = {};
+  private POSOOSChartData = {};
 
-  private sampleChartData = {
-    dataProvider: [
-      {
-        year: '2005',
-        valueLol: 35,
-        valueKek: 12
-      },
-      {
-        year: '2006',
-        valueLol: 43,
-        valueKek: 9,
-      },
-      {
-        year: '2007',
-        valueLol: 24,
-        valueKek: 89,
-      },
-      {
-        year: "2008",
-        valueLol: 77,
-        valueKek: 28,
-      },
-    ],
-  };
+  private salesChartData = {};
 
   ngOnInit() {
     this.paramSubscription = this.route.params.subscribe(params => {
@@ -85,28 +64,52 @@ export class PosInfoComponent implements OnInit, OnDestroy {
       this.openHours = moment(this.posData.OpeningHours).format('hh:mm A');
       this.closeHours = moment(this.posData.ClosingHours).format('hh:mm A');
 
+      this.posInfoService.getPosOOSPercentage(this.id).subscribe((percentage: number) => {
+        this.POSOOSChartData = {
+          data: percentage,
+          color: percentage < 20 ? "rgba(255, 255, 255, 1)" :
+              percentage < 50 ? "rgba(223, 184, 28, 1)" : "rgba(232, 86, 86, 1)"
+        };
+      });
+
       if (this.equipmentInFocus) {
-        this.posInfoService.getOOSPercentage(this.equipmentInFocus).subscribe((percentage: number) => {
-          // this.OOSChartOptions.series.push(percentage);
-          // this.OOSChartOptions.series.push(100);
-
-          this.OOSChartData = {
-            data: percentage,
-            color: percentage < 20 ? 'rgba(255, 255, 255, 1)' :
-              percentage < 50 ? 'rgba(244,198,61, 1)' : 'rgba(215,2,6, 1)'
-          };
-
-          this.initFlag = true;
-        });
+        this.loadEquipmentData();
       } else {
         this.initFlag = true;
       }
 
+
     });
+  }
+
+  private loadEquipmentData() {
+    this.equipmentInitFlag = false;
+    this.posInfoService.getEquipmentOOSPercentage(this.equipmentInFocus).subscribe((percentage: number) => {
+          // this.OOSChartOptions.series.push(percentage);
+          // this.OOSChartOptions.series.push(100);
+
+          this.equipmentOOSChartData = {
+            data: percentage,
+            color: percentage < 20 ? "rgba(255, 255, 255, 1)" :
+              percentage < 50 ? "rgba(223, 184, 28, 1)" : "rgba(232, 86, 86, 1)"
+          };
+          
+          this.posInfoService.getPOSSales(this.equipmentInFocus).subscribe((saleData: any) => {
+            this.salesChartData = {
+              dataProvider: saleData,
+              legendField: "ProductName",
+              valueFields: ["Sales"]
+            };
+            this.equipmentInitFlag = true;
+            this.initFlag = true;
+        });
+
+    });  
   }
 
   private changeEquipmentInFocus(equipmentId: number) {
     this.equipmentInFocus = equipmentId;
+    this.loadEquipmentData();
   }
 
   ngOnDestroy() {

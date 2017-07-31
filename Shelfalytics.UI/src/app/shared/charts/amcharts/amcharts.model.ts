@@ -25,6 +25,8 @@ export interface IAmChartGraph {
     bullet?: string;
     bulletSize?: number;
     lineColor?: string;
+    lineAlpha?: number;
+    fillAlphas?: number;
     lineThickness?: number;
     negativeLineColor?: string;
     type?: string;
@@ -97,28 +99,30 @@ export class AmChartConfig implements IAmChartConfig {
             position: "left"
         }];
         this.graphs = [
-            {
-                "id": "g1",
-                "balloonText": "[[category]]<br><b><span style='font-size:14px;'>[[value]]</span></b>",
-                "bullet": "round",
-                "bulletSize": 8,
-                "lineColor": "#2dacd1",
-                "lineThickness": 2,
-                "negativeLineColor": "#2dacd1",
-                "type": "smoothedLine",
-                "valueField": "valueLol"
-            },
-            {
-                "id": "g2",
-                "balloonText": "[[category]]<br><b><span style='font-size:14px;'>[[value]]</span></b>",
-                "bullet": "round",
-                "bulletSize": 8,
-                "lineColor": "#90b900",
-                "lineThickness": 2,
-                "negativeLineColor": "#90b900",
-                "type": "smoothedLine",
-                "valueField": "valueKek"
-            }
+            // {
+            //     "id": "g1",
+            //     "balloonText": "[[category]]<br><b><span style='font-size:14px;'>[[value]]</span></b>",
+            //     // "bullet": "round",
+            //     // "bulletSize": 8,
+            //     "fillAlphas": 0.9,
+            //     "lineAlpha": 0.2,
+            //     "lineColor": "#2dacd1",
+            //     // "lineThickness": 2,
+            //     "negativeLineColor": "#2dacd1",
+            //     "type": "column",
+            //     "valueField": "valueLol"
+            // },
+            // {
+            //     "id": "g2",
+            //     "balloonText": "[[category]]<br><b><span style='font-size:14px;'>[[value]]</span></b>",
+            //     "fillAlphas": 0.9,
+            //     "lineAlpha": 0.2,
+            //     "lineColor": "#90b900",
+            //     "lineThickness": 2,
+            //     "negativeLineColor": "#90b900",
+            //     "type": "column",
+            //     "valueField": "valueKek"
+            // }
         ];
         this.chartScrollbar = {
             "dragIcon": "../../assets/icon/dragIconRoundBig",
@@ -144,14 +148,14 @@ export class AmChartConfig implements IAmChartConfig {
             "valueLineBalloonEnabled": true,
             "valueLineAlpha": 0.5,
             "fullWidth": true,
-            "categoryBalloonColor": "#2dacd1", //цвет заливки указателей
-            "cursorColor": "#2dacd1" //цвет линии, тоже желательно менять под стать верхнему
+            "categoryBalloonColor": "#2dacd1", // цвет заливки указателей
+            "cursorColor": "#2dacd1" // цвет линии, тоже желательно менять под стать верхнему
         };
         this.dataDateFormat = "YYYY";
-        this.categoryField = "year";
+        // this.categoryField = "year";
         this.categoryAxis = {
-            "minPeriod": "YYYY",
-            "parseDates": true,
+            // "minPeriod": "YYYY",
+            // "parseDates": true,
             "minorGridAlpha": 0.9,
             "minorGridEnabled": true,
             "axisColor": "#FFFFFF"

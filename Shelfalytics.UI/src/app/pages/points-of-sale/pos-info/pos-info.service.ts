@@ -19,8 +19,22 @@ export class PosInfoService {
     return this.ajaxService.get(global.apiPath + 'PointOfSale', { posId: id });
   }
 
-  getOOSPercentage(equipmentId: number) {
-    return this.ajaxService.post(global.apiPath + 'Statistics?equipmentId=' + equipmentId, {
+  getEquipmentOOSPercentage(equipmentId: number) {
+    return this.ajaxService.post(`${global.apiPath}Statistics/EquipmentOOS?equipmentId=${equipmentId}`, {
+      StartTime: this.globalFilter.startDate,
+      EndTime: this.globalFilter.endDate
+    });
+  }
+
+  getPosOOSPercentage(posId: number) {
+    return this.ajaxService.post(`${global.apiPath}Statistics/POSOOS?posId=${posId}`, {
+      StartTime: this.globalFilter.startDate,
+      EndTime: this.globalFilter.endDate
+    });
+  }
+
+  getPOSSales(equipmentId: number) {
+    return this.ajaxService.post(`${global.apiPath}Statistics/ProductSales?equipmentId=${equipmentId}`, {
       StartTime: this.globalFilter.startDate,
       EndTime: this.globalFilter.endDate
     });
