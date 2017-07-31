@@ -2,7 +2,10 @@
 
 //valid row
 
-
+.progress-bar-title{
+  width: 100%!important;
+  text-align: center!important;
+}
 
 :host /deep/.pie-charts {
   color: $content-text;

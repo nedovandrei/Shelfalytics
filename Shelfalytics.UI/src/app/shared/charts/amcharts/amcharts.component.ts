@@ -111,7 +111,7 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges, AfterVie
         this.initFlag = true;
 
         // if (this.chartData !== undefined) {
-        //     this.chartConfig["dataProvider"] = this.chartData.dataProvider;            
+        //     this.chartConfig["dataProvider"] = this.chartData.dataProvider;
         // } else {
         //     this.chartConfig["dataProvider"] = [];
         // }
