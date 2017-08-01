@@ -81,6 +81,7 @@ button.btn.btn-default {
   }
 }
 
+
 button.btn.btn-success {
   @include buttonColor($success, $success);
   &:active, &:target {
@@ -320,3 +321,13 @@ button.progress-button {
   margin-left: 0.25rem!important;
 }
 }
+// .nav-defult{
+//     .nav-link{
+//       border:1px solid $border;
+//     // border-radius: 0!important;
+//       &:hover, &.active{
+//         border-color: $border;
+//         background-color: transparent!important;
+//       }
+//     }
+//   }

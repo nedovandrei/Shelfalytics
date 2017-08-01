@@ -1,6 +1,8 @@
 $default: rgba(#000000, 0.2);
-// $body-bg: rgba(65,2,117, 0.6);
-$body-bg: rgba(037,041,074, 0.6);
+
+// $body-bg: rgba(037,041,074, 0.6);
+$body-bg: hsla(0,0,86, 0.9);
+$bacard-bg: hsla(0,0,50, 0.9);
 
 $default-text: #ffffff;
 $content-text: $default-text;
@@ -30,11 +32,12 @@ $bootstrap-panel-header-bg: $bootstrap-panel-bg;
 $bootstrap-panel-header-border: 1px solid rgba(0, 0, 0, 0.12);
 $bootstrap-panel-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.25);
 
-$primary: #2c9aff !default;
+$primary: hsla(0,0,50, 0.9) !default;
 $info: #2dacd1 !default;
 $success: #90b900 !default;
 $warning: #dfb81c !default;
 $danger: #e85656 !default;
+
 
 $danger-rgba:rgba(232,86,86, 0.5);
 $warning-rgba:rgba(223,184,28, 0.5);
@@ -52,6 +55,7 @@ $info-dark: shade($info, 15%);
 $success-dark: shade($success, 15%);
 $warning-dark: shade($warning, 15%);
 $danger-dark: shade($danger, 15%);
+
 
 $primary-bg: tint($primary, 20%);
 $info-bg: tint($info, 20%);

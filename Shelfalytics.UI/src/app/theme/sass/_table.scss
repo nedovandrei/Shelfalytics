@@ -1,4 +1,5 @@
 .d-flex{
+  // flex-basis: 1 1 1 1 1 1 1 1 1 1;
   .card{
     width: 100%;
     background-color: $info-rgba;
@@ -12,6 +13,14 @@
     }
   }
 }
+ba-card{
+  .card{
+      background-color: $bacard-bg;
+  }
+}
+
+
+
 .progress-bar-title{
   width: 100% ;
 text-align: center ;

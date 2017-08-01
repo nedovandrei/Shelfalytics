@@ -2,6 +2,16 @@
     <div *ngIf="title" class="card-header clearfix">
         <h3 class="card-title" translate>{{title}}</h3>
     </div>
+    <div *ngIf="navTabs" class="card-header clearfix">
+      <ul class="nav nav-tabs">
+        <li class="nav-item ">
+          <a class="nav-link active">1</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link">2</a>
+        </li>
+      </ul>
+    </div>
     <div class="card-body">
         <ng-content></ng-content>
     </div>
