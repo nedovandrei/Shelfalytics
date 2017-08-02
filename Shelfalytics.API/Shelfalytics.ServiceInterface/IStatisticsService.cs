@@ -10,8 +10,8 @@ namespace Shelfalytics.ServiceInterface
 {
     public interface IStatisticsService
     {
-        Task<double> GetEquipmentOOS(int equipmentId, GlobalFilter filter);
-        Task<double> GetPOSOOS(int posId, GlobalFilter filter);
+        Task<EquipmentDetaildedOOSDTO> GetEquipmentOOS(int equipmentId, GlobalFilter filter);
+        Task<EquipmentDetaildedOOSDTO> GetPOSOOS(int posId, GlobalFilter filter);
         Task<IEnumerable<EquipmentProductSalesDTO>> GetProductSalesData(int equipmentId, GlobalFilter filter);
     }
 }

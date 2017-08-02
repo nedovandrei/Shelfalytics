@@ -63,6 +63,7 @@ export interface IAmChartCursor {
 }
 
 export interface IAmChartCategoryAxis {
+    position?: string;
     minPeriod?: string;
     parseDates?: boolean;
     minorGridAlpha?: number;
@@ -84,6 +85,7 @@ export class AmChartConfig implements IAmChartConfig {
     chartScrollbar: IAmChartScrollBar;
     chartCursor: IAmChartCursor;
     dataDateFormat?: string;
+    rotate?: boolean;
     categoryField: string;
     categoryAxis?: IAmChartCategoryAxis;
     export?: IAmChartExportParam;
@@ -96,8 +98,9 @@ export class AmChartConfig implements IAmChartConfig {
         this.marginRight = 80;
         this.valueAxes = [{
             axisAlpha: 0,
-            position: "left"
+            position: "top"
         }];
+        this.rotate = true;
         this.graphs = [
             // {
             //     "id": "g1",
@@ -156,6 +159,7 @@ export class AmChartConfig implements IAmChartConfig {
         this.categoryAxis = {
             // "minPeriod": "YYYY",
             // "parseDates": true,
+            "position": "left",
             "minorGridAlpha": 0.9,
             "minorGridEnabled": true,
             "axisColor": "#FFFFFF"

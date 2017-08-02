@@ -16,81 +16,13 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges, AfterVie
     @Input() chartData: any;
     private initFlag: boolean = false;
     private chart: any;
+    private sortDirection: "asc" | "desc" = "desc";
 
     private chartConfig = new AmChartConfig("serial");
-    // private chartConfig = {
-    //     "type": "serial",
-    //     "theme": "light",
-    //     "marginTop": 0,
-    //     "marginRight": 80,
-    //     "valueAxes": [{
-    //         "axisAlpha": 0,
-    //         "position": "left"
-    //     }],
-    //     "graphs": [
-    //         {
-    //             "id": "g1",
-    //             "balloonText": "[[category]]<br><b><span style='font-size:14px;'>[[value]]</span></b>",
-    //             "bullet": "round",
-    //             "bulletSize": 8,
-    //             "lineColor": "#d1655d",
-    //             "lineThickness": 2,
-    //             "negativeLineColor": "#637bb6",
-    //             "type": "smoothedLine",
-    //             "valueField": "valueLol"
-    //         },
-    //         {
-    //             "id": "g2",
-    //             "balloonText": "[[category]]<br><b><span style='font-size:14px;'>[[value]]</span></b>",
-    //             "bullet": "round",
-    //             "bulletSize": 8,
-    //             "lineColor": "yellow",
-    //             "lineThickness": 2,
-    //             "negativeLineColor": "blue",
-    //             "type": "smoothedLine",
-    //             "valueField": "valueKek"
-    //         },
-    //     ],
-    //     "chartScrollbar": {
-    //         "dragIcon": "../../assets/icon/dragIconRoundBig",
-    //         "graph": "g1",
-    //         "gridAlpha": 0,
-    //         "color": "#ffffff",
-    //         "scrollbarHeight": 55,
-    //         "backgroundAlpha": 0,
-    //         "selectedBackgroundAlpha": 0.1,
-    //         "selectedBackgroundColor": "#d282f2",
-    //         "graphFillAlpha": 0,
-    //         "autoGridCount": true,
-    //         "selectedGraphFillAlpha": 0,
-    //         "graphLineAlpha": 0.2,
-    //         "graphLineColor": "#c2c2c2",
-    //         "selectedGraphLineColor": "#ffffff",
-    //         "selectedGraphLineAlpha": 1,
-    //     },
-    //     "chartCursor": {
-    //         "categoryBalloonDateFormat": "YYYY",
-    //         "cursorAlpha": 0,
-    //         "valueLineEnabled": true,
-    //         "valueLineBalloonEnabled": true,
-    //         "valueLineAlpha": 0.5,
-    //         "fullWidth": true
-    //     },
-    //     "dataDateFormat": "YYYY",
-    //     "categoryField": "year",
-    //     "categoryAxis": {
-    //         "minPeriod": "YYYY",
-    //         "parseDates": true,
-    //         "minorGridAlpha": 0.1,
-    //         "minorGridEnabled": true
-    //     },
-    //     "export": {
-    //         "enabled": true
-    //     }
-    // };
 
     ngAfterViewInit() {
         this.initChart();
+        this.sortData();
     }
 
     ngOnInit() {
@@ -119,6 +51,10 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges, AfterVie
     }
 
     ngOnChanges() {
+        this.initializeDataProvider();
+    }
+
+    private initializeDataProvider() {
         if (this.chart === undefined) {
             if (this.chartData.dataProvider === undefined || this.chartData.dataProvider.length === 0) {
                 const noData: any = {};
@@ -143,6 +79,22 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges, AfterVie
 
     private initChart() {
         this.chart = this.amChartsService.makeChart("chartdiv", this.chartConfig );
+    }
+
+    private sortData() {
+        if (this.chartData.dataProvider.length !== 0) {
+            const sortedArr = _.sortBy(this.chartData.dataProvider, (item: any) => {
+                return item.Sales;
+            });
+            if (this.sortDirection === "asc") {
+                this.chartData.dataProvider = sortedArr;
+                this.initializeDataProvider();
+            } else {
+                this.chartData.dataProvider = sortedArr.reverse();
+                this.initializeDataProvider();
+            }
+        }
+        
     }
 
     ngOnDestroy() {

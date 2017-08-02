@@ -11,6 +11,11 @@
     "share_on_twitter": "Share on Twitter",
     "share_on_google_plus": "Share on Google Plus"
   },
+  "sortButtons": {
+    "asc": "Ascending",
+    "desc": "Descending",
+    "sortBySelect": "Sort By:"
+  },
   "general": {
     "shelfalytics": "Shelfalytics",
     "home": "Home",
