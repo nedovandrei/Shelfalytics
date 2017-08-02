@@ -93,7 +93,7 @@ export class AmChartConfig implements IAmChartConfig {
 
     constructor(chartType: string) {
         this.type = chartType;
-        this.theme = "light";
+        this.theme = "dark";
         this.marginTop = 0;
         this.marginRight = 80;
         this.valueAxes = [{
