@@ -90,6 +90,10 @@ export class PosListComponent implements OnInit, AfterViewInit {
     rowLink: "pos-info"
   };
 
+  private mapCardTitle: string = "'pointsOfSale.posOnMap'";
+
+  
+
   private mapSettings: IGoogleMapsData = {
     center: {
       lat: 0,

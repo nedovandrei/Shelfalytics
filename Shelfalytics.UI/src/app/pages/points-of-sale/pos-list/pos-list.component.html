@@ -11,9 +11,11 @@
 </div> -->
 
 
-<ba-card title="POS on Map">
+<ba-card title="{{'pointsOfSale.posOnMap'}}">
   <google-maps *ngIf="mapInit" [mapData]="mapSettings"></google-maps>
 </ba-card>
-<ba-card title="Points of Sale">
+<ba-card title="{{'pointsOfSale.posList'}}">
   <adtable [moptions]="posTable" *ngIf="initFlag"></adtable>
 </ba-card>
+
+<span translate>{{'pointsOfSale.posList'}}</span>

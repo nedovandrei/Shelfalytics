@@ -6,7 +6,7 @@
       <a routerLink="/pages/main" translate>{{'general.home'}}</a>
     </li>
     <li class="breadcrumb-item" *ngFor="let crumb of crumbs">
-      <a routerLink="{{crumb.url}}">{{crumb.title}}</a>
+      <a routerLink="{{crumb.url}}" translate>{{crumb.title}}</a>
     </li>
     <!-- <li class="breadcrumb-item active" translate>{{ activePageTitle }}</li> -->
   </ul>

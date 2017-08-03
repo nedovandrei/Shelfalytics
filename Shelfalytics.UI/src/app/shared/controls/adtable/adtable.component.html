@@ -1,21 +1,21 @@
 ﻿<div class="row">
     <div class="col-xs-12 col-lg-8">
         <div *ngIf="showHeadingWithFilter">
-            <h4 class="table-header print-page-break mb-0" *ngIf="totalRecordCounter===0">Details - No {{moptions.dataTypeName}}</h4>
+            <h4 class="table-header print-page-break mb-0" *ngIf="totalRecordCounter===0" translate>{{'pointsOfSale.posTable.header.noData'}}</h4>
             <h4 class="table-header print-page-break mb-0" *ngIf="totalRecordCounter>0">
-                {{moptions.tableType}} - Showing&nbsp;
+                <span translate>{{'pointsOfSale.posTable.header.prefix'}}</span>&nbsp;
                 <b *ngIf="totalRecordCounter >= rowsOnPage">{{displayedItemFirstIndex}}</b>
                 <b *ngIf="totalRecordCounter < rowsOnPage">{{displayedItemFirstIndex}}</b>
-                &nbsp;to&nbsp;
+                &nbsp;<span translate>{{'pointsOfSale.posTable.header.to'}}</span>&nbsp;
                 <b>{{displayedItemLastIndex}}</b>&nbsp;
-                of&nbsp;
+                <span translate>{{'pointsOfSale.posTable.header.of'}}</span>&nbsp;
                 <b>{{totalRecordCounter}}</b>&nbsp;{{moptions.dataTypeName}}
             </h4>
         </div>
     </div>
     <div class="text-right col-xs-12 col-lg-4" *ngIf="moptions.filterable">
-        <button class="btn btn-default mb-3" (click)="toggleFilter()" [disabled]="loadState === loadStates.fail || totalRecordCounter===0">
-            Filter Data<i class="glyphicon glyphicon-filter"></i>
+        <button class="btn btn-default mb-3" (click)="toggleFilter()" [disabled]="loadState === loadStates.fail || totalRecordCounter===0" translate>
+            <span translate>{{'pointsOfSale.posTable.dataFilterButton'}}</span><i class="glyphicon glyphicon-filter"></i>
         </button>
     </div>
 </div>
@@ -37,12 +37,12 @@
             </td>
         </tr>
         <tr *ngIf="((!data.rows || data.rows.length === 0) && loadState === loadStates.success && !moptions.isDataLoading)">
-            <td [attr.colspan]="columns.length">No data.</td>
+            <td [attr.colspan]="columns.length" translate>{{'pointsOfSale.posTable.header.noData'}}</td>
         </tr>
         <tr *ngIf="moptions.isDataLoading || (loadState === loadStates.pending && (!data.rows || data.rows.length === 0))">
             <td [attr.colspan]="columns.length">
                 <div style="text-align: center;">
-                    Loading data...
+                    <span translate>{{'pointsOfSale.posTable.loading'}}</span>
                     <div>
                         <span class="loader loader-inline loader-small"></span>
                     </div>
@@ -50,7 +50,7 @@
             </td>
         </tr>
         <tr *ngIf="loadState === loadStates.fail">
-            <td [attr.colspan]="columns.length">Error when trying to load</td>
+            <td [attr.colspan]="columns.length" translate>{{'pointsOfSale.posTable.error'}}</td>
         </tr>
         <tr *ngFor="let row of data.rows" (click)="selectRow(row)" [routerLink]="rowLink ? [rowLink, row.PointOfSaleId] : []" [class.info]="row[moptions.selectPropertyName]==true">
             <td *ngFor="let column of columns">

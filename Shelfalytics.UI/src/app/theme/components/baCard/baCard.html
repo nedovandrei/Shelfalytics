@@ -1,7 +1,7 @@
 <div baCardBlur class="animated fadeIn card {{cardType}} {{baCardClass || ''}}" zoom-in>
     <div *ngIf="title" class="card-header clearfix">
       <div class="card-title">
-        <span>{{title}}</span>
+        <span translate>{{title}}</span>
         <ul class="nav nav-tabs" *ngIf="navTabs">
           <li class="nav-item " *ngFor="let tab of navTabs; let i = index">
             <a class="nav-link" [ngClass]="{ 'active': selectedTab === i }" (click)="onTabChange(i)">{{tab.title}}</a>

@@ -11,6 +11,57 @@
     "share_on_twitter": "Share on Twitter",
     "share_on_google_plus": "Share on Google Plus"
   },
+  "main": {
+    "title": "Main",
+    "sales": "Sales",
+    "oos": "OOS"
+  },
+  "pointsOfSale": {
+    "title": "Points of Sale",
+    "loading": "Loading data...",
+    "posOnMap": "POS On Map",
+    "posList": "POS List",
+    "posTable": {
+      "header": {
+        "noData": "No Data",
+        "prefix": "Showing",
+        "to": "to",
+        "of": "of",
+        "pos": "Points of sale"
+      },
+      "error": "Error when trying to load",
+      "posName": "POS Name",
+      "posAddress": "POS Address",
+      "posTelephone": "POS Telephone",
+      "contactPersonName": "Contact Person Name",
+      "dataFilterButton": "Filter Data"
+    },
+    "posInfo": {
+      "posName": "POS",
+      "posTelephone": "POS Telephone",
+      "posAddress": "POS Addres",
+      "schedule": "Schedule",
+      "contactPersonName": "Contact Person Name",
+      "posOos": "Out Of Stock (POS)",
+      "equipmentInfo": {
+        "model": "Model",
+        "equipmentType": "Equipment Type",
+        "temperature": "Temperature",
+        "openCount": "Open Count",
+        "lastPing": "Last Ping",
+        "oos": "Out Of Stock",
+        "sales": "Sales",
+        "productOosTable": {
+          "title": "Product Out Of Stock in %",
+          "skuName": "SKU Name",
+          "oosPercentage": "OOS Percentage"
+        },
+        "lossesDueToOosTable": {
+          "title": "Losses due to out of stock by product"
+        }
+      }
+    }
+  },
   "sortButtons": {
     "asc": "Ascending",
     "desc": "Descending",

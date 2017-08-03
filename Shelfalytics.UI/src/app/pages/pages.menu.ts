@@ -16,7 +16,7 @@ export const PAGES_MENU = [
         path: "points-of-sale",
         data: {
           menu: {
-            title: "Points of Sale",
+            title: "pointsOfSale.title",
             selected: false,
             expanded: false,
             order: 0,

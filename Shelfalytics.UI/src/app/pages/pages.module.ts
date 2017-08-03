@@ -1,10 +1,10 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { NgbDropdownModule, NgbModalModule } from "@ng-bootstrap/ng-bootstrap";
+import { TranslateModule } from "@ngx-translate/core";
 
 import { routing } from "./pages.routing";
 import { NgaModule } from "../theme/nga.module";
-import { AppTranslationModule } from "../app.translation.module";
 import { ControlsModule } from "../shared/controls/controls.module";
 import { UiModule } from "../shared/ui/ui.module";
 
@@ -15,10 +15,11 @@ import { GlobalFilter } from "../shared/services/global-filter.service";
 import { MainComponent } from "./main/main.component";
 import { StatisticsComponent } from "./statistics/statistics.component";
 
+
 @NgModule({
   imports: [
     CommonModule, 
-    AppTranslationModule, 
+    TranslateModule,
     NgaModule, 
     routing, 
     NgbDropdownModule, 

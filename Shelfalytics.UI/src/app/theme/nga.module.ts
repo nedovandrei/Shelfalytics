@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgUploaderModule } from 'ngx-uploader';
 import { AppTranslationModule } from '../app.translation.module';
+import { TranslateModule } from "@ngx-translate/core";
 
 import {
   BaThemeConfig
@@ -111,7 +112,7 @@ const NGA_VALIDATORS = [
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    AppTranslationModule,
+    TranslateModule,
     NgUploaderModule
   ],
   exports: [

@@ -6,7 +6,7 @@ import * as _ from "underscore";
 @Component({
   selector: "ba-content-top",
   styleUrls: ["./baContentTop.scss"],
-  templateUrl: "./baContentTop.html",
+  templateUrl: "./baContentTop.html"
 })
 export class BaContentTop {
 
@@ -23,6 +23,10 @@ export class BaContentTop {
       url: "/pages/points-of-sale"
     }
   };
+
+  private changeLanguage() {
+
+  }
 
   constructor(private _state: GlobalState, private router: Router) {
     this._state.subscribe("menu.activeLink", (activeLink) => {
@@ -53,5 +57,6 @@ export class BaContentTop {
       }
     });
     
+
   }
 }

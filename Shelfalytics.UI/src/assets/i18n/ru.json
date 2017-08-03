@@ -1,0 +1,48 @@
+{
+    "pointsOfSale": {
+        "title": "Точки продаж",
+        "loading": "Загрузка данных...",
+        "posOnMap": "Точки Продаж на Карте",
+        "posList": "Список Точек Продаж",
+        "posTable": {
+        "header": {
+            "noData": "Нет Данных",
+            "prefix": "Показано",
+            "to": "по",
+            "of": "из",
+            "pos": "Точек Продаж"
+        },
+        "error": "Ошибка при попытка загрузить",
+        "posName": "Имя Точки Продаж",
+        "posAddress": "Адрес Точки Продаж",
+        "posTelephone": "Телефон Точки Продаж",
+        "contactPersonName": "Имя Контактного Лица",
+        "dataFilterButton": "Фильтр Данных"
+        },
+        "posInfo": {
+            "posName": "POS",
+            "posTelephone": "POS Telephone",
+            "posAddress": "POS Addres",
+            "schedule": "Schedule",
+            "contactPersonName": "Contact Person Name",
+            "posOos": "Out Of Stock (POS)",
+            "equipmentInfo": {
+                "model": "Model",
+                "equipmentType": "Equipment Type",
+                "temperature": "Temperature",
+                "openCount": "Open Count",
+                "lastPing": "Last Ping",
+                "oos": "Out Of Stock",
+                "sales": "Sales",
+                "productOosTable": {
+                "title": "Product Out Of Stock in %",
+                "skuName": "SKU Name",
+                "oosPercentage": "OOS Percentage"
+                },
+                "lossesDueToOosTable": {
+                "title": "Losses due to out of stock by product"
+                }
+        }
+    }
+  }
+}
