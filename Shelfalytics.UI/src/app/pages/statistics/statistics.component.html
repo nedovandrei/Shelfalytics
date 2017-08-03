@@ -5,63 +5,65 @@
      <daterangepicker></daterangepicker>
   </div> -->
   <div class="col-sm-6 col-6">
-    <div class="btn-group w-100" ngbDropdown>
-      <button type="button" class="btn btn-default w-100" ngbDropdownToggle>
-        Default
-      </button>
-      <ul class="dropdown-menu w-100 text-center">
-        <li class="dropdown-item"><a href="#">Action</a></li>
-        <li class="dropdown-item"><a href="#">Another action</a></li>
-        <li class="dropdown-item"><a href="#">Something else here</a></li>
-        <li class="dropdown-divider"></li>
-        <li class="dropdown-item"><a href="#">Separated link</a></li>
-      </ul>
-    </div>
+    <div class="form-group w-100">
+                <label>Выбор Даты</label>
+                <select class="form-control" >
+                    <option>1</option>
+                    <option>2</option>
+                </select>
+        </div>
+        <!-- <daterangepicker [params]="daterangeParams" (dateChanged)="dateChangedHandler($event)"></daterangepicker> -->
   </div>
   <div class="col-sm-6 col-6">
-    <div class="btn-group w-100" ngbDropdown>
-      <button type="button" class="btn btn-default w-100" ngbDropdownToggle>
-        Default
-      </button>
-      <ul class="dropdown-menu w-100 text-center">
-        <li class="dropdown-item"><a href="#">Action</a></li>
-        <li class="dropdown-item"><a href="#">Another action</a></li>
-        <li class="dropdown-item"><a href="#">Something else here</a></li>
-        <li class="dropdown-divider"></li>
-        <li class="dropdown-item"><a href="#">Separated link</a></li>
-      </ul>
-    </div>
+    <div class="form-group w-100">
+                <label>Торговые точки</label>
+                <select class="form-control" >
+                    <option>1</option>
+                    <option>2</option>
+                </select>
+        </div>
   </div>
 </div>
-<div class="row btns-row mt-3">
+<div class="row btns-row ">
   <div class="col-sm-6 col-6">
-    <div class="btn-group w-100" ngbDropdown>
-      <button type="button" class="btn btn-default w-100" ngbDropdownToggle>
-        Default
-      </button>
-      <ul class="dropdown-menu w-100 text-center">
-        <li class="dropdown-item"><a href="#">Action</a></li>
-        <li class="dropdown-item"><a href="#">Another action</a></li>
-        <li class="dropdown-item"><a href="#">Something else here</a></li>
-        <li class="dropdown-divider"></li>
-        <li class="dropdown-item"><a href="#">Separated link</a></li>
-      </ul>
-    </div>
+    <div class="form-group w-100">
+                <label>Марки ( SKU _ Stock Keeping unit )</label>
+                <select class="form-control" >
+                    <option>1</option>
+                    <option>2</option>
+                </select>
+        </div>
   </div>
   <div class="col-sm-6 col-6">
-    <div class="btn-group w-100" ngbDropdown>
-      <button type="button" class="btn btn-default w-100" ngbDropdownToggle>
-        Default
-      </button>
-      <ul class="dropdown-menu w-100 text-center">
-        <li class="dropdown-item"><a href="#">Action</a></li>
-        <li class="dropdown-item"><a href="#">Another action</a></li>
-        <li class="dropdown-item"><a href="#">Something else here</a></li>
-        <li class="dropdown-divider"></li>
-        <li class="dropdown-item"><a href="#">Separated link</a></li>
-      </ul>
-    </div>
+    <div class="form-group w-100">
+                <label>Выбор оборудование ( тип Холодильника - только Тип 750 )</label>
+                <select class="form-control" >
+                    <option>1</option>
+                    <option>2</option>
+                </select>
+        </div>
   </div>
+
+</div>
+<div class="row btns-row ">
+<div class="col-sm-6 col-6">
+  <div class="form-group w-100">
+              <label>Город Населенный Пункт ( City/Local ) </label>
+              <select class="form-control" >
+                  <option>1</option>
+                  <option>2</option>
+              </select>
+      </div>
+</div>
+<div class="col-sm-6 col-6">
+  <div class="form-group w-100">
+              <label>Канал продаж ( Traditional Trade, Horeca, Retail Chain ) </label>
+              <select class="form-control" >
+                  <option>1</option>
+                  <option>2</option>
+              </select>
+      </div>
+</div>
 </div>
 </ba-card>
 <ba-card title="Типы отчётов">

@@ -55,7 +55,7 @@ export class DaterangepickerComponent implements OnInit {
     this.datesInitialized = true;
   }
 
-  
+
 
   // private eventLog: any;
 

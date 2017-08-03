@@ -1,14 +1,18 @@
 
 <div class="row">
     <div class="col-md-3">
-        <div class="input-group">
-            <span class="input-group-addon" translate>{{'sortButtons.sortBySelect'}}</span>
+
+<div class="form-group">
+
+            <label  translate>{{'sortButtons.sortBySelect'}}</label>
             <select class="form-control" [(ngModel)]="sortDirection" (change)="sortData()">
                 <option value="asc" translate>{{'sortButtons.asc'}}</option>
                 <option value="desc" translate>{{'sortButtons.desc'}}</option>
             </select>
-        </div>
+
+
     </div>
+  </div>
 </div>
 <div class="row">
     <div class="com-md-12">

@@ -311,7 +311,9 @@ button.progress-button {
   // background-color: $primary-light;
   border:1px solid $primary-light;
   // border-radius: 0!important;
+  color: $primary!important;
   &:hover, &.active{
+    color:$border!important;
     border-color: $primary;
     background-color: $primary!important;
   }
