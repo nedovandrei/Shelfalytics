@@ -4,13 +4,12 @@ import { NgbDropdownModule, NgbModalModule } from "@ng-bootstrap/ng-bootstrap";
 import { TranslateModule } from "@ngx-translate/core";
 
 import { routing } from "./pages.routing";
+import { AjaxService } from "../shared/services/ajax.service";
 import { NgaModule } from "../theme/nga.module";
 import { ControlsModule } from "../shared/controls/controls.module";
 import { UiModule } from "../shared/ui/ui.module";
 import { MapsModule } from "../shared/maps/maps.module";
 import { ChartsModule } from "../shared/charts/charts.module";
-
-
 
 import { Pages } from "./pages.component";
 
@@ -34,7 +33,7 @@ import { StatisticsComponent } from "./statistics/statistics.component";
     ChartsModule
   ],
   declarations: [Pages, MainComponent, StatisticsComponent],
-  providers: [GlobalFilter]
+  providers: [GlobalFilter, AjaxService]
 
 })
 export class PagesModule {

@@ -7,7 +7,7 @@
   </ba-card>
   <ba-card class="col-md-6 col-lg-3 col-sm-12 col-12 text-center">
 
-    <h1>8%</h1>
+    <h1>{{totalOOSPercentage}}%</h1>
     <p>OOS</p>
   </ba-card>
   <ba-card class="col-md-6 col-lg-3 col-sm-12 col-12 text-center">
@@ -25,7 +25,7 @@
 
 <div class="row">
   <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12" title="Top SKU OOS" [navTabs]="baCardTabs" [tabChangeCallback]="baCardTabChangeCallback">
-      <amchart [chartData]="topSkuOosChart"></amchart>
+      <amchart *ngIf="chartsInit" [chartData]="topSkuOosChart"></amchart>
   </ad-ba-card>
   <ba-card class="col-xl-6 col-12" title="TOP POS being in OOS" [navTabs]="baCardTabs" [tabChangeCallback]="baCardTabChangeCallback">
     <!-- <amchartPieCrartMain></amchartPieCrartMain> -->

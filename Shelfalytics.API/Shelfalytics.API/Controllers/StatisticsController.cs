@@ -30,6 +30,14 @@ namespace Shelfalytics.API.Controllers
             return Request.CreateResponse(res);
         }
 
+        [HttpPost]
+        [Route("TopSKUOOS")]
+        public async Task<HttpResponseMessage> GetTopSkuOOS(GlobalFilter filter)
+        {
+            var res = await _statisticsService.GetTopSkuOOS(filter);
+            return Request.CreateResponse(res);
+        }
+
         [Route("ProductSales")]
         [HttpPost]
         public async Task<HttpResponseMessage> GetProductSalesData(int equipmentId, GlobalFilter filter)

@@ -114,14 +114,24 @@ namespace Shelfalytics.Service
         {
             var pos = await _pointOfSaleRepository.GetPosEquipment(posId);
 
-            var result = new EquipmentDetaildedOOSDTO();
-            result.OOSProducts = new List<EquipmentProductOOSDTO>();
+            var result = new EquipmentDetaildedOOSDTO {OOSProducts = new List<EquipmentProductOOSDTO>()};
             foreach (var equipment in pos)
             {
                 var equipmentData = await GetEquipmentOOS(equipment, filter);
                 if (equipmentData.OOSProducts.Count > 0)
                 {
-                    result.OOSProducts.AddRange(equipmentData.OOSProducts);
+                    foreach (var oosProduct in equipmentData.OOSProducts)
+                    {
+                        if (result.OOSProducts.Any(x => x.ProductName == oosProduct.ProductName))
+                        {
+                            result.OOSProducts.First(x => x.ProductName == oosProduct.ProductName).OOSPercentage +=
+                                oosProduct.OOSPercentage;
+                        }
+                        else
+                        {
+                            result.OOSProducts.Add(oosProduct);
+                        }
+                    }
                 }
                 result.TotalOOS += equipmentData.TotalOOS;
             }
@@ -134,6 +144,37 @@ namespace Shelfalytics.Service
         {
             var res = await _saleRepository.GetEquipmentSales(equipmentId, filter);
             return res;
+        }
+
+        public async Task<EquipmentDetaildedOOSDTO> GetTopSkuOOS(GlobalFilter filter)
+        {
+            var posList = await _pointOfSaleRepository.GetPointsOfSales();
+            var result = new EquipmentDetaildedOOSDTO {OOSProducts = new List<EquipmentProductOOSDTO>()};
+
+            foreach (var pos in posList)
+            {
+                var posOos = await GetPOSOOS(pos.PointOfSaleId, filter);
+
+                if (posOos.OOSProducts.Count > 0)
+                {
+                    foreach (var posOosProduct in posOos.OOSProducts)
+                    {
+                        if (result.OOSProducts.Any(x => x.ProductName == posOosProduct.ProductName))
+                        {
+                            result.OOSProducts.First(x => x.ProductName == posOosProduct.ProductName).OOSPercentage +=
+                                posOosProduct.OOSPercentage;
+                        }
+                        else
+                        {
+                            result.OOSProducts.Add(posOosProduct);
+                        }
+                    }
+                }
+
+                result.TotalOOS += posOos.TotalOOS;
+            }
+
+            return result;
         }
     }
 }
