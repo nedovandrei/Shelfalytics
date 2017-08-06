@@ -6,7 +6,7 @@ import { NgaModule } from "../../theme/nga.module";
 import { TranslateModule } from "@ngx-translate/core";
 
 import { PageTopComponent } from "./page-top/page-top.component";
-import { BaCard } from "./BaCard/BaCard.component";
+import { AdBaCardComponent } from "./baCard/baCard.component";
 @NgModule({
     imports: [
         CommonModule,
@@ -14,8 +14,8 @@ import { BaCard } from "./BaCard/BaCard.component";
         ControlsModule,
         FormsModule
     ],
-    declarations: [PageTopComponent],
-    exports: [PageTopComponent]
+    declarations: [PageTopComponent, AdBaCardComponent],
+    exports: [PageTopComponent, AdBaCardComponent]
 })
 export class UiModule {
 

@@ -37,6 +37,8 @@ export class DaterangepickerComponent implements OnInit {
       endDate: undefined
   };
 
+  private isDateInputsVisible: boolean = true;
+
   private selectedDate: IDateRangePickerParams = undefined;
 
   @Input() params: IDateRangePickerParams;
@@ -52,6 +54,9 @@ export class DaterangepickerComponent implements OnInit {
     this.daterangepickerOptions.startDate = this.params.startDate;
     this.daterangepickerOptions.endDate = this.params.endDate;
 
+    if (this.params.isDateInputVisible !== undefined) {
+      this.isDateInputsVisible = this.params.isDateInputVisible;
+    }
     this.datesInitialized = true;
   }
 

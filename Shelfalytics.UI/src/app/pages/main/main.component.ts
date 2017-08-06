@@ -1,4 +1,6 @@
 import { Component, OnInit, AfterViewInit, Input, Output } from "@angular/core";
+import { IDateRangePickerParams } from "app/shared/controls/daterangepicker/daterangepicker.model";
+import * as moment from "moment";
 
 @Component({
   selector: "app-main",
@@ -25,6 +27,36 @@ export class MainComponent implements OnInit, AfterViewInit {
       title: "Yearly"
     }
   ];
+
+  private topSkuOosChart = {
+    dataProvider: [
+      {
+        SKUName: "Fourchette",
+        OOSPercentage: 43
+      },
+      {
+        SKUName: "Nr1",
+        OOSPercentage: 24
+      },
+      {
+        SKUName: "Green Hills",
+        OOSPercentage: 33
+      }
+    ],
+    legendField: "SKUName",
+    valueFields: ["OOSPercentage"]
+  };
+
+  // private daterangeParams: IDateRangePickerParams = {
+  //   startDate: moment().subtract(1, "weeks"),
+  //   endDate: moment(),
+  //   isDateInputVisible: false
+  // };
+
+  // private dateChangedHandler(value: any) {
+  //   console.log("Date Changed, page-top", value);
+  //   // this.onDateRangeChange.emit(value);
+  // }
 
   private baCardTabChangeCallback: any;
 

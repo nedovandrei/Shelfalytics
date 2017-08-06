@@ -12,6 +12,7 @@ export interface IAmChartConfig {
     categoryAxis?: IAmChartCategoryAxis;
     export?: IAmChartExportParam;
     dataProvider: any[];
+    color?: string;
 }
 
 export interface IAmChartValueAxis {
@@ -78,6 +79,7 @@ export interface IAmChartExportParam {
 export class AmChartConfig implements IAmChartConfig {
     type: string;
     theme?: string;
+    color?: string;
     marginTop?: number;
     marginRight?: number;
     valueAxes: IAmChartValueAxis[];
@@ -94,6 +96,7 @@ export class AmChartConfig implements IAmChartConfig {
     constructor(chartType: string) {
         this.type = chartType;
         this.theme = "dark";
+        this.color = "#ffffff";
         this.marginTop = 0;
         this.marginRight = 80;
         this.valueAxes = [{

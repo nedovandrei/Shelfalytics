@@ -1,5 +1,5 @@
 <div *ngIf="datesInitialized" class="input-group" daterangepicker (selected)="onDateSelect($event, mainInput)" [options]="daterangepickerOptions">
-    <span class="form-control uneditable-input"  name="daterange" >
+    <span *ngIf="isDateInputsVisible" class="form-control uneditable-input"  name="daterange" >
         {{ selectedDate.startDate | date:'dd.M.y' }} - {{ selectedDate.endDate | date:'dd.M.y' }}
     </span>
 

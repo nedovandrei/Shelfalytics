@@ -84,7 +84,7 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges, AfterVie
     private sortData() {
         if (this.chartData.dataProvider.length !== 0) {
             const sortedArr = _.sortBy(this.chartData.dataProvider, (item: any) => {
-                return item.Sales;
+                return item[this.chartData.valueFields[0]];
             });
             if (this.sortDirection === "asc") {
                 this.chartData.dataProvider = sortedArr;
