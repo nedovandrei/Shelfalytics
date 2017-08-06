@@ -1,5 +1,6 @@
 export interface IAmChartConfig {
     type: string;
+    pathToImages: string;
     theme?: string;
     marginTop?: number;
     marginRight?: number;
@@ -77,6 +78,7 @@ export interface IAmChartExportParam {
 
 export class AmChartConfig implements IAmChartConfig {
     type: string;
+    pathToImages: string;
     theme?: string;
     marginTop?: number;
     marginRight?: number;
@@ -93,6 +95,8 @@ export class AmChartConfig implements IAmChartConfig {
 
     constructor(chartType: string) {
         this.type = chartType;
+        this.pathToImages = "https://www.amcharts.com/lib/3/images/";
+        // "pathToImages": "https://www.amcharts.com/lib/3/images/";
         this.theme = "dark";
         this.marginTop = 0;
         this.marginRight = 80;
@@ -128,7 +132,7 @@ export class AmChartConfig implements IAmChartConfig {
             // }
         ];
         this.chartScrollbar = {
-            "dragIcon": "../../assets/icon/dragIconRoundBig",
+            // "dragIcon": "../../assets/icon/dragIconRoundBig",
             "graph": "g1",
             "gridAlpha": 0,
             "color": "#ffffff",
