@@ -34,16 +34,16 @@
     </div>
   </div>
     <div class="row">
-        <ba-card class="col-xlg-6 col-xl-6 col-lg-6 col-sm-6 col-6 " title="CK Filling (P.O.S)">
-          <div class="row justify-content-md-center">
+        <ba-card class="col-12 col-sm-6 " title="CK Filling (P.O.S)">
+          <div class="row justify-content-center">
             <div class="col-6">
               <easy-pie-chart [chartData]="POSOOSChartData"></easy-pie-chart>
             </div>
           </div>
         </ba-card>
-        <ba-card class="col-xlg-6 col-xl-6 col-lg-6 col-sm-6 col-6 " title="{{'pointsOfSale.posInfo.posOos'}}">
-          <div class="row justify-content-md-center">
-            <div class="col-6">
+        <ba-card class="col-12 col-sm-6" title="{{'pointsOfSale.posInfo.posOos'}}">
+          <div class="row justify-content-center">
+            <div class="col-6 ">
               <easy-pie-chart [chartData]="POSOOSChartData"></easy-pie-chart>
             </div>
           </div>
@@ -59,13 +59,13 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-9">
+    <div class="col-12 col-sm-9">
 
         <equipment-info *ngIf="equipmentInFocus > 0 && equipmentInitFlag" [equipmentId]="equipmentInFocus"></equipment-info>
         <!-- <angular2-grid></angular2-grid> -->
 
     </div>
-    <div class="col-md-3 col-xl-3">
+    <div class="col-12 col-sm-3">
       <ba-card *ngIf="equipmentInitFlag" title="CK Filling">
         <easy-pie-chart [chartData]="equipmentOOSChartData"></easy-pie-chart>
       </ba-card>

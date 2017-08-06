@@ -145,7 +145,7 @@
     overflow: hidden;
     width: 400px;
     float: left;
-    // margin: 15px 0 0 calc((100% - 115px - 40px - 400px)/2);
+    margin: 15px 0 0 calc((100% - 115px - 40px - 400px)/2);
     .btn:hover {
       transform: scale(1)!important;
       margin: 0;
@@ -175,7 +175,7 @@
     }
   }
 
-  @media screen and (max-width: $resS) {
+  @media screen and (max-width: $resL) {
     .search {
       display: none;
     }
