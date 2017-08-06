@@ -16,16 +16,19 @@
     }
   }
 }
-ba-card{
+ba-card, ad-ba-card{
   .card{
       background-color: $bacard-bg;
   }
 }
-.card{
-  & > &-header{
-    height: auto!important;
+ad-ba-card{
+  .card{
+    & > &-header{
+      height: auto!important;
+    }
   }
 }
+
 
 
 .progress-bar-title{
