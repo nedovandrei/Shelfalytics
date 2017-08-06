@@ -3,6 +3,7 @@
     width: calc(100% / 6);
     min-width: calc(100% / 6);
     display: none!important;
+    margin-right: 25px;
     &:nth-of-type(-n + 6){
       display: flex!important;
     }
