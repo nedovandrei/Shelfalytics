@@ -97,7 +97,7 @@ export class AmChartConfig implements IAmChartConfig {
 
     constructor(chartType: string) {
         this.type = chartType;
-        this.pathToImages = "https://www.amcharts.com/lib/3/images/";
+        this.pathToImages = "assets/images/";
         // "pathToImages": "https://www.amcharts.com/lib/3/images/";
         this.theme = "dark";
         this.color = "#ffffff";

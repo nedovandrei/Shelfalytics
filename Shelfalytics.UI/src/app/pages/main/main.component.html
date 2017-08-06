@@ -27,38 +27,38 @@
   <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12" title="Top SKU OOS" [navTabs]="baCardTabs" [tabChangeCallback]="baCardTabChangeCallback">
       <amchart [chartData]="topSkuOosChart"></amchart>
   </ad-ba-card>
-  <ba-card class="col-xl-6 col-12" title="TOP POS being in OOS" [navTabs]="baCardTabs" [tabChangeCallback]="baCardTabChangeCallback">
-    <!-- <amchartPieCrartMain></amchartPieCrartMain> -->
-  </ba-card>
+  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12" title="TOP POS being in OOS" [navTabs]="baCardTabs" [tabChangeCallback]="baCardTabChangeCallback">
+
+  </ad-ba-card>
 </div>
 <div class="row">
-  <ba-card class="col-xl-6 col-12" title="Map with POS in OOS" [navTabs]="baCardTabs" [tabChangeCallback]="baCardTabChangeCallback">
+  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12" title="Map with POS in OOS" [navTabs]="baCardTabs" [tabChangeCallback]="baCardTabChangeCallback">
 
       <!-- <daterangepicker [params]="daterangeParams" (dateChanged)="dateChangedHandler($event)"></daterangepicker> -->
-  </ba-card>
-  <ba-card class="col-xl-6 col-12" title="Looses due to OOS in $ per sku" [navTabs]="baCardTabs" [tabChangeCallback]="baCardTabChangeCallback">
+  </ad-ba-card >
+  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12" title="Looses due to OOS in $ per sku" [navTabs]="baCardTabs" [tabChangeCallback]="baCardTabChangeCallback">
       <ol class="mt-2">
         <li>asdasdas</li>
           <li>asdasdas</li>
             <li>asdasdas</li>
       </ol>
-  </ba-card>
+  </ad-ba-card >
 </div>
 <div class="row">
-  <ba-card class="col-xl-6 col-12" title="Top best business developers" [navTabs]="baCardTabs" [tabChangeCallback]="baCardTabChangeCallback">
+  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12" title="Top best business developers" [navTabs]="baCardTabs" [tabChangeCallback]="baCardTabChangeCallback">
 
       <ol class="mt-2">
         <li>asdasdas</li>
           <li>asdasdas</li>
             <li>asdasdas</li>
       </ol>
-  </ba-card>
-  <ba-card class="col-xl-6 col-12" title="TOP POS" [navTabs]="baCardTabs" [tabChangeCallback]="baCardTabChangeCallback">
+  </ad-ba-card >
+  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12" title="TOP POS" [navTabs]="baCardTabs" [tabChangeCallback]="baCardTabChangeCallback">
 
       <ol class="mt-2">
         <li>asdasdas</li>
           <li>asdasdas</li>
             <li>asdasdas</li>
       </ol>
-  </ba-card>
+  </ad-ba-card >
 </div>
