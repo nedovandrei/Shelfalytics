@@ -2,6 +2,32 @@
   ba-card{
     width: calc(100% / 6);
     min-width: calc(100% / 6);
+    display: none!important;
+    &:nth-of-type(-n + 6){
+      display: flex!important;
+    }
+    &.push-9{
+      width: calc(100% / 9);
+      min-width: calc(100% / 9);
+      &:nth-of-type(-n + 9){
+        display: flex!important;
+      }
+    }
+    &.push-8{
+      width: calc(100% / 8);
+      min-width: calc(100% / 8);
+      &:nth-of-type(-n + 8){
+        display: flex!important;
+      }
+    }
+    &.push-7{
+      width: calc(100% / 7);
+      min-width: calc(100% / 7);
+      &:nth-of-type(-n + 7){
+        display: flex!important;
+      }
+    }
+
   }
   .card{
     width: 100%;
