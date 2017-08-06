@@ -27,6 +27,7 @@ import { DaterangepickerComponent } from "./daterangepicker/daterangepicker.comp
 import { Angular2ModalComponent } from "./angular2-modal/angular2-modal.component";
 
 
+
 @NgModule({
   imports: [
     CommonModule,

@@ -1,5 +1,4 @@
-import { Component, OnInit, AfterViewInit } from "@angular/core";
-import { IGoogleMapsData, ICoordinates, IMarker } from "../../shared/maps/google-maps/google-maps.model";
+import { Component, OnInit, AfterViewInit, Input, Output } from "@angular/core";
 
 @Component({
   selector: "app-main",
@@ -7,18 +6,13 @@ import { IGoogleMapsData, ICoordinates, IMarker } from "../../shared/maps/google
   styleUrls: ["./main.component.scss"]
 })
 export class MainComponent implements OnInit, AfterViewInit {
-  private mapSettings: IGoogleMapsData = {
-    center: {
-      lat: 0,
-      lng: 0
-    },
-    // zoom: 16,
-    markers: [],
-    zoomControl: true
-  };
 
-  private initFlag: boolean = false;
   constructor() { }
+
+
+  private mapInit: boolean = false;
+  private initFlag: boolean = false;
+
 
   private baCardTabs: any[] = [
     {
@@ -35,6 +29,7 @@ export class MainComponent implements OnInit, AfterViewInit {
   private baCardTabChangeCallback: any;
 
   ngOnInit() {
+
   }
 
   ngAfterViewInit() {

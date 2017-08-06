@@ -7,6 +7,10 @@ import { routing } from "./pages.routing";
 import { NgaModule } from "../theme/nga.module";
 import { ControlsModule } from "../shared/controls/controls.module";
 import { UiModule } from "../shared/ui/ui.module";
+import { MapsModule } from "../shared/maps/maps.module";
+import { ChartsModule } from "../shared/charts/charts.module";
+
+
 
 import { Pages } from "./pages.component";
 
@@ -18,14 +22,16 @@ import { StatisticsComponent } from "./statistics/statistics.component";
 
 @NgModule({
   imports: [
-    CommonModule, 
+    CommonModule,
     TranslateModule,
-    NgaModule, 
-    routing, 
-    NgbDropdownModule, 
-    NgbModalModule, 
-    ControlsModule, 
-    UiModule
+    NgaModule,
+    routing,
+    NgbDropdownModule,
+    NgbModalModule,
+    ControlsModule,
+    UiModule,
+    MapsModule,
+    ChartsModule
   ],
   declarations: [Pages, MainComponent, StatisticsComponent],
   providers: [GlobalFilter]

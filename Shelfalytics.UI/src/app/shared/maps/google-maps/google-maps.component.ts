@@ -17,7 +17,7 @@ class GoogleMapsData implements IGoogleMapsData {
   styleUrls: ["./google-maps.component.scss"]
 })
 export class GoogleMapsComponent implements OnInit {
-  
+
   constructor() { }
 
   @Input() mapData: IGoogleMapsData;

@@ -128,7 +128,7 @@ export class AmChartConfig implements IAmChartConfig {
             // }
         ];
         this.chartScrollbar = {
-            "dragIcon": "../../assets/icon/dragIconRoundBig",
+            // "dragIcon": "../../assets/icon/dragIconRoundBig",
             "graph": "g1",
             "gridAlpha": 0,
             "color": "#ffffff",

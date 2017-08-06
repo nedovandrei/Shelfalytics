@@ -1,0 +1,37 @@
+<div baCardBlur class="animated fadeIn card {{cardType}} {{baCardClass || ''}}" zoom-in>
+    <div *ngIf="title" class="card-header clearfix">
+      <div class="card-title">
+        <span translate>{{title}}</span>
+        <ul class="nav nav-tabs" *ngIf="navTabs">
+          <li class="nav-item " *ngFor="let tab of navTabs; let i = index">
+            <a class="nav-link" [ngClass]="{ 'active': selectedTab === i }" (click)="onTabChange(i)">{{tab.title}}</a>
+          </li>
+          <!-- <li>
+            <a class="nav-link">
+              <daterangepicker [params]="daterangeParams" (dateChanged)="dateChangedHandler($event)"></daterangepicker>
+            </a>
+          </li> -->
+        </ul>
+      </div>
+
+        <!-- <h3 class="card-title" translate>{{title}}</h3>
+        <ul class="card-title nav nav-tabs" *ngIf="navTabs">
+          <li class="nav-item " *ngFor="let tab of navTabs; let i = index">
+            <a class="nav-link" [ngClass]="{ 'active': selectedTab === i }" (click)="onTabChange(i)">{{tab.title}}</a>
+          </li>
+        </ul> -->
+    </div>
+    <!-- <div *ngIf="navTabs" class="card-header clearfix">
+      <ul class="nav nav-tabs">
+        <li class="nav-item ">
+          <a class="nav-link active">1</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link">2</a>
+        </li>
+      </ul>
+    </div> -->
+    <div class="card-body">
+        <ng-content></ng-content>
+    </div>
+</div>

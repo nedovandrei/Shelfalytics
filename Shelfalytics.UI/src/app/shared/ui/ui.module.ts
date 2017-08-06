@@ -6,7 +6,7 @@ import { NgaModule } from "../../theme/nga.module";
 import { TranslateModule } from "@ngx-translate/core";
 
 import { PageTopComponent } from "./page-top/page-top.component";
-
+import { BaCard } from "./BaCard/BaCard.component";
 @NgModule({
     imports: [
         CommonModule,

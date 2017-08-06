@@ -45,6 +45,6 @@ export class PageTopComponent {
   private changeLanguage(lang: string) {
     console.log(lang);
     this.onLanguageChanged.emit(lang);
-    
+
   }
 }
