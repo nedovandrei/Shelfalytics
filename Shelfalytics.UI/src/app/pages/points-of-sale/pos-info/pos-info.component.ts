@@ -100,7 +100,7 @@ export class PosInfoComponent implements OnInit, OnDestroy {
           this.posInfoService.getPOSSales(this.equipmentInFocus).subscribe((saleData: any) => {
             this.salesChartData = {
               dataProvider: saleData,
-              legendField: "ProductName",
+              legendField: "ShortProductName",
               valueFields: ["Sales"]
             };
             this.equipmentInitFlag = true;

@@ -18,6 +18,7 @@ export interface IMarker {
     coordinates: ICoordinates;
     title: string;
     markerDraggable: boolean;
+    iconUrl?: any;
     label?: string; // a single uppercase letter
     opacity?: number;
     visible?: boolean;

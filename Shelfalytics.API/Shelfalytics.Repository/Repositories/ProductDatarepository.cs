@@ -34,7 +34,8 @@ namespace Shelfalytics.Repository.Repositories
                         EquipmentId = equipmentId,
                         Row = pl.Row,
                         ProductName = product.TradeMark,
-                        SKUName = product.SKUName
+                        SKUName = product.SKUName,
+                        ShortSKUName = product.ShortSKUName
                     };
                 return await query.ToListAsync();
             }

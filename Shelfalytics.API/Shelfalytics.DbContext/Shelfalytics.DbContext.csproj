@@ -129,6 +129,14 @@
     <Compile Include="Migrations\Main\201707302125035_AddedEquipmentIdToSale2.Designer.cs">
       <DependentUpon>201707302125035_AddedEquipmentIdToSale2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Main\201708071317495_addedShortSKUName.cs" />
+    <Compile Include="Migrations\Main\201708071317495_addedShortSKUName.Designer.cs">
+      <DependentUpon>201708071317495_addedShortSKUName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Main\201708071323235_MadeShortSKURequired.cs" />
+    <Compile Include="Migrations\Main\201708071323235_MadeShortSKURequired.Designer.cs">
+      <DependentUpon>201708071323235_MadeShortSKURequired.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Main\Configuration.cs" />
     <Compile Include="ShelfalyticsDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -178,6 +186,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Main\201707302125035_AddedEquipmentIdToSale2.resx">
       <DependentUpon>201707302125035_AddedEquipmentIdToSale2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\Main\201708071317495_addedShortSKUName.resx">
+      <DependentUpon>201708071317495_addedShortSKUName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\Main\201708071323235_MadeShortSKURequired.resx">
+      <DependentUpon>201708071323235_MadeShortSKURequired.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -14,6 +14,8 @@ namespace Shelfalytics.Model.DbModels
         [Required]
         public string SKUName { get; set; }
         [Required]
+        public string ShortSKUName { get; set; }
+        [Required]
         [MaxLength(100)]
         public string TradeMark { get; set; }
         [Required]        

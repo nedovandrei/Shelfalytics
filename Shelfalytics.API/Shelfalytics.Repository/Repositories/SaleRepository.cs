@@ -43,20 +43,58 @@ namespace Shelfalytics.Repository.Repositories
                         sale.Quantity,
                         sale.TimeStamp,
                         product.SKUName,
-                        product.TradeMark
+                        product.TradeMark,
+                        product.ShortSKUName
                     }
                     into set
                     group set by new
                     {
                         set.SKUName,
-                        set.TradeMark
+                        set.TradeMark,
+                        set.ShortSKUName
                     }
                     into groupedSet
                     select new EquipmentProductSalesDTO
                     {
                         ProductName = groupedSet.Key.SKUName,
                         Sales = groupedSet.Where(x => x.SKUName == groupedSet.Key.SKUName).Sum(x => x.Quantity),
-                        TradeMark = groupedSet.Key.TradeMark
+                        TradeMark = groupedSet.Key.TradeMark,
+                        ShortProductName = groupedSet.Key.ShortSKUName
+                    };
+
+                return await query.ToListAsync();
+            }
+        }
+
+        public async Task<IEnumerable<EquipmentProductSalesDTO>> GetProductSalesSummary(GlobalFilter filter)
+        {
+            using (var uow = _unitOfWorkFactory.GetShelfalyticsDbContext())
+            {
+                var query = from sale in uow.Set<Sale>()
+                    join product in uow.Set<Product>() on sale.ProductId equals product.Id
+                    where sale.TimeStamp <= filter.EndTime && sale.TimeStamp >= filter.StartTime
+                    select new
+                    {
+                        sale.Quantity,
+                        sale.TimeStamp,
+                        product.SKUName,
+                        product.TradeMark,
+                        product.ShortSKUName
+                    }
+                    into set
+                    group set by new
+                    {
+                        set.SKUName,
+                        set.TradeMark,
+                        set.ShortSKUName
+                    }
+                    into groupedSet
+                    select new EquipmentProductSalesDTO
+                    {
+                        ProductName = groupedSet.Key.SKUName,
+                        Sales = groupedSet.Where(x => x.SKUName == groupedSet.Key.SKUName).Sum(x => x.Quantity),
+                        TradeMark = groupedSet.Key.TradeMark,
+                        ShortProductName = groupedSet.Key.ShortSKUName
                     };
 
                 return await query.ToListAsync();

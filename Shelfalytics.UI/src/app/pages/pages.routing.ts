@@ -1,6 +1,6 @@
-import { Routes, RouterModule } from '@angular/router';
-import { Pages } from './pages.component';
-import { ModuleWithProviders } from '@angular/core';
+import { Routes, RouterModule } from "@angular/router";
+import { Pages } from "./pages.component";
+import { ModuleWithProviders } from "@angular/core";
 import { MainComponent } from "./main/main.component";
 import { StatisticsComponent } from "./statistics/statistics.component";
 // noinspection TypeScriptValidateTypes
@@ -9,27 +9,27 @@ import { StatisticsComponent } from "./statistics/statistics.component";
 
 export const routes: Routes = [
   {
-    path: 'login',
-    loadChildren: 'app/pages/login/login.module#LoginModule'
+    path: "login",
+    loadChildren: "app/pages/login/login.module#LoginModule"
   },
   {
-    path: 'register',
-    loadChildren: 'app/pages/register/register.module#RegisterModule'
+    path: "register",
+    loadChildren: "app/pages/register/register.module#RegisterModule"
   },
   {
-    path: 'pages',
+    path: "pages",
     component: Pages,
     children: [
-      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
-      { path: 'editors', loadChildren: './editors/editors.module#EditorsModule' },
-      { path: 'components', loadChildren: './components/components.module#ComponentsModule' },
-      { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },
-      { path: 'ui', loadChildren: './ui/ui.module#UiModule' },
-      { path: 'forms', loadChildren: './forms/forms.module#FormsModule' },
-      { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },
+      { path: "", redirectTo: "main", pathMatch: "full" },
+      { path: "dashboard", loadChildren: "./dashboard/dashboard.module#DashboardModule" },
+      { path: "editors", loadChildren: "./editors/editors.module#EditorsModule" },
+      { path: "components", loadChildren: "./components/components.module#ComponentsModule" },
+      { path: "charts", loadChildren: "./charts/charts.module#ChartsModule" },
+      { path: "ui", loadChildren: "./ui/ui.module#UiModule" },
+      { path: "forms", loadChildren: "./forms/forms.module#FormsModule" },
+      { path: "tables", loadChildren: "./tables/tables.module#TablesModule" },
       // { path: 'maps', loadChildren: './maps/maps.module#MapsModule' },
-      { path: 'points-of-sale', loadChildren: './points-of-sale/points-of-sale.module#PointsOfSaleModule'},
+      { path: "points-of-sale", loadChildren: "./points-of-sale/points-of-sale.module#PointsOfSaleModule"},
       { path: "main", component: MainComponent },
       { path: "statistics", component: StatisticsComponent }
     ]

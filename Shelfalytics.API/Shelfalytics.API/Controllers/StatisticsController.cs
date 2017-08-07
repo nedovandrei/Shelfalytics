@@ -38,6 +38,14 @@ namespace Shelfalytics.API.Controllers
             return Request.CreateResponse(res);
         }
 
+        [Route("ProductSalesSummary")]
+        [HttpPost]
+        public async Task<HttpResponseMessage> GetProductSalesSummary(GlobalFilter filter)
+        {
+            var res = await _statisticsService.GetProductSalesSummary(filter);
+            return Request.CreateResponse(res);
+        }
+
         [Route("ProductSales")]
         [HttpPost]
         public async Task<HttpResponseMessage> GetProductSalesData(int equipmentId, GlobalFilter filter)
@@ -51,6 +59,14 @@ namespace Shelfalytics.API.Controllers
         public async Task<HttpResponseMessage> GetPosOOS(int posId, GlobalFilter filter)
         {
             var res = await _statisticsService.GetPOSOOS(posId, filter);
+            return Request.CreateResponse(res);
+        }
+
+        [HttpPost]
+        [Route("posOOSsummary")]
+        public async Task<HttpResponseMessage> GetPosOosSummary(GlobalFilter filter)
+        {
+            var res = await _statisticsService.GetPOSOOSSummary(filter);
             return Request.CreateResponse(res);
         }
     }

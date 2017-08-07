@@ -13,6 +13,7 @@ namespace Shelfalytics.RepositoryInterface.DTO
         public int Row { get; set; }
         public string ProductName { get; set; }
         public string SKUName { get; set; }
+        public string ShortSKUName { get; set; }
         public double OOSPercentage { get; set; }
     }
 }

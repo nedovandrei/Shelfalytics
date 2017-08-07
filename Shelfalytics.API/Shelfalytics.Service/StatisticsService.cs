@@ -100,6 +100,7 @@ namespace Shelfalytics.Service
                     Row = g.First(x => x.ProductId == key).Row,
                     EquipmentId = g.First(x => x.ProductId == key).EquipmentId,
                     SKUName = g.First(x => x.ProductId == key).SKUName,
+                    ShortSKUName = g.First(x => x.ProductId == key).ShortSKUName,
                     ProductName = g.First(x => x.ProductId == key).ProductName,
                     OOSPercentage = Math.Round(g.Count(x => x.ProductId == key) / ZeroOOSCount * 100, 2)
                 }
@@ -139,6 +140,29 @@ namespace Shelfalytics.Service
             return result;
         }
 
+        public async Task<List<PointOfSaleOOSSummary>> GetPOSOOSSummary(GlobalFilter filter)
+        {
+            var posList = await _pointOfSaleRepository.GetPointsOfSales();
+            var posOosSummary = new List<PointOfSaleOOSSummary>();
+
+            foreach (var pos in posList)
+            {
+                var posOos = await GetPOSOOS(pos.PointOfSaleId, filter);
+                posOosSummary.Add(new PointOfSaleOOSSummary
+                {
+                    PointOfSaleId = pos.PointOfSaleId,
+                    PointOfSaleName = pos.PointOfSaleName,
+                    OOSPercentage = posOos.TotalOOS,
+                    Latitude = pos.Latitude,
+                    Longitude = pos.Longitude,
+                    PointOfSaleAddress = pos.PointOfSaleAddress
+                });
+            }
+
+            return posOosSummary;
+        }
+
+
         public async Task<IEnumerable<EquipmentProductSalesDTO>> GetProductSalesData(int equipmentId,
             GlobalFilter filter)
         {
@@ -175,6 +199,18 @@ namespace Shelfalytics.Service
             }
 
             return result;
+        }
+
+        public async Task<SalesSummaryDTO> GetProductSalesSummary(GlobalFilter filter)
+        {
+            var productSalesSummary = await _saleRepository.GetProductSalesSummary(filter);
+            var saleSummary = new SalesSummaryDTO()
+            {
+                Products = productSalesSummary,
+                SalesCount = productSalesSummary.Sum(x => x.Sales)
+            };
+
+            return saleSummary;
         }
     }
 }

@@ -71,6 +71,8 @@
     <Compile Include="DTO\EquipmentReadingGetDTO.cs" />
     <Compile Include="DTO\ExceptionLogDTO.cs" />
     <Compile Include="DTO\PointOfSaleDataDTO.cs" />
+    <Compile Include="DTO\PointOfSaleOOSSummary.cs" />
+    <Compile Include="DTO\SalesSummaryDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="DTO\UserLoginDTO.cs" />
     <Compile Include="Helpers\GlobalFilter.cs" />

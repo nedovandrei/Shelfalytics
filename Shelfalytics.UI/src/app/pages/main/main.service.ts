@@ -14,4 +14,18 @@ export class MainService {
             EndTime: this.globalFilter.endDate
         });
     }
+
+    getSalesSummary() {
+        return this.ajaxService.post(`${global.apiPath}Statistics/productSalesSummary`, {
+            StartTime: this.globalFilter.startDate,
+            EndTime: this.globalFilter.endDate
+        });
+    }
+
+    getTopPosInOos() {
+        return this.ajaxService.post(`${global.apiPath}Statistics/posOOSsummary`, {
+            StartTime: this.globalFilter.startDate,
+            EndTime: this.globalFilter.endDate
+        });
+    }
 }

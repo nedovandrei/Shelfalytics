@@ -14,6 +14,7 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges, AfterVie
     constructor(private amChartsService: AmChartsService) { }
 
     @Input() chartData: any;
+    @Input() chartName: string;
     private initFlag: boolean = false;
     private chart: any;
     private sortDirection: "asc" | "desc" = "desc";
@@ -78,7 +79,7 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges, AfterVie
     }
 
     private initChart() {
-        this.chart = this.amChartsService.makeChart("chartdiv", this.chartConfig );
+        this.chart = this.amChartsService.makeChart(this.chartName ? this.chartName : "chartdiv", this.chartConfig );
     }
 
     private sortData() {
