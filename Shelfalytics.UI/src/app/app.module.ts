@@ -18,11 +18,13 @@ import { GlobalState } from './global.state';
 import { NgaModule } from './theme/nga.module';
 import { PagesModule } from './pages/pages.module';
 import { AuthModule } from "./auth/auth.module";
+import { AuthService } from "./auth/auth.service";
 
 // Application wide providers
 const APP_PROVIDERS = [
   AppState,
-  GlobalState
+  GlobalState,
+  AuthService
 ];
 
 export type StoreType = {

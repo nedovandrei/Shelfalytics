@@ -59,6 +59,7 @@ export class App implements AfterViewInit {
     this.jwtHelper.getTokenExpirationDate(token),
     this.jwtHelper.isTokenExpired(token)
   );
+  console.log(this.jwtHelper.urlBase64Decode);
 }
 
   private _loadImages(): void {

@@ -10,6 +10,7 @@ using Shelfalytics.ServiceInterface;
 
 namespace Shelfalytics.API.Controllers
 {
+    [Authorize]
     [RoutePrefix("api/Statistics")]
     public class StatisticsController : ApiController
     {

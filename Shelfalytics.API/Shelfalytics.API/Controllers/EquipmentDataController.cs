@@ -12,6 +12,7 @@ using Shelfalytics.ServiceInterface;
 
 namespace Shelfalytics.API.Controllers
 {
+    [Authorize]
     [RoutePrefix("api/EquipmentData")]
     public class EquipmentDataController : ApiController
     {
@@ -35,7 +36,6 @@ namespace Shelfalytics.API.Controllers
             return Request.CreateResponse(response);
         }
 
-        [Authorize]
         [HttpPost]
         public HttpResponseMessage TestEquipmentReadingSave(EquipmentReadingTest obj)
         {
@@ -43,7 +43,6 @@ namespace Shelfalytics.API.Controllers
         }
 
         [Route("register")]
-        [Authorize]
         [HttpPost]
         public async Task<HttpResponseMessage> EquipmentReadingSave(EquipmentReadingModel model)
         {

@@ -9,6 +9,7 @@ using Shelfalytics.ServiceInterface;
 
 namespace Shelfalytics.API.Controllers
 {
+    [Authorize]
     public class PointOfSaleController : ApiController
     {
         private readonly IPointOfSaleService _pointOfSaleService;

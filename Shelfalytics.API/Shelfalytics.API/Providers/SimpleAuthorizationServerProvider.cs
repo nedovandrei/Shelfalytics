@@ -35,7 +35,7 @@ namespace Shelfalytics.API.Providers
                 Password = context.Password
             };
 
-            IdentityUser user = await _repo.FindUser(loginUser);
+            var user = await _repo.FindUser(loginUser);
 
             if (user == null)
             {
@@ -44,8 +44,17 @@ namespace Shelfalytics.API.Providers
             }
 
             var identity = new ClaimsIdentity(context.Options.AuthenticationType);
-            identity.AddClaim(new Claim("sub", context.UserName));
-            identity.AddClaim(new Claim("role", "user"));
+            //identity.AddClaim(new Claim("sub", context.UserName));
+            //identity.AddClaim(new Claim("role", user.Roles.First().RoleId));
+            identity.AddClaims(new List<Claim>
+            {
+                new Claim("sub", context.UserName),
+                new Claim("role", user.Roles.First()?.RoleId),
+                new Claim("name", user.EmployeeName),
+                new Claim("phone", user.PhoneNumber),
+                new Claim("id", user.Id),
+                new Claim("clientId", user.ClientId.ToString())
+            });
 
             context.Validated(identity);
 

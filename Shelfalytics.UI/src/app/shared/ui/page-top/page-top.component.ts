@@ -1,16 +1,14 @@
-import { Component, Input, Output, EventEmitter } from "@angular/core";
-
+import { Component, Input, Output, EventEmitter, OnInit } from "@angular/core";
+import { AuthService } from "../../../auth/auth.service";
 import { GlobalState } from "../../../global.state";
 import { IDateRangePickerParams } from "../../controls/daterangepicker/daterangepicker.model";
-
-
 
 @Component({
   selector: "page-top",
   templateUrl: "./page-top.component.html",
   styleUrls: ["./page-top.component.scss"]
 })
-export class PageTopComponent {
+export class PageTopComponent implements OnInit {
 
   @Input() daterangeParams: IDateRangePickerParams;
   @Output() onDateRangeChange = new EventEmitter();
@@ -21,10 +19,18 @@ export class PageTopComponent {
 
   private currentLanguage = "en";
 
-  constructor(private _state: GlobalState) {
+  private loggedUser: any;
+
+  constructor(private _state: GlobalState, private auth: AuthService) {
     this._state.subscribe("menu.isCollapsed", (isCollapsed) => {
       this.isMenuCollapsed = isCollapsed;
     });
+  }
+
+  ngOnInit() {
+    this.loggedUser = this.auth.getUserData();
+
+    console.log("PageTop userdata", this.loggedUser);
   }
 
   toggleMenu() {
@@ -35,6 +41,10 @@ export class PageTopComponent {
 
   scrolledChanged(isScrolled) {
     this.isScrolled = isScrolled;
+  }
+
+  private logout() {
+    this.auth.logout();
   }
 
   private dateChangedHandler(value: any) {

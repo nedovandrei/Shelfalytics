@@ -50,7 +50,7 @@ namespace Shelfalytics.Repository.Repositories
             
         }
 
-        public async Task<IdentityUser> FindUser(UserLoginDTO user)
+        public async Task<User> FindUser(UserLoginDTO user)
         {
             var result = await _userManager.FindAsync(user.UserName, user.Password);
             return result;
