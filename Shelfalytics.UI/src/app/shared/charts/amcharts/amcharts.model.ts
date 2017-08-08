@@ -1,3 +1,8 @@
+// export enum IAmChartType {
+//     serial = "serial",
+//     pie = "pie"
+// }
+
 export interface IAmChartConfig {
     type: string;
     pathToImages: string;
@@ -5,15 +10,25 @@ export interface IAmChartConfig {
     marginTop?: number;
     marginRight?: number;
     valueAxes: IAmChartValueAxis[];
-    graphs: IAmChartGraph[];
+    graphs?: IAmChartGraph[];
     chartScrollbar: IAmChartScrollBar;
     chartCursor: IAmChartCursor;
     dataDateFormat?: string;
-    categoryField: string;
+    categoryField?: string;
+    valueField?: string;
+    titleField?: string;
     categoryAxis?: IAmChartCategoryAxis;
     export?: IAmChartExportParam;
     dataProvider: any[];
     color?: string;
+
+    innerRadius?: number;
+    hoverAlpha?: number;
+    outlineThickness?: number;
+    depth3D?: number;
+    angle?: number;
+    labelRadius?: number;
+    balloonText?: string;
 }
 
 export interface IAmChartValueAxis {
@@ -85,92 +100,87 @@ export class AmChartConfig implements IAmChartConfig {
     marginTop?: number;
     marginRight?: number;
     valueAxes: IAmChartValueAxis[];
-    graphs: IAmChartGraph[];
+    graphs?: IAmChartGraph[];
     chartScrollbar: IAmChartScrollBar;
     chartCursor: IAmChartCursor;
     dataDateFormat?: string;
     rotate?: boolean;
-    categoryField: string;
+    categoryField?: string;
+    valueField?: string;
+    titleField?: string;
     categoryAxis?: IAmChartCategoryAxis;
     export?: IAmChartExportParam;
     dataProvider: any[];
 
+    innerRadius?: number;
+    hoverAlpha?: number;
+    outlineThickness?: number;
+    depth3D?: number;
+    angle?: number;
+    labelRadius?: number;
+    balloonText?: string;
+
     constructor(chartType: string) {
         this.type = chartType;
         this.pathToImages = "assets/images/";
-        // "pathToImages": "https://www.amcharts.com/lib/3/images/";
         this.theme = "dark";
         this.color = "#ffffff";
         this.marginTop = 0;
-        this.marginRight = 80;
-        this.valueAxes = [{
-            axisAlpha: 0,
-            position: "top"
-        }];
-        this.rotate = true;
-        this.graphs = [
-            // {
-            //     "id": "g1",
-            //     "balloonText": "[[category]]<br><b><span style='font-size:14px;'>[[value]]</span></b>",
-            //     // "bullet": "round",
-            //     // "bulletSize": 8,
-            //     "fillAlphas": 0.9,
-            //     "lineAlpha": 0.2,
-            //     "lineColor": "#2dacd1",
-            //     // "lineThickness": 2,
-            //     "negativeLineColor": "#2dacd1",
-            //     "type": "column",
-            //     "valueField": "valueLol"
-            // },
-            // {
-            //     "id": "g2",
-            //     "balloonText": "[[category]]<br><b><span style='font-size:14px;'>[[value]]</span></b>",
-            //     "fillAlphas": 0.9,
-            //     "lineAlpha": 0.2,
-            //     "lineColor": "#90b900",
-            //     "lineThickness": 2,
-            //     "negativeLineColor": "#90b900",
-            //     "type": "column",
-            //     "valueField": "valueKek"
-            // }
-        ];
-        this.chartScrollbar = {
-            // "dragIcon": "../../assets/icon/dragIconRoundBig",
-            "graph": "g1",
-            "gridAlpha": 0,
-            "color": "#ffffff",
-            "scrollbarHeight": 55,
-            "backgroundAlpha": 0,
-            "selectedBackgroundAlpha": 0.1,
-            "selectedBackgroundColor": "#d282f2",
-            "graphFillAlpha": 0,
-            "autoGridCount": true,
-            "selectedGraphFillAlpha": 0,
-            "graphLineAlpha": 0.2,
-            "graphLineColor": "#c2c2c2",
-            "selectedGraphLineColor": "#ffffff",
-            "selectedGraphLineAlpha": 1,
-        };
-        this.chartCursor = {
-            "categoryBalloonDateFormat": "YYYY",
-            "cursorAlpha": 0,
-            "valueLineEnabled": true,
-            "valueLineBalloonEnabled": true,
-            "valueLineAlpha": 0.5,
-            "fullWidth": true,
-            "categoryBalloonColor": "#2dacd1", // цвет заливки указателей
-            "cursorColor": "#2dacd1" // цвет линии, тоже желательно менять под стать верхнему
-        };
-        this.dataDateFormat = "YYYY";
-        // this.categoryField = "year";
-        this.categoryAxis = {
-            // "minPeriod": "YYYY",
-            // "parseDates": true,
-            "position": "left",
-            "minorGridAlpha": 0.9,
-            "minorGridEnabled": true,
-            "axisColor": "#FFFFFF"
-        };
+        this.marginRight = 0;
+        
+        if (this.type === "serial") {
+            this.valueAxes = [{
+                axisAlpha: 0,
+                position: "top"
+            }];
+            this.rotate = true;
+            this.graphs = [];
+            this.chartScrollbar = {
+                "graph": "g1",
+                "gridAlpha": 0,
+                "color": "#ffffff",
+                "scrollbarHeight": 55,
+                "backgroundAlpha": 0,
+                "selectedBackgroundAlpha": 0.1,
+                "selectedBackgroundColor": "#d282f2",
+                "graphFillAlpha": 0,
+                "autoGridCount": true,
+                "selectedGraphFillAlpha": 0,
+                "graphLineAlpha": 0.2,
+                "graphLineColor": "#c2c2c2",
+                "selectedGraphLineColor": "#ffffff",
+                "selectedGraphLineAlpha": 1,
+            };
+            this.chartCursor = {
+                "categoryBalloonDateFormat": "YYYY",
+                "cursorAlpha": 0,
+                "valueLineEnabled": true,
+                "valueLineBalloonEnabled": true,
+                "valueLineAlpha": 0.5,
+                "fullWidth": true,
+                "categoryBalloonColor": "#2dacd1", // цвет заливки указателей
+                "cursorColor": "#2dacd1" // цвет линии, тоже желательно менять под стать верхнему
+            };
+            this.dataDateFormat = "YYYY";
+            this.categoryAxis = {
+                // "minPeriod": "YYYY",
+                // "parseDates": true,
+                "position": "left",
+                "minorGridAlpha": 0.9,
+                "minorGridEnabled": true,
+                "axisColor": "#FFFFFF"
+            };
+        } else if (this.type === "pie") {
+            this.innerRadius = 50;
+            this.hoverAlpha = 0.85;
+            this.outlineThickness = 1;
+            this.labelRadius = 5;
+            this.balloonText = 
+                "[[title]]<br><b>[[value]]%</b><br><span style='font-size:9px'>[[percents]]% of all OOS</span>";
+            // this.depth3D = 12;
+            // this.angle = 39.6;
+        }
+        
         this.export = {
             enabled: true
         };
