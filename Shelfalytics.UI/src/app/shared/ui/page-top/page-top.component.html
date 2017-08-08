@@ -24,7 +24,7 @@
         <li class="dropdown-item"><a style="cursor:pointer;" class="signout" (click)="logout()"><i class="fa fa-power-off"></i>Sign out</a></li>
       </ul>
     </div>
-    <span style="float: right; position: relative; top: 12px; margin-right: 16px">{{loggedUser.name}}</span>
+    <span *ngIf="loggedUser" style="float: right; position: relative; top: 12px; margin-right: 16px">{{loggedUser.name}}</span>
     <ba-msg-center></ba-msg-center>
   </div>
 </div>

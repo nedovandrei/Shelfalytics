@@ -1,19 +1,18 @@
-import { Component, ViewContainerRef, AfterViewInit } from '@angular/core';
-import * as $ from 'jquery';
+import { Component, ViewContainerRef, AfterViewInit } from "@angular/core";
+import * as $ from "jquery";
 
-import { GlobalState } from './global.state';
-import { BaImageLoaderService, BaThemePreloader, BaThemeSpinner } from './theme/services';
-import { BaThemeConfig } from './theme/theme.config';
-import { layoutPaths } from './theme/theme.constants';
-import { JwtHelper } from "angular2-jwt";
+import { GlobalState } from "./global.state";
+import { BaImageLoaderService, BaThemePreloader, BaThemeSpinner } from "./theme/services";
+import { BaThemeConfig } from "./theme/theme.config";
+import { layoutPaths } from "./theme/theme.constants";
 
 /*
  * App Component
  * Top Level Component
  */
 @Component({
-  selector: 'app',
-  styleUrls: ['./app.component.scss'],
+  selector: "app",
+  styleUrls: ["./app.component.scss"],
   template: `
     <main [class.menu-collapsed]="isMenuCollapsed" baThemeRun>
       <div class="additional-bg"></div>
@@ -35,12 +34,12 @@ export class App implements AfterViewInit {
 
     this._loadImages();
 
-    this._state.subscribe('menu.isCollapsed', (isCollapsed) => {
+    this._state.subscribe("menu.isCollapsed", (isCollapsed) => {
       this.isMenuCollapsed = isCollapsed;
     });
   }
 
-  jwtHelper: JwtHelper = new JwtHelper();
+  // jwtHelper: JwtHelper = new JwtHelper();
 
   ngAfterViewInit(): void {
     // hide spinner once all loaders are completed
@@ -48,23 +47,23 @@ export class App implements AfterViewInit {
       this._spinner.hide();
     });
 
-    this.useJwtHelper();
+    // this.useJwtHelper();
   }
 
-  useJwtHelper() {
-  const token = localStorage.getItem("token");
+//   useJwtHelper() {
+//   const token = localStorage.getItem("token");
 
-  console.log(
-    this.jwtHelper.decodeToken(token),
-    this.jwtHelper.getTokenExpirationDate(token),
-    this.jwtHelper.isTokenExpired(token)
-  );
-  console.log(this.jwtHelper.urlBase64Decode);
-}
+//   console.log(
+//     this.jwtHelper.decodeToken(token),
+//     this.jwtHelper.getTokenExpirationDate(token),
+//     this.jwtHelper.isTokenExpired(token)
+//   );
+//   console.log(this.jwtHelper.urlBase64Decode);
+// }
 
   private _loadImages(): void {
     // register some loaders
-    BaThemePreloader.registerLoader(this._imageLoader.load('/assets/img/sky-bg.jpg'));
+    BaThemePreloader.registerLoader(this._imageLoader.load("/assets/img/sky-bg.jpg"));
   }
 
 }
