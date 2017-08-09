@@ -1,7 +1,7 @@
 $default: rgba(#000000, 0.2);
 
 // $body-bg: rgba(037,041,074, 0.6);
-$body-bg: hsla(0,0,86, 0.9);
+$body-bg: #eeeeee;
 $bacard-bg: hsla(0,0,50, 1);
 
 $default-text: #ffffff;
@@ -78,7 +78,7 @@ $hoverlink: $primary-dark;
     height: 100%;
     top: 0;
     left: 0;
-    background: url($mainBgUrl) no-repeat center center;
+    // background: url($mainBgUrl) no-repeat center center;
     background-size: cover;
     will-change: transform;
     z-index: -1;

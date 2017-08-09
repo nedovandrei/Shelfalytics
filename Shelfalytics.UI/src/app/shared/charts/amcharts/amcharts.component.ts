@@ -40,15 +40,17 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges, AfterVie
                     balloonText: "[[category]]<br><b><span style='font-size:14px;'>[[value]]</span></b>",
                     fillAlphas: 0.9,
                     lineAlpha: 0.2,
-                    lineColor: "#2dacd1",
-                    negativeLineColor: "#2dacd1",
+                    // lineColor: "#2dacd1",
+                    // negativeLineColor: "#2dacd1",
                     type: "column",
                     valueField: item
+
+
                 };
                 return returnItem;
             });
         }
-        
+
         this.initFlag = true;
 
         // if (this.chartData !== undefined) {
@@ -86,11 +88,11 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges, AfterVie
                 });
             }
         }
-        
+
     }
 
     private initChart() {
-        this.chart = 
+        this.chart =
             this.amChartsService.makeChart(this.chartName ? this.chartName : "chartdiv", this.chartConfig );
     }
 
@@ -107,7 +109,7 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges, AfterVie
                 this.initializeDataProvider();
             }
         }
-        
+
     }
 
     ngOnDestroy() {

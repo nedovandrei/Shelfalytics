@@ -270,8 +270,10 @@ h5 {
 p {
   margin-bottom: 12px;
   font-family: $font-family;
-  font-size: 14px;
+  // font-size: 14px;
+  font-size: 16px;
 }
+
 
 p.small-text {
   color: $help-text;

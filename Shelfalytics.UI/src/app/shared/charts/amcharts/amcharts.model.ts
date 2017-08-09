@@ -29,6 +29,9 @@ export interface IAmChartConfig {
     angle?: number;
     labelRadius?: number;
     balloonText?: string;
+    fontSize?: number;
+    fontFamily?: string;
+    colors?: any[];
 }
 
 export interface IAmChartValueAxis {
@@ -48,6 +51,7 @@ export interface IAmChartGraph {
     negativeLineColor?: string;
     type?: string;
     valueField: string;
+    autoColor?: boolean;
 }
 
 export interface IAmChartScrollBar {
@@ -119,6 +123,9 @@ export class AmChartConfig implements IAmChartConfig {
     angle?: number;
     labelRadius?: number;
     balloonText?: string;
+    fontSize?: number;
+    fontFamily?: string;
+    colors?: any[];
 
     constructor(chartType: string) {
         this.type = chartType;
@@ -127,7 +134,9 @@ export class AmChartConfig implements IAmChartConfig {
         this.color = "#ffffff";
         this.marginTop = 0;
         this.marginRight = 0;
-        
+        this.fontSize = 15;
+        this.fontFamily = "Roboto";
+        this.colors = ["#67b7dc", "#fdd400", "#84b761", "#cc4748", "#cd82ad", "#2f4074", "#448e4d", "#b7b83f", "#b9783f", "#b93e3d", "#913167","#666","#777"];
         if (this.type === "serial") {
             this.valueAxes = [{
                 axisAlpha: 0,
@@ -138,11 +147,11 @@ export class AmChartConfig implements IAmChartConfig {
             this.chartScrollbar = {
                 "graph": "g1",
                 "gridAlpha": 0,
-                "color": "#ffffff",
+                "color": "transparent",
                 "scrollbarHeight": 55,
                 "backgroundAlpha": 0,
-                "selectedBackgroundAlpha": 0.1,
-                "selectedBackgroundColor": "#d282f2",
+                "selectedBackgroundAlpha": 1,
+                "selectedBackgroundColor": "#2dacd1",
                 "graphFillAlpha": 0,
                 "autoGridCount": true,
                 "selectedGraphFillAlpha": 0,
@@ -175,12 +184,12 @@ export class AmChartConfig implements IAmChartConfig {
             this.hoverAlpha = 0.85;
             this.outlineThickness = 1;
             this.labelRadius = 5;
-            this.balloonText = 
+            this.balloonText =
                 "[[title]]<br><b>[[value]]%</b><br><span style='font-size:9px'>[[percents]]% of all OOS</span>";
             // this.depth3D = 12;
             // this.angle = 39.6;
         }
-        
+
         this.export = {
             enabled: true
         };
