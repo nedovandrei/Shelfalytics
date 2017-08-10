@@ -12,19 +12,26 @@
   </div>
 
   <div class="user-profile clearfix">
+
     <div class="dropdown al-user-profile">
-      
       <a class="profile-toggle-link dropdown-toggle" id="user-profile-dd" data-toggle="dropdown" aria-expanded="false">
         <img src="{{ ( 'Nasta' | baProfilePicture ) }}">
-        
       </a>
       <ul class="dropdown-menu top-dropdown-menu profile-dropdown" aria-labelledby="user-profile-dd">
         <li class="dropdown-item"><a href><i class="fa fa-user"></i>Profile</a></li>
         <li class="dropdown-item"><a href><i class="fa fa-cog"></i>Settings</a></li>
-        <li class="dropdown-item"><a style="cursor:pointer;" class="signout" (click)="logout()"><i class="fa fa-power-off"></i>Sign out</a></li>
+        <li class="dropdown-item"><a href class="signout"><i class="fa fa-power-off"></i>Sign out</a></li>
       </ul>
     </div>
-    <span *ngIf="loggedUser" style="float: right; position: relative; top: 12px; margin-right: 16px">{{loggedUser.name}}</span>
+    <div class="dropdown mt-1 mr-3" style="float:left;">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    English
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <li class="dropdown-item" href="#"><a href="#">Russian</a></li>
+    <li class="dropdown-item" href="#"><a href="#">Romanian</a></li>
+  </ul>
+</div>
     <ba-msg-center></ba-msg-center>
   </div>
 </div>
