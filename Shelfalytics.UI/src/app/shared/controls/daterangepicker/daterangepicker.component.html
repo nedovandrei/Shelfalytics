@@ -1,10 +1,13 @@
 <div *ngIf="datesInitialized" class="input-group mb-0" daterangepicker (selected)="onDateSelect($event, mainInput)" [options]="daterangepickerOptions">
     <span *ngIf="isDateInputsVisible" class="form-control uneditable-input"  name="daterange" >
         {{ selectedDate.startDate | date:'dd.M.y' }} - {{ selectedDate.endDate | date:'dd.M.y' }}
+
     </span>
 
+
         <!-- <button class="btn btn-default" > -->
-          <i class="fa fa-calendar fa"></i>
+          <i class="fa fa-calendar"></i>
+<i *ngIf="isDateInputsVisible" class="fa fa-times-circle"></i>
         <!-- </button> -->
 
 </div>

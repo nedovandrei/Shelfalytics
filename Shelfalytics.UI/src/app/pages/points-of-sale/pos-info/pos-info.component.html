@@ -6,44 +6,39 @@
 </div>
 <div *ngIf="initFlag">
   <div class="row">
-    <div class="col-md-12">
-      <ba-card>
-        <div class="row">
-          <div class="col-lg-6 col-sm-12 col-12 ">
-            <h2><i class="fa fa-map-marker"></i><span translate>{{'pointsOfSale.posInfo.posName'}}</span>:</h2>
-              <p class="text-info"> {{posData.PointOfSaleName}}</p>
-          </div>
-          <div class="col-lg-6 col-sm-12 col-12 ">
-            <h2><i class="fa fa-map"></i><span translate>{{'pointsOfSale.posInfo.posAddress'}}</span>:</h2>
-                <p class="text-info"> {{posData.PointOfSaleAddress}}</p>
-          </div>
-          <div class="col-lg-6 col-sm-12 col-12 ">
-            <h2><i class="fa fa-phone"></i><span translate>{{'pointsOfSale.posInfo.posTelephone'}}</span>:</h2>
-              <p class="text-info"> {{posData.PointOfSaleTelephone}}</p>
-          </div>
-          <div class="col-lg-6 col-sm-12 col-12 ">
-            <h2><i class="fa fa-user-o"></i><span translate>{{'pointsOfSale.posInfo.contactPersonName'}}</span>:</h2>
-              <p class="text-info"> {{posData.ContactPersonName}}</p>
-          </div>
-          <div class="col-lg-6 col-sm-12 col-12 ">
-            <h2><i class="fa fa-calendar-check-o"></i><span translate>{{'pointsOfSale.posInfo.schedule'}}</span>: </h2>
-              <p class="text-info">{{openHours}} - {{closeHours}}</p>
-          </div>
-        </div>
-      </ba-card>
-    </div>
+    <ba-card class="col-12del5 text-center d-flex">
+      <h2><i class="fa fa-map-marker"></i><span translate>{{'pointsOfSale.posInfo.posName'}}</span>:</h2>
+        <p> {{posData.PointOfSaleName}}</p>
+    </ba-card>
+    <ba-card class="col-12del5 text-center d-flex">
+      <h2><i class="fa fa-map"></i><span translate>{{'pointsOfSale.posInfo.posAddress'}}</span>:</h2>
+          <p > {{posData.PointOfSaleAddress}}</p>
+    </ba-card>
+    <ba-card class="col-12del5 text-center d-flex">
+      <h2><i class="fa fa-phone"></i><span translate>{{'pointsOfSale.posInfo.posTelephone'}}</span>:</h2>
+        <p> {{posData.PointOfSaleTelephone}}</p>
+    </ba-card>
+    <ba-card class="col-12del5 text-center d-flex">
+      <h2><i class="fa fa-user-o"></i><span translate>{{'pointsOfSale.posInfo.contactPersonName'}}</span>:</h2>
+        <p > {{posData.ContactPersonName}}</p>
+    </ba-card>
+    <ba-card class="col-12del5 text-center d-flex">
+      <h2><i class="fa fa-calendar-check-o"></i><span translate>{{'pointsOfSale.posInfo.schedule'}}</span>: </h2>
+        <p >{{openHours}} - {{closeHours}}</p>
+    </ba-card>
+
   </div>
     <div class="row">
-        <ba-card class="col-12 col-sm-6 " title="CK Filling (P.O.S)">
+        <!-- <ba-card class="col-12 col-sm-6 " title="CK Filling (P.O.S)">
           <div class="row justify-content-center">
             <div class="col-6">
               <easy-pie-chart [chartData]="POSOOSChartData"></easy-pie-chart>
             </div>
           </div>
-        </ba-card>
-        <ba-card class="col-12 col-sm-6" title="{{'pointsOfSale.posInfo.posOos'}}">
+        </ba-card> -->
+        <ba-card class="col-12" title="{{'pointsOfSale.posInfo.posOos'}}">
           <div class="row justify-content-center">
-            <div class="col-6 ">
+            <div class="col-2 ">
               <easy-pie-chart [chartData]="POSOOSChartData"></easy-pie-chart>
             </div>
           </div>
@@ -62,13 +57,15 @@
     <div class="col-12 col-sm-9">
 
         <equipment-info *ngIf="equipmentInFocus > 0 && equipmentInitFlag" [equipmentId]="equipmentInFocus"></equipment-info>
+        <!-- <equipment-info-pusher *ngIf="equipmentInFocus > 0 && equipmentInitFlag" [equipmentId]="equipmentInFocus"></equipment-info> -->
+
         <!-- <angular2-grid></angular2-grid> -->
 
     </div>
     <div class="col-12 col-sm-3">
-      <ba-card *ngIf="equipmentInitFlag" title="CK Filling">
+      <!-- <ba-card *ngIf="equipmentInitFlag" title="CK Filling">
         <easy-pie-chart [chartData]="equipmentOOSChartData"></easy-pie-chart>
-      </ba-card>
+      </ba-card> -->
       <ba-card *ngIf="equipmentInitFlag" title="{{'pointsOfSale.posInfo.equipmentInfo.oos'}}">
         <easy-pie-chart [chartData]="equipmentOOSChartData"></easy-pie-chart>
       </ba-card>

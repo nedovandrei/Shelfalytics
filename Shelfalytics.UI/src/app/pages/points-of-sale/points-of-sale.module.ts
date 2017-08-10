@@ -12,6 +12,7 @@ import { AppTranslationModule } from "../../app.translation.module";
 import { AjaxService } from "../../shared/services/ajax.service";
 import { PosInfoComponent } from "./pos-info/pos-info.component";
 import { EquipmentInfoComponent } from "./pos-info/equipment-info/equipment-info.component";
+// import { EquipmentInfoPusherComponent } from "./pos-info/equipment-info-pusher/equipment-info-pusher.component";
 import { PosListComponent } from "./pos-list/pos-list.component";
 
 @NgModule({
