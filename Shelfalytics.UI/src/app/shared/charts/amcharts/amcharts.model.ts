@@ -131,7 +131,7 @@ export class AmChartConfig implements IAmChartConfig {
         this.type = chartType;
         this.pathToImages = "assets/images/";
         this.theme = "dark";
-        this.color = "#ffffff";
+        this.color = "#000000";
         this.marginTop = 0;
         this.marginRight = 0;
         this.fontSize = 15;

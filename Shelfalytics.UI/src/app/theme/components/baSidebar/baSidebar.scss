@@ -80,9 +80,9 @@ $angle-right: '\f101';
     &.selected:not(.with-sub-menu) {
       background-color: $primary;
       a.al-sidebar-list-link {
-        color: $info;
+        color: #fff;
         b {
-          color: $info;
+          color: #fff;
         }
       }
     }
