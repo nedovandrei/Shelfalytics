@@ -25,6 +25,7 @@ export class DaterangepickerComponent implements OnInit {
   private datesInitialized: boolean = false;
 
   private daterangepickerOptions = {
+      showSelectorArrow: false,
       locale: { format: "DD.MM.YYYY" },
       alwaysShowCalendars: true,
       ranges: {
@@ -68,7 +69,6 @@ export class DaterangepickerComponent implements OnInit {
     console.log("selected date ", value);
     this.selectedDate.startDate = value.start;
     this.selectedDate.endDate = value.end;
-
     this.dateChanged.emit(value);
   }
 

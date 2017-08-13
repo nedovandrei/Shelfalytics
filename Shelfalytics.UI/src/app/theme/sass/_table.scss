@@ -49,12 +49,16 @@ ba-card, ad-ba-card{
   }
 }
 ad-ba-card{
-  .card{
-    & > &-header{
-
+  .nav.nav-tabs{
+    top:auto;
+    bottom: -14px;
+    right: -5px;
+    position: relative;
+    float: right;
+  }
+    .card-header{
       height: auto!important;
     }
-  }
 }
 
 
