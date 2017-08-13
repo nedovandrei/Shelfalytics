@@ -10,7 +10,7 @@ import * as _ from "underscore";
 })
 export class BaContentTop {
 
-  public activePageTitle: string = "";
+  activePageTitle: string = "";
   private crumbs: any[] = [];
 
   private routes = {
@@ -52,7 +52,10 @@ export class BaContentTop {
           if (this.router.url === this.routes[item]) {
             this.activePageTitle = this.names[item];
           }
-          this.crumbs.push(this.activePageTitle);
+          if (this.router.url.toLowerCase().indexOf("main") === -1) {
+            this.crumbs.push(this.activePageTitle);
+          }
+          // this.crumbs.push(this.activePageTitle);
         });
       }
     });

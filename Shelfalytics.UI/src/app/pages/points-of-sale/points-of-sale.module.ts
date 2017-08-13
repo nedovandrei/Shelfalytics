@@ -7,7 +7,7 @@ import { NgaModule } from "../../theme/nga.module";
 import { ControlsModule } from "../../shared/controls/controls.module";
 import { ChartsModule } from "../../shared/charts/charts.module";
 import { MapsModule } from "../../shared/maps/maps.module";
-import { AppTranslationModule } from "../../app.translation.module";
+import { TranslateModule } from "@ngx-translate/core";
 
 import { AjaxService } from "../../shared/services/ajax.service";
 import { PosInfoComponent } from "./pos-info/pos-info.component";
@@ -19,7 +19,7 @@ import { PosListComponent } from "./pos-list/pos-list.component";
   imports: [
     routing,
     NgaModule,
-    AppTranslationModule,
+    TranslateModule.forChild(),
     CommonModule,
     ChartsModule,
     ControlsModule,

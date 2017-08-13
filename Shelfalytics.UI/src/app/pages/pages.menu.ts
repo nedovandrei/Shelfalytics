@@ -7,7 +7,7 @@ export const PAGES_MENU = [
         showInMenu: true,
         data: {
           menu: {
-            title: "Main",
+            title: "main.title",
             icon: "fa fa-home",
           }
         }
@@ -28,7 +28,7 @@ export const PAGES_MENU = [
         path: "statistics",
         data: {
           menu: {
-            title: "Statistics",
+            title: "statistics.title",
             icon: "fa fa-bar-chart",
             selected: false
           }

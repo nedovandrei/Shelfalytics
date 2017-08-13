@@ -19,18 +19,21 @@
         <img src="{{ ( 'Nasta' | baProfilePicture ) }}">
       </a>
       <ul class="dropdown-menu top-dropdown-menu profile-dropdown" aria-labelledby="user-profile-dd">
-        <li class="dropdown-item"><a href><i class="fa fa-user"></i>Profile</a></li>
-        <li class="dropdown-item"><a href><i class="fa fa-cog"></i>Settings</a></li>
-        <li class="dropdown-item"><a href class="signout"><i class="fa fa-power-off"></i>Sign out</a></li>
+        <li class="dropdown-item"><a><i class="fa fa-user"></i>Profile</a></li>
+        <li class="dropdown-item"><a><i class="fa fa-cog"></i>Settings</a></li>
+        <li class="dropdown-item"><a (click)="logout()" class="signout"><i class="fa fa-power-off"></i>Sign out</a></li>
       </ul>
     </div>
     <div class="dropdown mt-1 mr-3 " style="float:left;">
   <button class="btn btn-default dropdown-toggle text-white" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    English
+    <span *ngIf="currentLanguage === 'ru'">Русский</span>
+    <span *ngIf="currentLanguage === 'en'">English</span>
+    <span *ngIf="currentLanguage === 'ro'">Româna</span>
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <li class="dropdown-item" href="#"><a href="#">Russian</a></li>
-    <li class="dropdown-item" href="#"><a href="#">Romanian</a></li>
+    <li class="dropdown-item" (click)="changeLanguage('ru')"><a>Русский</a></li>
+    <li class="dropdown-item" (click)="changeLanguage('ro')"><a>Româna</a></li>
+    <li class="dropdown-item" (click)="changeLanguage('en')"><a>English</a></li>
   </ul>
 </div>
     <ba-msg-center></ba-msg-center>

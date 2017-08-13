@@ -1,4 +1,19 @@
 {
+    "login": {
+        "title": "Войти в Систему",
+        "email": "Пользователь",
+        "password": "Пароль",
+        "sign_in": "Войти"
+    },
+    "main": {
+        "title": "Главная",
+        "header": {
+            "sales": "Продажи",
+            "oos": "OOS",
+            "oosUnits": "Шт.",
+            "moneyLoss": "Приблиз. Потери"
+        }
+    },
     "pointsOfSale": {
         "title": "Точки продаж",
         "loading": "Загрузка данных...",
@@ -12,7 +27,7 @@
             "of": "из",
             "pos": "Точек Продаж"
         },
-        "error": "Ошибка при попытка загрузить",
+        "error": "Ошибка при попытке загрузить",
         "posName": "Имя Точки Продаж",
         "posAddress": "Адрес Точки Продаж",
         "posTelephone": "Телефон Точки Продаж",
@@ -20,29 +35,43 @@
         "dataFilterButton": "Фильтр Данных"
         },
         "posInfo": {
-            "posName": "POS",
-            "posTelephone": "POS Telephone",
-            "posAddress": "POS Addres",
-            "schedule": "Schedule",
-            "contactPersonName": "Contact Person Name",
+            "posName": "Точка Продаж",
+            "posTelephone": "Телефон",
+            "posAddress": "Адрес",
+            "schedule": "График работы",
+            "contactPersonName": "Имя Контактного Лица",
             "posOos": "Out Of Stock (POS)",
             "equipmentInfo": {
-                "model": "Model",
-                "equipmentType": "Equipment Type",
-                "temperature": "Temperature",
-                "openCount": "Open Count",
-                "lastPing": "Last Ping",
+                "model": "Модель",
+                "equipmentType": "Тип Оборудования",
+                "temperature": "Температура",
+                "openCount": "Количество Открытий/Закрытий",
+                "lastPing": "Последний Опрос",
                 "oos": "Out Of Stock",
-                "sales": "Sales",
+                "sales": "Продажи",
                 "productOosTable": {
-                "title": "Product Out Of Stock in %",
-                "skuName": "SKU Name",
-                "oosPercentage": "OOS Percentage"
+                    "title": "Out of Stock по продуктам в %",
+                    "skuName": "SKU Имя",
+                    "oosPercentage": "OOS Процентаж"
                 },
                 "lossesDueToOosTable": {
-                "title": "Losses due to out of stock by product"
+                    "title": "Потери из-за Out of Stock по продуктам"
                 }
-        }
+            }
+        }   
+    },
+    "statistics": {
+        "title": "Статистика"
+    },
+    "sortButtons": {
+        "asc": "По Возрастанию",
+        "desc": "По Убыванию",
+        "sortBySelect": "Сортировать:"
+    },
+    "bacardButtons": {
+        "global": "Глобальный",
+        "day": "День",
+        "week": "Неделя",
+        "month": "Месяц"
     }
-  }
 }
