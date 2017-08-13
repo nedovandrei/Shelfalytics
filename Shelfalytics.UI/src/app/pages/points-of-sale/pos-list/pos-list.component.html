@@ -14,8 +14,10 @@
 <ba-card title="pointsOfSale.posOnMap">
   <google-maps *ngIf="mapInit" [mapData]="mapSettings"></google-maps>
 </ba-card>
-<ba-card [title]="'pointsOfSale.posList'">
+<ba-card [title]="'pointsOfSale.posList'" baCardClass="with-scroll table-panel">
+    <div class="horizontal-scroll">
   <adtable [moptions]="posTable" *ngIf="initFlag"></adtable>
+</div>
 </ba-card>
 
 <span>{{'pointsOfSale.posList' | translate}}</span>
