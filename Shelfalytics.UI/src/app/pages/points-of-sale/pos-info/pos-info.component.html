@@ -6,24 +6,24 @@
 </div>
 <div *ngIf="initFlag">
   <div class="row">
-    <ba-card class="col-12del5 text-center d-flex">
+    <ba-card class="col-md-4 d-flex align-items-stretch text-center">
       <p><i class="fa fa-map-marker"></i><span translate>{{'pointsOfSale.posInfo.posName'}}</span>:</p>
       <h2>{{posData.PointOfSaleName}}</h2>
 
     </ba-card>
-    <ba-card class="col-12del5 text-center d-flex">
+    <ba-card class="col-md-4 d-flex align-items-stretch text-center">
       <p><i class="fa fa-map"></i><span translate>{{'pointsOfSale.posInfo.posAddress'}}</span>:</p>
           <h2> {{posData.PointOfSaleAddress}}</h2>
     </ba-card>
-    <ba-card class="col-12del5 text-center d-flex">
+    <ba-card class="col-md-4 d-flex align-items-stretch text-center">
       <p><i class="fa fa-phone"></i><span translate>{{'pointsOfSale.posInfo.posTelephone'}}</span>:</p>
         <h2> {{posData.PointOfSaleTelephone}}</h2>
     </ba-card>
-    <ba-card class="col-12del5 text-center d-flex">
+    <ba-card class="col-md-6 d-flex align-items-stretch text-center">
       <p><i class="fa fa-user-o"></i><span translate>{{'pointsOfSale.posInfo.contactPersonName'}}</span>:</p>
         <h2> {{posData.ContactPersonName}}</h2>
     </ba-card>
-    <ba-card class="col-12del5 text-center d-flex">
+    <ba-card class="col-md-6 d-flex align-items-stretch text-center">
       <p><i class="fa fa-calendar-check-o"></i><span translate>{{'pointsOfSale.posInfo.schedule'}}</span>:</p>
         <h2>{{openHours}} - {{closeHours}}</h2>
     </ba-card>
@@ -39,7 +39,7 @@
         </ba-card> -->
         <ba-card class="col-12" title="{{'pointsOfSale.posInfo.posOos'}}">
           <div class="row justify-content-center">
-            <div class="col-2 ">
+            <div class="col-12 col-md-3 ">
               <easy-pie-chart [chartData]="POSOOSChartData"></easy-pie-chart>
             </div>
           </div>
@@ -67,7 +67,7 @@
         <easy-pie-chart [chartData]="equipmentOOSChartData"></easy-pie-chart>
       </ba-card>
     </div>  -->
-  
+
 </div>
 <div class="row">
   <div class="col-md-12">

@@ -4,6 +4,9 @@
     min-width: calc(100% / 6);
     display: none!important;
     margin-right: 25px;
+    @media screen and (max-width: $resL) {
+      min-width: 200px;
+    }
     &:nth-of-type(-n + 6){
       display: flex!important;
     }
@@ -13,6 +16,9 @@
       &:nth-of-type(-n + 9){
         display: flex!important;
       }
+      @media screen and (max-width: $resL) {
+        min-width: calc(1200px / 9);
+      }
     }
     &.push-8{
       width: calc(100% / 8);
@@ -20,12 +26,18 @@
       &:nth-of-type(-n + 8){
         display: flex!important;
       }
+      @media screen and (max-width: $resL) {
+        min-width: calc(1200px / 8);
+      }
     }
     &.push-7{
       width: calc(100% / 7);
       min-width: calc(100% / 7);
       &:nth-of-type(-n + 7){
         display: flex!important;
+      }
+      @media screen and (max-width: $resL) {
+        min-width: calc(1200px / 7);
       }
     }
 
