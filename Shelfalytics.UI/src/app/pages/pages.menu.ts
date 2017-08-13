@@ -35,6 +35,15 @@ export const PAGES_MENU = [
         }
       },
       {
+        path: "settings",
+        data: {
+          menu: {
+            title: "settings.title",
+            icon: "fa fa-edit",
+          }
+        }
+      },
+      {
         data: {
           menu: {
             title: "Theme Features"
@@ -343,7 +352,7 @@ export const PAGES_MENU = [
             }
           }
         ]
-      },      
+      },
     ]
   }
 ];

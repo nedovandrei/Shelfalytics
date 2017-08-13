@@ -3,6 +3,7 @@ import { Pages } from "./pages.component";
 import { ModuleWithProviders } from "@angular/core";
 import { MainComponent } from "./main/main.component";
 import { StatisticsComponent } from "./statistics/statistics.component";
+import { SettingsComponent } from "./settings/settings.component";
 // noinspection TypeScriptValidateTypes
 
 // export function loadChildren(path) { return System.import(path); };
@@ -31,7 +32,8 @@ export const routes: Routes = [
       // { path: 'maps', loadChildren: './maps/maps.module#MapsModule' },
       { path: "points-of-sale", loadChildren: "./points-of-sale/points-of-sale.module#PointsOfSaleModule"},
       { path: "main", component: MainComponent },
-      { path: "statistics", component: StatisticsComponent }
+      { path: "statistics", component: StatisticsComponent },
+      { path: "settings", component: SettingsComponent }
     ]
   },
 

@@ -17,6 +17,7 @@ import { GlobalFilter } from "../shared/services/global-filter.service";
 
 import { MainComponent } from "./main/main.component";
 import { StatisticsComponent } from "./statistics/statistics.component";
+import { SettingsComponent } from "./settings/settings.component";
 
 
 @NgModule({
@@ -32,7 +33,7 @@ import { StatisticsComponent } from "./statistics/statistics.component";
     MapsModule,
     ChartsModule
   ],
-  declarations: [Pages, MainComponent, StatisticsComponent],
+  declarations: [Pages, MainComponent, StatisticsComponent, SettingsComponent],
   providers: [GlobalFilter, AjaxService]
 
 })
