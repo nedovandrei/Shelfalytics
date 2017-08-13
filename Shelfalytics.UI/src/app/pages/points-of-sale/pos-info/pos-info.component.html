@@ -9,7 +9,7 @@
     <ba-card class="col-12del5 text-center d-flex">
       <p><i class="fa fa-map-marker"></i><span translate>{{'pointsOfSale.posInfo.posName'}}</span>:</p>
       <h2>{{posData.PointOfSaleName}}</h2>
-        
+
     </ba-card>
     <ba-card class="col-12del5 text-center d-flex">
       <p><i class="fa fa-map"></i><span translate>{{'pointsOfSale.posInfo.posAddress'}}</span>:</p>
@@ -54,21 +54,20 @@
       </ul>
     </div>
   </div>
-  <div class="row">
-    <div class="col-12 col-sm-9">
+
 
         <equipment-info *ngIf="equipmentInFocus > 0 && equipmentInitFlag" [equipmentId]="equipmentInFocus" [oosChartData]="equipmentOOSChartData"></equipment-info>
         <!-- <equipment-info-pusher *ngIf="equipmentInFocus > 0 && equipmentInitFlag" [equipmentId]="equipmentInFocus"></equipment-info> -->
 
         <!-- <angular2-grid></angular2-grid> -->
 
-    </div>
+
      <!-- <div class="col-12 col-sm-3">
       <ba-card *ngIf="equipmentInitFlag" title="{{'pointsOfSale.posInfo.equipmentInfo.oos'}}">
         <easy-pie-chart [chartData]="equipmentOOSChartData"></easy-pie-chart>
       </ba-card>
     </div>  -->
-  </div>
+  
 </div>
 <div class="row">
   <div class="col-md-12">
