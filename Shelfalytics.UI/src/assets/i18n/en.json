@@ -1,20 +1,19 @@
 {
   "login": {
     "title": "Sign in",
-    "signup_link": "New to ng2-admin? Sign up!",
     "email": "User",
     "password": "Password",
-    "sign_in": "Sign in",
-    "forgot_password": "Forgot password?",
-    "sign_from_app_text": "or Sign in with one click",
-    "share_on_facebook": "Share on Facebook",
-    "share_on_twitter": "Share on Twitter",
-    "share_on_google_plus": "Share on Google Plus"
+    "sign_in": "Sign in"
   },
   "main": {
     "title": "Main",
-    "sales": "Sales",
-    "oos": "OOS"
+    "header": {
+      "sales": "Sales",
+      "oos": "OOS",
+      "oosUnits": "Units",
+      "moneyLoss": "Approx Losses"
+    }
+
   },
   "pointsOfSale": {
     "title": "Points of Sale",
@@ -66,6 +65,15 @@
     "asc": "Ascending",
     "desc": "Descending",
     "sortBySelect": "Sort By:"
+  },
+  "bacardButtons": {
+    "global": "Global",
+    "day": "Day",
+    "week": "Week",
+    "month": "Month"
+  },
+  "statistics": {
+    "title": "Statistics"
   },
   "general": {
     "shelfalytics": "Shelfalytics",

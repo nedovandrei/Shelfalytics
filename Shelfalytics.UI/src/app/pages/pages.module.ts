@@ -22,7 +22,7 @@ import { StatisticsComponent } from "./statistics/statistics.component";
 @NgModule({
   imports: [
     CommonModule,
-    TranslateModule,
+    TranslateModule.forChild(),
     NgaModule,
     routing,
     NgbDropdownModule,

@@ -32,13 +32,23 @@ export class MainComponent implements OnInit, AfterViewInit {
 
   private baCardTabs: any[] = [
     {
-      title: "Day"
+      title: "bacardButtons.global",
+      type: "text"
     },
     {
-      title: "Week"
+      title: "bacardButtons.day",
+      type: "text"
     },
     {
-      title: "Month"
+      title: "bacardButtons.week",
+      type: "text"
+    },
+    {
+      title: "bacardButtons.month",
+      type: "text"
+    },
+    {
+      type: "datepicker"
     }
   ];
 

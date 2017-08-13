@@ -12,7 +12,8 @@ import { AdBaCardComponent } from "./baCard/baCard.component";
         CommonModule,
         NgaModule,
         ControlsModule,
-        FormsModule
+        FormsModule,
+        TranslateModule.forChild()
     ],
     declarations: [PageTopComponent, AdBaCardComponent],
     exports: [PageTopComponent, AdBaCardComponent]

@@ -2,6 +2,8 @@ import { Component, Input, Output, EventEmitter, OnInit } from "@angular/core";
 import { AuthService } from "../../../auth/auth.service";
 import { GlobalState } from "../../../global.state";
 import { IDateRangePickerParams } from "../../controls/daterangepicker/daterangepicker.model";
+import { TranslateService } from "@ngx-translate/core";
+import { Language } from "../../../global";
 
 @Component({
   selector: "page-top",
@@ -12,7 +14,7 @@ export class PageTopComponent implements OnInit {
 
   @Input() daterangeParams: IDateRangePickerParams;
   @Output() onDateRangeChange = new EventEmitter();
-  @Output() onLanguageChanged = new EventEmitter();
+  // @Output() onLanguageChanged = new EventEmitter();
 
   isScrolled: boolean = false;
   isMenuCollapsed: boolean = false;
@@ -21,7 +23,11 @@ export class PageTopComponent implements OnInit {
 
   private loggedUser: any;
 
-  constructor(private _state: GlobalState, private auth: AuthService) {
+  constructor(private _state: GlobalState, 
+    private auth: AuthService, 
+    private language: Language,
+    private translate: TranslateService
+  ) {
     this._state.subscribe("menu.isCollapsed", (isCollapsed) => {
       this.isMenuCollapsed = isCollapsed;
     });
@@ -29,6 +35,7 @@ export class PageTopComponent implements OnInit {
 
   ngOnInit() {
     this.loggedUser = this.auth.getUserData();
+    this.language.currentLanguage = this.currentLanguage = this.translate.currentLang;
 
     console.log("PageTop userdata", this.loggedUser);
   }
@@ -53,8 +60,7 @@ export class PageTopComponent implements OnInit {
   }
 
   private changeLanguage(lang: string) {
-    console.log(lang);
-    this.onLanguageChanged.emit(lang);
-
+    this.currentLanguage = lang;
+    this.language.onLanguageChange.next(lang);
   }
 }

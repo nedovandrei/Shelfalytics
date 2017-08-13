@@ -7,24 +7,25 @@
 <div *ngIf="initFlag">
   <div class="row">
     <ba-card class="col-12del5 text-center d-flex">
-      <h2><i class="fa fa-map-marker"></i><span translate>{{'pointsOfSale.posInfo.posName'}}</span>:</h2>
-        <p> {{posData.PointOfSaleName}}</p>
+      <p><i class="fa fa-map-marker"></i><span translate>{{'pointsOfSale.posInfo.posName'}}</span>:</p>
+      <h2>{{posData.PointOfSaleName}}</h2>
+        
     </ba-card>
     <ba-card class="col-12del5 text-center d-flex">
-      <h2><i class="fa fa-map"></i><span translate>{{'pointsOfSale.posInfo.posAddress'}}</span>:</h2>
-          <p > {{posData.PointOfSaleAddress}}</p>
+      <p><i class="fa fa-map"></i><span translate>{{'pointsOfSale.posInfo.posAddress'}}</span>:</p>
+          <h2> {{posData.PointOfSaleAddress}}</h2>
     </ba-card>
     <ba-card class="col-12del5 text-center d-flex">
-      <h2><i class="fa fa-phone"></i><span translate>{{'pointsOfSale.posInfo.posTelephone'}}</span>:</h2>
-        <p> {{posData.PointOfSaleTelephone}}</p>
+      <p><i class="fa fa-phone"></i><span translate>{{'pointsOfSale.posInfo.posTelephone'}}</span>:</p>
+        <h2> {{posData.PointOfSaleTelephone}}</h2>
     </ba-card>
     <ba-card class="col-12del5 text-center d-flex">
-      <h2><i class="fa fa-user-o"></i><span translate>{{'pointsOfSale.posInfo.contactPersonName'}}</span>:</h2>
-        <p > {{posData.ContactPersonName}}</p>
+      <p><i class="fa fa-user-o"></i><span translate>{{'pointsOfSale.posInfo.contactPersonName'}}</span>:</p>
+        <h2> {{posData.ContactPersonName}}</h2>
     </ba-card>
     <ba-card class="col-12del5 text-center d-flex">
-      <h2><i class="fa fa-calendar-check-o"></i><span translate>{{'pointsOfSale.posInfo.schedule'}}</span>: </h2>
-        <p >{{openHours}} - {{closeHours}}</p>
+      <p><i class="fa fa-calendar-check-o"></i><span translate>{{'pointsOfSale.posInfo.schedule'}}</span>:</p>
+        <h2>{{openHours}} - {{closeHours}}</h2>
     </ba-card>
 
   </div>

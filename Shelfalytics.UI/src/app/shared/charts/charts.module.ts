@@ -3,7 +3,7 @@ import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { NgaModule } from "../../theme/nga.module";
 import { ProgressBarModule } from "ng2-progress-bar";
-import { AppTranslationModule } from "../../app.translation.module";
+import { TranslateModule } from "@ngx-translate/core";
 import { AmChartsModule } from "@amcharts/amcharts3-angular";
 import { AmChartsService } from "@amcharts/amcharts3-angular";
 
@@ -19,7 +19,7 @@ import { Ng2ProgressBar } from "./ng2-progress-bar/ng2-progress-bar.component";
     NgaModule,
     FormsModule,
     ProgressBarModule,
-    AppTranslationModule
+    TranslateModule.forChild()
   ],
   declarations: [
     GroupPieChart, 

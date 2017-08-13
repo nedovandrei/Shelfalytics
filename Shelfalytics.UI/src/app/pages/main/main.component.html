@@ -3,22 +3,25 @@
   <ba-card class="col-md-6 col-lg-3 col-sm-12 col-12 text-center">
 
       <h1>{{salesSummaryCount}}</h1>
-      <p>Sales</p>
+      <p translate>{{'main.header.sales'}}</p>
   </ba-card>
-  <ba-card class="col-md-6 col-lg-3 col-sm-12 col-12 text-center">
+  <ba-card class="col-md-6 col-lg-6 col-sm-12 col-12 text-center">
 
-    <h1>{{totalOOSPercentage}}%</h1>
-    <p>OOS</p>
-  </ba-card>
-  <ba-card class="col-md-6 col-lg-3 col-sm-12 col-12 text-center">
+    <h1>{{totalOOSPercentage}}% | 534 {{'main.header.oosUnits' | translate}}</h1>
+    <p translate>{{'main.header.oos'}}</p>
 
-    <h1>534</h1>
-    <p>OOS</p>
+    <!-- <h1>{{totalOOSPercentage}}%</h1>
+    <p translate>{{'main.header.oosInPercent'}}</p> -->
+  <!-- </ba-card>
+  <ba-card class="col-md-6 col-lg-3 col-sm-12 col-12 text-center"> -->
+    
+    <!-- <h1>534</h1>
+    <p>OOS</p> -->
   </ba-card>
   <ba-card class="col-md-6 col-lg-3 col-sm-12 col-12 text-center">
 
     <h1>5250$</h1>
-    <p>Money</p>
+    <p translate>{{'main.header.moneyLoss'}}</p>
   </ba-card>
 </div>
 

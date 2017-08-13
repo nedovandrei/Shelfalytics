@@ -1,10 +1,12 @@
-import { Component, ViewContainerRef, AfterViewInit } from "@angular/core";
+import { Component, ViewContainerRef, AfterViewInit, OnInit } from "@angular/core";
 import * as $ from "jquery";
 
 import { GlobalState } from "./global.state";
 import { BaImageLoaderService, BaThemePreloader, BaThemeSpinner } from "./theme/services";
 import { BaThemeConfig } from "./theme/theme.config";
 import { layoutPaths } from "./theme/theme.constants";
+import { TranslateService } from "@ngx-translate/core";
+import { Language } from "./global";
 
 /*
  * App Component
@@ -20,7 +22,7 @@ import { layoutPaths } from "./theme/theme.constants";
     </main>
   `
 })
-export class App implements AfterViewInit {
+export class App implements AfterViewInit, OnInit {
 
   isMenuCollapsed: boolean = false;
 
@@ -28,7 +30,9 @@ export class App implements AfterViewInit {
               private _imageLoader: BaImageLoaderService,
               private _spinner: BaThemeSpinner,
               private viewContainerRef: ViewContainerRef,
-              private themeConfig: BaThemeConfig) {
+              private themeConfig: BaThemeConfig,
+              private lang: Language,
+              private translate: TranslateService) {
 
     themeConfig.config();
 
@@ -40,6 +44,12 @@ export class App implements AfterViewInit {
   }
 
   // jwtHelper: JwtHelper = new JwtHelper();
+  ngOnInit() {
+    this.lang.onLanguageChange.subscribe((language: string) => {
+      this.translate.use(language);
+      this.lang.currentLanguage = language;
+    });
+  }
 
   ngAfterViewInit(): void {
     // hide spinner once all loaders are completed
