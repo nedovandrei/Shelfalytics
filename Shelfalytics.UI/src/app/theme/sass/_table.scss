@@ -1,5 +1,6 @@
 .d-flex{
   ba-card{
+
     width: calc(100% / 6);
     min-width: calc(100% / 6);
     display: none!important;
@@ -42,16 +43,24 @@
     }
 
   }
+  .push{
+    &-6, &-7, &-8, &-9{
+      .card{
+
+          background-color: $body-bg;
+      }
+    }
+  }
   .card{
     width: 100%;
-    // background-color: $info-rgba;
+  
   }
 
 }
 .old-alert{
   .d-flex{
     .card{
-        background-color: $warning-old-rgba;
+        // background-color: $warning-old-rgba;
     }
   }
 }
