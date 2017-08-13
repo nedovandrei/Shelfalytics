@@ -57,20 +57,17 @@
   <div class="row">
     <div class="col-12 col-sm-9">
 
-        <equipment-info *ngIf="equipmentInFocus > 0 && equipmentInitFlag" [equipmentId]="equipmentInFocus"></equipment-info>
+        <equipment-info *ngIf="equipmentInFocus > 0 && equipmentInitFlag" [equipmentId]="equipmentInFocus" [oosChartData]="equipmentOOSChartData"></equipment-info>
         <!-- <equipment-info-pusher *ngIf="equipmentInFocus > 0 && equipmentInitFlag" [equipmentId]="equipmentInFocus"></equipment-info> -->
 
         <!-- <angular2-grid></angular2-grid> -->
 
     </div>
-    <div class="col-12 col-sm-3">
-      <!-- <ba-card *ngIf="equipmentInitFlag" title="CK Filling">
-        <easy-pie-chart [chartData]="equipmentOOSChartData"></easy-pie-chart>
-      </ba-card> -->
+     <!-- <div class="col-12 col-sm-3">
       <ba-card *ngIf="equipmentInitFlag" title="{{'pointsOfSale.posInfo.equipmentInfo.oos'}}">
         <easy-pie-chart [chartData]="equipmentOOSChartData"></easy-pie-chart>
       </ba-card>
-    </div>
+    </div>  -->
   </div>
 </div>
 <div class="row">

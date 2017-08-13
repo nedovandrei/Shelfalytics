@@ -13,6 +13,7 @@ export class EquipmentInfoComponent implements OnInit, OnChanges {
   constructor(private posInfoService: PosInfoService) { }
 
   @Input() equipmentId: number;
+  @Input() oosChartData: any;
 
   private initFlag: boolean = false;
   private equipmentData: any;
