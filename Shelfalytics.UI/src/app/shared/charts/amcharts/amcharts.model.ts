@@ -180,10 +180,10 @@ export class AmChartConfig implements IAmChartConfig {
                 "axisColor": "#FFFFFF"
             };
         } else if (this.type === "pie") {
-            this.innerRadius = 50;
+            // this.innerRadius = 50;
             this.hoverAlpha = 0.85;
             this.outlineThickness = 1;
-            this.labelRadius = 5;
+            this.labelRadius = -50;
             this.balloonText =
                 "[[title]]<br><b>[[value]]%</b><br><span style='font-size:9px'>[[percents]]% of all OOS</span>";
             // this.depth3D = 12;
