@@ -1,11 +1,11 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { PosInfoService } from '../pos-info.service';
-import * as moment from 'moment';
+import { Component, OnInit, Input, OnChanges } from "@angular/core";
+import { PosInfoService } from "../pos-info.service";
+import * as moment from "moment";
 
 @Component({
-  selector: 'equipment-info',
-  templateUrl: './equipment-info.component.html',
-  styleUrls: ['./equipment-info.component.scss'],
+  selector: "equipment-info",
+  templateUrl: "./equipment-info.component.html",
+  styleUrls: ["./equipment-info.component.scss"],
   providers: [PosInfoService],
 })
 export class EquipmentInfoComponent implements OnInit, OnChanges {
@@ -32,7 +32,7 @@ export class EquipmentInfoComponent implements OnInit, OnChanges {
     this.posInfoService.getShelfData(this.equipmentId).subscribe((data: any) => {
       this.equipmentData = data[0];
 
-      this.timeStamp = moment(data[0].TimeStamp).format('hh:mm:ss A, dddd, Do MMMM YYYY');
+      this.timeStamp = moment(data[0].TimeStamp).format("hh:mm:ss A, dddd, Do MMMM YYYY");
       this.initFlag = true;
     });
   }
