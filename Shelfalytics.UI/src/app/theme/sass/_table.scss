@@ -1,8 +1,8 @@
 .d-flex{
   ba-card{
 
-    width: calc(100% / 6);
-    min-width: calc(100% / 6);
+    width: calc(100% / 6 - 25px);
+    min-width: calc(100% / 6 - 25px);
     display: none!important;
     margin-right: 25px;
     @media screen and (max-width: $resL) {
@@ -12,8 +12,8 @@
       display: flex!important;
     }
     &.push-9{
-      width: calc(100% / 9);
-      min-width: calc(100% / 9);
+      width: calc(100% / 9 - 25px);
+      min-width: calc(100% / 9 - 25px);
       &:nth-of-type(-n + 9){
         display: flex!important;
       }
@@ -22,8 +22,8 @@
       }
     }
     &.push-8{
-      width: calc(100% / 8);
-      min-width: calc(100% / 8);
+      width: calc(100% / 8 - 25px);
+      min-width: calc(100% / 8 - 25px);
       &:nth-of-type(-n + 8){
         display: flex!important;
       }
@@ -32,8 +32,8 @@
       }
     }
     &.push-7{
-      width: calc(100% / 7);
-      min-width: calc(100% / 7);
+      width: calc(100% / 7) - 25px;
+      min-width: calc(100% / 7 - 25px);
       &:nth-of-type(-n + 7){
         display: flex!important;
       }
@@ -53,7 +53,7 @@
   }
   .card{
     width: 100%;
-  
+
   }
 
 }
