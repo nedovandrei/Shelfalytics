@@ -1,21 +1,25 @@
 <script src="../../../../assets/amcharts/pie.js"></script>
 <div class="row">
     <div class="col-md-6">
-
-<div class="form-group">
-
+        <div class="form-group">
             <label  translate>{{'sortButtons.sortBySelect'}}</label>
             <select class="form-control" [(ngModel)]="sortDirection" (change)="sortData()">
                 <option value="asc" translate>{{'sortButtons.asc'}}</option>
                 <option value="desc" translate>{{'sortButtons.desc'}}</option>
             </select>
-
-
+        </div>
+       
     </div>
-  </div>
+    <div class="col-md-6">
+        <div style="padding-top: 30px" *ngIf="pieChartNoData">
+            <h3 translate>{{'pointsOfSale.posTable.header.noData'}}</h3>
+        </div>
+    </div>
 </div>
 <div class="row">
     <div class="com-md-12">
     </div>
 </div>
+
 <div *ngIf="initFlag" [attr.id]="chartName ? chartName : 'chartdiv'" [style.width.%]="100" [style.height.px]="500"></div>
+

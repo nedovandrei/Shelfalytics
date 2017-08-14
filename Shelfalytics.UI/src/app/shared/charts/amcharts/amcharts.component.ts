@@ -19,6 +19,7 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges, AfterVie
     private initFlag: boolean = false;
     private chart: any;
     private sortDirection: "asc" | "desc" = "desc";
+    private pieChartNoData: boolean = false;
 
     private chartConfig: any;
 
@@ -27,8 +28,7 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges, AfterVie
         this.sortData();
     }
 
-    ngOnInit() {
-        this.chartConfig = new AmChartConfig(this.chartType ? this.chartType : "serial");
+    private initConfig() {
         this.chartConfig.categoryField = this.chartData.legendField;
         if (this.chartType === "pie") {
             this.chartConfig.titleField = this.chartData.legendField;
@@ -50,6 +50,10 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges, AfterVie
                 return returnItem;
             });
         }
+    }
+    ngOnInit() {
+        this.chartConfig = new AmChartConfig(this.chartType ? this.chartType : "serial");
+        this.initConfig();
 
         this.initFlag = true;
 
@@ -62,13 +66,19 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges, AfterVie
     }
 
     ngOnChanges() {
+        // this.initChart();
+        // this.sortData();
         this.initializeDataProvider();
     }
 
     private initializeDataProvider() {
+        this.pieChartNoData = false;
         if (this.chartConfig !== undefined) {
             if (this.chart === undefined) {
                 if (this.chartData.dataProvider === undefined || this.chartData.dataProvider.length === 0) {
+                    if (this.chartType === "pie") {
+                        this.pieChartNoData = true;
+                    }
                     const noData: any = {};
                     Object.defineProperty(noData, this.chartData.legendField, {
                         value: "No Data"
@@ -83,10 +93,36 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges, AfterVie
                     this.chartConfig["dataProvider"] = this.chartData.dataProvider;
                 }
             } else {
+                if (this.chartData.dataProvider === undefined || this.chartData.dataProvider.length === 0) {
+                    // if (this.chartType === "pie") {
+                        this.pieChartNoData = true;
+                    // }
+                }
                 this.amChartsService.updateChart( this.chart, () => {
                     this.chart.dataProvider = this.chartData.dataProvider;
                 });
             }
+        } else {
+            this.chartConfig = new AmChartConfig(this.chartType ? this.chartType : "serial");
+            
+            const noData: any = {};
+            Object.defineProperty(noData, this.chartData.legendField, {
+                value: "No Data"
+            });
+            _.each(this.chartData.valueFields, (item: string) => {
+                Object.defineProperty(noData, item, {
+                    value: 0
+                });
+            });
+            this.chartConfig["dataProvider"] = [noData];
+            // if (this.chartType === "pie") {
+                this.pieChartNoData = true;
+            // }
+            this.initConfig();
+            this.initChart();
+            this.amChartsService.updateChart( this.chart, () => {
+                this.chart.dataProvider = this.chartData.dataProvider;
+            });
         }
 
     }

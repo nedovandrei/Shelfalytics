@@ -8,24 +8,36 @@ import { GlobalFilter } from "../../shared/services/global-filter.service";
 export class MainService {
     constructor(private ajaxService: AjaxService, private globalFilter: GlobalFilter) { }
 
-    getTopSkuOos() {
-        return this.ajaxService.post(`${global.apiPath}Statistics/topSkuOOS`, {
-            StartTime: this.globalFilter.startDate,
-            EndTime: this.globalFilter.endDate
-        });
+    getTopSkuOos(filter?: any) {
+        if (filter) {
+            return this.ajaxService.post(`${global.apiPath}Statistics/topSkuOOS`, filter);
+        } else {
+            return this.ajaxService.post(`${global.apiPath}Statistics/topSkuOOS`, {
+                StartTime: this.globalFilter.startDate,
+                EndTime: this.globalFilter.endDate
+            });
+        }
     }
 
-    getSalesSummary() {
-        return this.ajaxService.post(`${global.apiPath}Statistics/productSalesSummary`, {
-            StartTime: this.globalFilter.startDate,
-            EndTime: this.globalFilter.endDate
-        });
+    getSalesSummary(filter?: any) {
+        if (filter) {
+            return this.ajaxService.post(`${global.apiPath}Statistics/productSalesSummary`, filter);
+        } else {
+            return this.ajaxService.post(`${global.apiPath}Statistics/productSalesSummary`, {
+                StartTime: this.globalFilter.startDate,
+                EndTime: this.globalFilter.endDate
+            });
+        }
     }
 
-    getTopPosInOos() {
-        return this.ajaxService.post(`${global.apiPath}Statistics/posOOSsummary`, {
-            StartTime: this.globalFilter.startDate,
-            EndTime: this.globalFilter.endDate
-        });
+    getTopPosInOos(filter?: any) {
+        if (filter) {
+            return this.ajaxService.post(`${global.apiPath}Statistics/posOOSsummary`, filter);
+        } else {
+            return this.ajaxService.post(`${global.apiPath}Statistics/posOOSsummary`, {
+                StartTime: this.globalFilter.startDate,
+                EndTime: this.globalFilter.endDate
+            });
+        }
     }
 }

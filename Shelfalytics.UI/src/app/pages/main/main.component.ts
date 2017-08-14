@@ -1,7 +1,8 @@
-import { Component, OnInit, AfterViewInit, Input, Output } from "@angular/core";
+import { Component, OnInit, AfterViewInit, Input, Output, OnDestroy } from "@angular/core";
 import { IDateRangePickerParams } from "app/shared/controls/daterangepicker/daterangepicker.model";
 import { GlobalFilter } from "../../shared/services/global-filter.service";
 import { MainService } from "./main.service";
+import { TabDateRanges } from "../../shared/ui/baCard/baCard.model";
 import * as _ from "underscore";
 import * as moment from "moment";
 import { IGoogleMapsData, IMarker } from "app/shared/maps/google-maps/google-maps.model";
@@ -12,11 +13,32 @@ import { IGoogleMapsData, IMarker } from "app/shared/maps/google-maps/google-map
   styleUrls: ["./main.component.scss"],
   providers: [MainService]
 })
-export class MainComponent implements OnInit, AfterViewInit {
+export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(private mainService: MainService, private globalFilter: GlobalFilter) { }
 
-
+  private cardsTabsGlobalState = {
+    topSkuOos: true,
+    topPosInOos: true,
+    lossesDueToOos: true,
+    topBestBusinessDevs: true,
+    topPos: true,
+    topSkuSales: true,
+    get globalFilterState() {
+      if (this.topSkuOos && 
+        this.topPosInOos && 
+        this.lossesDueToOos &&  
+        this.topBestBusinessDevs &&
+        this.topPos &&
+        this.topSkuSales
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  };
+  
   private mapInit: boolean = false;
   private mapSettings: IGoogleMapsData = {
     center: {
@@ -33,22 +55,27 @@ export class MainComponent implements OnInit, AfterViewInit {
   private baCardTabs: any[] = [
     {
       title: "bacardButtons.global",
-      type: "text"
+      type: "text",
+      range: TabDateRanges.Global
     },
     {
       title: "bacardButtons.day",
-      type: "text"
+      type: "text",
+      range: TabDateRanges.Day
     },
     {
       title: "bacardButtons.week",
-      type: "text"
+      type: "text",
+      range: TabDateRanges.Week
     },
     {
       title: "bacardButtons.month",
-      type: "text"
+      type: "text",
+      range: TabDateRanges.Month
     },
     {
-      type: "datepicker"
+      type: "datepicker",
+      range: TabDateRanges.Custom
     }
   ];
 
@@ -86,9 +113,86 @@ export class MainComponent implements OnInit, AfterViewInit {
   //   // this.onDateRangeChange.emit(value);
   // }
 
-  private baCardTabChangeCallback: any;
+  private tabChanged(event: any) {
+    console.log("tab changed main component", event);
+
+    if (event.title === "main.cards.topSkuOos") {
+      this.reloadTopSkuOosCardData(event);
+    } else if (event.title === "main.cards.topPosBeingInOos") {
+      this.reloadTopPosBeingInOos(event);
+    } else if (event.title === "main.cards.topSkuSales") {
+      this.reloadSalesSummary(event);
+    }
+
+    if (this.cardsTabsGlobalState.globalFilterState) {
+      this.globalFilter.globalStateValueSubject.next(true);
+    } else {
+      this.globalFilter.globalStateValueSubject.next(false);
+    }
+  }
+
+  //#region TabLogic
+  private reloadTopSkuOosCardData(event: any) {
+    this.skuOosChartsInit = false;
+    
+    if (event.range === TabDateRanges.Global) {
+      this.cardsTabsGlobalState.topSkuOos = true;
+      this.mainService.getTopSkuOos().subscribe((result: any) => {
+        this.topSkuOosChart.dataProvider = result.OOSProducts;
+        this.skuOosChartsInit = true;
+      });
+    } else {
+      this.cardsTabsGlobalState.topSkuOos = false;
+      this.mainService.getTopSkuOos(event.timeSpan).subscribe((result: any) => {
+        this.topSkuOosChart.dataProvider = result.OOSProducts;
+        this.skuOosChartsInit = true;
+      });
+  
+    }
+  }
+
+  private reloadTopPosBeingInOos(event: any) {
+    this.posInOosSummaryChartInit = false;
+
+    if (event.range === TabDateRanges.Global) {
+      this.cardsTabsGlobalState.topPosInOos = true;
+      this.mainService.getTopPosInOos().subscribe((data: any) => {
+        this.posInOosSummaryChart.dataProvider = data;
+        this.posInOosSummaryChartInit = true;
+      });
+    } else {
+      this.cardsTabsGlobalState.topPosInOos = false;
+      this.mainService.getTopPosInOos(event.timeSpan).subscribe((data: any) => {
+        this.posInOosSummaryChart.dataProvider = data;
+        this.posInOosSummaryChartInit = true;
+      });
+    }
+    
+  }
+
+  private reloadSalesSummary(event: any) {
+    this.salesSummaryChartInit = false;
+
+    if (event.range === TabDateRanges.Global) {
+      this.cardsTabsGlobalState.topSkuSales = true;
+      this.mainService.getSalesSummary().subscribe((result: any) => {
+        this.salesSummaryChart.dataProvider = result.Products;
+        this.salesSummaryChartInit = true;
+      });
+    } else {
+      this.cardsTabsGlobalState.topSkuSales = false;
+      this.mainService.getSalesSummary(event.timeSpan).subscribe((result: any) => {
+        this.salesSummaryChart.dataProvider = result.Products;
+        this.salesSummaryChartInit = true;
+      });
+    }
+    
+  }
+  //#endregion
 
   ngOnInit() {
+    this.globalFilter.globalStateSubject.next(true);
+    this.globalFilter.globalStateValueSubject.next(true);
     this.globalFilter.onDateRangeChanged.subscribe((dateTimeValue: any) => {
       console.log("fired onDateRangeChange event");
       this.loadData();
@@ -155,12 +259,16 @@ export class MainComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.baCardTabChangeCallback = (index: number) => {
-      console.log("ba card tab push, index", index);
-      console.log("main component ba card", this.baCardTabs[index].title);
-    };
+    // this.baCardTabChangeCallback = (index: number) => {
+    //   console.log("ba card tab push, index", index);
+    //   console.log("main component ba card", this.baCardTabs[index].title);
+    // };
     this.loadData();
     this.initFlag = true;
+  }
+
+  ngOnDestroy() {
+    this.globalFilter.globalStateSubject.next(false);
   }
 
 }

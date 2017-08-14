@@ -23,7 +23,7 @@
     <thead>
         <tr>
             <th *ngFor="let column of columns" [ngClass]="getColumnHeaderCssClasses(column)"
-                [ngStyle]="{'width': column.width+'%'}" (click)="onSortDirectionChange(column)">
+                [ngStyle]="{'width': column.width+'%'}" (click)="onSortDirectionChange(column)" translate>
                 {{column.title}}
             </th>
         </tr>

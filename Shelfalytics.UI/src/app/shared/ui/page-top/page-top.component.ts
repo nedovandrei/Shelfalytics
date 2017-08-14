@@ -4,6 +4,7 @@ import { GlobalState } from "../../../global.state";
 import { IDateRangePickerParams } from "../../controls/daterangepicker/daterangepicker.model";
 import { TranslateService } from "@ngx-translate/core";
 import { Language } from "../../../global";
+import { GlobalFilter } from "../../../shared/services/global-filter.service";
 
 @Component({
   selector: "page-top",
@@ -26,14 +27,28 @@ export class PageTopComponent implements OnInit {
   constructor(private _state: GlobalState, 
     private auth: AuthService, 
     private language: Language,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private globalFilter: GlobalFilter
   ) {
     this._state.subscribe("menu.isCollapsed", (isCollapsed) => {
       this.isMenuCollapsed = isCollapsed;
     });
   }
 
+  private showGlobalStateIndicator: boolean = false;
+  private globalStateIndicatorValue: boolean = false;
+
   ngOnInit() {
+    this.globalFilter.globalStateSubject.subscribe((state: boolean) => {
+      console.log("globalStateSubject, ", state);
+      this.showGlobalStateIndicator = state;
+      this.globalFilter.showGlobalState = state;
+    });
+    this.globalFilter.globalStateValueSubject.subscribe((value: boolean) => {
+      console.log("globalStateValueSubject, ", value);
+      this.globalStateIndicatorValue = value;
+      this.globalFilter.globalStateValue = value;
+    });
     this.loggedUser = this.auth.getUserData();
     this.language.currentLanguage = this.currentLanguage = this.translate.currentLang;
 

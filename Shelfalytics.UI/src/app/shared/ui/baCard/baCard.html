@@ -7,10 +7,10 @@
       </div>
       <ul class="nav nav-tabs" *ngIf="navTabs">
         <li class="nav-item " *ngFor="let tab of navTabs; let i = index">
-          <a *ngIf="tab.type === 'text'" class="nav-link text-white" [ngClass]="{ 'active': selectedTab === i }" (click)="onTabChange(i)" translate>
+          <a *ngIf="tab.type === 'text'" class="nav-link text-white" [ngClass]="{ 'active': selectedTab === i }" (click)="tabChanged(tab.range, i)" translate>
             {{tab.title}}
           </a>
-          <a *ngIf="tab.type === 'datepicker'" class="nav-link text-white" [ngClass]="{ 'active': selectedTab === i }" (click)="onTabChange(i)">
+          <a *ngIf="tab.type === 'datepicker'" class="nav-link text-white" [ngClass]="{ 'active': selectedTab === i }" (click)="tabChanged(tab.range, i)">
             <daterangepicker [params]="daterangeParams" (dateChanged)="dateChangedHandler($event)"></daterangepicker>
           </a>
         </li>

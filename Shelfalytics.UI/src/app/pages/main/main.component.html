@@ -27,18 +27,18 @@
 
 
 <div class="row">
-  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12" title="Top SKU OOS" [navTabs]="baCardTabs" [tabChangeCallback]="baCardTabChangeCallback">
+  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12" title="main.cards.topSkuOos" [navTabs]="baCardTabs" (onTabChange)="tabChanged($event)">
       <amchart *ngIf="skuOosChartsInit" [chartType]="'pie'" [chartData]="topSkuOosChart" [chartName]="'topSkuOos'"></amchart>
   </ad-ba-card>
-  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12" title="TOP POS being in OOS" [navTabs]="baCardTabs" [tabChangeCallback]="baCardTabChangeCallback">
+  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12" title="main.cards.topPosBeingInOos" [navTabs]="baCardTabs" (onTabChange)="tabChanged($event)">
     <amchart *ngIf="posInOosSummaryChartInit" [chartData]="posInOosSummaryChart" [chartName]="'posInOos'"></amchart>
   </ad-ba-card>
 </div>
 <div class="row">
-  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12" title="Map with POS in OOS" [navTabs]="baCardTabs" [tabChangeCallback]="baCardTabChangeCallback">
+  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12" title="main.cards.posInOosMap" [navTabs]="baCardTabs" (onTabChange)="tabChanged($event)">
     <google-maps *ngIf="mapInit" [mapData]="mapSettings"></google-maps>
   </ad-ba-card >
-  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12" title="Looses due to OOS in $ per sku" [navTabs]="baCardTabs" [tabChangeCallback]="baCardTabChangeCallback">
+  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12" title="main.cards.lossesDueToOos" [navTabs]="baCardTabs" (onTabChange)="tabChanged($event)">
       <ol class="mt-2">
         <li>asdasdas</li>
           <li>asdasdas</li>
@@ -47,7 +47,7 @@
   </ad-ba-card >
 </div>
 <div class="row">
-  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12" title="Top best business developers" [navTabs]="baCardTabs" [tabChangeCallback]="baCardTabChangeCallback">
+  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12" title="main.cards.topBestBusinessDevs" [navTabs]="baCardTabs" (onTabChange)="tabChanged($event)">
 
       <ol class="mt-2">
         <li>asdasdas</li>
@@ -55,7 +55,7 @@
             <li>asdasdas</li>
       </ol>
   </ad-ba-card >
-  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12" title="TOP POS" [navTabs]="baCardTabs" [tabChangeCallback]="baCardTabChangeCallback">
+  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12" title="main.cards.topPos" [navTabs]="baCardTabs" (onTabChange)="tabChanged($event)">
 
       <ol class="mt-2">
         <li>asdasdas</li>
@@ -66,7 +66,7 @@
 </div>
 
 <div class="row">
-  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12" title="TOP SKU Sales" [navTabs]="baCardTabs" [tabChangeCallback]="baCardTabChangeCallback">
+  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12" title="main.cards.topSkuSales" [navTabs]="baCardTabs" (onTabChange)="tabChanged($event)">
     <amchart *ngIf="salesSummaryChartInit" [chartData]="salesSummaryChart" [chartName]="'salesSummary'"></amchart>
   </ad-ba-card>
 </div>

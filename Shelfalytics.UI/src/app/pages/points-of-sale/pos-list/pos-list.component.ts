@@ -14,22 +14,6 @@ import {
 import { IGoogleMapsData, ICoordinates, IMarker } from "../../../shared/maps/google-maps/google-maps.model";
 import * as _ from "underscore";
 
-// @Component({
-//   selector: "equipment-count-view",
-//   template: "<span>{{renderValue.length}}</span>"
-// })
-// export class EquipmentCountViewComponent implements OnInit {
-//   @Input() value: any;
-
-//   private renderValue: any;
-//   ngOnInit() {
-//     console.log("ulalala");
-//     this.renderValue = this.value;
-//   }
-
-// }
-
-
 @Component({
   selector: "pos-list",
   templateUrl: "./pos-list.component.html",
@@ -47,28 +31,28 @@ export class PosListComponent implements OnInit, AfterViewInit {
   private posTable: IADTableOptions = {
     columns: [
       {
-        title: "POS Name",
+        title: "pointsOfSale.posTable.posName",
         name: "PointOfSaleName",
         dataType: MColumnDataType.string,
         filterable: true,
         sortable: true
       },
       {
-        title: "POS Address",
+        title: "pointsOfSale.posTable.posAddress",
         name: "PointOfSaleAddress",
         dataType: MColumnDataType.string,
         filterable: true,
         sortable: false
       },
       {
-        title: "POS Telephone",
+        title: "pointsOfSale.posTable.posTelephone",
         name: "PointOfSaleTelephone",
         dataType: MColumnDataType.string,
         filterable: true,
         sortable: false
       },
       {
-        title: "Contact Person Name",
+        title: "pointsOfSale.posTable.contactPersonName",
         name: "ContactPersonName",
         dataType: MColumnDataType.string,
         filterable: true,
@@ -93,7 +77,6 @@ export class PosListComponent implements OnInit, AfterViewInit {
   private mapCardTitle: string = "'pointsOfSale.posOnMap'";
 
   
-
   private mapSettings: IGoogleMapsData = {
     center: {
       lat: 0,
@@ -156,33 +139,4 @@ export class PosListComponent implements OnInit, AfterViewInit {
       this.posTable.isDataLoading = false;
     });
   }
-
-  private tableColumns = {
-    PointOfSaleName: {
-      title: "POS Name",
-      type: "string"
-    },
-    PointOfSaleAddress: {
-      title: "POS Address",
-      type: "string",
-    },
-    PointOfSaleTelephone: {
-      title: "POS Telephone",
-      type: "string"
-    },
-    ContactPersonName: {
-      title: "Comtact Person Name",
-      type: "string"
-    },
-    // Equipment: {
-    //   title: "Equipment Count",
-    //   type: "string",
-    //   renderComponent: EquipmentCountViewComponent,
-    //   onComponentInitFunction(instance) {
-
-    //   }
-    // }
-  };
-
-  
 }

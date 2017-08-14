@@ -12,6 +12,15 @@
       "oos": "OOS",
       "oosUnits": "Units",
       "moneyLoss": "Approx Losses"
+    },
+    "cards": {
+      "topSkuOos": "Top SKU OOS",
+      "topPosBeingInOos": "Top POS Being in OOS",
+      "posInOosMap": "Map With POS in OOS",
+      "lossesDueToOos": "Losses Due to OOS In $ per SKU",
+      "topBestBusinessDevs": "Top Best Business Developers",
+      "topPos": "Top Pos",
+      "topSkuSales": "Top Sku Sales"
     }
 
   },
@@ -74,6 +83,9 @@
   },
   "statistics": {
     "title": "Statistics"
+  },
+  "settings": {
+    "title": "Settings"
   },
   "general": {
     "shelfalytics": "Shelfalytics",

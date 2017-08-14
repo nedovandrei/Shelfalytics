@@ -12,6 +12,15 @@
             "oos": "OOS",
             "oosUnits": "Шт.",
             "moneyLoss": "Приблиз. Потери"
+        },
+        "cards": {
+            "topSkuOos": "Top SKU OOS RU",
+            "topPosBeingInOos": "Top POS Being in OOS RU",
+            "posInOosMap": "Map With POS in OOS RU",
+            "lossesDueToOos": "Losses Due to OOS In $ per SKU RU",
+            "topBestBusinessDevs": "Top Best Business Developers RU",
+            "topPos": "Top Pos RU",
+            "topSkuSales": "Top Sku Sales RU"
         }
     },
     "pointsOfSale": {
@@ -20,19 +29,19 @@
         "posOnMap": "Точки Продаж на Карте",
         "posList": "Список Точек Продаж",
         "posTable": {
-        "header": {
-            "noData": "Нет Данных",
-            "prefix": "Показано",
-            "to": "по",
-            "of": "из",
-            "pos": "Точек Продаж"
-        },
-        "error": "Ошибка при попытке загрузить",
-        "posName": "Имя Точки Продаж",
-        "posAddress": "Адрес Точки Продаж",
-        "posTelephone": "Телефон Точки Продаж",
-        "contactPersonName": "Имя Контактного Лица",
-        "dataFilterButton": "Фильтр Данных"
+            "header": {
+                "noData": "Нет Данных",
+                "prefix": "Показано",
+                "to": "по",
+                "of": "из",
+                "pos": "Точек Продаж"
+            },
+            "error": "Ошибка при попытке загрузить",
+            "posName": "Имя Точки Продаж",
+            "posAddress": "Адрес Точки Продаж",
+            "posTelephone": "Телефон Точки Продаж",
+            "contactPersonName": "Имя Контактного Лица",
+            "dataFilterButton": "Фильтр Данных"
         },
         "posInfo": {
             "posName": "Точка Продаж",
@@ -62,6 +71,9 @@
     },
     "statistics": {
         "title": "Статистика"
+    },
+    "settings": {
+        "title": "Настройки"
     },
     "sortButtons": {
         "asc": "По Возрастанию",
