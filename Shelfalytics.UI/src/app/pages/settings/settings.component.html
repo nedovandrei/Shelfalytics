@@ -1,41 +1,54 @@
-<ba-card title="Create Point of Sale">
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="form-group">
-        <label for="inputPOS">POS</label>
-        <input type="text" class="form-control" id="inputPOS" placeholder="POS">
+
+<form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
+
+  <ba-card *ngFor="let address of myForm.controls.addresses.controls; let i=index" title="Create Point of Sale {{i + 1}}">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="inputPOS">POS</label>
+          <input type="text" class="form-control" id="inputPOS" placeholder="POS">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="inputPOSAddres">POS Addres</label>
+          <input type="text" class="form-control" id="inputPOSAddres" placeholder="POS Addres">
+        </div>
       </div>
     </div>
-    <div class="col-sm-6">
-      <div class="form-group">
-        <label for="inputPOSAddres">POS Addres</label>
-        <input type="text" class="form-control" id="inputPOSAddres" placeholder="POS Addres">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="inputPOSPhone">POS Phone</label>
+          <input type="email" class="form-control" id="inputPOSPhone" placeholder="POS Phone">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="inputContactPersonName">Contact Person Name</label>
+          <input type="text" class="form-control" id="inputContactPersonName" placeholder="Contact Person Name">
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label for="inputSchedule">Schedule</label>
+          <input type="text" class="form-control" id="inputSchedule" placeholder="Schedule">
+        </div>
       </div>
     </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Submit</button>
+  </ba-card>
+  <!-- <a (click)="addAddress()" style="cursor: default">
+    Add another address +
+  </a> -->
+  <div class="button-wrapper">
+    <button (click)="addAddress()" type="button" class="btn btn-primary btn-raised">Add another Point Of Sale</button>
   </div>
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="form-group">
-        <label for="inputPOSPhone">POS Phone</label>
-        <input type="email" class="form-control" id="inputPOSPhone" placeholder="POS Phone">
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="form-group">
-        <label for="inputContactPersonName">Contact Person Name</label>
-        <input type="text" class="form-control" id="inputContactPersonName" placeholder="Contact Person Name">
-      </div>
-    </div>
-    <div class="col-sm-12">
-      <div class="form-group">
-        <label for="inputSchedule">Schedule</label>
-        <input type="text" class="form-control" id="inputSchedule" placeholder="Schedule">
-      </div>
-    </div>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</ba-card>
-<ba-card title="Create Item">
+</form>
+
+
+
+<!-- <ba-card title="Create Item">
   <div class="row">
     <div class="col-sm-6">
       <div class="form-group">
@@ -71,4 +84,4 @@
     </div>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
-</ba-card>
+</ba-card> -->

@@ -13,6 +13,7 @@ export interface IAmChartConfig {
     graphs?: IAmChartGraph[];
     chartScrollbar: IAmChartScrollBar;
     chartCursor: IAmChartCursor;
+    chartLegend?: IAmChartLegend;
     dataDateFormat?: string;
     categoryField?: string;
     valueField?: string;
@@ -21,6 +22,8 @@ export interface IAmChartConfig {
     export?: IAmChartExportParam;
     dataProvider: any[];
     color?: string;
+    labelsEnabled?: boolean;
+
 
     innerRadius?: number;
     hoverAlpha?: number;
@@ -32,6 +35,10 @@ export interface IAmChartConfig {
     fontSize?: number;
     fontFamily?: string;
     colors?: any[];
+    position? : string;
+    valueText?: string;
+    valueAlign? : string;
+    valueWidth? : number;
 }
 
 export interface IAmChartValueAxis {
@@ -96,6 +103,13 @@ export interface IAmChartExportParam {
     enabled: boolean;
 }
 
+export interface IAmChartLegend {
+  position? : string;
+  valueText? : string;
+  valueAlign? : string;
+  valueWidth? : number;
+}
+
 export class AmChartConfig implements IAmChartConfig {
     type: string;
     pathToImages: string;
@@ -107,6 +121,7 @@ export class AmChartConfig implements IAmChartConfig {
     graphs?: IAmChartGraph[];
     chartScrollbar: IAmChartScrollBar;
     chartCursor: IAmChartCursor;
+    chartLegend?: IAmChartLegend;
     dataDateFormat?: string;
     rotate?: boolean;
     categoryField?: string;
@@ -115,6 +130,7 @@ export class AmChartConfig implements IAmChartConfig {
     categoryAxis?: IAmChartCategoryAxis;
     export?: IAmChartExportParam;
     dataProvider: any[];
+    labelsEnabled?: boolean;
 
     innerRadius?: number;
     hoverAlpha?: number;
@@ -126,6 +142,10 @@ export class AmChartConfig implements IAmChartConfig {
     fontSize?: number;
     fontFamily?: string;
     colors?: any[];
+    position? : string;
+    valueText?: string;
+    valueAlign? : string;
+    valueWidth? : number;
 
     constructor(chartType: string) {
         this.type = chartType;
@@ -180,6 +200,13 @@ export class AmChartConfig implements IAmChartConfig {
                 "axisColor": "#FFFFFF"
             };
         } else if (this.type === "pie") {
+          this.chartLegend = {
+            "position": 'right',
+
+            "valueText" : '[value]',
+            "valueAlign" : 'right',
+            "valueWidth" : 120
+          }
             // this.innerRadius = 50;
             this.hoverAlpha = 0.85;
             this.outlineThickness = 1;
@@ -188,6 +215,9 @@ export class AmChartConfig implements IAmChartConfig {
                 "[[title]]<br><b>[[value]]%</b><br><span style='font-size:9px'>[[percents]]% of all OOS</span>";
             // this.depth3D = 12;
             // this.angle = 39.6;
+            // this.labelsEnabled = false;
+
+
         }
 
         this.export = {
