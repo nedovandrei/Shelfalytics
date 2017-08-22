@@ -14,12 +14,17 @@
 
     </ba-card>
   </div>
-  <div class="col-md-3 d-flex align-items-stretch" >
-    <ba-card *ngIf="initFlag" title="{{'pointsOfSale.posInfo.equipmentInfo.oos'}}" style="min-width: 100%;">
-      <easy-pie-chart [chartData]="oosChartData"></easy-pie-chart>
-    </ba-card>
-  </div>
-  <div class="col-12">
-    <pie-chart *ngIf="initFlag" [chartData]="equipmentData.RowInfo" [rowCount]="equipmentData.RowCount"></pie-chart>
-  </div>
+  <div class="col-xl-3 col-md-6 d-flex align-items-stretch" >
+
+  <ba-card *ngIf="initFlag" title="{{'pointsOfSale.posInfo.equipmentInfo.oos'}}" style="min-width: 100%;">
+    <div class="row justify-content-center">
+      <div class="col-12 col-xl-12 col-md-10 col-sm-8">
+        <easy-pie-chart [chartData]="oosChartData"></easy-pie-chart>
+      </div>
+    </div>
+  </ba-card>
+</div>
+<div class="col-12">
+  <pie-chart *ngIf="initFlag" [chartData]="equipmentData.RowInfo" [rowCount]="equipmentData.RowCount"></pie-chart>
+</div>
 </div>

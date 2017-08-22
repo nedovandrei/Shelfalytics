@@ -4,6 +4,12 @@
 :host /deep/ {
 
   .page-top {
+    daterangepicker{
+        display: inline-flex;
+          @media screen and (min-width: 992px) {
+        min-width: 350px;
+      }
+    }
     background-color: $sidebar;
     position: fixed;
     z-index: 904;

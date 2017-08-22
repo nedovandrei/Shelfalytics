@@ -1,5 +1,5 @@
 $card-title-height: 44px;
-$card-header-font-size: 16px;
+$card-header-font-size: 17px;
 
 .card.card-blur {
   $blurredBgUrl: '/img/blur-bg-blurred.jpg';
@@ -13,7 +13,7 @@ $card-header-font-size: 16px;
 }
 
 .card {
-  
+
   @include scrollbars(.4em, rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0.7));
   color: $content-text;
   background-color: $bootstrap-panel-bg;
