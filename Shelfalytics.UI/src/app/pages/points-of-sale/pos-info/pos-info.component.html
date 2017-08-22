@@ -130,13 +130,20 @@
               <!-- <td class="browser-icons"></td> -->
               <td>{{lossData.ShortSKUName}}</td>
               <td class="align-right">
-                <span *ngIf="lossData.TimePeriodDays !== 0">{{lossData.TimePeriodDays}} {{'pointsOfSale.posInfo.equipmentInfo.lossesDueToOosTable.days' | translate}}</span>
-                <span *ngIf="lossData.TimePeriodHours !== 0">{{lossData.TimePeriodHours}} {{'pointsOfSale.posInfo.equipmentInfo.lossesDueToOosTable.hours' | translate}}</span>
-                <span *ngIf="lossData.TimePeriodMinutes !== 0">{{lossData.TimePeriodMinutes}} {{'pointsOfSale.posInfo.equipmentInfo.lossesDueToOosTable.min' | translate}}</span>
-                <span >{{lossData.TimePeriodSeconds}} {{'pointsOfSale.posInfo.equipmentInfo.lossesDueToOosTable.sec' | translate}}</span>
+                <div *ngIf="!lossData.isOngoing">
+                  <span *ngIf="lossData.TimePeriodDays !== 0">{{lossData.TimePeriodDays}} {{'pointsOfSale.posInfo.equipmentInfo.lossesDueToOosTable.days' | translate}}</span>
+                  <span *ngIf="lossData.TimePeriodHours !== 0">{{lossData.TimePeriodHours}} {{'pointsOfSale.posInfo.equipmentInfo.lossesDueToOosTable.hours' | translate}}</span>
+                  <span *ngIf="lossData.TimePeriodMinutes !== 0">{{lossData.TimePeriodMinutes}} {{'pointsOfSale.posInfo.equipmentInfo.lossesDueToOosTable.min' | translate}}</span>
+                  <span >{{lossData.TimePeriodSeconds}} {{'pointsOfSale.posInfo.equipmentInfo.lossesDueToOosTable.sec' | translate}}</span>
+                </div>
+                <span *ngIf="lossData.isOngoing">{{'pointsOfSale.posInfo.equipmentInfo.lossesDueToOosTable.ongoing' | translate}} {{lossData.OOSStart | timespan}}</span>
+                
               </td>
               <!-- <td class="table-arr"></td> -->
-              <td class="align-right">{{lossData.Losses | number}}$</td>
+              <td class="align-right">
+                <span *ngIf="!lossData.isOngoing">{{lossData.Losses | number}}$</span>
+                <span *ngIf="lossData.isOngoing" translate>{{'pointsOfSale.posInfo.equipmentInfo.lossesDueToOosTable.na'}}</span>
+              </td>
               <!-- <td class="table-arr"></td> -->
             </tr>
             </tbody>

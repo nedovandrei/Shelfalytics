@@ -5,9 +5,9 @@ import * as moment from "moment";
     name: "timespan"
 })
 export class TimespanPipe implements PipeTransform {
-    transform(value: string): any {
+    transform(value: any): any {
         // console.log("timespan", moment(value, "dd.HH:mm:ss").format("HH : mm : ss"));
 
-        return value.substr(0, value.length - 5);
+        return moment(value).format("DD.MM.YY, HH:mm:ss");
     }
 }

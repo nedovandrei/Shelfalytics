@@ -53,7 +53,7 @@ namespace Shelfalytics.Service
                     var rowViewModel = new EquipmentRowInfoViewModel
                     {
                         Row = sensorReading.Row,
-                        Percentage = 100 - ((double)(sensorReading.Distance - _fullStockDistance) / (double)(_emptyDistance - _fullStockDistance) * 100),
+                        Percentage = 100 - ((double)(sensorReading.Distance - equipmentData.FullDistance) / (double)(equipmentData.EmptyDistance - equipmentData.FullDistance) * 100),
                         ProductName = productData.ProductName,
                         SKUName = productData.SKUName
                     };
@@ -72,7 +72,9 @@ namespace Shelfalytics.Service
                     OpenCloseCountToday = equipmentData.OpenCloseCountToday,
                     RowCount = equipmentData.RowCount,
                     RowInfo = rowViewModelList,
-                    TimeStamp = equipmentData.TimeStamp
+                    TimeStamp = equipmentData.TimeStamp,
+                    Width = equipmentData.Width,
+                    YCount = equipmentData.YCount
                 };
                 viewModelList.Add(viewModel);
             }

@@ -72,7 +72,9 @@
           "days": "days",
           "hours": "hours",
           "min": "min",
-          "sec": "sec"
+          "sec": "sec",
+          "ongoing": "Ongoing from",
+          "na": "N/A"
         }
       }
     }

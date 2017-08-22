@@ -34,6 +34,7 @@ namespace Shelfalytics.Service
 
         public async Task<EquipmentDetaildedOOSDTO> GetEquipmentOOS(int equipmentId, GlobalFilter filter)
         {
+            var equipment = await _equipmentDataRepository.GetEquipmentById(equipmentId);
             var readings = await _equipmentDataRepository.GetFilteredEquipmentData(equipmentId, filter);
             var planogram = await _productDataRepository.GetEquipmentPlanogram(equipmentId);
 
@@ -55,7 +56,7 @@ namespace Shelfalytics.Service
                         var product = planogram.FirstOrDefault(x => x.Row == distanceRead.Row);
                         var repeatingProductRows = planogram.Where(x => x.ProductId == product.ProductId);
 
-                        if (repeatingProductRows.Count() == 1 && distanceRead.Distance == _emptyDistance)
+                        if (repeatingProductRows.Count() == 1 && distanceRead.Distance == equipment.EmptyDistance)
                         {
                             productOOSList.Add(product);
                             generalProductsOOS.Add(product);
@@ -65,7 +66,7 @@ namespace Shelfalytics.Service
                             if (
                                 repeatingProductRows.All(
                                     x =>
-                                        reading.DistanceReadings.All(y => y.Row == x.Row && y.Distance == _emptyDistance)))
+                                        reading.DistanceReadings.All(y => y.Row == x.Row && y.Distance == equipment.EmptyDistance)))
                             {
                                 if (productOOSList.All(x => x != product))
                                 {
@@ -215,6 +216,7 @@ namespace Shelfalytics.Service
 
         public async Task<IEnumerable<EquipmentLossesDueToOOSDTO>> GetEquipmentLossesDueToOos(int equipmentId, GlobalFilter filter)
         {
+            var equipment = await _equipmentDataRepository.GetEquipmentById(equipmentId);
             var readings = await _equipmentDataRepository.GetFilteredEquipmentData(equipmentId, filter);
             var planogram = await _productDataRepository.GetEquipmentPlanogram(equipmentId);
 
@@ -229,29 +231,40 @@ namespace Shelfalytics.Service
                     var rowSkip = 0;
 
                     var distanceList = readingsList[rowIndex].DistanceReadings.ToList();
-                    if (distanceList[columnIndex].Distance == _emptyDistance)
+                    if (distanceList[columnIndex].Distance == equipment.EmptyDistance)
                     {
                         var oosStartPoint = readingsList[rowIndex].TimeStamp;
                         var oosEndPoint = new DateTime();
+                        var isOngoing = false;
                         var product = planogram.First(x => x.Row == columnIndex + 1);
                         
                         // finding out the timespan for OOS for a row
-                        for (var endPointIndex = 1; endPointIndex < readingsList.Count - rowIndex; endPointIndex++)
+                        for (var endPointIndex = 1; endPointIndex <= readingsList.Count - rowIndex; endPointIndex++)
                         {
-                            var nextDistanceRead = readingsList[rowIndex + endPointIndex].DistanceReadings.ToList();
-                            if (nextDistanceRead[columnIndex].Distance == _emptyDistance)
+                            if (rowIndex + endPointIndex >= readingsList.Count)
                             {
-                                rowSkip++;
-                                if (endPointIndex == readingsList.Count - rowIndex - 1)
-                                {
-                                    oosEndPoint = readingsList[rowIndex + endPointIndex].TimeStamp;
-                                }
+                                oosEndPoint = readingsList[rowIndex + endPointIndex - 1].TimeStamp;
+                                isOngoing = true;
                             }
                             else
                             {
-                                oosEndPoint = readingsList[rowIndex + endPointIndex].TimeStamp;
-                                break;
+                                var nextDistanceRead = readingsList[rowIndex + endPointIndex].DistanceReadings.ToList();
+                                if (nextDistanceRead[columnIndex].Distance == equipment.EmptyDistance)
+                                {
+                                    rowSkip++;
+                                    if (endPointIndex == readingsList.Count - rowIndex - 1)
+                                    {
+                                        oosEndPoint = readingsList[rowIndex + endPointIndex].TimeStamp;
+                                        isOngoing = true;
+                                    }
+                                }
+                                else
+                                {
+                                    oosEndPoint = readingsList[rowIndex + endPointIndex].TimeStamp;
+                                    break;
+                                }
                             }
+                            
                         }
 
                         var salesAverage = await _saleRepository.GetProductSalesAverage(product.ProductId, new GlobalFilter
@@ -290,7 +303,8 @@ namespace Shelfalytics.Service
                             TimePeriodMinutes = timeSpan.Minutes,
                             TimePeriodSeconds = timeSpan.Seconds,
                             Losses = (salesAverage.Any() ? salesAverage.FirstOrDefault().AverageSales : 0.00m) * targetDaysCount * product.Price,
-                            AverageSales = salesAverage.Any() ? salesAverage.FirstOrDefault().AverageSales : 0.00m
+                            AverageSales = salesAverage.Any() ? salesAverage.FirstOrDefault().AverageSales : 0.00m,
+                            isOngoing = isOngoing
                         };
                         lossesList.Add(losses);
 

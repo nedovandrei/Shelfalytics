@@ -19,5 +19,6 @@ namespace Shelfalytics.RepositoryInterface.DTO
         public int TimePeriodSeconds { get; set; }
         public decimal Losses { get; set; }
         public decimal AverageSales { get; set; }
+        public bool isOngoing { get; set; }
     }
 }

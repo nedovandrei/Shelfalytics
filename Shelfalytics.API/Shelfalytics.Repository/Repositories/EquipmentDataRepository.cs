@@ -52,7 +52,11 @@ namespace Shelfalytics.Repository.Repositories
                         Temperature = equipmentReading.Temperature,
                         TimeStamp = equipmentReading.TimeSpamp,
                         RowCount = equipment.RowCount,
-                        DistanceReadings = distanceReadings
+                        DistanceReadings = distanceReadings,
+                        EmptyDistance = equipment.EmptyDistance,
+                        FullDistance = equipment.FullDistance,
+                        Width = equipment.Width,
+                        YCount = equipment.YCount
                     }).Take(1);
                 return await query.ToListAsync();
             }
@@ -85,10 +89,35 @@ namespace Shelfalytics.Repository.Repositories
                         ClientId = equipment.ClientId,
                         ModelName = equipment.ModelName,
                         EquipmentTypeId = equipment.EquipmentTypeId,
-                        XCount = equipment.XCount,
-                        YCount = equipment.YCount
+                        YCount = equipment.YCount,
+                        FullDistance = equipment.FullDistance,
+                        EmptyDistance = equipment.EmptyDistance
                     };
                 return await query.ToListAsync();
+            }
+        }
+
+        public async Task<EquipmentDTO> GetEquipmentById(int equipmentId)
+        {
+            using (var uow = _unitOfWorkFactory.GetShelfalyticsDbContext())
+            {
+                var query = from equipment in uow.Set<Equipment>()
+                            where equipment.Id == equipmentId
+                            select new EquipmentDTO
+                            {
+                                Id = equipment.Id,
+                                PointOfSaleId = equipment.PointOfSaleId,
+                                RowCount = equipment.RowCount,
+                                IMEI = equipment.IMEI,
+                                ClientId = equipment.ClientId,
+                                ModelName = equipment.ModelName,
+                                EquipmentTypeId = equipment.EquipmentTypeId,
+                                Width = equipment.Width,
+                                YCount = equipment.YCount,
+                                FullDistance = equipment.FullDistance,
+                                EmptyDistance = equipment.EmptyDistance
+                            };
+                return await query.FirstOrDefaultAsync();
             }
         }
 
@@ -117,6 +146,8 @@ namespace Shelfalytics.Repository.Repositories
                         Temperature = equipmentReading.Temperature,
                         TimeStamp = equipmentReading.TimeSpamp,
                         DistanceReadings = distanceReadings,
+                        Width = equipment.Width,
+                        YCount = equipment.YCount
                     };
                 return await query.ToListAsync();
 

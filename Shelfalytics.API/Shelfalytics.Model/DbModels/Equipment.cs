@@ -26,7 +26,15 @@ namespace Shelfalytics.Model.DbModels
         public string ModelName { get; set; }
         [Required]
         public int RowCount { get; set; }
-        public int XCount { get; set; }
+        //[Required]
+        //public int XCount { get; set; }
+        [Required]
         public int YCount { get; set; }
+        [Required]
+        public int EmptyDistance { get; set; }
+        [Required]
+        public int FullDistance { get; set; }
+        public int Width { get; set; }
+
     }
 }

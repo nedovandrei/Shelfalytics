@@ -130,6 +130,18 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges, AfterVie
     private initChart() {
         this.chart =
             this.amChartsService.makeChart(this.chartName ? this.chartName : "chartdiv", this.chartConfig );
+
+        if (this.chartType === "pie") {
+            this.chart.labelsEnabled = false;
+
+            const legend = new AmCharts.AmLegend();
+            legend.position = "right";
+            legend.valueText = "[[value]]%";
+            legend.valueAlign = "right";
+            legend.valueWidth = 80;
+            this.chart.addLegend(legend);
+        }
+        
     }
 
     private sortData() {

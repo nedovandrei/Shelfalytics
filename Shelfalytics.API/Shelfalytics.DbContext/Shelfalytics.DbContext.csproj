@@ -141,6 +141,22 @@
     <Compile Include="Migrations\Main\201708190929591_AddDiameterToProduct.Designer.cs">
       <DependentUpon>201708190929591_AddDiameterToProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Main\201708221226081_AddedFullAndEmptyDistanceForEquipment.cs" />
+    <Compile Include="Migrations\Main\201708221226081_AddedFullAndEmptyDistanceForEquipment.Designer.cs">
+      <DependentUpon>201708221226081_AddedFullAndEmptyDistanceForEquipment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Main\201708221238272_removedEmptyAndFull.cs" />
+    <Compile Include="Migrations\Main\201708221238272_removedEmptyAndFull.Designer.cs">
+      <DependentUpon>201708221238272_removedEmptyAndFull.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Main\201708221240138_AddedntEmptyAndFull.cs" />
+    <Compile Include="Migrations\Main\201708221240138_AddedntEmptyAndFull.Designer.cs">
+      <DependentUpon>201708221240138_AddedntEmptyAndFull.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Main\201708221816402_RemovedXCountAddedWidthToEquipment.cs" />
+    <Compile Include="Migrations\Main\201708221816402_RemovedXCountAddedWidthToEquipment.Designer.cs">
+      <DependentUpon>201708221816402_RemovedXCountAddedWidthToEquipment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Main\Configuration.cs" />
     <Compile Include="ShelfalyticsDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -199,6 +215,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Main\201708190929591_AddDiameterToProduct.resx">
       <DependentUpon>201708190929591_AddDiameterToProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\Main\201708221226081_AddedFullAndEmptyDistanceForEquipment.resx">
+      <DependentUpon>201708221226081_AddedFullAndEmptyDistanceForEquipment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\Main\201708221238272_removedEmptyAndFull.resx">
+      <DependentUpon>201708221238272_removedEmptyAndFull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\Main\201708221240138_AddedntEmptyAndFull.resx">
+      <DependentUpon>201708221240138_AddedntEmptyAndFull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\Main\201708221816402_RemovedXCountAddedWidthToEquipment.resx">
+      <DependentUpon>201708221816402_RemovedXCountAddedWidthToEquipment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

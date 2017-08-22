@@ -18,6 +18,8 @@ namespace Shelfalytics.ServiceInterface.ViewModels
         public int Temperature { get; set; }
         public int OpenCloseCountToday { get; set; }
         public int RowCount { get; set; }
+        public int YCount { get; set; }
+        public int Width { get; set; }
         public IEnumerable<EquipmentRowInfoViewModel> RowInfo { get; set; }
         public DateTime TimeStamp { get; set; }
     }

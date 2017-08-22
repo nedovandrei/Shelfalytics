@@ -16,6 +16,10 @@ namespace Shelfalytics.RepositoryInterface.DTO
         public int Temperature { get; set; }
         public int OpenCloseCountToday { get; set; }
         public int RowCount { get; set; }
+        public int EmptyDistance { get; set; }
+        public int FullDistance { get; set; }
+        public int Width { get; set; }
+        public int YCount { get; set; }
         public IEnumerable<EquipmentDistanceReading> DistanceReadings { get; set; }
         public DateTime TimeStamp { get; set; }
 
