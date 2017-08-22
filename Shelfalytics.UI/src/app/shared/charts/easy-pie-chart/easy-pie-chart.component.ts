@@ -25,15 +25,16 @@ export class EasyPieChartComponent implements OnInit {
   }
 
   private _loadPieCharts() {
-    
+
     console.log("easypiechart chartData", this.chartData);
     jQuery(".easy-pie-chart").easyPieChart({
       easing: "easeOutBounce",
       onStep: function (from, to, percent) {
         jQuery(this.el).find(".percent").text(percent.toFixed(2));
       },
-      barColor: this.chartData.color,
-      trackColor: "rgba(0,0,0,0.4)",
+      // barColor: this.chartData.color,
+      barColor: "#634f8e",
+      trackColor: "#2dacd1",
       size: 250,
       scaleLength: 0,
       animation: 2000,

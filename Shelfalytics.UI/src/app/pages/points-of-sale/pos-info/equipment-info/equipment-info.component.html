@@ -1,5 +1,5 @@
 <div *ngIf="initFlag" class="row meshes">
-    <div class="col-md-9 d-flex align-items-stretch" >
+    <div class="col-xl-9 col-md-6 d-flex align-items-stretch" >
   <ba-card style="min-width: 100%;">
 
     <h4><i class="ion ion-information"></i><span translate>{{'pointsOfSale.posInfo.equipmentInfo.model'}}</span>: <span class="text-info">{{equipmentData.ModelName}}</span></h4>
@@ -10,9 +10,14 @@
 
   </ba-card>
   </div>
-  <div class="col-md-3 d-flex align-items-stretch" >
+  <div class="col-xl-3 col-md-6 d-flex align-items-stretch" >
+
   <ba-card *ngIf="initFlag" title="{{'pointsOfSale.posInfo.equipmentInfo.oos'}}" style="min-width: 100%;">
+    <div class="row justify-content-center">
+      <div class="col-12 col-xl-12 col-md-10 col-sm-8">
     <easy-pie-chart [chartData]="oosChartData"></easy-pie-chart>
+  </div>
+</div>
   </ba-card>
 </div>
 <div class="col-12">

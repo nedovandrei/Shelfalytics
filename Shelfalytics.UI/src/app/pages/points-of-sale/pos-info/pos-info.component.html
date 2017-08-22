@@ -9,7 +9,6 @@
     <ba-card class="col-md-4 d-flex align-items-stretch text-center">
       <p><i class="fa fa-map-marker"></i><span translate>{{'pointsOfSale.posInfo.posName'}}</span>:</p>
       <h2>{{posData.PointOfSaleName}}</h2>
-
     </ba-card>
     <ba-card class="col-md-4 d-flex align-items-stretch text-center">
       <p><i class="fa fa-map"></i><span translate>{{'pointsOfSale.posInfo.posAddress'}}</span>:</p>
@@ -37,12 +36,23 @@
             </div>
           </div>
         </ba-card> -->
-        <ba-card class="col-12" title="{{'pointsOfSale.posInfo.posOos'}}">
-          <div class="row justify-content-center">
-            <div class="col-12 col-md-3 ">
-              <easy-pie-chart [chartData]="POSOOSChartData"></easy-pie-chart>
-            </div>
-          </div>
+        <ba-card class="col-12 col-md-6" title="{{'pointsOfSale.posInfo.posOos'}}">
+
+              <div class="row justify-content-center">
+                <div class="col-12 col-xl-6 col-md-10 col-sm-8">
+                  <easy-pie-chart [chartData]="POSOOSChartData"></easy-pie-chart>
+                </div>
+              </div>
+
+        </ba-card>
+        <ba-card class="col-12 col-md-6" title="{{'pointsOfSale.posInfo.posOos'}}">
+
+              <div class="row justify-content-center">
+                <div class="col-12 col-xl-6 col-md-10 col-sm-8">
+                  <easy-pie-chart [chartData]="POSOOSChartData"></easy-pie-chart>
+                </div>
+              </div>
+
         </ba-card>
     </div>
   <div class="row">
