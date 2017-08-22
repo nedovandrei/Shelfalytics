@@ -2,8 +2,7 @@
     <div *ngIf="title" class="card-header clearfix">
       <div class="card-title mb-0">
         <span translate>{{title}}</span>
-
-
+        <span *ngIf="removeBacard" class="glyphicon glyphicon-remove pull-right fa fa-close"></span>
       </div>
       <ul class="nav nav-tabs" *ngIf="navTabs">
         <li class="nav-item " *ngFor="let tab of navTabs; let i = index">
@@ -29,7 +28,7 @@
             <a class="nav-link" [ngClass]="{ 'active': selectedTab === i }" (click)="onTabChange(i)">{{tab.title}}</a>
           </li>
         </ul> -->
-    
+
     <!-- <div *ngIf="navTabs" class="card-header clearfix">
       <ul class="nav nav-tabs">
         <li class="nav-item ">
