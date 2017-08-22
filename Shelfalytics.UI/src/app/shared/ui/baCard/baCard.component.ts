@@ -9,14 +9,14 @@ import * as moment from "moment";
   styleUrls: ["./baCard.scss"]
 })
 export class AdBaCardComponent {
-  @Input() title: String;
-  @Input() navTabs: String;
-  @Input() baCardClass: String;
-  @Input() cardType: String;
-  @Input() removeBacard: String;
-  // @Input() tabChangeCallback: (index: any) => void;
+  @Input() title: string;
+  @Input() navTabs: string;
+  @Input() baCardClass: string;
+  @Input() cardType: string;
+  @Input() removeBacard: boolean;
+
   @Output() onTabChange = new EventEmitter();
-  // @Output() onDateRangeChange = new EventEmitter();
+  @Output() dismissCallback = new EventEmitter();
 
   private selectedTab: number = 0;
   private selectedCustomDateRange: any;
@@ -38,6 +38,10 @@ export class AdBaCardComponent {
       title: this.title,
       range: TabDateRanges.Custom
     });
+  }
+
+  private dismissHandler() {
+    this.dismissCallback.emit();
   }
 
   private tabChanged(range: any, index: number) {

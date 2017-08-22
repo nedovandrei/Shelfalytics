@@ -1,7 +1,7 @@
 
 <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
 
-  <ad-ba-card removeBacard="abc" *ngFor="let address of myForm.controls.addresses.controls; let i=index" title="Create Point of Sale {{i + 1}}">
+  <ad-ba-card [removeBacard]="true" (dismissCallback)="dismissBaCard(i)" *ngFor="let address of myForm.controls.addresses.controls; let i=index" title="Create Point of Sale {{i + 1}}">
     <div class="row">
       <div class="col-sm-6">
         <div class="form-group">

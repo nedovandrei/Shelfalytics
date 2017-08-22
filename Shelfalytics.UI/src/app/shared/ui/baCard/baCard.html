@@ -2,7 +2,7 @@
     <div *ngIf="title" class="card-header clearfix">
       <div class="card-title mb-0">
         <span translate>{{title}}</span>
-        <span *ngIf="removeBacard" class="glyphicon glyphicon-remove pull-right fa fa-close"></span>
+        <span (click)="dismissHandler()" *ngIf="removeBacard" class="glyphicon glyphicon-remove pull-right fa fa-close"></span>
       </div>
       <ul class="nav nav-tabs" *ngIf="navTabs">
         <li class="nav-item " *ngFor="let tab of navTabs; let i = index">

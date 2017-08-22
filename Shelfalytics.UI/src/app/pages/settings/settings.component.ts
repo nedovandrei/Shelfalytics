@@ -45,4 +45,8 @@ export class SettingsComponent implements OnInit {
       //     // ...
       //     console.log(model);
       // }
+
+    private dismissBaCard(index: number) {
+        console.log("dismiss ba card", index);
+    }
 }
