@@ -12,12 +12,12 @@ import * as moment from "moment";
 
 @Component({
   selector: "pages",
-  templateUrl: "pages.component.html" 
+  templateUrl: "pages.component.html"
 })
 export class Pages implements OnInit {
 
-  constructor(private _menuService: BaMenuService, 
-    private globalFilter: GlobalFilter, 
+  constructor(private _menuService: BaMenuService,
+    private globalFilter: GlobalFilter,
     private translate: TranslateService
   ) { }
 

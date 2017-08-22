@@ -13,6 +13,7 @@ export class AdBaCardComponent {
   @Input() navTabs: String;
   @Input() baCardClass: String;
   @Input() cardType: String;
+  @Input() removeBacard: String;
   // @Input() tabChangeCallback: (index: any) => void;
   @Output() onTabChange = new EventEmitter();
   // @Output() onDateRangeChange = new EventEmitter();

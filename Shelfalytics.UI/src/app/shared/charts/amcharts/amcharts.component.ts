@@ -104,7 +104,7 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges, AfterVie
             }
         } else {
             this.chartConfig = new AmChartConfig(this.chartType ? this.chartType : "serial");
-            
+
             const noData: any = {};
             Object.defineProperty(noData, this.chartData.legendField, {
                 value: "No Data"

@@ -2,7 +2,9 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { NgbDropdownModule, NgbModalModule } from "@ng-bootstrap/ng-bootstrap";
 import { TranslateModule } from "@ngx-translate/core";
-
+import {ReactiveFormsModule, FormsModule} from '@angular/forms';
+import {AgmCoreModule} from '@agm/core';
+import {BrowserModule} from '@angular/platform-browser';
 import { routing } from "./pages.routing";
 import { AuthGuard } from "../auth/auth.guard";
 import { AjaxService } from "../shared/services/ajax.service";
@@ -32,7 +34,10 @@ import { SettingsComponent } from "./settings/settings.component";
     ControlsModule,
     UiModule,
     MapsModule,
-    ChartsModule
+    ChartsModule,
+    ReactiveFormsModule,
+    FormsModule,
+    AgmCoreModule
   ],
   declarations: [Pages, MainComponent, StatisticsComponent, SettingsComponent],
   providers: [GlobalFilter, AjaxService, AuthGuard]
