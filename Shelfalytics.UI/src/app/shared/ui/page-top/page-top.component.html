@@ -4,7 +4,7 @@
   <a href (click)="toggleMenu()" class="collapse-menu-link ion-navicon"></a>
 
   <div class="search">
-    <daterangepicker [params]="daterangeParams" (dateChanged)="dateChangedHandler($event)" style="display: inline-flex; min-width: 350px"></daterangepicker>
+    <daterangepicker [params]="daterangeParams" (dateChanged)="dateChangedHandler($event)" ></daterangepicker>
     <!-- <i *ngIf="showGlobalStateIndicator && !globalStateIndicatorValue" class="fa fa-times-circle" style="display: inline-flex; color:red;"></i> -->
     <i *ngIf="showGlobalStateIndicator && globalStateIndicatorValue" class="fa fa-check-circle" style="display: inline-flex; color: green;"></i>
      <!-- <select [(ngModel)]="currentLanguage" (change)="changeLanguage(currentLanguage)" class="form-control">
