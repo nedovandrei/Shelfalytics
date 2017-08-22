@@ -21,8 +21,8 @@ export class AdBaCardComponent {
   private selectedCustomDateRange: any;
 
   private daterangeParams: IDateRangePickerParams = {
-    startDate: moment().subtract(1, "weeks"),
-    endDate: moment(),
+    startDate: moment().utc(true).subtract(1, "weeks"),
+    endDate: moment().utc(true),
     isDateInputVisible: false
   };
 
@@ -52,8 +52,8 @@ export class AdBaCardComponent {
     } else if (range === TabDateRanges.Day) {
       this.onTabChange.emit({
         timeSpan: {
-          StartTime: moment().subtract(1, "days"),
-          EndTime: moment()
+          StartTime: moment().utc(true).subtract(1, "days"),
+          EndTime: moment().utc(true)
         },
         title: this.title,
         range
@@ -61,8 +61,8 @@ export class AdBaCardComponent {
     } else if (range === TabDateRanges.Week) {
       this.onTabChange.emit({
         timeSpan: {
-          StartTime: moment().subtract(1, "weeks"),
-          EndTime: moment()
+          StartTime: moment().utc(true).subtract(1, "weeks"),
+          EndTime: moment().utc(true)
         },
         title: this.title,
         range
@@ -70,8 +70,8 @@ export class AdBaCardComponent {
     } else if (range === TabDateRanges.Month) {
       this.onTabChange.emit({
         timeSpan: {
-          StartTime: moment().subtract(1, "months"),
-          EndTime: moment()
+          StartTime: moment().utc(true).subtract(1, "months"),
+          EndTime: moment().utc(true)
         },
         title: this.title,
         range

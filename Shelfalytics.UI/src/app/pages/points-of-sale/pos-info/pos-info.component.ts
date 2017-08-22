@@ -36,6 +36,7 @@ export class PosInfoComponent implements OnInit, OnDestroy {
   private POSOOSChartData = {};
 
   private equipmentProductOOSTable = [];
+  private equipmentLossesDueToOOSTable = [];
 
   private salesChartData = {};
 
@@ -105,8 +106,11 @@ export class PosInfoComponent implements OnInit, OnDestroy {
             };
             this.equipmentInitFlag = true;
             this.initFlag = true;
-        });
+          });
 
+          this.posInfoService.getLossesDueToOOS(this.equipmentInFocus).subscribe((lossesData: any) => {
+            this.equipmentLossesDueToOOSTable = lossesData;
+          });
     });  
   }
 

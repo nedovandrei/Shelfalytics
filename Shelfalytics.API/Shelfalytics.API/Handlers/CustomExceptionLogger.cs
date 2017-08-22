@@ -27,6 +27,8 @@ namespace Shelfalytics.API.Handlers
 
             _exceptionLogRepository.SaveExceptionLog(exceptionLog);
 
+
+            base.Log(context);
             //Do whatever logging you need to do here.
             //File.WriteAllText("D:\\exceptionlog.txt", log + "\n\n" + log2);
         }

@@ -20,7 +20,7 @@
   </ba-card>
   <ba-card class="col-md-6 col-lg-3 col-sm-12 col-12 text-center">
 
-    <h1>5250$</h1>
+    <h1>{{lossesDueToOosSummary}}$</h1>
     <p translate>{{'main.header.moneyLoss'}}</p>
   </ba-card>
 </div>
@@ -39,11 +39,7 @@
     <google-maps *ngIf="mapInit" [mapData]="mapSettings"></google-maps>
   </ad-ba-card >
   <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12" title="main.cards.lossesDueToOos" [navTabs]="baCardTabs" (onTabChange)="tabChanged($event)">
-      <ol class="mt-2">
-        <li>asdasdas</li>
-          <li>asdasdas</li>
-            <li>asdasdas</li>
-      </ol>
+      <amchart *ngIf="lossesDueToOosChartInit" [chartData]="lossesDueToOosChart" [chartName]="'lossesDueToOos'"></amchart>
   </ad-ba-card >
 </div>
 <div class="row">

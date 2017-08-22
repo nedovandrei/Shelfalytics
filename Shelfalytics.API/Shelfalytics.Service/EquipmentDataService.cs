@@ -111,16 +111,19 @@ namespace Shelfalytics.Service
                 // sales registration logic
                 if (equipmentHasReadings && i != previousReading.SensorReadings.Count())
                 {
+                    //getting planogram data with bottle diameters
+                    var product = planogramData.First(x => x.Row == reading.DistanceSensors.ToList()[i].Row);
+
                     // calculate difference between new reading data and previous
                     var delta = previousReading.SensorReadings.ToList()[i].Distance - reading.DistanceSensors.ToList()[i].Distance;
 
                     // if difference is higher than 3/4 of predefined one bottle length;
                     // just a precaution, since the code below will result 0 in any case that
                     // Delta is below _oneBottleLength
-                    if (delta < -(_oneBottleLength / 1.5))
+                    if (delta < -(product.BottleDiameter / 1.5))
                     {
                         delta *= -1;
-                        var salesQtyUnrounded = Math.Round((double)delta / _oneBottleLength, 1);
+                        var salesQtyUnrounded = Math.Round(delta / product.BottleDiameter, 1);
 
                         // the whole point of the code below is to shift the Round Logic
                         // so that the midpoint of Round is 0.7.
@@ -129,7 +132,7 @@ namespace Shelfalytics.Service
                             (int)Math.Round(salesQtyUnrounded) : (int)Math.Floor(salesQtyUnrounded);
                         if (salesQty != 0)
                         {
-                            var product = planogramData.First(x => x.Row == reading.DistanceSensors.ToList()[i].Row);
+                            //var product = planogramData.First(x => x.Row == reading.DistanceSensors.ToList()[i].Row);
                             var saleRecord = new Sale
                             {
                                 EquipmentId = equipment.Id,

@@ -64,7 +64,14 @@
                     "oosPercentage": "OOS Процентаж"
                 },
                 "lossesDueToOosTable": {
-                    "title": "Потери из-за Out of Stock по продуктам"
+                    "title": "Потери из-за Out of Stock по продуктам",
+                    "skuName": "SKU Имя",
+                    "oosPeriod": "Период OOS",
+                    "potentialLoss": "Потенциальные Потери",
+                    "days": "дней",
+                    "hours": "часов",
+                    "min": "минут",
+                    "sec": "сек"
                 }
             }
         }   

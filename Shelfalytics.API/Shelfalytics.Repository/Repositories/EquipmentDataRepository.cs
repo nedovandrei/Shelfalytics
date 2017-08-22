@@ -71,6 +71,27 @@ namespace Shelfalytics.Repository.Repositories
             }
         }
 
+        public async Task<IEnumerable<EquipmentDTO>> GetEquipments()
+        {
+            using (var uow = _unitOfWorkFactory.GetShelfalyticsDbContext())
+            {
+                var query = from equipment in uow.Set<Equipment>()
+                    select new EquipmentDTO
+                    {
+                        Id = equipment.Id,
+                        PointOfSaleId = equipment.PointOfSaleId,
+                        RowCount = equipment.RowCount,
+                        IMEI = equipment.IMEI,
+                        ClientId = equipment.ClientId,
+                        ModelName = equipment.ModelName,
+                        EquipmentTypeId = equipment.EquipmentTypeId,
+                        XCount = equipment.XCount,
+                        YCount = equipment.YCount
+                    };
+                return await query.ToListAsync();
+            }
+        }
+
         public async Task<IEnumerable<EqiupmentDataDTO>> GetFilteredEquipmentData(int equipmentId, GlobalFilter filter)
         {
             using (var uow = _unitOfWorkFactory.GetShelfalyticsDbContext())

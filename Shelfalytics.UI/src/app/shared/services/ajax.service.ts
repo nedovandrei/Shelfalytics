@@ -61,7 +61,7 @@ export class AjaxService {
                         subscriber.complete(); 
                     } else if (xhr.status === 401) {
                         this.redirectToLogin();
-                        subscriber.error(xhr);
+                        // subscriber.error(xhr);
                     } else {
                         subscriber.error(xhr);
                     }

@@ -100,5 +100,41 @@ namespace Shelfalytics.Repository.Repositories
                 return await query.ToListAsync();
             }
         }
+
+        public async Task<IEnumerable<ProductSalesAverageDTO>> GetProductSalesAverage(int productId, GlobalFilter filter)
+        {
+            var timeSpan = (filter.EndTime - filter.StartTime).Days;
+
+            using (var uow = _unitOfWorkFactory.GetShelfalyticsDbContext())
+            {
+                var query = from sale in uow.Set<Sale>()
+                            join product in uow.Set<Product>() on sale.ProductId equals product.Id
+                            where sale.TimeStamp <= filter.EndTime && sale.TimeStamp >= filter.StartTime && sale.ProductId == productId
+                            select new
+                            {
+                                sale.Quantity,
+                                sale.TimeStamp,
+                                product.SKUName,
+                                product.TradeMark,
+                                product.ShortSKUName
+                            }
+                    into set
+                            group set by new
+                            {
+                                set.SKUName,
+                                set.TradeMark,
+                                set.ShortSKUName
+                            }
+                    into groupedSet
+                            select new ProductSalesAverageDTO
+                            {
+                                ProductName = groupedSet.Key.SKUName,
+                                AverageSales = groupedSet.Where(x => x.SKUName == groupedSet.Key.SKUName).Sum(x => x.Quantity) / (decimal)timeSpan,
+                                TradeMark = groupedSet.Key.TradeMark,
+                                ShortProductName = groupedSet.Key.ShortSKUName
+                            };
+                return await query.ToListAsync();
+            }
+        }
     }
 }

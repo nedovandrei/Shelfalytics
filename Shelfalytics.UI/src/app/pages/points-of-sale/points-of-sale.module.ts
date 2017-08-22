@@ -8,6 +8,7 @@ import { ControlsModule } from "../../shared/controls/controls.module";
 import { ChartsModule } from "../../shared/charts/charts.module";
 import { MapsModule } from "../../shared/maps/maps.module";
 import { TranslateModule } from "@ngx-translate/core";
+import { PipesModule } from "../../shared/pipes/pipes.module";
 
 import { AjaxService } from "../../shared/services/ajax.service";
 import { PosInfoComponent } from "./pos-info/pos-info.component";
@@ -23,7 +24,8 @@ import { PosListComponent } from "./pos-list/pos-list.component";
     CommonModule,
     ChartsModule,
     ControlsModule,
-    MapsModule
+    MapsModule,
+    PipesModule
   ],
   declarations: [PointsOfSaleComponent, PosInfoComponent, EquipmentInfoComponent, PosListComponent],
   providers: [AjaxService]

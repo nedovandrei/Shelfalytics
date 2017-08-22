@@ -8,5 +8,7 @@
         public string ProductName { get; set; }
         public string SKUName { get; set; }
         public string ShortSKUName { get; set; }
+        public double BottleDiameter { get; set; }
+        public decimal Price { get; set; }
     }
 }

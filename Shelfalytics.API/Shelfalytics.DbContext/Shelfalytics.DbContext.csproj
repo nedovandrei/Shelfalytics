@@ -137,6 +137,10 @@
     <Compile Include="Migrations\Main\201708071323235_MadeShortSKURequired.Designer.cs">
       <DependentUpon>201708071323235_MadeShortSKURequired.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Main\201708190929591_AddDiameterToProduct.cs" />
+    <Compile Include="Migrations\Main\201708190929591_AddDiameterToProduct.Designer.cs">
+      <DependentUpon>201708190929591_AddDiameterToProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Main\Configuration.cs" />
     <Compile Include="ShelfalyticsDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -192,6 +196,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Main\201708071323235_MadeShortSKURequired.resx">
       <DependentUpon>201708071323235_MadeShortSKURequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\Main\201708190929591_AddDiameterToProduct.resx">
+      <DependentUpon>201708190929591_AddDiameterToProduct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

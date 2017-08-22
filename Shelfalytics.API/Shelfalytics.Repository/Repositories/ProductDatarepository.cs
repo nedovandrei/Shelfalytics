@@ -35,7 +35,9 @@ namespace Shelfalytics.Repository.Repositories
                         Row = pl.Row,
                         ProductName = product.TradeMark,
                         SKUName = product.SKUName,
-                        ShortSKUName = product.ShortSKUName
+                        ShortSKUName = product.ShortSKUName,
+                        BottleDiameter = product.BottleDiameter,
+                        Price = product.Price
                     };
                 return await query.ToListAsync();
             }

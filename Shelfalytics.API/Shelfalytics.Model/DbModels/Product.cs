@@ -28,5 +28,8 @@ namespace Shelfalytics.Model.DbModels
         public int PackagingTypeId { get; set; }
         [ForeignKey("PackagingTypeId")]
         public PackagingType PackagingType { get; set; }
+        [Required]
+        [Range(1, 30)]
+        public double BottleDiameter { get; set; }
     }
 }

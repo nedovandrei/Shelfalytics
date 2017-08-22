@@ -40,4 +40,15 @@ export class MainService {
             });
         }
     }
+
+    getLossesDueToOosSummary(filter?: any) {
+        if (filter) {
+            return this.ajaxService.post(`${global.apiPath}Statistics/lossesSummary`, filter);
+        } else {
+            return this.ajaxService.post(`${global.apiPath}Statistics/lossesSummary`, {
+                StartTime: this.globalFilter.startDate,
+                EndTime: this.globalFilter.endDate
+            });
+        }
+    }
 }

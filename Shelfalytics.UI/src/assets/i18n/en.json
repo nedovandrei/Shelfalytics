@@ -65,7 +65,14 @@
           "oosPercentage": "OOS Percentage"
         },
         "lossesDueToOosTable": {
-          "title": "Losses due to out of stock by product"
+          "title": "Losses due to out of stock by product",
+          "skuName": "SKU Name",
+          "oosPeriod": "Period in OOS",
+          "potentialLoss": "Potential Loss",
+          "days": "days",
+          "hours": "hours",
+          "min": "min",
+          "sec": "sec"
         }
       }
     }

@@ -5,7 +5,7 @@
 
   <div class="search">
     <daterangepicker [params]="daterangeParams" (dateChanged)="dateChangedHandler($event)" style="display: inline-flex; min-width: 350px"></daterangepicker>
-    <i *ngIf="showGlobalStateIndicator && !globalStateIndicatorValue" class="fa fa-times-circle" style="display: inline-flex; color:red;"></i>
+    <!-- <i *ngIf="showGlobalStateIndicator && !globalStateIndicatorValue" class="fa fa-times-circle" style="display: inline-flex; color:red;"></i> -->
     <i *ngIf="showGlobalStateIndicator && globalStateIndicatorValue" class="fa fa-check-circle" style="display: inline-flex; color: green;"></i>
      <!-- <select [(ngModel)]="currentLanguage" (change)="changeLanguage(currentLanguage)" class="form-control">
       <option value="en">English</option>
@@ -38,7 +38,7 @@
     <li class="dropdown-item" (click)="changeLanguage('en')"><a>English</a></li>
   </ul>
 </div>
-<span style="float: right; position: relative; top: 12px; margin-right: 16px">{{loggedUser.name}}</span>
+<span *ngIf="loggedUser" style="float: right; position: relative; top: 12px; margin-right: 16px">{{loggedUser.name}}</span>
     <!-- <ba-msg-center></ba-msg-center> -->
   </div>
 </div>

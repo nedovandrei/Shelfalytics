@@ -212,5 +212,130 @@ namespace Shelfalytics.Service
 
             return saleSummary;
         }
+
+        public async Task<IEnumerable<EquipmentLossesDueToOOSDTO>> GetEquipmentLossesDueToOos(int equipmentId, GlobalFilter filter)
+        {
+            var readings = await _equipmentDataRepository.GetFilteredEquipmentData(equipmentId, filter);
+            var planogram = await _productDataRepository.GetEquipmentPlanogram(equipmentId);
+
+            var readingsList = readings.OrderBy(x => x.TimeStamp).ToList();
+
+            var lossesList = new List<EquipmentLossesDueToOOSDTO>();
+
+            for (var columnIndex = 0; columnIndex < planogram.Count(); columnIndex++)
+            {
+                for (var rowIndex = 0; rowIndex < readingsList.Count(); rowIndex++)
+                {
+                    var rowSkip = 0;
+
+                    var distanceList = readingsList[rowIndex].DistanceReadings.ToList();
+                    if (distanceList[columnIndex].Distance == _emptyDistance)
+                    {
+                        var oosStartPoint = readingsList[rowIndex].TimeStamp;
+                        var oosEndPoint = new DateTime();
+                        var product = planogram.First(x => x.Row == columnIndex + 1);
+                        
+                        // finding out the timespan for OOS for a row
+                        for (var endPointIndex = 1; endPointIndex < readingsList.Count - rowIndex; endPointIndex++)
+                        {
+                            var nextDistanceRead = readingsList[rowIndex + endPointIndex].DistanceReadings.ToList();
+                            if (nextDistanceRead[columnIndex].Distance == _emptyDistance)
+                            {
+                                rowSkip++;
+                                if (endPointIndex == readingsList.Count - rowIndex - 1)
+                                {
+                                    oosEndPoint = readingsList[rowIndex + endPointIndex].TimeStamp;
+                                }
+                            }
+                            else
+                            {
+                                oosEndPoint = readingsList[rowIndex + endPointIndex].TimeStamp;
+                                break;
+                            }
+                        }
+
+                        var salesAverage = await _saleRepository.GetProductSalesAverage(product.ProductId, new GlobalFilter
+                        {
+                            StartTime = filter.StartTime.Subtract(filter.EndTime - filter.StartTime),
+                            EndTime = filter.EndTime.Subtract(filter.EndTime - filter.StartTime)
+                        });
+
+                        var timeSpan = oosEndPoint - oosStartPoint;
+                        decimal targetDaysCount;
+                        if (timeSpan.Days == 0)
+                        {
+                            if (timeSpan.Hours == 0)
+                            {
+                                targetDaysCount = timeSpan.Minutes / 3600.0m;
+                            }
+                            else
+                            {
+                                targetDaysCount = timeSpan.Hours / 24.0m;
+                            }
+                        }
+                        else
+                        {
+                            targetDaysCount = timeSpan.Days + (timeSpan.Hours / 24.0m) + (timeSpan.Minutes / 3600.0m);
+                        }
+
+                        var losses = new EquipmentLossesDueToOOSDTO
+                        {
+                            SKUName = product.SKUName,
+                            ShortSKUName = product.ShortSKUName,
+                            OOSStart = oosStartPoint,
+                            OOSEnd = oosEndPoint,
+                            TimePeriod = timeSpan,
+                            TimePeriodDays = timeSpan.Days,
+                            TimePeriodHours = timeSpan.Hours,
+                            TimePeriodMinutes = timeSpan.Minutes,
+                            TimePeriodSeconds = timeSpan.Seconds,
+                            Losses = (salesAverage.Any() ? salesAverage.FirstOrDefault().AverageSales : 0.00m) * targetDaysCount * product.Price,
+                            AverageSales = salesAverage.Any() ? salesAverage.FirstOrDefault().AverageSales : 0.00m
+                        };
+                        lossesList.Add(losses);
+
+                        rowIndex += rowSkip;
+                    }
+                }
+            }
+
+            return lossesList;
+        }
+
+        public async Task<LossesDueToOOSSummaryDTO> GetLossesDueToOOSSummary(GlobalFilter filter)
+        {
+            var equipments = await _equipmentDataRepository.GetEquipments();
+
+            var lossesList = new List<EquipmentLossesDueToOOSDTO>();
+
+            foreach (var equipment in equipments)
+            {
+                var equipmentLosses = await GetEquipmentLossesDueToOos(equipment.Id, filter);
+                lossesList.AddRange(equipmentLosses);
+            }
+
+            var targetList = lossesList.GroupBy(x => new {x.SKUName, x.ShortSKUName}).Select(x => new EquipmentLossesDueToOOSDTO
+            {
+                SKUName = x.Key.SKUName,
+                ShortSKUName = x.Key.ShortSKUName,
+                AverageSales =
+                    x.Where(y => y.SKUName == x.Key.SKUName).Sum(y => y.AverageSales) /
+                    x.Count(y => y.SKUName == x.Key.SKUName),
+                Losses = x.Where(y => y.SKUName == x.Key.SKUName).Sum(y => y.Losses),
+                //TimePeriod = x.Where(y => y.SKUName == x.Key.SKUName).Sum(y => y.TimePeriod)
+                TimePeriodDays = x.Where(y => y.SKUName == x.Key.SKUName).Sum(y => y.TimePeriodDays),
+                TimePeriodHours = x.Where(y => y.SKUName == x.Key.SKUName).Sum(y => y.TimePeriodHours),
+                TimePeriodMinutes = x.Where(y => y.SKUName == x.Key.SKUName).Sum(y => y.TimePeriodMinutes),
+                TimePeriodSeconds = x.Where(y => y.SKUName == x.Key.SKUName).Sum(y => y.TimePeriodSeconds),
+            });
+
+            var result = new LossesDueToOOSSummaryDTO
+            {
+                Total = targetList.Sum(x => x.Losses),
+                LossesByProducts = targetList
+            };
+
+            return result;
+        }
     }
 }

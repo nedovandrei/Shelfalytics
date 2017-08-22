@@ -16,5 +16,7 @@ namespace Shelfalytics.ServiceInterface
         Task<IEnumerable<EquipmentProductSalesDTO>> GetProductSalesData(int equipmentId, GlobalFilter filter);
         Task<EquipmentDetaildedOOSDTO> GetTopSkuOOS(GlobalFilter filter);
         Task<SalesSummaryDTO> GetProductSalesSummary(GlobalFilter filter);
+        Task<IEnumerable<EquipmentLossesDueToOOSDTO>> GetEquipmentLossesDueToOos(int equipmentId, GlobalFilter filter);
+        Task<LossesDueToOOSSummaryDTO> GetLossesDueToOOSSummary(GlobalFilter filter);
     }
 }

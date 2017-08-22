@@ -70,5 +70,21 @@ namespace Shelfalytics.API.Controllers
             var res = await _statisticsService.GetPOSOOSSummary(filter);
             return Request.CreateResponse(res);
         }
+
+        [HttpPost]
+        [Route("equipmentLosses")]
+        public async Task<HttpResponseMessage> GetEquipmentLossesDueToOOS(int equipmentId, GlobalFilter filter)
+        {
+            var res = await _statisticsService.GetEquipmentLossesDueToOos(equipmentId, filter);
+            return Request.CreateResponse(res);
+        }
+
+        [HttpPost]
+        [Route("lossesSummary")]
+        public async Task<HttpResponseMessage> GetLossesDueToOOSSummary(GlobalFilter filter)
+        {
+            var res = await _statisticsService.GetLossesDueToOOSSummary(filter);
+            return Request.CreateResponse(res);
+        }
     }
 }

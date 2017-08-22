@@ -29,10 +29,10 @@ export class DaterangepickerComponent implements OnInit {
       locale: { format: "DD.MM.YYYY" },
       alwaysShowCalendars: true,
       ranges: {
-        "Last Week": [moment().subtract(1, "weeks"), moment()],
-        "Last Month": [moment().subtract(1, "month"), moment()],
-        "Last 6 Months": [moment().subtract(6, "month"), moment()],
-        "Last Year": [moment().subtract(12, "month"), moment()]
+        "Last Week": [moment().utc(true).subtract(1, "weeks"), moment()],
+        "Last Month": [moment().utc(true).subtract(1, "month"), moment()],
+        "Last 6 Months": [moment().utc(true).subtract(6, "month"), moment()],
+        "Last Year": [moment().utc(true).subtract(12, "month"), moment()]
       },
       startDate: undefined,
       endDate: undefined

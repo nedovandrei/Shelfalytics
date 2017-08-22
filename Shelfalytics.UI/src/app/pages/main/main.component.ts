@@ -102,6 +102,14 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
     valueFields: ["OOSPercentage"]
   };
 
+  private lossesDueToOosChartInit: boolean = false;
+  private lossesDueToOosSummary: number;
+  private lossesDueToOosChart = {
+    dataProvider: [],
+    legendField: "ShortSKUName",
+    valueFields: ["Losses"]
+  };
+
   // private daterangeParams: IDateRangePickerParams = {
   //   startDate: moment().subtract(1, "weeks"),
   //   endDate: moment(),
@@ -122,6 +130,8 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
       this.reloadTopPosBeingInOos(event);
     } else if (event.title === "main.cards.topSkuSales") {
       this.reloadSalesSummary(event);
+    } else if (event.title === "main.cards.lossesDueToOos") {
+      this.reloadLossesDueToOos(event);
     }
 
     if (this.cardsTabsGlobalState.globalFilterState) {
@@ -188,6 +198,24 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
     }
     
   }
+
+  private reloadLossesDueToOos(event: any) {
+    this.lossesDueToOosChartInit = false;
+
+    if (event.range === TabDateRanges.Global) {
+      this.cardsTabsGlobalState.lossesDueToOos = true;
+      this.mainService.getLossesDueToOosSummary().subscribe((result: any) => {
+        this.lossesDueToOosChart.dataProvider = result.LossesByProducts;
+        this.lossesDueToOosChartInit = true;
+      });
+    } else {
+      this.cardsTabsGlobalState.lossesDueToOos = false;
+      this.mainService.getLossesDueToOosSummary(event.timeSpan).subscribe((result: any) => {
+        this.lossesDueToOosChart.dataProvider = result.LossesByProducts;
+        this.lossesDueToOosChartInit = true;
+      });
+    }
+  }
   //#endregion
 
   ngOnInit() {
@@ -205,6 +233,7 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
     this.skuOosChartsInit = false;
     this.salesSummaryChartInit = false;
     this.posInOosSummaryChartInit = false;
+    this.lossesDueToOosChartInit = false;
 
     this.mainService.getTopSkuOos().subscribe((result: any) => {
       this.topSkuOosChart.dataProvider = result.OOSProducts;
@@ -216,6 +245,12 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
       this.salesSummaryCount = result.SalesCount;
       this.salesSummaryChart.dataProvider = result.Products;
       this.salesSummaryChartInit = true;
+    });
+
+    this.mainService.getLossesDueToOosSummary().subscribe((result: any) => {
+      this.lossesDueToOosSummary = result.Total;
+      this.lossesDueToOosChart.dataProvider = result.LossesByProducts;
+      this.lossesDueToOosChartInit = true;
     });
 
     this.mainService.getTopPosInOos().subscribe((data: any) => {

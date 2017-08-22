@@ -22,8 +22,8 @@ export class Pages implements OnInit {
   ) { }
 
   private dateRangePickerParams: IDateRangePickerParams = {
-    startDate: moment().subtract(1, "weeks"),
-    endDate: moment()
+    startDate: this.globalFilter.startDate,
+    endDate: this.globalFilter.endDate
   };
 
   ngOnInit() {

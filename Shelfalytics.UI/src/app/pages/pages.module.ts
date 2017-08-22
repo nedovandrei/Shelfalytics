@@ -4,6 +4,7 @@ import { NgbDropdownModule, NgbModalModule } from "@ng-bootstrap/ng-bootstrap";
 import { TranslateModule } from "@ngx-translate/core";
 
 import { routing } from "./pages.routing";
+import { AuthGuard } from "../auth/auth.guard";
 import { AjaxService } from "../shared/services/ajax.service";
 import { NgaModule } from "../theme/nga.module";
 import { ControlsModule } from "../shared/controls/controls.module";
@@ -34,7 +35,7 @@ import { SettingsComponent } from "./settings/settings.component";
     ChartsModule
   ],
   declarations: [Pages, MainComponent, StatisticsComponent, SettingsComponent],
-  providers: [GlobalFilter, AjaxService]
+  providers: [GlobalFilter, AjaxService, AuthGuard]
 
 })
 export class PagesModule {
