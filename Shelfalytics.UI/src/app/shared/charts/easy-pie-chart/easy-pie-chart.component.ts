@@ -33,8 +33,8 @@ export class EasyPieChartComponent implements OnInit {
         jQuery(this.el).find(".percent").text(percent.toFixed(2));
       },
       // barColor: this.chartData.color,
-      barColor: "#634f8e",
-      trackColor: "#2dacd1",
+      barColor: "#2dacd1",
+      trackColor: "#eaf7fb",
       size: 250,
       scaleLength: 0,
       animation: 2000,
