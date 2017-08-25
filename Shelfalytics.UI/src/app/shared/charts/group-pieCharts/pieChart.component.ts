@@ -56,8 +56,22 @@ export class GroupPieChart implements OnInit, AfterViewInit {
       chartsArray.push(oneRowArray);
     }
 
+    const targetArray = [];
+    for (let i = 0; i < chartsArray.length; i++) {
+      let arrayWithMargins = {
+        width: 0,
+        data: chartsArray[i]
+      };
+      let percentageSumm = 0;
+      for (let j = 0; j < arrayWithMargins.data.length; j++) {
+        percentageSumm += arrayWithMargins.data[j].WidthPercentage;
+      }
+
+      arrayWithMargins.width = (100 - percentageSumm) / (arrayWithMargins.data.length - 1);
+      targetArray.push(arrayWithMargins);
+    }
     console.log("equipmentInfo [][] array ", chartsArray);
-    this.chartArrays = chartsArray;
+    this.chartArrays = targetArray;
 
     this.charts = this._pieChartService.getData(this.chartData.RowInfo, this.rowCount);
     this._init = true;

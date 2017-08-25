@@ -1,7 +1,11 @@
 @import "../../../theme/sass/conf/conf";
 
 //valid row
-
+ba-card{
+  &:last-of-type{
+    margin-right: 0!important;
+  }
+}
 .progress-bar-title{
   width: 100%!important;
   text-align: center!important;
