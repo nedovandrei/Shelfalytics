@@ -53,6 +53,7 @@ namespace Shelfalytics.Service
                     var rowViewModel = new EquipmentRowInfoViewModel
                     {
                         Row = sensorReading.Row,
+                        BottleDiameter = productData.BottleDiameter,
                         Percentage = 100 - ((double)(sensorReading.Distance - equipmentData.FullDistance) / (double)(equipmentData.EmptyDistance - equipmentData.FullDistance) * 100),
                         ProductName = productData.ProductName,
                         SKUName = productData.SKUName
