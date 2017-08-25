@@ -2,9 +2,9 @@
 <div class="col-md-12">
   <ba-card baCardClass="with-scroll table-panel">
     <div class="horizontal-scroll">
-      <div *ngFor="let chartsRow of chartArrays" class="align-items-stretch">
-       
-          <ba-card *ngFor="let chart of chartsRow" [style.width.%]="chart.WidthPercentage" [ngClass]="{ 'undefined-row': chart.isEmpty, 'empty-row': chart.stats === 0 }">
+      <div *ngFor="let chartsRow of chartArrays" class="align-items-stretch" style="text-align:center">
+
+          <ba-card style="display:inline-block" *ngFor="let chart of chartsRow" [style.width.%]="chart.WidthPercentage" [ngClass]="{ 'undefined-row': chart.isEmpty, 'empty-row': chart.stats === 0 }">
 
             <div *ngIf="!chart.isEmpty" class="pie-chart-item">
                 <ng2-progress-bar [value]="chart.Percentage" [max]="100"></ng2-progress-bar>
@@ -111,7 +111,7 @@
 -->
           </div>
         </ba-card>
-      
+
 
 
 
