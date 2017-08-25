@@ -31,7 +31,7 @@ export class EquipmentInfoComponent implements OnInit, OnChanges {
   private init() {
     this.posInfoService.getShelfData(this.equipmentId).subscribe((data: any) => {
       this.equipmentData = data[0];
-
+      console.log("equipment info ", data);
       this.timeStamp = moment(data[0].TimeStamp).format("hh:mm:ss A, dddd, Do MMMM YYYY");
       this.initFlag = true;
     });

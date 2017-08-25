@@ -1,20 +1,20 @@
-import {Injectable} from '@angular/core';
-import {BaThemeConfigProvider, colorHelper} from '../../../theme';
+import { Injectable } from "@angular/core";
+import { BaThemeConfigProvider, colorHelper } from "../../../theme";
 
 @Injectable()
 export class PieChartService {
 
-  constructor(private _baConfig:BaThemeConfigProvider) {
+  constructor(private _baConfig: BaThemeConfigProvider) {
   }
 
   getData(data: any, rowCount: number) {
     console.log("get data - data", data);
-    let pieColor = this._baConfig.get().colors.custom.dashboardPieChart;
+    const pieColor = this._baConfig.get().colors.custom.dashboardPieChart;
 
-    let outputData: any[] = [];
-    for (var i = 0; i < rowCount; i++){
+    const outputData: any[] = [];
+    for (let i = 0; i < rowCount; i++) {
       let arrayData: any;
-      if(data[i] !== undefined){
+      if (data[i] !== undefined) {
         arrayData = {
           isEmpty: false,
           color: pieColor,
@@ -23,12 +23,12 @@ export class PieChartService {
           stats: data[i].Percentage,
           row: i + 1,
           icon: "beer"
-        }
+        };
       } else {
         arrayData = {
           isEmpty: true,
           row: i + 1
-        }
+        };
       }
 
       outputData.push(arrayData);
