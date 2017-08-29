@@ -1,13 +1,13 @@
-<agm-map [ngStyle]="{'height.px': mapData.height ? mapData.height : 400}" *ngIf="mapInit"
-  [latitude]="mapData.center.lat" 
-  [longitude]="mapData.center.lng" 
+<agm-map [ngStyle]="{'height.px': mapData.height ? mapData.height : 575}" *ngIf="mapInit"
+  [latitude]="mapData.center.lat"
+  [longitude]="mapData.center.lng"
   [zoom]="targetMapData.zoom"
   [draggableCursor]="targetMapData.draggableCursor"
   [zoomControl]="targetMapData.zoomControl"
   (mapClick)="mapClicked($event)">
 
     <agm-marker *ngFor="let marker of mapData.markers"
-      [latitude]="marker.coordinates.lat" 
+      [latitude]="marker.coordinates.lat"
       [longitude]="marker.coordinates.lng"
       [title]="marker.title"
       [label]="marker.label"
@@ -24,5 +24,5 @@
         </agm-info-window>
 
     </agm-marker>
-  
+
 </agm-map>

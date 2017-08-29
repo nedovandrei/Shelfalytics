@@ -1,4 +1,9 @@
 
+.amChartsLegend{
+  text{
+    max-width: 50px;
+  }
+}
 
 .d-flex{
   ba-card{
@@ -7,7 +12,7 @@
     // min-width: calc(100% / 6 - 25px);
     // display: none!important;
       display: flex!important;
-  
+
     @media screen and (max-width: $resL) {
       min-width: 200px;
     }
