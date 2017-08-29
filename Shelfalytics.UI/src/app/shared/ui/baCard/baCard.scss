@@ -3,4 +3,7 @@
     position: absolute;
     right: 18px;
     top: 11px;
+    @media screen and (max-width: 660px) {
+      right: -22px!important;
+    }
 }
