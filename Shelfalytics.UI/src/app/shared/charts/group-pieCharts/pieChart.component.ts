@@ -32,7 +32,7 @@ export class GroupPieChart implements OnInit, AfterViewInit {
     let pusherIndex = 0;
     for (let i = 0; i < this.chartData.YCount; i++) {
       let oneRowArray = [];
-      
+
       let equipmentRemainigWidth = this.chartData.Width - 3;
       for (let j = pusherIndex; j < this.chartData.RowInfo.length; j++, pusherIndex++) {
         if (this.chartData.RowInfo[j].BottleDiameter < equipmentRemainigWidth) {
@@ -48,7 +48,7 @@ export class GroupPieChart implements OnInit, AfterViewInit {
           if (j !== this.chartData.RowInfo.length - 2) {
             equipmentRemainigWidth -= pusher.BottleDiameter;
           }
-          
+
         } else {
           break;
         }

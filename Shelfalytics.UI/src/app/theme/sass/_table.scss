@@ -1,7 +1,14 @@
 
-.amChartsLegend{
-  text{
-    max-width: 50px;
+@media screen and (max-width: $resS) {
+  a.nav-link{
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .amcharts-chart-div *{
+    font-size: 10px;
+  }
+  .amcharts-legend-div *{
+    max-width: 70px;
   }
 }
 
@@ -15,38 +22,12 @@
 
     @media screen and (max-width: $resL) {
       min-width: 200px;
+      margin-right: 0!important;
     }
 
-    &.push-9{
-      width: calc(100% / 9 - 25px);
-      min-width: calc(100% / 9 - 25px);
-      &:nth-of-type(-n + 9){
-        display: flex!important;
-      }
-      @media screen and (max-width: $resL) {
-        min-width: calc(1200px / 9);
-      }
-    }
-    &.push-8{
-      width: calc(100% / 8 - 25px);
-      min-width: calc(100% / 8 - 25px);
-      &:nth-of-type(-n + 8){
-        display: flex!important;
-      }
-      @media screen and (max-width: $resL) {
-        min-width: calc(1200px / 8);
-      }
-    }
-    &.push-7{
-      width: calc(100% / 7) - 25px;
-      min-width: calc(100% / 7 - 25px);
-      &:nth-of-type(-n + 7){
-        display: flex!important;
-      }
-      @media screen and (max-width: $resL) {
-        min-width: calc(1200px / 7);
-      }
-    }
+
+
+
 
   }
   .push{

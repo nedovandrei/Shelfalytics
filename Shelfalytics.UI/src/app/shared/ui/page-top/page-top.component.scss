@@ -2,7 +2,11 @@
 @import '../../../theme/components/baMsgCenter/baMsgCenter';
 
 :host /deep/ {
-
+.user-name{
+  @media screen and (max-width: $resS) {
+    display: none;
+  }
+}
   .page-top {
     daterangepicker{
         display: inline-flex;

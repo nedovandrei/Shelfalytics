@@ -89,7 +89,7 @@
 
 <div class="row" *ngIf="equipmentInitFlag">
   <div class="col-md-6">
-      <ba-card title="{{'pointsOfSale.posInfo.equipmentInfo.productOosTable.title'}}">
+      <ba-card class="with-scroll table-panel" title="{{'pointsOfSale.posInfo.equipmentInfo.productOosTable.title'}}">
         <div class="horizontal-scroll">
           <table class="table table-hover">
             <thead>
@@ -122,8 +122,8 @@
     </ba-card>
   </div>
   <div class="col-md-6">
-      <ba-card title="{{'pointsOfSale.posInfo.equipmentInfo.lossesDueToOosTable.title'}}">
-        <div class="horizontal-scroll">
+      <ba-card class="with-scroll table-panel" title="{{'pointsOfSale.posInfo.equipmentInfo.lossesDueToOosTable.title'}}">
+        <div class="horizontal-scroll ">
           <table class="table table-hover">
             <thead>
               <tr class="black-muted-bg">
@@ -147,7 +147,7 @@
                   <span >{{lossData.TimePeriodSeconds}} {{'pointsOfSale.posInfo.equipmentInfo.lossesDueToOosTable.sec' | translate}}</span>
                 </div>
                 <span *ngIf="lossData.isOngoing">{{'pointsOfSale.posInfo.equipmentInfo.lossesDueToOosTable.ongoing' | translate}} {{lossData.OOSStart | timespan}}</span>
-                
+
               </td>
               <!-- <td class="table-arr"></td> -->
               <td class="align-right">
