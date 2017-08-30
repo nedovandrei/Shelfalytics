@@ -4,7 +4,7 @@ import { NgbDropdownModule, NgbModalModule } from "@ng-bootstrap/ng-bootstrap";
 import { TranslateModule } from "@ngx-translate/core";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { AgmCoreModule } from "@agm/core";
-// import { BrowserModule } from "@angular/platform-browser";
+  import { BrowserModule } from "@angular/platform-browser";
 import { routing } from "./pages.routing";
 import { AuthGuard } from "../auth/auth.guard";
 import { AjaxService } from "../shared/services/ajax.service";
@@ -13,6 +13,7 @@ import { ControlsModule } from "../shared/controls/controls.module";
 import { UiModule } from "../shared/ui/ui.module";
 import { MapsModule } from "../shared/maps/maps.module";
 import { ChartsModule } from "../shared/charts/charts.module";
+import { AnimateOnScrollModule } from 'ng2-animate-on-scroll';
 
 import { Pages } from "./pages.component";
 
@@ -37,7 +38,9 @@ import { SettingsComponent } from "./settings/settings.component";
     ChartsModule,
     ReactiveFormsModule,
     FormsModule,
-    AgmCoreModule
+    AgmCoreModule,
+    BrowserModule,
+      AnimateOnScrollModule.forRoot()
   ],
   declarations: [Pages, MainComponent, StatisticsComponent, SettingsComponent],
   providers: [GlobalFilter, AjaxService, AuthGuard]

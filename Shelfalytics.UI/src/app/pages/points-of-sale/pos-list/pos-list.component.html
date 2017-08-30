@@ -11,10 +11,10 @@
 </div> -->
 
 
-<ba-card title="pointsOfSale.posOnMap">
+<ba-card title="pointsOfSale.posOnMap" class="animated" animateOnScroll animationName="fadeInDown">
   <google-maps *ngIf="mapInit" [mapData]="mapSettings"></google-maps>
 </ba-card>
-<ba-card [title]="'pointsOfSale.posList'" baCardClass="with-scroll table-panel">
+<ba-card [title]="'pointsOfSale.posList'" baCardClass="with-scroll table-panel animated" animateOnScroll animationName="fadeInDown">
     <div class="horizontal-scroll">
   <adtable [moptions]="posTable" *ngIf="initFlag"></adtable>
 </div>

@@ -25,9 +25,9 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
     topPos: true,
     topSkuSales: true,
     get globalFilterState() {
-      if (this.topSkuOos && 
-        this.topPosInOos && 
-        this.lossesDueToOos &&  
+      if (this.topSkuOos &&
+        this.topPosInOos &&
+        this.lossesDueToOos &&
         this.topBestBusinessDevs &&
         this.topPos &&
         this.topSkuSales
@@ -38,7 +38,7 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
       }
     }
   };
-  
+
   private mapInit: boolean = false;
   private mapSettings: IGoogleMapsData = {
     center: {
@@ -144,7 +144,7 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
   //#region TabLogic
   private reloadTopSkuOosCardData(event: any) {
     this.skuOosChartsInit = false;
-    
+
     if (event.range === TabDateRanges.Global) {
       this.cardsTabsGlobalState.topSkuOos = true;
       this.mainService.getTopSkuOos().subscribe((result: any) => {
@@ -157,7 +157,7 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
         this.topSkuOosChart.dataProvider = result.OOSProducts;
         this.skuOosChartsInit = true;
       });
-  
+
     }
   }
 
@@ -177,7 +177,7 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
         this.posInOosSummaryChartInit = true;
       });
     }
-    
+
   }
 
   private reloadSalesSummary(event: any) {
@@ -196,7 +196,7 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
         this.salesSummaryChartInit = true;
       });
     }
-    
+
   }
 
   private reloadLossesDueToOos(event: any) {
@@ -226,7 +226,7 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
       this.loadData();
     });
     // this.loadData();
-    
+
   }
 
   private loadData() {
