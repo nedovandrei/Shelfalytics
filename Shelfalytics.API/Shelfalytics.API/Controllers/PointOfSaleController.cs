@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Shelfalytics.ServiceInterface;
+using Shelfalytics.RepositoryInterface.Helpers;
 
 namespace Shelfalytics.API.Controllers
 {
@@ -22,18 +23,18 @@ namespace Shelfalytics.API.Controllers
         }
 
         [HttpGet]
-        public async Task<HttpResponseMessage> GetPointOfSaleData(int posId)
+        public async Task<HttpResponseMessage> GetPointOfSaleData(int posId, int clientId)
         {
-            var res = await _pointOfSaleService.GetPointOfSaleData(posId);
+            var res = await _pointOfSaleService.GetPointOfSaleData(posId, clientId);
 
             return Request.CreateResponse(res);
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("api/PointOfSale/GetPointsOfSales")]
-        public async Task<HttpResponseMessage> GetPointsOfSales()
+        public async Task<HttpResponseMessage> GetPointsOfSales(GlobalFilter filter)
         {
-            var res = await _pointOfSaleService.GetPointsOfSales();
+            var res = await _pointOfSaleService.GetPointsOfSales(filter);
 
             return Request.CreateResponse(res);
         }

@@ -72,7 +72,8 @@ namespace Shelfalytics.Repository.Repositories
             {
                 var query = from sale in uow.Set<Sale>()
                     join product in uow.Set<Product>() on sale.ProductId equals product.Id
-                    where sale.TimeStamp <= filter.EndTime && sale.TimeStamp >= filter.StartTime
+                    join equipment in uow.Set<Equipment>() on sale.EquipmentId equals equipment.Id
+                    where sale.TimeStamp <= filter.EndTime && sale.TimeStamp >= filter.StartTime && (filter.IsAdmin ? true :  equipment.ClientId == filter.ClientId)
                     select new
                     {
                         sale.Quantity,
@@ -109,7 +110,8 @@ namespace Shelfalytics.Repository.Repositories
             {
                 var query = from sale in uow.Set<Sale>()
                             join product in uow.Set<Product>() on sale.ProductId equals product.Id
-                            where sale.TimeStamp <= filter.EndTime && sale.TimeStamp >= filter.StartTime && sale.ProductId == productId
+                            join equipment in uow.Set<Equipment>() on sale.EquipmentId equals equipment.Id
+                            where sale.TimeStamp <= filter.EndTime && sale.TimeStamp >= filter.StartTime && sale.ProductId == productId && (filter.IsAdmin ? true : equipment.ClientId == filter.ClientId)
                             select new
                             {
                                 sale.Quantity,

@@ -62,12 +62,12 @@ namespace Shelfalytics.Repository.Repositories
             }
         }
 
-        public async Task<IEnumerable<int>> GetPointOfSaleEquipment(int posId)
+        public async Task<IEnumerable<int>> GetPointOfSaleEquipment(int posId, int clientId)
         {
             using (var uow = _unitOfWorkFactory.GetShelfalyticsDbContext())
             {
                 var query = from eq in uow.Set<Equipment>()
-                    where eq.PointOfSaleId == posId
+                    where eq.PointOfSaleId == posId && eq.ClientId == clientId
                     //&& (eq.UserId == userId) TODO: implement user 
                     select eq.Id;
 
@@ -75,11 +75,12 @@ namespace Shelfalytics.Repository.Repositories
             }
         }
 
-        public async Task<IEnumerable<EquipmentDTO>> GetEquipments()
+        public async Task<IEnumerable<EquipmentDTO>> GetEquipments(GlobalFilter filter)
         {
             using (var uow = _unitOfWorkFactory.GetShelfalyticsDbContext())
             {
                 var query = from equipment in uow.Set<Equipment>()
+                    where (filter.IsAdmin ? true : equipment.ClientId == filter.ClientId)
                     select new EquipmentDTO
                     {
                         Id = equipment.Id,
