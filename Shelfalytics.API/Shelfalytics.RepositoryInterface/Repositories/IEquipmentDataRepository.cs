@@ -10,8 +10,8 @@ namespace Shelfalytics.RepositoryInterface.Repositories
     {
         Task<IEnumerable<EqiupmentDataDTO>> GetLatestEquipmentData(int equipmentId);
         Task<IEnumerable<EqiupmentDataDTO>> GetFilteredEquipmentData(int equimentId, GlobalFilter filter);
-        Task<IEnumerable<int>> GetPointOfSaleEquipment(int posId);
-        Task<IEnumerable<EquipmentDTO>> GetEquipments();
+        Task<IEnumerable<int>> GetPointOfSaleEquipment(int posId, int clientId);
+        Task<IEnumerable<EquipmentDTO>> GetEquipments(GlobalFilter filter);
         Task<EquipmentDTO> GetEquipmentById(int equipmentId);
         Task<EquipmentDTO> GetEquipmentByIMEI(string imei);
         Task<EquipmentReading> RegisterEquipmentReading(EquipmentReading reading);

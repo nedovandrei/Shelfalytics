@@ -114,7 +114,7 @@ namespace Shelfalytics.Service
 
         public async Task<EquipmentDetaildedOOSDTO> GetPOSOOS(int posId, GlobalFilter filter)
         {
-            var pos = await _pointOfSaleRepository.GetPosEquipment(posId);
+            var pos = await _pointOfSaleRepository.GetPosEquipment(posId, filter);
 
             var result = new EquipmentDetaildedOOSDTO {OOSProducts = new List<EquipmentProductOOSDTO>()};
             foreach (var equipment in pos)
@@ -143,7 +143,7 @@ namespace Shelfalytics.Service
 
         public async Task<List<PointOfSaleOOSSummary>> GetPOSOOSSummary(GlobalFilter filter)
         {
-            var posList = await _pointOfSaleRepository.GetPointsOfSales();
+            var posList = await _pointOfSaleRepository.GetPointsOfSales(filter.ClientId, filter.IsAdmin);
             var posOosSummary = new List<PointOfSaleOOSSummary>();
 
             foreach (var pos in posList)
@@ -173,7 +173,7 @@ namespace Shelfalytics.Service
 
         public async Task<EquipmentDetaildedOOSDTO> GetTopSkuOOS(GlobalFilter filter)
         {
-            var posList = await _pointOfSaleRepository.GetPointsOfSales();
+            var posList = await _pointOfSaleRepository.GetPointsOfSales(filter.ClientId, filter.IsAdmin);
             var result = new EquipmentDetaildedOOSDTO {OOSProducts = new List<EquipmentProductOOSDTO>()};
 
             foreach (var pos in posList)
@@ -318,7 +318,7 @@ namespace Shelfalytics.Service
 
         public async Task<LossesDueToOOSSummaryDTO> GetLossesDueToOOSSummary(GlobalFilter filter)
         {
-            var equipments = await _equipmentDataRepository.GetEquipments();
+            var equipments = await _equipmentDataRepository.GetEquipments(filter);
 
             var lossesList = new List<EquipmentLossesDueToOOSDTO>();
 

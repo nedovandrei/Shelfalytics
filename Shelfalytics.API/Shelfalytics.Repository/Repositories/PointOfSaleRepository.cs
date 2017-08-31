@@ -8,6 +8,7 @@ using Shelfalytics.Model.DbModels;
 using Shelfalytics.RepositoryInterface;
 using Shelfalytics.RepositoryInterface.DTO;
 using Shelfalytics.RepositoryInterface.Repositories;
+using Shelfalytics.RepositoryInterface.Helpers;
 
 namespace Shelfalytics.Repository.Repositories
 {
@@ -45,12 +46,13 @@ namespace Shelfalytics.Repository.Repositories
             }
         }
 
-        public async Task<IEnumerable<PointOfSaleDataDTO>> GetPointsOfSales()
+        public async Task<IEnumerable<PointOfSaleDataDTO>> GetPointsOfSales(int clientId, bool isAdmin)
         {
             using (var uow = _unitOfWorkFactory.GetShelfalyticsDbContext())
             {
                 var query = from pos in uow.Set<PointOfSale>()
                             join equipment in uow.Set<Equipment>() on pos.Id equals equipment.PointOfSaleId into equipmentArray
+                            where (isAdmin ? true : equipmentArray.Any(x => x.ClientId == clientId))
                             select new PointOfSaleDataDTO
                             {
                                 PointOfSaleId = pos.Id,
@@ -68,12 +70,12 @@ namespace Shelfalytics.Repository.Repositories
             }
         }
 
-        public async Task<IEnumerable<int>> GetPosEquipment(int posId)
+        public async Task<IEnumerable<int>> GetPosEquipment(int posId, GlobalFilter filter)
         {
             using (var uow = _unitOfWorkFactory.GetShelfalyticsDbContext())
             {
                 var query = from eq in uow.Set<Equipment>()
-                    where eq.PointOfSaleId == posId
+                    where eq.PointOfSaleId == posId && (filter.IsAdmin ? true : eq.ClientId == filter.ClientId)
                     select eq.Id;
 
                 return await query.ToListAsync();
