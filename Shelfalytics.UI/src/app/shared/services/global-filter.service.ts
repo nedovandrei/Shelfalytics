@@ -11,4 +11,6 @@ export class GlobalFilter {
     globalStateSubject = new Subject<boolean>();
     globalStateValue = false;
     globalStateValueSubject = new Subject<boolean>();
+    clientId: number;
+    userLogged = new Subject<any>();
 }
