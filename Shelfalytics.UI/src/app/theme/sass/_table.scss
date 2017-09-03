@@ -1,6 +1,18 @@
+.card{
+   &.mb-0{
+     .card{
+       margin-bottom: 0!important;
+     }
+   }
 
+}
+.daterangepicker{
+  &:before, &:after{
+    display: none!important;
+  }
+}
 @media screen and (max-width: $resS) {
-  
+
   a.nav-link{
     padding-left: 5px;
     padding-right: 5px;
