@@ -104,12 +104,12 @@
             </thead>
             <tbody>
               <tr *ngIf="equipmentProductOOSTable.length === 0">
-                <td colspan="2">No Data</td>
+                <td colspan="3">No Data</td>
               </tr>
-              <tr *ngFor="let tableData of equipmentProductOOSTable" >
-              <th id="table-id">#</th>
-               <th translate>{{tableData.SKUName}}</th>
-               <th translate>{{tableData.OOSPercentage}}%</th>
+              <tr *ngFor="let tableData of equipmentProductOOSTable; let i = index" >
+                <td id="table-id">{{i + 1}}</td>
+                <td>{{tableData.SKUName}}</td>
+                <td>{{tableData.OOSPercentage}}%</td>
               </tr>
             </tbody>
           </table>
@@ -131,8 +131,8 @@
               </tr>
             </thead>
             <tbody>
-            <tr  *ngFor="let lossData of equipmentLossesDueToOOSTable">
-              <th id="table-id">#</th>
+            <tr  *ngFor="let lossData of equipmentLossesDueToOOSTable; let i = index">
+              <td id="table-id">{{i + 1}}</td>
               <td>{{lossData.ShortSKUName}}</td>
               <td>
                 <div *ngIf="!lossData.isOngoing">
