@@ -1,14 +1,17 @@
-
-
-<div class="row">
-  <ba-card class="col-md-6 col-lg-3 col-sm-12 col-12 text-center animated" animateOnScroll animationName="fadeInLeft">
-
-      <h1>{{salesSummaryCount}}</h1>
+<div class="row animated" animateOnScroll animationName="fadeInLeft">
+  <ba-card class="col-md-6 col-lg-3 col-sm-12 col-12 text-center" >
+      <div *ngIf="salesSummaryCount === undefined" class="preloader-baCard" style="transform: scale(0.5); display: flex; margin-bottom: -7px">
+          <div></div>
+      </div>
+      <h1 *ngIf="salesSummaryCount !== undefined">{{salesSummaryCount}}</h1>
       <p translate>{{'main.header.sales'}}</p>
   </ba-card>
-  <ba-card class="col-md-6 col-lg-6 col-sm-12 col-12 text-center animated" animateOnScroll animationName="fadeInDown">
+  <ba-card class="col-md-6 col-lg-6 col-sm-12 col-12 text-center " >
 
-    <h1>{{totalOOSPercentage}}% | 534 {{'main.header.oosUnits' | translate}}</h1>
+    <div *ngIf="totalOOSPercentage === undefined" class="preloader-baCard" style="transform: scale(0.5); display: flex; margin-bottom: -7px">
+        <div></div>
+    </div>
+    <h1 *ngIf="totalOOSPercentage !== undefined">{{totalOOSPercentage}}% | 534 {{'main.header.oosUnits' | translate}}</h1>
     <p translate>{{'main.header.oos'}}</p>
 
     <!-- <h1>{{totalOOSPercentage}}%</h1>
@@ -19,32 +22,46 @@
     <!-- <h1>534</h1>
     <p>OOS</p> -->
   </ba-card>
-  <ba-card class="col-md-6 col-lg-3 col-sm-12 col-12 text-center animated" animateOnScroll animationName="fadeInRight">
-
-    <h1>{{lossesDueToOosSummary | number}}$</h1>
+  <ba-card class="col-md-6 col-lg-3 col-sm-12 col-12 text-center " >
+      <div *ngIf="lossesDueToOosSummary === undefined" class="preloader-baCard" style="transform: scale(0.5); display: flex; margin-bottom: -7px">
+          <div></div>
+      </div>
+    <h1 *ngIf="lossesDueToOosSummary !== undefined">{{lossesDueToOosSummary | number}}$</h1>
     <p translate>{{'main.header.moneyLoss'}}</p>
   </ba-card>
 </div>
 
 
-<div class="row">
-  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12 animated" title="main.cards.topSkuOos" [navTabs]="baCardTabs" (onTabChange)="tabChanged($event)" animateOnScroll animationName="fadeInLeft">
+<div class="row animated" animateOnScroll animationName="fadeInLeft">
+  <ad-ba-card class="col-xl-6 col-12 " title="main.cards.topSkuOos" [navTabs]="baCardTabs" (onTabChange)="tabChanged($event)">
+      <div *ngIf="!skuOosChartsInit" class="preloader-baCard" style="margin-top: 265px; margin-bottom: 260px">
+          <div></div>
+      </div>
       <amchart *ngIf="skuOosChartsInit" [chartType]="'pie'" [chartData]="topSkuOosChart" [chartName]="'topSkuOos'"></amchart>
   </ad-ba-card>
-  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12 animated" title="main.cards.topPosBeingInOos" [navTabs]="baCardTabs" (onTabChange)="tabChanged($event)" animateOnScroll animationName="fadeInRight">
+  <ad-ba-card class="col-xl-6 col-12 " title="main.cards.topPosBeingInOos" [navTabs]="baCardTabs" (onTabChange)="tabChanged($event)">
+      <div *ngIf="!posInOosSummaryChartInit" class="preloader-baCard" style="margin-top: 265px; margin-bottom: 260px">
+          <div></div>
+      </div>
     <amchart *ngIf="posInOosSummaryChartInit" [chartData]="posInOosSummaryChart" [chartName]="'posInOos'"></amchart>
   </ad-ba-card>
 </div>
-<div class="row">
-  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12 animated" title="main.cards.posInOosMap" [navTabs]="baCardTabs" (onTabChange)="tabChanged($event)" animateOnScroll animationName="fadeInLeft">
+<div class="row animated" animateOnScroll animationName="fadeInLeft">
+  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12 " title="main.cards.posInOosMap" [navTabs]="baCardTabs">
+      <div *ngIf="!mapInit" class="preloader-baCard" style="margin-top: 265px; margin-bottom: 260px">
+          <div></div>
+      </div>
     <google-maps *ngIf="mapInit" [mapData]="mapSettings"></google-maps>
   </ad-ba-card >
-  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12 animated" title="main.cards.lossesDueToOos" [navTabs]="baCardTabs" (onTabChange)="tabChanged($event)" animateOnScroll animationName="fadeInRight">
+  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12 " title="main.cards.lossesDueToOos" [navTabs]="baCardTabs" >
+      <div *ngIf="!lossesDueToOosChartInit" class="preloader-baCard" style="margin-top: 265px; margin-bottom: 260px">
+          <div></div>
+      </div>
       <amchart *ngIf="lossesDueToOosChartInit" [chartData]="lossesDueToOosChart" [chartName]="'lossesDueToOos'"></amchart>
   </ad-ba-card >
 </div>
-<div class="row">
-  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12 animated" title="main.cards.topBestBusinessDevs" [navTabs]="baCardTabs" (onTabChange)="tabChanged($event)" animateOnScroll animationName="fadeInLeft">
+<div class="row animated" animateOnScroll animationName="fadeInLeft">
+  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12 " title="main.cards.topBestBusinessDevs" [navTabs]="baCardTabs" >
 
       <ol class="mt-2">
         <li>asdasdas</li>
@@ -52,7 +69,7 @@
             <li>asdasdas</li>
       </ol>
   </ad-ba-card >
-  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12 animated" title="main.cards.topPos" [navTabs]="baCardTabs" (onTabChange)="tabChanged($event)" animateOnScroll animationName="fadeInRight">
+  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12 " title="main.cards.topPos" [navTabs]="baCardTabs" (onTabChange)="tabChanged($event)" >
 
       <ol class="mt-2">
         <li>asdasdas</li>
@@ -62,8 +79,11 @@
   </ad-ba-card >
 </div>
 
-<div class="row">
+<div class="row animated" animateOnScroll animationName="fadeInLeft">
   <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12 animated" title="main.cards.topSkuSales" [navTabs]="baCardTabs" (onTabChange)="tabChanged($event)" animateOnScroll animationName="fadeInLeft">
+      <div *ngIf="!salesSummaryChartInit" class="preloader-baCard" style="margin-top: 265px; margin-bottom: 260px">
+          <div></div>
+      </div>
     <amchart *ngIf="salesSummaryChartInit" [chartData]="salesSummaryChart" [chartName]="'salesSummary'"></amchart>
   </ad-ba-card>
 </div>

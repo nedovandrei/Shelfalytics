@@ -4,6 +4,7 @@ import { AuthService, Credentials } from "../../auth/auth.service";
 import { Observable } from "rxJs/Observable";
 import { JwtHelper } from "angular2-jwt";
 import { Router } from "@angular/router";
+import { GlobalFilter } from "../../shared/services/global-filter.service";
 
 @Component({
   selector: "login",
@@ -20,7 +21,13 @@ export class Login {
 
   private invalidData: boolean = false;
 
-  constructor(fb: FormBuilder, private auth: AuthService, private jwt: JwtHelper, private router: Router) {
+  constructor(
+    fb: FormBuilder, 
+    private auth: AuthService, 
+    private jwt: JwtHelper, 
+    private router: Router, 
+    private filter: GlobalFilter
+  ) {
     this.form = fb.group({
       "username": ["", Validators.compose([Validators.required, Validators.minLength(4)])],
       "password": ["", Validators.compose([Validators.required, Validators.minLength(4)])]
@@ -42,11 +49,14 @@ export class Login {
         data => { 
           this.invalidData = false;
           console.log("login data", data);
+          // const decodedJwt = this.jwt.decodeToken(data.access_token);
           localStorage.setItem("token", data.access_token);
+          
           // localStorage.setItem("token_type", data.token_type);
           // localStorage.setItem("expires_in", data.expires_in);
           // localStorage.setItem("loggedUser", this.jwt.decodeToken(data.access_token));
           this.router.navigate(["/"]);
+          this.filter.userLogged.next();
         },
         error => {
           this.invalidData = true;

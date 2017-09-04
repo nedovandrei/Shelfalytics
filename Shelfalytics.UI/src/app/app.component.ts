@@ -7,6 +7,8 @@ import { BaThemeConfig } from "./theme/theme.config";
 import { layoutPaths } from "./theme/theme.constants";
 import { TranslateService } from "@ngx-translate/core";
 import { Language } from "./global";
+import { JwtHelper } from "angular2-jwt";
+import { GlobalFilter } from "./shared/services/global-filter.service";
 
 /*
  * App Component
@@ -20,7 +22,8 @@ import { Language } from "./global";
       <div class="additional-bg"></div>
       <router-outlet></router-outlet>
     </main>
-  `
+  `,
+  providers: [JwtHelper]
 })
 export class App implements AfterViewInit, OnInit {
 
@@ -32,7 +35,9 @@ export class App implements AfterViewInit, OnInit {
               private viewContainerRef: ViewContainerRef,
               private themeConfig: BaThemeConfig,
               private lang: Language,
-              private translate: TranslateService) {
+              private translate: TranslateService,
+              private jwt: JwtHelper,
+              private filter: GlobalFilter) {
 
     themeConfig.config();
 
@@ -43,8 +48,23 @@ export class App implements AfterViewInit, OnInit {
     });
   }
 
+  private setClientId() {
+    if (localStorage.getItem("token")) {
+      if (!this.jwt.isTokenExpired(localStorage.getItem("token"))) {
+        this.filter.clientId = this.jwt.decodeToken(localStorage.getItem("token")).clientId;
+      }
+    }
+    
+  }
   // jwtHelper: JwtHelper = new JwtHelper();
   ngOnInit() {
+    this.setClientId();
+
+    this.filter.userLogged.subscribe(() => {
+      this.setClientId();
+    });
+    
+
     this.lang.onLanguageChange.subscribe((language: string) => {
       this.translate.use(language);
       this.lang.currentLanguage = language;

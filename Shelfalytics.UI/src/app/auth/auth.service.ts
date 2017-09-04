@@ -3,13 +3,13 @@ import { Http, RequestOptionsArgs, Headers } from "@angular/http";
 import "rxjs/add/operator/map";
 import { Router } from "@angular/router";
 import { tokenNotExpired, JwtHelper } from "angular2-jwt";
-
+import { GlobalFilter } from "../shared/services/global-filter.service";
 import { global } from "../global";
 
 @Injectable()
 export class AuthService {
 
-  constructor(private http: Http, private router: Router, private jwt: JwtHelper) {}
+  constructor(private http: Http, private router: Router, private jwt: JwtHelper, private filter: GlobalFilter) {}
 
   login(credentials: Credentials) {
       console.log("credentials", credentials);
@@ -23,7 +23,9 @@ export class AuthService {
         `username=${credentials.username}&password=${credentials.password}&grant_type=${credentials.grant_type}`, 
         requestOptions
     ).map(
-        res => res.json()
+        res => {
+            return res.json();
+        }
     );
   }
 

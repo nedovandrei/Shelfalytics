@@ -14,7 +14,8 @@ export class MainService {
         } else {
             return this.ajaxService.post(`${global.apiPath}Statistics/topSkuOOS`, {
                 StartTime: this.globalFilter.startDate,
-                EndTime: this.globalFilter.endDate
+                EndTime: this.globalFilter.endDate,
+                ClientId: this.globalFilter.clientId
             });
         }
     }
@@ -25,7 +26,8 @@ export class MainService {
         } else {
             return this.ajaxService.post(`${global.apiPath}Statistics/productSalesSummary`, {
                 StartTime: this.globalFilter.startDate,
-                EndTime: this.globalFilter.endDate
+                EndTime: this.globalFilter.endDate,
+                ClientId: this.globalFilter.clientId
             });
         }
     }
@@ -36,7 +38,8 @@ export class MainService {
         } else {
             return this.ajaxService.post(`${global.apiPath}Statistics/posOOSsummary`, {
                 StartTime: this.globalFilter.startDate,
-                EndTime: this.globalFilter.endDate
+                EndTime: this.globalFilter.endDate,
+                ClientId: this.globalFilter.clientId
             });
         }
     }
@@ -47,7 +50,8 @@ export class MainService {
         } else {
             return this.ajaxService.post(`${global.apiPath}Statistics/lossesSummary`, {
                 StartTime: this.globalFilter.startDate,
-                EndTime: this.globalFilter.endDate
+                EndTime: this.globalFilter.endDate,
+                ClientId: this.globalFilter.clientId
             });
         }
     }
