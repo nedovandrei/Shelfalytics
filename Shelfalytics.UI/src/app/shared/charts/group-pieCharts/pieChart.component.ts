@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, AfterViewInit } from "@angular/core";
 
 import { PieChartService } from "./pieChart.service";
+import { global } from "../../../global";
 import * as _ from "underscore";
 
 import "easy-pie-chart/dist/jquery.easypiechart.js";
@@ -21,6 +22,7 @@ export class GroupPieChart implements OnInit, AfterViewInit {
   private _init = false;
 
   private chartArrays: any[];
+  private imagePath: string = global.imagePath;
 
   constructor(private _pieChartService: PieChartService) { }
   ngOnInit() {
@@ -42,7 +44,8 @@ export class GroupPieChart implements OnInit, AfterViewInit {
             ProductName: this.chartData.RowInfo[j].ProductName,
             Row: this.chartData.RowInfo[j].Row,
             SKUName: this.chartData.RowInfo[j].SKUName,
-            WidthPercentage: this.chartData.RowInfo[j].BottleDiameter / this.chartData.Width * 100
+            WidthPercentage: this.chartData.RowInfo[j].BottleDiameter / this.chartData.Width * 100,
+            PhotoPath: this.chartData.RowInfo[j].PhotoPath
           };
           oneRowArray.push(pusher);
           if (j !== this.chartData.RowInfo.length - 2) {
