@@ -49,9 +49,12 @@ export class App implements AfterViewInit, OnInit {
   }
 
   private setClientId() {
-    if (!this.jwt.isTokenExpired(localStorage.getItem("token"))) {
-      this.filter.clientId = this.jwt.decodeToken(localStorage.getItem("token")).clientId;
+    if (localStorage.getItem("token")) {
+      if (!this.jwt.isTokenExpired(localStorage.getItem("token"))) {
+        this.filter.clientId = this.jwt.decodeToken(localStorage.getItem("token")).clientId;
+      }
     }
+    
   }
   // jwtHelper: JwtHelper = new JwtHelper();
   ngOnInit() {
