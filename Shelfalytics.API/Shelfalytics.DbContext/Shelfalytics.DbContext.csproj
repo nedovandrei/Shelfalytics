@@ -157,6 +157,10 @@
     <Compile Include="Migrations\Main\201708221816402_RemovedXCountAddedWidthToEquipment.Designer.cs">
       <DependentUpon>201708221816402_RemovedXCountAddedWidthToEquipment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Main\201709041954043_AddedPhotoPathField.cs" />
+    <Compile Include="Migrations\Main\201709041954043_AddedPhotoPathField.Designer.cs">
+      <DependentUpon>201709041954043_AddedPhotoPathField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Main\Configuration.cs" />
     <Compile Include="ShelfalyticsDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -227,6 +231,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Main\201708221816402_RemovedXCountAddedWidthToEquipment.resx">
       <DependentUpon>201708221816402_RemovedXCountAddedWidthToEquipment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\Main\201709041954043_AddedPhotoPathField.resx">
+      <DependentUpon>201709041954043_AddedPhotoPathField.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

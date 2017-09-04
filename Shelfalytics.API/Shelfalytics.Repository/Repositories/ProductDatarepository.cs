@@ -37,7 +37,8 @@ namespace Shelfalytics.Repository.Repositories
                         SKUName = product.SKUName,
                         ShortSKUName = product.ShortSKUName,
                         BottleDiameter = product.BottleDiameter,
-                        Price = product.Price
+                        Price = product.Price,
+                        PhotoPath = product.PhotoPath
                     };
                 return await query.ToListAsync();
             }

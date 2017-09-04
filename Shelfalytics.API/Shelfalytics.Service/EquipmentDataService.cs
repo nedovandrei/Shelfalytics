@@ -56,7 +56,8 @@ namespace Shelfalytics.Service
                         BottleDiameter = productData.BottleDiameter,
                         Percentage = 100 - ((double)(sensorReading.Distance - equipmentData.FullDistance) / (double)(equipmentData.EmptyDistance - equipmentData.FullDistance) * 100),
                         ProductName = productData.ProductName,
-                        SKUName = productData.SKUName
+                        SKUName = productData.SKUName,
+                        PhotoPath = productData.PhotoPath
                     };
                     rowViewModelList.Add(rowViewModel);
                 }

@@ -31,5 +31,6 @@ namespace Shelfalytics.Model.DbModels
         [Required]
         [Range(1, 30)]
         public double BottleDiameter { get; set; }
+        public string PhotoPath { get; set; }
     }
 }

@@ -10,5 +10,6 @@
         public string ShortSKUName { get; set; }
         public double BottleDiameter { get; set; }
         public decimal Price { get; set; }
+        public string PhotoPath { get; set; }
     }
 }

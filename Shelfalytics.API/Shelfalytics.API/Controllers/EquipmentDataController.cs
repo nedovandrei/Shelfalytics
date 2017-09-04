@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -7,7 +6,6 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using Shelfalytics.API.Models;
 using Shelfalytics.RepositoryInterface.DTO;
-using Shelfalytics.RepositoryInterface.Repositories;
 using Shelfalytics.ServiceInterface;
 
 namespace Shelfalytics.API.Controllers
