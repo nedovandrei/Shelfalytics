@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Shelfalytics.Model.DbModels;
 using Shelfalytics.RepositoryInterface.DTO;
+using System.Collections.Generic;
 
 namespace Shelfalytics.RepositoryInterface.Repositories
 {
@@ -10,5 +11,6 @@ namespace Shelfalytics.RepositoryInterface.Repositories
     {
         Task<IdentityResult> RegisterUser(UserDTO user);
         Task<User> FindUser(UserLoginDTO user);
+        Task<IEnumerable<UserDTO>> GetUsersByClientId(int clientId);
     }
 }

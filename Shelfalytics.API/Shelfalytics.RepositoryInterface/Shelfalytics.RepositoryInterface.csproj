@@ -60,6 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\BusinessDevelopersDTO.cs" />
     <Compile Include="DTO\EqiupmentDataDTO.cs" />
     <Compile Include="DTO\EquipmentDetaildedOOSDTO.cs" />
     <Compile Include="DTO\EquipmentDistanceReadingDTO.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="DTO\UserLoginDTO.cs" />
     <Compile Include="Helpers\GlobalFilter.cs" />
+    <Compile Include="Helpers\UserRoles.cs" />
     <Compile Include="IIdentityUnitOfWork.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />

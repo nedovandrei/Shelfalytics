@@ -88,9 +88,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\Identity\201707181902365_Init.cs" />
-    <Compile Include="Migrations\Identity\201707181902365_Init.Designer.cs">
-      <DependentUpon>201707181902365_Init.cs</DependentUpon>
+    <Compile Include="Migrations\Identity\201709072051159_ChangedTypesForIds.cs" />
+    <Compile Include="Migrations\Identity\201709072051159_ChangedTypesForIds.Designer.cs">
+      <DependentUpon>201709072051159_ChangedTypesForIds.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Identity\Configuration.cs" />
     <Compile Include="Migrations\Main\201707181900199_Init.cs" />
@@ -161,6 +161,10 @@
     <Compile Include="Migrations\Main\201709041954043_AddedPhotoPathField.Designer.cs">
       <DependentUpon>201709041954043_AddedPhotoPathField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Main\201709072141018_ChangedTypeForUserIdInUserEquipmentTies.cs" />
+    <Compile Include="Migrations\Main\201709072141018_ChangedTypeForUserIdInUserEquipmentTies.Designer.cs">
+      <DependentUpon>201709072141018_ChangedTypeForUserIdInUserEquipmentTies.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Main\Configuration.cs" />
     <Compile Include="ShelfalyticsDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -181,8 +185,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\Identity\201707181902365_Init.resx">
-      <DependentUpon>201707181902365_Init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\Identity\201709072051159_ChangedTypesForIds.resx">
+      <DependentUpon>201709072051159_ChangedTypesForIds.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Main\201707181900199_Init.resx">
       <DependentUpon>201707181900199_Init.cs</DependentUpon>
@@ -234,6 +238,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Main\201709041954043_AddedPhotoPathField.resx">
       <DependentUpon>201709041954043_AddedPhotoPathField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\Main\201709072141018_ChangedTypeForUserIdInUserEquipmentTies.resx">
+      <DependentUpon>201709072141018_ChangedTypeForUserIdInUserEquipmentTies.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

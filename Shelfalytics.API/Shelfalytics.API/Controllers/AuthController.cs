@@ -10,6 +10,7 @@ using Shelfalytics.RepositoryInterface.Repositories;
 
 namespace Shelfalytics.API.Controllers
 {
+    
     [RoutePrefix("api/Auth")]
     public class AuthController : ApiController
     {
@@ -21,7 +22,7 @@ namespace Shelfalytics.API.Controllers
             _authRepository = authRepository;
         }
 
-        [Authorize]
+        [Authorize(Roles = "1")]
         [Route("Register")]
         public async Task<HttpResponseMessage> RegisterUser(UserDTO user)
         {

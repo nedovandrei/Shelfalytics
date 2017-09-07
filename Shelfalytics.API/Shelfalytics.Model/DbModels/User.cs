@@ -25,7 +25,7 @@ namespace Shelfalytics.Model.DbModels
         [Required]
         [Phone]
         public override string PhoneNumber { get; set; }
-        public int GeneralManagerId { get; set; }
-        public int SupervisorId { get; set; }
+        public string GeneralManagerId { get; set; }
+        public string SupervisorId { get; set; }
     }
 }

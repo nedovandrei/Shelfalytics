@@ -311,6 +311,35 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\photos\1.jpg" />
+    <Content Include="Content\photos\10.jpg" />
+    <Content Include="Content\photos\11.jpg" />
+    <Content Include="Content\photos\12.jpg" />
+    <Content Include="Content\photos\13.jpg" />
+    <Content Include="Content\photos\14.jpg" />
+    <Content Include="Content\photos\15.png" />
+    <Content Include="Content\photos\16.jpg" />
+    <Content Include="Content\photos\17.jpg" />
+    <Content Include="Content\photos\18.jpg" />
+    <Content Include="Content\photos\19.png" />
+    <Content Include="Content\photos\2.jpg" />
+    <Content Include="Content\photos\20.jpg" />
+    <Content Include="Content\photos\21.png" />
+    <Content Include="Content\photos\22.jpg" />
+    <Content Include="Content\photos\23.jpg" />
+    <Content Include="Content\photos\24.png" />
+    <Content Include="Content\photos\25.png" />
+    <Content Include="Content\photos\26.jpg" />
+    <Content Include="Content\photos\27.jpg" />
+    <Content Include="Content\photos\3.jpg" />
+    <Content Include="Content\photos\4.png" />
+    <Content Include="Content\photos\5.jpg" />
+    <Content Include="Content\photos\6.jpg" />
+    <Content Include="Content\photos\7.jpg" />
+    <Content Include="Content\photos\8.jpg" />
+    <Content Include="Content\photos\9.jpg" />
+    <Content Include="Content\photos\Beer Orasul Vechi 0.5 Bottle .jpg" />
+    <Content Include="Content\photos\Beer Orasul Vechi 1.0l pet Bottle.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

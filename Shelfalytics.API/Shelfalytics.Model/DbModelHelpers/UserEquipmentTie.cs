@@ -7,7 +7,7 @@ namespace Shelfalytics.Model.DbModelHelpers
         [Key]
         public int Id { get; set; }
         [Required]
-        public int AgentUserId { get; set; }
+        public string UserId { get; set; }
         [Required]
         public int EquipmentId { get; set; }
     }

@@ -7,13 +7,13 @@ namespace Shelfalytics.DbContext.Migrations.Identity
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Init : IMigrationMetadata
+    public sealed partial class ChangedTypesForIds : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Init));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangedTypesForIds));
         
         string IMigrationMetadata.Id
         {
-            get { return "201707181902365_Init"; }
+            get { return "201709072051159_ChangedTypesForIds"; }
         }
         
         string IMigrationMetadata.Source

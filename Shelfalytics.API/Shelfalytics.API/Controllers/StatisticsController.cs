@@ -86,5 +86,13 @@ namespace Shelfalytics.API.Controllers
             var res = await _statisticsService.GetLossesDueToOOSSummary(filter);
             return Request.CreateResponse(res);
         }
+
+        [HttpPost]
+        [Route("topBestBusinessDevelopers")]
+        public async Task<HttpResponseMessage> GetTopBestBusinessDevelopers(GlobalFilter filter)
+        {
+            var res = await _statisticsService.GetTopBestBusinessDevelopers(filter);
+            return Request.CreateResponse(res);
+        }
     }
 }

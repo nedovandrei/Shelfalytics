@@ -8,6 +8,7 @@ using Shelfalytics.RepositoryInterface;
 using Shelfalytics.RepositoryInterface.DTO;
 using Shelfalytics.RepositoryInterface.Helpers;
 using Shelfalytics.RepositoryInterface.Repositories;
+using Shelfalytics.Model.DbModelHelpers;
 
 namespace Shelfalytics.Repository.Repositories
 {
@@ -218,6 +219,26 @@ namespace Shelfalytics.Repository.Repositories
             using (var uow = _unitOfWorkFactory.GetShelfalyticsDbContext())
             {
                 return await uow.Set<EquipmentReading>().AnyAsync(x => x.EquipmentId == equipmentId);
+            }
+        }
+
+        public async Task<IEnumerable<EquipmentDTO>> GetUserEquipment(string userId)
+        {
+            using (var uow = _unitOfWorkFactory.GetShelfalyticsDbContext())
+            {
+                var query = from eqTie in uow.Set<UserEquipmentTie>()
+                            join eq in uow.Set<Equipment>() on eqTie.EquipmentId equals eq.Id
+                            where eqTie.UserId == userId
+                            select new EquipmentDTO
+                            {
+                                ClientId = eq.ClientId,
+                                Id = eq.Id,
+                                IMEI = eq.IMEI,
+                                EmptyDistance = eq.EmptyDistance,
+                                ModelName = eq.ModelName,
+                                PointOfSaleId = eq.PointOfSaleId
+                            };
+                return await query.ToListAsync();
             }
         }
 

@@ -53,7 +53,9 @@ namespace Shelfalytics.API.Providers
                 new Claim("name", user.EmployeeName),
                 new Claim("phone", user.PhoneNumber),
                 new Claim("id", user.Id),
-                new Claim("clientId", user.ClientId.ToString())
+                new Claim("clientId", user.ClientId.ToString()),
+                new Claim("generalManagerId", user.GeneralManagerId != null ? user.GeneralManagerId : ""),
+                new Claim("supervisorId", user.SupervisorId != null ? user.SupervisorId : "")
             });
 
             context.Validated(identity);

@@ -9,6 +9,8 @@ using Shelfalytics.Model.DbModels;
 using Shelfalytics.RepositoryInterface;
 using Shelfalytics.RepositoryInterface.DTO;
 using Shelfalytics.RepositoryInterface.Repositories;
+using Shelfalytics.RepositoryInterface.Helpers;
+using System.Data.Entity;
 
 namespace Shelfalytics.Repository.Repositories
 {
@@ -16,12 +18,18 @@ namespace Shelfalytics.Repository.Repositories
     {
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;
         private readonly UserManager<User> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
         public AuthRepository(IUnitOfWorkFactory unitOfWorkFactory)
         {
+            
             if (unitOfWorkFactory == null) throw new ArgumentNullException(nameof(unitOfWorkFactory));
             _unitOfWorkFactory = unitOfWorkFactory;
             _userManager = new UserManager<User>(new UserStore<User>(unitOfWorkFactory.GetShelfalyticsIdentityDbContext()));
+
+            var roleStore = new RoleStore<IdentityRole>(unitOfWorkFactory.GetShelfalyticsIdentityDbContext());
+
+            _roleManager = new RoleManager<IdentityRole>(roleStore);
         }
 
         public async Task<IdentityResult> RegisterUser(UserDTO user)
@@ -40,6 +48,7 @@ namespace Shelfalytics.Repository.Repositories
             try
             {
                 var result = await _userManager.CreateAsync(newUser, user.Password);
+                await _userManager.AddToRoleAsync(newUser.Id, user.Role.ToString());
                 return result;
             }
             catch (Exception ex)
@@ -54,6 +63,28 @@ namespace Shelfalytics.Repository.Repositories
         {
             var result = await _userManager.FindAsync(user.UserName, user.Password);
             return result;
+        }
+
+        public async Task<IEnumerable<UserDTO>> GetUsersByClientId(int clientId)
+        {
+            using (var uow = _unitOfWorkFactory.GetShelfalyticsIdentityDbContext())
+            {
+                var query = from user in uow.Set<User>()
+                            where user.ClientId == clientId
+                            select new UserDTO
+                            {
+                                Id = user.Id,
+                                ClientId = user.ClientId,
+                                Email = user.Email,
+                                EmployeeName = user.EmployeeName,
+                                GeneralManagerId = user.GeneralManagerId,
+                                PhoneNumber = user.PhoneNumber,
+                                Role = user.Roles.FirstOrDefault().RoleId,
+                                SupervisorId = user.SupervisorId,
+                                UserName = user.UserName
+                            };
+                return await query.ToListAsync();
+            }
         }
     }
 }

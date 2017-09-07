@@ -17,19 +17,25 @@ namespace Shelfalytics.Service
         private readonly IProductDataRepository _productDataRepository;
         private readonly ISaleRepository _saleRepository;
         private readonly IPointOfSaleRepository _pointOfSaleRepository;
+        private readonly IAuthRepository _authRepository;
 
         private readonly int _emptyDistance = GlobalConstants.EmptyDistance;
 
         public StatisticsService(IEquipmentDataRepository equipmentDataRepository,
-            IProductDataRepository productDataRepository, ISaleRepository saleRepository, IPointOfSaleRepository pointOfSaleRepository)
+            IProductDataRepository productDataRepository, ISaleRepository saleRepository, IPointOfSaleRepository pointOfSaleRepository, IAuthRepository authRepository)
         {
             if (equipmentDataRepository == null) throw new ArgumentNullException(nameof(equipmentDataRepository));
             if (productDataRepository == null) throw new ArgumentNullException(nameof(productDataRepository));
+            if (authRepository == null)
+            {
+                throw new ArgumentNullException(nameof(authRepository));
+            }
 
             _equipmentDataRepository = equipmentDataRepository;
             _productDataRepository = productDataRepository;
             _saleRepository = saleRepository;
             _pointOfSaleRepository = pointOfSaleRepository;
+            _authRepository = authRepository;
         }
 
         public async Task<EquipmentDetaildedOOSDTO> GetEquipmentOOS(int equipmentId, GlobalFilter filter)
@@ -269,9 +275,13 @@ namespace Shelfalytics.Service
 
                         var salesAverage = await _saleRepository.GetProductSalesAverage(product.ProductId, new GlobalFilter
                         {
-                            StartTime = filter.StartTime.Subtract(filter.EndTime - filter.StartTime),
-                            EndTime = filter.EndTime.Subtract(filter.EndTime - filter.StartTime)
-                        });
+                            //StartTime = filter.StartTime.Subtract(filter.EndTime - filter.StartTime),
+                            //EndTime = filter.EndTime.Subtract(filter.EndTime - filter.StartTime)
+                            StartTime = oosStartPoint.AddDays(-7),
+                            EndTime = oosEndPoint.AddDays(-7),
+                            ClientId = filter.ClientId,
+                            IsAdmin = filter.IsAdmin
+                    });
 
                         var timeSpan = oosEndPoint - oosStartPoint;
                         decimal targetDaysCount;
@@ -350,6 +360,38 @@ namespace Shelfalytics.Service
             };
 
             return result;
+        }
+
+        public async Task<IEnumerable<BusinessDevelopersDTO>> GetTopBestBusinessDevelopers(GlobalFilter filter)
+        {
+            var users = await _authRepository.GetUsersByClientId(filter.ClientId);
+            var list = new List<BusinessDevelopersDTO>();
+            foreach(var user in users)
+            {
+                if(user.Role == "4")
+                {
+                    var oosPercentageSumm = 0.00;                    
+                    var equipment = await _equipmentDataRepository.GetUserEquipment(user.Id);
+                    foreach(var eq in equipment)
+                    {
+                        var resultEquipment = await GetEquipmentOOS(eq.Id, filter);
+                        oosPercentageSumm += resultEquipment.TotalOOS;
+                    }
+
+                    var result = new BusinessDevelopersDTO
+                    {
+                        EmployeeName = user.EmployeeName,
+                        OosPercentage = oosPercentageSumm / equipment.Count(),
+                        Role = user.Role
+                    };
+                    if(result.OosPercentage > 0)
+                    {
+                        list.Add(result);
+                    }
+                }
+            }
+
+            return list;
         }
     }
 }
