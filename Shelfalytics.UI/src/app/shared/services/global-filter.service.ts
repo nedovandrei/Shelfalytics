@@ -13,4 +13,8 @@ export class GlobalFilter {
     globalStateValueSubject = new Subject<boolean>();
     clientId: number;
     userLogged = new Subject<any>();
+    isAdmin: boolean;
+    role: number;
+    generalManagerId: number;
+    supervisorId: number;
 }
