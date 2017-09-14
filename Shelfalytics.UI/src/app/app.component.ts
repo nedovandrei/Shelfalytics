@@ -51,10 +51,20 @@ export class App implements AfterViewInit, OnInit {
   private setClientId() {
     if (localStorage.getItem("token")) {
       if (!this.jwt.isTokenExpired(localStorage.getItem("token"))) {
-        this.filter.clientId = this.jwt.decodeToken(localStorage.getItem("token")).clientId;
+        const decodedToken = this.jwt.decodeToken(localStorage.getItem("token"));
+
+        this.filter.clientId = decodedToken.clientId;
+        this.filter.role = decodedToken.role;
+        if (this.filter.role === 1) {
+          this.filter.isAdmin = true;
+        } else {
+          this.filter.isAdmin = false;
+        }
+        this.filter.generalManagerId = decodedToken.generalManagerId;
+        this.filter.supervisorId = decodedToken.supervisorId;
       }
     }
-    
+    console.log("app component, globalFilter", this.filter);
   }
   // jwtHelper: JwtHelper = new JwtHelper();
   ngOnInit() {
