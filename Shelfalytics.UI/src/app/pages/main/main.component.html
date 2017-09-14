@@ -61,13 +61,11 @@
   </ad-ba-card >
 </div>
 <div class="row animated" animateOnScroll animationName="fadeInLeft">
-  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12 " title="main.cards.topBestBusinessDevs" [navTabs]="baCardTabs" >
-
-      <ol class="mt-2">
-        <li>asdasdas</li>
-          <li>asdasdas</li>
-            <li>asdasdas</li>
-      </ol>
+  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12 " title="main.cards.topBestBusinessDevs" [navTabs]="baCardTabs" (onTabChange)="tabChanged($event)">
+    <div *ngIf="!topBestBusinessDevelopersInit" class="preloader-baCard" style="margin-top: 265px; margin-bottom: 260px">
+        <div></div>
+    </div>
+    <amchart *ngIf="topBestBusinessDevelopersInit" [chartData]="topBestBusinessDevelopersChart" [chartName]="'topBestBusinessDevelopers'"></amchart>
   </ad-ba-card >
   <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12 " title="main.cards.topPos" [navTabs]="baCardTabs" (onTabChange)="tabChanged($event)" >
 

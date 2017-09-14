@@ -24,13 +24,15 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
     topBestBusinessDevs: true,
     topPos: true,
     topSkuSales: true,
+    topBestBusinessDevelopers: true,
     get globalFilterState() {
       if (this.topSkuOos &&
         this.topPosInOos &&
         this.lossesDueToOos &&
         this.topBestBusinessDevs &&
         this.topPos &&
-        this.topSkuSales
+        this.topSkuSales &&
+        this.topBestBusinessDevelopers
       ) {
         return true;
       } else {
@@ -110,6 +112,12 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
     valueFields: ["Losses"]
   };
 
+  private topBestBusinessDevelopersInit: boolean = false;
+  private topBestBusinessDevelopersChart = {
+    dataProvider: [],
+    legendField: "EmployeeName",
+    valueFields: ["OosPercentage"]
+  };
   // private daterangeParams: IDateRangePickerParams = {
   //   startDate: moment().subtract(1, "weeks"),
   //   endDate: moment(),
@@ -132,6 +140,8 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
       this.reloadSalesSummary(event);
     } else if (event.title === "main.cards.lossesDueToOos") {
       this.reloadLossesDueToOos(event);
+    } else if (event.title === "main.cards.topBestBusinessDevs") {
+      this.reloadTopBestBusinessDevelopers(event);
     }
 
     if (this.cardsTabsGlobalState.globalFilterState) {
@@ -216,6 +226,24 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
       });
     }
   }
+
+  private reloadTopBestBusinessDevelopers(event: any) {
+    this.topBestBusinessDevelopersInit = false;
+
+    if (event.range === TabDateRanges.Global) {
+      this.cardsTabsGlobalState.topBestBusinessDevelopers = true;
+      this.mainService.getTopBestBusinessDevelopers().subscribe((result: any) => {
+        this.topBestBusinessDevelopersChart.dataProvider = result;
+        this.topBestBusinessDevelopersInit = true;
+      });
+    } else {
+      this.cardsTabsGlobalState.topBestBusinessDevelopers = false;
+      this.mainService.getTopBestBusinessDevelopers(event.timeSpan).subscribe((result: any) => {
+        this.topBestBusinessDevelopersChart.dataProvider = result;
+        this.topBestBusinessDevelopersInit = true;
+      });
+    }
+  }
   //#endregion
 
   ngOnInit() {
@@ -234,11 +262,17 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
     this.salesSummaryChartInit = false;
     this.posInOosSummaryChartInit = false;
     this.lossesDueToOosChartInit = false;
+    this.topBestBusinessDevelopersInit = false;
 
     this.mainService.getTopSkuOos().subscribe((result: any) => {
       this.topSkuOosChart.dataProvider = result.OOSProducts;
       this.totalOOSPercentage = result.TotalOOS.toFixed(2);
       this.skuOosChartsInit = true;
+    });
+
+    this.mainService.getTopBestBusinessDevelopers().subscribe((result: any) => {
+      this.topBestBusinessDevelopersChart.dataProvider = result;
+      this.topBestBusinessDevelopersInit = true;
     });
 
     this.mainService.getSalesSummary().subscribe((result: any) => {

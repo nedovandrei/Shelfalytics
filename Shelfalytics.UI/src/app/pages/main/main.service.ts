@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { global } from "../../global";
+import { global, FilterFactory } from "../../global";
 import { AjaxService } from "../../shared/services/ajax.service";
 import { Observable } from "rxjs/Observable";
 import { GlobalFilter } from "../../shared/services/global-filter.service";
@@ -10,49 +10,41 @@ export class MainService {
 
     getTopSkuOos(filter?: any) {
         if (filter) {
-            return this.ajaxService.post(`${global.apiPath}Statistics/topSkuOOS`, filter);
+            return this.ajaxService.post(`${global.apiPath}Statistics/topSkuOOS`, new FilterFactory(this.globalFilter, filter));
         } else {
-            return this.ajaxService.post(`${global.apiPath}Statistics/topSkuOOS`, {
-                StartTime: this.globalFilter.startDate,
-                EndTime: this.globalFilter.endDate,
-                ClientId: this.globalFilter.clientId
-            });
+            return this.ajaxService.post(`${global.apiPath}Statistics/topSkuOOS`, new FilterFactory(this.globalFilter));
         }
     }
 
     getSalesSummary(filter?: any) {
         if (filter) {
-            return this.ajaxService.post(`${global.apiPath}Statistics/productSalesSummary`, filter);
+            return this.ajaxService.post(`${global.apiPath}Statistics/productSalesSummary`, new FilterFactory(this.globalFilter, filter));
         } else {
-            return this.ajaxService.post(`${global.apiPath}Statistics/productSalesSummary`, {
-                StartTime: this.globalFilter.startDate,
-                EndTime: this.globalFilter.endDate,
-                ClientId: this.globalFilter.clientId
-            });
+            return this.ajaxService.post(`${global.apiPath}Statistics/productSalesSummary`, new FilterFactory(this.globalFilter));
         }
     }
 
     getTopPosInOos(filter?: any) {
         if (filter) {
-            return this.ajaxService.post(`${global.apiPath}Statistics/posOOSsummary`, filter);
+            return this.ajaxService.post(`${global.apiPath}Statistics/posOOSsummary`, new FilterFactory(this.globalFilter, filter));
         } else {
-            return this.ajaxService.post(`${global.apiPath}Statistics/posOOSsummary`, {
-                StartTime: this.globalFilter.startDate,
-                EndTime: this.globalFilter.endDate,
-                ClientId: this.globalFilter.clientId
-            });
+            return this.ajaxService.post(`${global.apiPath}Statistics/posOOSsummary`, new FilterFactory(this.globalFilter));
         }
     }
 
     getLossesDueToOosSummary(filter?: any) {
         if (filter) {
-            return this.ajaxService.post(`${global.apiPath}Statistics/lossesSummary`, filter);
+            return this.ajaxService.post(`${global.apiPath}Statistics/lossesSummary`, new FilterFactory(this.globalFilter, filter));
         } else {
-            return this.ajaxService.post(`${global.apiPath}Statistics/lossesSummary`, {
-                StartTime: this.globalFilter.startDate,
-                EndTime: this.globalFilter.endDate,
-                ClientId: this.globalFilter.clientId
-            });
+            return this.ajaxService.post(`${global.apiPath}Statistics/lossesSummary`, new FilterFactory(this.globalFilter));
+        }
+    }
+
+    getTopBestBusinessDevelopers(filter?: any) {
+        if (filter) {
+            return this.ajaxService.post(`${global.apiPath}Statistics/topBestBusinessDevelopers`, new FilterFactory(this.globalFilter, filter));
+        } else {
+            return this.ajaxService.post(`${global.apiPath}Statistics/topBestBusinessDevelopers`, new FilterFactory(this.globalFilter));
         }
     }
 }
