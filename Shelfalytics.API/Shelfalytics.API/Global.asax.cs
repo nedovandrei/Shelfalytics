@@ -17,6 +17,8 @@ using Shelfalytics.API.App_Start;
 using Shelfalytics.API.Handlers;
 using Shelfalytics.API.Providers;
 using Thinktecture.IdentityModel;
+using System.Web.Cors;
+using System.Threading.Tasks;
 
 [assembly: OwinStartup("Application_Startup", typeof(Shelfalytics.API.WebApiApplication))]
 namespace Shelfalytics.API
@@ -35,7 +37,22 @@ namespace Shelfalytics.API
 
         public void Configuration(IAppBuilder app)
         {
-            app.UseCors(CorsOptions.AllowAll);
+            var policy = new CorsPolicy
+            {
+                AllowAnyHeader = true,
+                AllowAnyMethod = true,
+                AllowAnyOrigin = true,
+                SupportsCredentials = true
+            };
+
+            app.UseCors(new CorsOptions
+            {
+                PolicyProvider = new CorsPolicyProvider
+                {
+                    PolicyResolver = context => Task.FromResult(policy)
+                }
+            });
+
             ConfigureOAuth(app);
             
             var config = new HttpConfiguration();
