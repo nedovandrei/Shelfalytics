@@ -11,7 +11,7 @@
     <div *ngIf="totalOOSPercentage === undefined" class="preloader-baCard" style="transform: scale(0.5); display: flex; margin-bottom: -7px">
         <div></div>
     </div>
-    <h1 *ngIf="totalOOSPercentage !== undefined">{{totalOOSPercentage}}% | 534 {{'main.header.oosUnits' | translate}}</h1>
+    <h1 *ngIf="totalOOSPercentage !== undefined">{{totalOOSPercentage}}% | {{lossesInUnits}} {{'main.header.oosUnits' | translate}}</h1>
     <p translate>{{'main.header.oos'}}</p>
 
     <!-- <h1>{{totalOOSPercentage}}%</h1>

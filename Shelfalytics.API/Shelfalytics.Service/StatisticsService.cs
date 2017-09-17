@@ -122,7 +122,7 @@ namespace Shelfalytics.Service
         {
             var pos = await _pointOfSaleRepository.GetPosEquipment(posId, filter);
 
-            var result = new EquipmentDetaildedOOSDTO {OOSProducts = new List<EquipmentProductOOSDTO>()};
+            var result = new EquipmentDetaildedOOSDTO { OOSProducts = new List<EquipmentProductOOSDTO>() };
             foreach (var equipment in pos)
             {
                 var equipmentData = await GetEquipmentOOS(equipment, filter);
@@ -180,7 +180,7 @@ namespace Shelfalytics.Service
         public async Task<EquipmentDetaildedOOSDTO> GetTopSkuOOS(GlobalFilter filter)
         {
             var posList = await _pointOfSaleRepository.GetPointsOfSales(filter.ClientId, filter.IsAdmin);
-            var result = new EquipmentDetaildedOOSDTO {OOSProducts = new List<EquipmentProductOOSDTO>()};
+            var result = new EquipmentDetaildedOOSDTO { OOSProducts = new List<EquipmentProductOOSDTO>() };
 
             foreach (var pos in posList)
             {
@@ -237,13 +237,13 @@ namespace Shelfalytics.Service
                     var rowSkip = 0;
 
                     var distanceList = readingsList[rowIndex].DistanceReadings.ToList();
-                    if (distanceList[columnIndex].Distance == equipment.EmptyDistance)
+                    if (columnIndex < distanceList.Count() && distanceList[columnIndex].Distance == equipment.EmptyDistance)
                     {
                         var oosStartPoint = readingsList[rowIndex].TimeStamp;
                         var oosEndPoint = new DateTime();
                         var isOngoing = false;
                         var product = planogram.First(x => x.Row == columnIndex + 1);
-                        
+
                         // finding out the timespan for OOS for a row
                         for (var endPointIndex = 1; endPointIndex <= readingsList.Count - rowIndex; endPointIndex++)
                         {
@@ -270,18 +270,16 @@ namespace Shelfalytics.Service
                                     break;
                                 }
                             }
-                            
+
                         }
 
                         var salesAverage = await _saleRepository.GetProductSalesAverage(product.ProductId, new GlobalFilter
                         {
-                            //StartTime = filter.StartTime.Subtract(filter.EndTime - filter.StartTime),
-                            //EndTime = filter.EndTime.Subtract(filter.EndTime - filter.StartTime)
                             StartTime = oosStartPoint.AddDays(-7),
                             EndTime = oosEndPoint.AddDays(-7),
                             ClientId = filter.ClientId,
                             IsAdmin = filter.IsAdmin
-                    });
+                        });
 
                         var timeSpan = oosEndPoint - oosStartPoint;
                         decimal targetDaysCount;
@@ -293,7 +291,7 @@ namespace Shelfalytics.Service
                             }
                             else
                             {
-                                targetDaysCount = timeSpan.Hours / 24.0m;
+                                targetDaysCount = timeSpan.Hours / 24.0m + timeSpan.Minutes / 3600.0m;
                             }
                         }
                         else
@@ -313,7 +311,8 @@ namespace Shelfalytics.Service
                             TimePeriodMinutes = timeSpan.Minutes,
                             TimePeriodSeconds = timeSpan.Seconds,
                             Losses = (salesAverage.Any() ? salesAverage.FirstOrDefault().AverageSales : 0.00m) * targetDaysCount * product.Price,
-                            AverageSales = salesAverage.Any() ? salesAverage.FirstOrDefault().AverageSales : 0.00m,
+                            AverageSalesPerDay = salesAverage.Any() ? salesAverage.FirstOrDefault().AverageSales : 0.00m,
+                            AverageSalesPerOos = (salesAverage.Any() ? salesAverage.FirstOrDefault().AverageSales : 0.00m) * targetDaysCount,
                             isOngoing = isOngoing
                         };
                         lossesList.Add(losses);
@@ -338,13 +337,14 @@ namespace Shelfalytics.Service
                 lossesList.AddRange(equipmentLosses);
             }
 
-            var targetList = lossesList.GroupBy(x => new {x.SKUName, x.ShortSKUName}).Select(x => new EquipmentLossesDueToOOSDTO
+            var targetList = lossesList.GroupBy(x => new { x.SKUName, x.ShortSKUName }).Select(x => new EquipmentLossesDueToOOSDTO
             {
                 SKUName = x.Key.SKUName,
                 ShortSKUName = x.Key.ShortSKUName,
-                AverageSales =
-                    x.Where(y => y.SKUName == x.Key.SKUName).Sum(y => y.AverageSales) /
-                    x.Count(y => y.SKUName == x.Key.SKUName),
+                AverageSalesPerDay =
+                      x.Where(y => y.SKUName == x.Key.SKUName).Sum(y => y.AverageSalesPerDay) /
+                      x.Count(y => y.SKUName == x.Key.SKUName),
+                AverageSalesPerOos = Math.Round(x.Where(y => y.SKUName == x.Key.SKUName).Sum(y => y.AverageSalesPerOos)),
                 Losses = x.Where(y => y.SKUName == x.Key.SKUName).Sum(y => y.Losses),
                 //TimePeriod = x.Where(y => y.SKUName == x.Key.SKUName).Sum(y => y.TimePeriod)
                 TimePeriodDays = x.Where(y => y.SKUName == x.Key.SKUName).Sum(y => y.TimePeriodDays),
@@ -366,13 +366,13 @@ namespace Shelfalytics.Service
         {
             var users = await _authRepository.GetUsersByClientId(filter.ClientId);
             var list = new List<BusinessDevelopersDTO>();
-            foreach(var user in users)
+            foreach (var user in users)
             {
-                if(user.Role == "4")
+                if (user.Role == "4")
                 {
-                    var oosPercentageSumm = 0.00;                    
+                    var oosPercentageSumm = 0.00;
                     var equipment = await _equipmentDataRepository.GetUserEquipment(user.Id);
-                    foreach(var eq in equipment)
+                    foreach (var eq in equipment)
                     {
                         var resultEquipment = await GetEquipmentOOS(eq.Id, filter);
                         oosPercentageSumm += resultEquipment.TotalOOS;
@@ -384,7 +384,7 @@ namespace Shelfalytics.Service
                         OosPercentage = oosPercentageSumm / equipment.Count(),
                         Role = user.Role
                     };
-                    if(result.OosPercentage > 0)
+                    if (result.OosPercentage > 0)
                     {
                         list.Add(result);
                     }
