@@ -311,6 +311,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\MessageTemplates\Content\css\bootstrap-grid.css" />
+    <Content Include="Content\MessageTemplates\Content\css\bootstrap-grid.min.css" />
+    <Content Include="Content\MessageTemplates\Content\css\bootstrap-reboot.css" />
+    <Content Include="Content\MessageTemplates\Content\css\bootstrap-reboot.min.css" />
+    <Content Include="Content\MessageTemplates\Content\css\bootstrap.css" />
+    <Content Include="Content\MessageTemplates\Content\css\bootstrap.min.css" />
+    <Content Include="Content\MessageTemplates\Content\js\bootstrap.js" />
+    <Content Include="Content\MessageTemplates\Content\js\bootstrap.min.js" />
+    <Content Include="Content\MessageTemplates\EmailTemplate.html" />
+    <Content Include="Content\MessageTemplates\Content\logo_Shelfalytics.png" />
+    <Content Include="Content\MessageTemplates\OOSNotification.html" />
     <Content Include="Content\photos\1.jpg" />
     <Content Include="Content\photos\10.jpg" />
     <Content Include="Content\photos\11.jpg" />
@@ -373,6 +384,12 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="LoginCallback.ashx" />
+    <Content Include="Content\MessageTemplates\Content\css\bootstrap-grid.css.map" />
+    <Content Include="Content\MessageTemplates\Content\css\bootstrap-grid.min.css.map" />
+    <Content Include="Content\MessageTemplates\Content\css\bootstrap-reboot.css.map" />
+    <Content Include="Content\MessageTemplates\Content\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\MessageTemplates\Content\css\bootstrap.css.map" />
+    <Content Include="Content\MessageTemplates\Content\css\bootstrap.min.css.map" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\develop deploy.pubxml" />
     <None Include="Properties\PublishProfiles\UAT deploy.pubxml" />

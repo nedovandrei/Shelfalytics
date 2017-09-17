@@ -19,5 +19,6 @@ namespace Shelfalytics.RepositoryInterface.Repositories
         Task RegisterEquipmentDistanceReadings(IEnumerable<EquipmentDistanceReading> distanceReadings);
         Task<bool> EquipmentHasReadings(int equipmentId);
         Task<IEnumerable<EquipmentDTO>> GetUserEquipment(string userId);
+        Task<IEnumerable<UserDTO>> GetEquipmentUsers(int equipmentId);
     }
 }

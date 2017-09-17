@@ -7,6 +7,7 @@ using System.Web.Http;
 using Shelfalytics.API.Models;
 using Shelfalytics.RepositoryInterface.DTO;
 using Shelfalytics.ServiceInterface;
+using System.Web.Hosting;
 
 namespace Shelfalytics.API.Controllers
 {

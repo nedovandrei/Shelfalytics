@@ -9,6 +9,8 @@ using Shelfalytics.RepositoryInterface.DTO;
 using Shelfalytics.RepositoryInterface.Helpers;
 using Shelfalytics.RepositoryInterface.Repositories;
 using Shelfalytics.Model.DbModelHelpers;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Shelfalytics.Repository.Repositories
 {
@@ -17,6 +19,8 @@ namespace Shelfalytics.Repository.Repositories
         
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;
 
+        private readonly UserManager<User> _userManager;
+
         public EquipmentDataRepository(IUnitOfWorkFactory unitOfWorkFactory)
         {
             if (unitOfWorkFactory == null)
@@ -24,6 +28,7 @@ namespace Shelfalytics.Repository.Repositories
                 throw new ArgumentNullException(nameof(unitOfWorkFactory));
             }
             _unitOfWorkFactory = unitOfWorkFactory;
+            _userManager = new UserManager<User>(new UserStore<User>(unitOfWorkFactory.GetShelfalyticsIdentityDbContext()));
         }
 
         public async Task<IEnumerable<EqiupmentDataDTO>> GetLatestEquipmentData(int equipmentId)
@@ -169,7 +174,12 @@ namespace Shelfalytics.Repository.Repositories
                         PointOfSaleId = st.PointOfSaleId,
                         ClientId = st.ClientId,
                         ModelName = st.ModelName,
-                        RowCount = st.RowCount
+                        RowCount = st.RowCount,
+                        EmptyDistance = st.EmptyDistance,
+                        FullDistance = st.FullDistance,
+                        Width = st.Width,
+                        EquipmentTypeId = st.EquipmentTypeId,
+                        YCount = st.YCount
                     };
                 return await query.FirstAsync();
             }
@@ -239,6 +249,42 @@ namespace Shelfalytics.Repository.Repositories
                                 PointOfSaleId = eq.PointOfSaleId
                             };
                 return await query.ToListAsync();
+            }
+        }
+
+        public async Task<IEnumerable<UserDTO>> GetEquipmentUsers(int equipmentId)
+        {
+            using (var uow = _unitOfWorkFactory.GetShelfalyticsDbContext())
+            {
+                using (var idUow = _unitOfWorkFactory.GetShelfalyticsIdentityDbContext())
+                {
+                    var query = from uet in uow.Set<UserEquipmentTie>()
+                                where uet.EquipmentId == equipmentId
+                                select uet.UserId;
+
+                    var userIds = await query.ToListAsync();
+
+                    var userList = new List<UserDTO>();
+                    foreach(var userId in userIds)
+                    {
+                        var user = await _userManager.FindByIdAsync(userId);
+                        var userDto = new UserDTO
+                        {
+                            Id = user.Id,
+                            ClientId = user.ClientId,
+                            Email = user.Email,
+                            EmployeeName = user.EmployeeName,
+                            GeneralManagerId = user.GeneralManagerId,
+                            Role = user.Roles.FirstOrDefault().ToString(),
+                            SupervisorId = user.SupervisorId,
+                            UserName = user.UserName
+                        };
+                        userList.Add(userDto);
+                    }
+
+
+                    return userList;
+                }
             }
         }
 

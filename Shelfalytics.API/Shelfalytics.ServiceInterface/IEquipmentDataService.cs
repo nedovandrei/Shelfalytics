@@ -10,5 +10,6 @@ namespace Shelfalytics.ServiceInterface
     {
         Task<IEnumerable<EquipmentReadingsViewModel>> GetLatestEquipmentData(int equipmentId);
         Task RegisterReading(EquipmentReadingDTO reading);
+        Task<IEnumerable<UserDTO>> GetEquipmentUsers(int equipmentId);
     }
 }

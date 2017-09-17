@@ -21,16 +21,15 @@ namespace Shelfalytics.Service
         private readonly IEquipmentDataRepository _equipmentDataRepository;
         private readonly IProductDataRepository _productDataRepository;
         private readonly ISaleRepository _saleRepository;
+        private readonly IMailService _mailService;
 
         public EquipmentDataService(IEquipmentDataRepository equipmentDataRepository,
-            IProductDataRepository productDataRepository, ISaleRepository saleRepository)
+            IProductDataRepository productDataRepository, ISaleRepository saleRepository, IMailService mailService)
         {
-            if (equipmentDataRepository == null) throw new ArgumentNullException(nameof(equipmentDataRepository));
-            if (productDataRepository == null) throw new ArgumentNullException(nameof(productDataRepository));
-
-            _equipmentDataRepository = equipmentDataRepository;
-            _productDataRepository = productDataRepository;
+            _equipmentDataRepository = equipmentDataRepository ?? throw new ArgumentNullException(nameof(equipmentDataRepository));
+            _productDataRepository = productDataRepository ?? throw new ArgumentNullException(nameof(productDataRepository));
             _saleRepository = saleRepository;
+            _mailService = mailService ?? throw new ArgumentNullException(nameof(mailService));
         }
 
         public async Task<IEnumerable<EquipmentReadingsViewModel>> GetLatestEquipmentData(int equipmentId)
@@ -112,8 +111,9 @@ namespace Shelfalytics.Service
             var distanceReadingsList = new List<EquipmentDistanceReading>();
             for(var i = 0; i < reading.DistanceSensors.Count(); i++)
             {
+
                 // sales registration logic
-                if (equipmentHasReadings && i != previousReading.SensorReadings.Count())
+                if (equipmentHasReadings && i != (previousReading.SensorReadings.Count() - 1) && previousReading.SensorReadings.Count() > 0)
                 {
                     //getting planogram data with bottle diameters
                     var product = planogramData.First(x => x.Row == reading.DistanceSensors.ToList()[i].Row);
@@ -147,9 +147,10 @@ namespace Shelfalytics.Service
                             await _saleRepository.RegisterSale(saleRecord);
                         }
                     }
-                    
                 }
+
                 
+
                 var distRead = new EquipmentDistanceReading
                 {
                     EquipmentReadingId = registeredReading.Id,
@@ -160,8 +161,38 @@ namespace Shelfalytics.Service
                 distanceReadingsList.Add(distRead);
             }
 
+            if (reading.DistanceSensors.Any(x => x.Distance == equipment.EmptyDistance))
+            {
+                var emptyPushers = reading.DistanceSensors.Where(x => x.Distance == equipment.EmptyDistance);
+                var OosProductList = new List<ProductOOSDTO>();
+                foreach (var emptyPusher in emptyPushers)
+                {
+                    var oosProductTemp = planogramData.FirstOrDefault(x => x.Row == emptyPusher.Row);
+                    await _mailService.SendOOSEmail(new ProductOOSDTO
+                    {
+                        Row = oosProductTemp.Row,
+                        EquipmentId = oosProductTemp.EquipmentId,
+                        ProductName = oosProductTemp.ProductName,
+                        BottleDiameter = oosProductTemp.BottleDiameter,
+                        PhotoPath = oosProductTemp.PhotoPath,
+                        Price = oosProductTemp.Price,
+                        ProductId = oosProductTemp.ProductId,
+                        ShortSKUName = oosProductTemp.ShortSKUName,
+                        SKUName = oosProductTemp.SKUName,
+                        TimeStamp = DateTime.UtcNow
+                    }, equipment.Id);
+
+                }
+            }
+
             await _equipmentDataRepository.RegisterEquipmentDistanceReadings(distanceReadingsList);
 
+        }
+
+        public async Task<IEnumerable<UserDTO>> GetEquipmentUsers(int equipmentId)
+        {
+            var result = await _equipmentDataRepository.GetEquipmentUsers(equipmentId);
+            return result;
         }
     }
 }

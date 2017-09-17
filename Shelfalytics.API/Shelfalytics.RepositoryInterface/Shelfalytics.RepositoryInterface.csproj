@@ -75,6 +75,7 @@
     <Compile Include="DTO\LossesDueToOOSSummaryDTO.cs" />
     <Compile Include="DTO\PointOfSaleDataDTO.cs" />
     <Compile Include="DTO\PointOfSaleOOSSummary.cs" />
+    <Compile Include="DTO\ProductOOSDTO.cs" />
     <Compile Include="DTO\ProductSalesAverageDTO.cs" />
     <Compile Include="DTO\SalesSummaryDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />

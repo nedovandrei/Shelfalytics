@@ -56,7 +56,6 @@ namespace Shelfalytics.Repository.Repositories
                 var exception = ex;
                 return null;
             }
-            
         }
 
         public async Task<User> FindUser(UserLoginDTO user)
