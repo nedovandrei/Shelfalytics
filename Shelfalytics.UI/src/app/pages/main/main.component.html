@@ -1,4 +1,4 @@
-<div class="row animated" animateOnScroll animationName="fadeInLeft">
+<div class="row animated">
   <ba-card class="col-md-6 col-lg-3 col-sm-12 col-12 text-center" >
       <div *ngIf="salesSummaryCount === undefined" class="preloader-baCard" style="transform: scale(0.5); display: flex; margin-bottom: -7px">
           <div></div>
@@ -32,7 +32,7 @@
 </div>
 
 
-<div class="row animated" animateOnScroll animationName="fadeInLeft">
+<div class="row animated">
   <ad-ba-card class="col-xl-6 col-12 " title="main.cards.topSkuOos" [navTabs]="baCardTabs" (onTabChange)="tabChanged($event)">
       <div *ngIf="!skuOosChartsInit" class="preloader-baCard" style="margin-top: 265px; margin-bottom: 260px">
           <div></div>
@@ -46,7 +46,7 @@
     <amchart *ngIf="posInOosSummaryChartInit" [chartData]="posInOosSummaryChart" [chartName]="'posInOos'"></amchart>
   </ad-ba-card>
 </div>
-<div class="row animated" animateOnScroll animationName="fadeInLeft">
+<div class="row animated" >
   <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12 " title="main.cards.posInOosMap" [navTabs]="baCardTabs">
       <div *ngIf="!mapInit" class="preloader-baCard" style="margin-top: 265px; margin-bottom: 260px">
           <div></div>
@@ -60,7 +60,7 @@
       <amchart *ngIf="lossesDueToOosChartInit" [chartData]="lossesDueToOosChart" [chartName]="'lossesDueToOos'"></amchart>
   </ad-ba-card >
 </div>
-<div class="row animated" animateOnScroll animationName="fadeInLeft">
+<div class="row animated" >
   <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12 " title="main.cards.topBestBusinessDevs" [navTabs]="baCardTabs" (onTabChange)="tabChanged($event)">
     <div *ngIf="!topBestBusinessDevelopersInit" class="preloader-baCard" style="margin-top: 265px; margin-bottom: 260px">
         <div></div>
@@ -77,8 +77,8 @@
   </ad-ba-card >
 </div>
 
-<div class="row animated" animateOnScroll animationName="fadeInLeft">
-  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12 animated" title="main.cards.topSkuSales" [navTabs]="baCardTabs" (onTabChange)="tabChanged($event)" animateOnScroll animationName="fadeInLeft">
+<div class="row animated" >
+  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12 animated" title="main.cards.topSkuSales" [navTabs]="baCardTabs" (onTabChange)="tabChanged($event)" >
       <div *ngIf="!salesSummaryChartInit" class="preloader-baCard" style="margin-top: 265px; margin-bottom: 260px">
           <div></div>
       </div>
