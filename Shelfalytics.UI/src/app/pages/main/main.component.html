@@ -67,21 +67,22 @@
     </div>
     <amchart *ngIf="topBestBusinessDevelopersInit" [chartData]="topBestBusinessDevelopersChart" [chartName]="'topBestBusinessDevelopers'"></amchart>
   </ad-ba-card >
-  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12 " title="main.cards.topPos" [navTabs]="baCardTabs" (onTabChange)="tabChanged($event)" >
+  <!-- <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12 " title="main.cards.topPos" [navTabs]="baCardTabs" (onTabChange)="tabChanged($event)" >
 
       <ol class="mt-2">
         <li>asdasdas</li>
           <li>asdasdas</li>
             <li>asdasdas</li>
       </ol>
-  </ad-ba-card >
+  </ad-ba-card > -->
+    <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12 animated" title="main.cards.topSkuSales" [navTabs]="baCardTabs" (onTabChange)="tabChanged($event)" >
+        <div *ngIf="!salesSummaryChartInit" class="preloader-baCard" style="margin-top: 265px; margin-bottom: 260px">
+            <div></div>
+        </div>
+        <amchart *ngIf="salesSummaryChartInit" [chartData]="salesSummaryChart" [chartName]="'salesSummary'"></amchart>
+    </ad-ba-card>
 </div>
 
 <div class="row animated" >
-  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12 animated" title="main.cards.topSkuSales" [navTabs]="baCardTabs" (onTabChange)="tabChanged($event)" >
-      <div *ngIf="!salesSummaryChartInit" class="preloader-baCard" style="margin-top: 265px; margin-bottom: 260px">
-          <div></div>
-      </div>
-    <amchart *ngIf="salesSummaryChartInit" [chartData]="salesSummaryChart" [chartName]="'salesSummary'"></amchart>
-  </ad-ba-card>
+  
 </div>
