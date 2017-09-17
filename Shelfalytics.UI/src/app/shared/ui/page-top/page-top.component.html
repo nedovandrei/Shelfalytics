@@ -17,8 +17,9 @@
   <div class="user-profile clearfix">
 
     <div class="dropdown al-user-profile">
-      <a class="profile-toggle-link dropdown-toggle" id="user-profile-dd" data-toggle="dropdown" aria-expanded="false">
-        <img src="{{ ( 'Nasta' | baProfilePicture ) }}">
+      <a *ngIf="loggedUser" class="profile-toggle-link dropdown-toggle" id="user-profile-dd" data-toggle="dropdown" aria-expanded="false">
+        <!-- <img src="{{ ( 'Nasta' | baProfilePicture ) }}"> -->
+        {{loggedUser.name}}
       </a>
       <ul class="dropdown-menu top-dropdown-menu profile-dropdown" aria-labelledby="user-profile-dd">
         <li class="dropdown-item"><a><i class="fa fa-user"></i>Profile</a></li>
@@ -38,7 +39,7 @@
     <li class="dropdown-item" (click)="changeLanguage('en')"><a>English</a></li>
   </ul>
 </div>
-<span *ngIf="loggedUser" class="user-name" style="float: right; position: relative; top: 12px; margin-right: 16px">{{loggedUser.name}}</span>
+<!-- <span *ngIf="loggedUser" class="user-name" style="float: right; position: relative; top: 12px; margin-right: 16px">{{loggedUser.name}}</span> -->
     <!-- <ba-msg-center></ba-msg-center> -->
   </div>
 </div>
