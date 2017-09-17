@@ -6,7 +6,7 @@
   "homepage": "http://akveo.github.io/ng2-admin/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/akveo/ng2-admin.git"
+    "url": "git+https://github.com/akveo/ng2-admin.git"
   },
   "bugs": {
     "url": "https://github.com/akveo/ng2-admin/issues"
@@ -83,6 +83,7 @@
     "leaflet": "0.7.7",
     "leaflet-map": "0.2.1",
     "lodash": "4.17.4",
+    "mjml": "^3.3.3",
     "moment": "^2.18.1",
     "ng2-animate-on-scroll": "^1.0.3",
     "ng2-ckeditor": "1.1.6",
@@ -137,5 +138,10 @@
     "underscore": "1.8.3",
     "wintersmith": "2.2.5",
     "wintersmith-sassy": "1.1.0"
-  }
+  },
+  "main": "karma.conf.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "keywords": []
 }
