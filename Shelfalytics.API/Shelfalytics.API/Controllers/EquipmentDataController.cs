@@ -20,10 +20,6 @@ namespace Shelfalytics.API.Controllers
         
         public EquipmentDataController(IEquipmentDataService equipmentDataService)
         {
-            if (equipmentDataService == null)
-            {
-                throw new ArgumentNullException(nameof(equipmentDataService));
-            }
             _equipmentDataService = equipmentDataService;
         }
 

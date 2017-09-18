@@ -89,6 +89,7 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
   };
   private totalOOSPercentage: number;
 
+
   private salesSummaryChartInit: boolean = false;
   private salesSummaryCount: number;
   private salesSummaryChart = {
@@ -111,6 +112,7 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
     legendField: "ShortSKUName",
     valueFields: ["Losses"]
   };
+  private lossesInUnits: number = 0;
 
   private topBestBusinessDevelopersInit: boolean = false;
   private topBestBusinessDevelopersChart = {
@@ -282,7 +284,11 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
     });
 
     this.mainService.getLossesDueToOosSummary().subscribe((result: any) => {
+      this.lossesInUnits = 0;
       this.lossesDueToOosSummary = result.Total;
+      _.each(result.LossesByProducts, (item: any) => {
+        this.lossesInUnits += item.AverageSalesPerOos;
+      });
       this.lossesDueToOosChart.dataProvider = result.LossesByProducts;
       this.lossesDueToOosChartInit = true;
     });
