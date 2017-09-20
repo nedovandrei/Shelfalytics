@@ -20,12 +20,14 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges, AfterVie
     private chart: any;
     private sortDirection: "asc" | "desc" = "desc";
     private pieChartNoData: boolean = false;
+    private viewInit: boolean = false;
 
     private chartConfig: any;
 
     ngAfterViewInit() {
         this.initChart();
         this.sortData();
+        
     }
 
     private initConfig() {
@@ -68,36 +70,44 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges, AfterVie
     ngOnChanges() {
         // this.initChart();
         // this.sortData();
+        // this.pieChartNoData = false;
+        if (!this.chartData.dataProvider || this.chartData.dataProvider.length === 0) {
+            this.pieChartNoData = true;
+        } else {
+            this.pieChartNoData = false;
+        }
         this.initializeDataProvider();
     }
 
     private initializeDataProvider() {
-        this.pieChartNoData = false;
         if (this.chartConfig !== undefined) {
             if (this.chart === undefined) {
-                if (this.chartData.dataProvider === undefined || this.chartData.dataProvider.length === 0) {
-                    if (this.chartType === "pie") {
-                        this.pieChartNoData = true;
-                    }
-                    const noData: any = {};
-                    Object.defineProperty(noData, this.chartData.legendField, {
-                        value: "No Data"
-                    });
-                    _.each(this.chartData.valueFields, (item: string) => {
-                        Object.defineProperty(noData, item, {
-                            value: 0
+                if (this.chartData) {
+                    if (this.chartData.dataProvider === undefined || this.chartData.dataProvider.length === 0) {
+                        // if (this.chartType === "pie") {
+                        //     this.pieChartNoData = true;
+                        // }
+                        const noData: any = {};
+                        Object.defineProperty(noData, this.chartData.legendField, {
+                            value: "No Data"
                         });
-                    });
-                    this.chartConfig["dataProvider"] = [noData];
-                } else {
-                    this.chartConfig["dataProvider"] = this.chartData.dataProvider;
+                        _.each(this.chartData.valueFields, (item: string) => {
+                            Object.defineProperty(noData, item, {
+                                value: 0
+                            });
+                        });
+                        this.chartConfig["dataProvider"] = [noData];
+                    } else {
+                        this.chartConfig["dataProvider"] = this.chartData.dataProvider;
+                    }
                 }
+                
             } else {
-                if (this.chartData.dataProvider === undefined || this.chartData.dataProvider.length === 0) {
-                    // if (this.chartType === "pie") {
-                        this.pieChartNoData = true;
-                    // }
-                }
+                // if (this.chartData.dataProvider === undefined || this.chartData.dataProvider.length === 0) {
+                //     if (this.chartType === "pie") {
+                //         this.pieChartNoData = true;
+                //     }
+                // }
                 this.amChartsService.updateChart( this.chart, () => {
                     this.chart.dataProvider = this.chartData.dataProvider;
                 });
@@ -116,7 +126,7 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges, AfterVie
             });
             this.chartConfig["dataProvider"] = [noData];
             // if (this.chartType === "pie") {
-                this.pieChartNoData = true;
+            //     this.pieChartNoData = true;
             // }
             this.initConfig();
             this.initChart();

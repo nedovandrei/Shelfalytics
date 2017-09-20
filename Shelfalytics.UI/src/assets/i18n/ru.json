@@ -50,6 +50,7 @@
             "schedule": "График работы",
             "contactPersonName": "Имя Контактного Лица",
             "posOos": "Out Of Stock (POS)",
+            "posActualFill": "Заполненность Полок (В данный момент)",
             "equipmentInfo": {
                 "model": "Модель",
                 "equipmentType": "Тип Оборудования",

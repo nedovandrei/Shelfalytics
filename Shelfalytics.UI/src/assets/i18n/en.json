@@ -51,6 +51,7 @@
       "schedule": "Schedule",
       "contactPersonName": "Contact Person Name",
       "posOos": "Out Of Stock (POS)",
+      "posActualFill": "Product Fill (Actual)",
       "equipmentInfo": {
         "model": "Model",
         "equipmentType": "Equipment Type",

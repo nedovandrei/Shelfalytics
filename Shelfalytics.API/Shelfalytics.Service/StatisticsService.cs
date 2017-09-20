@@ -42,6 +42,7 @@ namespace Shelfalytics.Service
         {
             var equipment = await _equipmentDataRepository.GetEquipmentById(equipmentId);
             var readings = await _equipmentDataRepository.GetFilteredEquipmentData(equipmentId, filter);
+            var latestReading = await _equipmentDataRepository.GetLatestReading(equipmentId);
             var planogram = await _productDataRepository.GetEquipmentPlanogram(equipmentId);
 
 
@@ -113,6 +114,8 @@ namespace Shelfalytics.Service
                 }
             ).ToList();
             detailedOOSData.TotalOOS = result;
+            detailedOOSData.ActualFill = 100 - Math.Round((double) latestReading.SensorReadings.Sum(x => x.Distance) /
+                                                   (double) (equipment.EmptyDistance * equipment.RowCount) * 100.00f, 2);
 
             return detailedOOSData;
 
@@ -142,6 +145,7 @@ namespace Shelfalytics.Service
                     }
                 }
                 result.TotalOOS += equipmentData.TotalOOS;
+                result.ActualFill += equipmentData.ActualFill;
             }
 
             return result;

@@ -34,6 +34,8 @@ export class PosInfoComponent implements OnInit, OnDestroy {
 
   private equipmentOOSChartData = {};
   private POSOOSChartData = {};
+  private equipmentActualFillChartData = {};
+  private POSActualFillChartData = {};
 
   private equipmentProductOOSTable = [];
   private equipmentLossesDueToOOSTable = [];
@@ -73,6 +75,11 @@ export class PosInfoComponent implements OnInit, OnDestroy {
           color: oosData.TotalOOS < 20 ? "rgba(255, 255, 255, 1)" :
               oosData.TotalOOS < 50 ? "rgba(223, 184, 28, 1)" : "rgba(232, 86, 86, 1)"
         };
+        this.POSActualFillChartData = {
+          data: oosData.ActualFill,
+          color: oosData.ActualFill < 20 ? "rgba(255, 255, 255, 1)" :
+              oosData.ActualFill < 50 ? "rgba(223, 184, 28, 1)" : "rgba(232, 86, 86, 1)"
+        };
       });
 
       if (this.equipmentInFocus) {
@@ -96,6 +103,12 @@ export class PosInfoComponent implements OnInit, OnDestroy {
             data: oosData.TotalOOS,
             color: oosData.TotalOOS < 20 ? "rgba(255, 255, 255, 1)" :
               oosData.TotalOOS < 50 ? "rgba(223, 184, 28, 1)" : "rgba(232, 86, 86, 1)"
+          };
+
+          this.equipmentActualFillChartData = {
+            data: oosData.ActualFill,
+            color: oosData.ActualFill < 20 ? "rgba(255, 255, 255, 1)" :
+              oosData.ActualFill < 50 ? "rgba(223, 184, 28, 1)" : "rgba(232, 86, 86, 1)"
           };
           
           this.posInfoService.getPOSSales(this.equipmentInFocus).subscribe((saleData: any) => {

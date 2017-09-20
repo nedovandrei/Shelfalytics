@@ -16,7 +16,11 @@ namespace Shelfalytics.Service
 
         public MailService(IEquipmentDataRepository equipmentDataRepository)
         {
-            _equipmentDataRepository = equipmentDataRepository ?? throw new ArgumentNullException(nameof(equipmentDataRepository));
+            if (equipmentDataRepository == null)
+            {
+                throw new ArgumentNullException(nameof(equipmentDataRepository));
+            }
+            _equipmentDataRepository = equipmentDataRepository;
         }
         public async Task SendOOSEmail(ProductOOSDTO product, int equipmentId)
         {

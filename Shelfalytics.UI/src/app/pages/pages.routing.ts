@@ -16,25 +16,30 @@ export const routes: Routes = [
   },
   {
     path: "register",
-    loadChildren: "app/pages/register/register.module#RegisterModule"
+    loadChildren: "app/pages/register/register.module#RegisterModule",
+    canActivate: [AuthGuard]
   },
   {
     path: "pages",
     component: Pages,
     children: [
       { path: "", redirectTo: "main", pathMatch: "full" },
-      { path: "dashboard", loadChildren: "./dashboard/dashboard.module#DashboardModule" },
-      { path: "editors", loadChildren: "./editors/editors.module#EditorsModule" },
-      { path: "components", loadChildren: "./components/components.module#ComponentsModule" },
-      { path: "charts", loadChildren: "./charts/charts.module#ChartsModule" },
-      { path: "ui", loadChildren: "./ui/ui.module#UiModule" },
-      { path: "forms", loadChildren: "./forms/forms.module#FormsModule" },
-      { path: "tables", loadChildren: "./tables/tables.module#TablesModule" },
+      { path: "dashboard", loadChildren: "./dashboard/dashboard.module#DashboardModule", canActivate: [AuthGuard] },
+      { path: "editors", loadChildren: "./editors/editors.module#EditorsModule", canActivate: [AuthGuard] },
+      { path: "components", loadChildren: "./components/components.module#ComponentsModule", canActivate: [AuthGuard] },
+      { path: "charts", loadChildren: "./charts/charts.module#ChartsModule", canActivate: [AuthGuard] },
+      { path: "ui", loadChildren: "./ui/ui.module#UiModule", canActivate: [AuthGuard] },
+      { path: "forms", loadChildren: "./forms/forms.module#FormsModule", canActivate: [AuthGuard] },
+      { path: "tables", loadChildren: "./tables/tables.module#TablesModule", canActivate: [AuthGuard] },
       // { path: 'maps', loadChildren: './maps/maps.module#MapsModule' },
-      { path: "points-of-sale", loadChildren: "./points-of-sale/points-of-sale.module#PointsOfSaleModule"},
-      { path: "main", component: MainComponent },
+      { 
+        path: "points-of-sale", 
+        loadChildren: "./points-of-sale/points-of-sale.module#PointsOfSaleModule", 
+        canActivate: [AuthGuard] 
+      },
+      { path: "main", component: MainComponent, canActivate: [AuthGuard] },
       { path: "statistics", component: StatisticsComponent, canActivate: [AuthGuard] },
-      { path: "settings", component: SettingsComponent }
+      { path: "settings", component: SettingsComponent, canActivate: [AuthGuard] }
     ]
   },
 

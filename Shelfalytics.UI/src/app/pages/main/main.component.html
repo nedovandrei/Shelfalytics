@@ -53,7 +53,7 @@
       </div>
     <google-maps *ngIf="mapInit" [mapData]="mapSettings"></google-maps>
   </ad-ba-card >
-  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12 " title="main.cards.lossesDueToOos" [navTabs]="baCardTabs" >
+  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12 " title="main.cards.lossesDueToOos" [navTabs]="baCardTabs" (onTabChange)="tabChanged($event)">
       <div *ngIf="!lossesDueToOosChartInit" class="preloader-baCard" style="margin-top: 265px; margin-bottom: 260px">
           <div></div>
       </div>

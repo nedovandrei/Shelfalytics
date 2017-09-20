@@ -39,11 +39,11 @@
             </div>
           </div>
         </ba-card> -->
-        <ba-card class="col-12 col-md-6" title="{{'pointsOfSale.posInfo.posOos'}}">
+        <ba-card class="col-12 col-md-6" title="{{'pointsOfSale.posInfo.posActualFill'}}">
 
               <div class="row justify-content-center">
                 <div class="col-12 col-xl-6 col-md-10 col-sm-8">
-                  <easy-pie-chart [chartData]="POSOOSChartData"></easy-pie-chart>
+                  <easy-pie-chart [chartData]="POSActualFillChartData"></easy-pie-chart>
                 </div>
               </div>
 
@@ -69,7 +69,7 @@
   </div>
 
 
-        <equipment-info *ngIf="equipmentInFocus > 0 && equipmentInitFlag" [equipmentId]="equipmentInFocus" [oosChartData]="equipmentOOSChartData"></equipment-info>
+        <equipment-info *ngIf="equipmentInFocus > 0 && equipmentInitFlag" [equipmentId]="equipmentInFocus" [oosChartData]="equipmentOOSChartData" [fillChartData]="equipmentActualFillChartData"></equipment-info>
         <!-- <equipment-info-pusher *ngIf="equipmentInFocus > 0 && equipmentInitFlag" [equipmentId]="equipmentInFocus"></equipment-info> -->
 
         <!-- <angular2-grid></angular2-grid> -->

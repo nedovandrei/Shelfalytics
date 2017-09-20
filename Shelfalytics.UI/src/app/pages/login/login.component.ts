@@ -21,6 +21,8 @@ export class Login {
 
   private invalidData: boolean = false;
 
+  private loadingFlag: boolean = false;
+
   constructor(
     fb: FormBuilder, 
     private auth: AuthService, 
@@ -39,6 +41,7 @@ export class Login {
 
   onSubmit(values: Credentials): void {
     this.submitted = true;
+    this.loadingFlag = true;
     if (this.form.valid) {
       // your code goes here
       console.log(values);
@@ -57,8 +60,10 @@ export class Login {
           // localStorage.setItem("loggedUser", this.jwt.decodeToken(data.access_token));
           this.router.navigate(["/"]);
           this.filter.userLogged.next();
+          this.loadingFlag = false;
         },
         error => {
+          this.loadingFlag = false;
           this.invalidData = true;
           console.log(error);
         }

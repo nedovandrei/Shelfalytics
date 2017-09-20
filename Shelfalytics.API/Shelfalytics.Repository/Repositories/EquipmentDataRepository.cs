@@ -287,6 +287,5 @@ namespace Shelfalytics.Repository.Repositories
                 }
             }
         }
-
     }
 }

@@ -10,5 +10,6 @@ namespace Shelfalytics.RepositoryInterface.DTO
     {
         public List<EquipmentProductOOSDTO> OOSProducts { get; set; }
         public double TotalOOS { get; set; }
+        public double ActualFill { get; set; }
     }
 }

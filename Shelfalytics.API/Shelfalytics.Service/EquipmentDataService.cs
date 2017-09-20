@@ -26,10 +26,14 @@ namespace Shelfalytics.Service
         public EquipmentDataService(IEquipmentDataRepository equipmentDataRepository,
             IProductDataRepository productDataRepository, ISaleRepository saleRepository, IMailService mailService)
         {
-            _equipmentDataRepository = equipmentDataRepository ?? throw new ArgumentNullException(nameof(equipmentDataRepository));
-            _productDataRepository = productDataRepository ?? throw new ArgumentNullException(nameof(productDataRepository));
+            if (equipmentDataRepository == null) throw new ArgumentNullException(nameof(equipmentDataRepository));
+            if (productDataRepository == null) throw new ArgumentNullException(nameof(productDataRepository));
+            if (saleRepository == null) throw new ArgumentNullException(nameof(saleRepository));
+            if (mailService == null) throw new ArgumentNullException(nameof(mailService));
+            _equipmentDataRepository = equipmentDataRepository;
+            _productDataRepository = productDataRepository;
             _saleRepository = saleRepository;
-            _mailService = mailService ?? throw new ArgumentNullException(nameof(mailService));
+            _mailService = mailService;
         }
 
         public async Task<IEnumerable<EquipmentReadingsViewModel>> GetLatestEquipmentData(int equipmentId)

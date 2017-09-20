@@ -14,6 +14,7 @@ export class EquipmentInfoComponent implements OnInit, OnChanges {
 
   @Input() equipmentId: number;
   @Input() oosChartData: any;
+  @Input() fillChartData: any;
 
   private initFlag: boolean = false;
   private equipmentData: any;
