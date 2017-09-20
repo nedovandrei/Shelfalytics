@@ -59,6 +59,7 @@
         "openCount": "Open Count",
         "lastPing": "Last Ping",
         "oos": "Out Of Stock",
+        "actualFill": "Product Fill",
         "sales": "Sales",
         "productOosTable": {
           "title": "Product Out Of Stock in %",

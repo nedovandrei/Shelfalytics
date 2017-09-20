@@ -58,6 +58,7 @@
                 "openCount": "Количество Открытий/Закрытий",
                 "lastPing": "Последний Опрос",
                 "oos": "Out Of Stock",
+                "actualFill": "Заполненность",
                 "sales": "Продажи",
                 "productOosTable": {
                     "title": "Out of Stock по продуктам в %",
