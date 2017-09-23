@@ -89,6 +89,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Migrations\Identity\Configuration.cs" />
+    <Compile Include="Migrations\Main\201709231731175_addedMailOosQueue.cs" />
+    <Compile Include="Migrations\Main\201709231731175_addedMailOosQueue.Designer.cs">
+      <DependentUpon>201709231731175_addedMailOosQueue.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Main\Configuration.cs" />
     <Compile Include="ShelfalyticsDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -107,6 +111,11 @@
       <Project>{4E08E9F5-0792-4BF8-B0D0-A8B452F6B800}</Project>
       <Name>Shelfalytics.RepositoryInterface</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\Main\201709231731175_addedMailOosQueue.resx">
+      <DependentUpon>201709231731175_addedMailOosQueue.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

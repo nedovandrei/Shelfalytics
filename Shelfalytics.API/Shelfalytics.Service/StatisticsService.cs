@@ -63,7 +63,7 @@ namespace Shelfalytics.Service
                         var product = planogram.FirstOrDefault(x => x.Row == distanceRead.Row);
                         var repeatingProductRows = planogram.Where(x => x.ProductId == product.ProductId);
 
-                        if (repeatingProductRows.Count() == 1 && distanceRead.Distance == equipment.EmptyDistance)
+                        if (repeatingProductRows.Count() == 1 && distanceRead.Distance >= equipment.EmptyDistance)
                         {
                             productOOSList.Add(product);
                             generalProductsOOS.Add(product);
@@ -73,7 +73,7 @@ namespace Shelfalytics.Service
                             if (
                                 repeatingProductRows.All(
                                     x =>
-                                        reading.DistanceReadings.All(y => y.Row == x.Row && y.Distance == equipment.EmptyDistance)))
+                                        reading.DistanceReadings.All(y => y.Row == x.Row && y.Distance >= equipment.EmptyDistance)))
                             {
                                 if (productOOSList.All(x => x != product))
                                 {
@@ -93,6 +93,7 @@ namespace Shelfalytics.Service
                 return new EquipmentDetaildedOOSDTO()
                 {
                     TotalOOS = 0,
+                    ActualFill = 0,
                     OOSProducts = new List<EquipmentProductOOSDTO>()
                 };
             }
@@ -241,7 +242,7 @@ namespace Shelfalytics.Service
                     var rowSkip = 0;
 
                     var distanceList = readingsList[rowIndex].DistanceReadings.ToList();
-                    if (columnIndex < distanceList.Count() && distanceList[columnIndex].Distance == equipment.EmptyDistance)
+                    if (columnIndex < distanceList.Count() && distanceList[columnIndex].Distance >= equipment.EmptyDistance)
                     {
                         var oosStartPoint = readingsList[rowIndex].TimeStamp;
                         var oosEndPoint = new DateTime();
@@ -259,7 +260,7 @@ namespace Shelfalytics.Service
                             else
                             {
                                 var nextDistanceRead = readingsList[rowIndex + endPointIndex].DistanceReadings.ToList();
-                                if (nextDistanceRead[columnIndex].Distance == equipment.EmptyDistance)
+                                if (nextDistanceRead[columnIndex].Distance >= equipment.EmptyDistance)
                                 {
                                     rowSkip++;
                                     if (endPointIndex == readingsList.Count - rowIndex - 1)
@@ -372,7 +373,7 @@ namespace Shelfalytics.Service
             var list = new List<BusinessDevelopersDTO>();
             foreach (var user in users)
             {
-                if (user.Role == "4")
+                if (user.Role == "4" || user.Role == "3")
                 {
                     var oosPercentageSumm = 0.00;
                     var equipment = await _equipmentDataRepository.GetUserEquipment(user.Id);

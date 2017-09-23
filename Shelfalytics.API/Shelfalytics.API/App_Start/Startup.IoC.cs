@@ -29,6 +29,7 @@ namespace Shelfalytics.API.App_Start
             builder.RegisterType<AuthRepository>().As<IAuthRepository>().InstancePerLifetimeScope();
             builder.RegisterType<ExceptionLogRepository>().As<IExceptionLogRepository>().InstancePerLifetimeScope();
             builder.RegisterType<SaleRepository>().As<ISaleRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<MailQueueRepository>().As<IMailQueueRepository>().InstancePerLifetimeScope();
             builder.RegisterType<EquipmentDataService>().As<IEquipmentDataService>().InstancePerLifetimeScope();
             builder.RegisterType<PointOfSaleService>().As<IPointOfSaleService>().InstancePerLifetimeScope();
             builder.RegisterType<StatisticsService>().As<IStatisticsService>().InstancePerLifetimeScope();

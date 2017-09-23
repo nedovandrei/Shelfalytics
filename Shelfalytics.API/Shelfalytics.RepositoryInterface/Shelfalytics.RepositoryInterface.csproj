@@ -73,6 +73,7 @@
     <Compile Include="DTO\EquipmentReadingGetDTO.cs" />
     <Compile Include="DTO\ExceptionLogDTO.cs" />
     <Compile Include="DTO\LossesDueToOOSSummaryDTO.cs" />
+    <Compile Include="DTO\MailOosQueueDTO.cs" />
     <Compile Include="DTO\PointOfSaleDataDTO.cs" />
     <Compile Include="DTO\PointOfSaleOOSSummary.cs" />
     <Compile Include="DTO\ProductOOSDTO.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="Repositories\IPointOfSaleRepository.cs" />
     <Compile Include="Repositories\IProductDataRepository.cs" />
     <Compile Include="Repositories\ISaleRepository.cs" />
+    <Compile Include="Repositories\IMailQueueRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

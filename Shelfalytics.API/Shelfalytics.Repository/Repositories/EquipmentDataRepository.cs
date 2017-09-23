@@ -211,7 +211,7 @@ namespace Shelfalytics.Repository.Repositories
                         SensorReadings = edrSet,
                         Temperature = er.Temperature
                     };
-                return await query.FirstAsync();
+                return await query.FirstOrDefaultAsync();
             }
         }
 

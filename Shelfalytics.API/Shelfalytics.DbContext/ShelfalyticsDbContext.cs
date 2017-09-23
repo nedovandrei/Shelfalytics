@@ -33,6 +33,9 @@ namespace Shelfalytics.DbContext
         public DbSet<PackagingType> PackagintTypes { get; set; }
         public DbSet<UserEquipmentTie> UserEquipmentTies { get; set; }
 
+        //mail helpers
+        public DbSet<MailOosQueue> MailOosQueue { get; set; }
+
         //exception logger
         public DbSet<ExceptionLog> ExceptionLogs { get; set; }
 

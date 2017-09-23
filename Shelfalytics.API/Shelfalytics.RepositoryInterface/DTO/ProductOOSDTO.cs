@@ -10,6 +10,7 @@ namespace Shelfalytics.RepositoryInterface.DTO
     {
         public int ProductId { get; set; }
         public int EquipmentId { get; set; }
+        public string EquipmentModel { get; set; }
         public int Row { get; set; }
         public string ProductName { get; set; }
         public string SKUName { get; set; }
@@ -17,6 +18,9 @@ namespace Shelfalytics.RepositoryInterface.DTO
         public double BottleDiameter { get; set; }
         public decimal Price { get; set; }
         public string PhotoPath { get; set; }
+        public string POSName { get; set; }
+        public string POSAddress { get; set; }
+
         public DateTime TimeStamp { get; set; }
 
     }

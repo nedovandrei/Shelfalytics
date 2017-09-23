@@ -31,7 +31,7 @@ namespace Shelfalytics.API.Controllers
             };
             await _mailService.TestSendOOSEmail(product, 5, to);
 
-            return Request.CreateResponse(HttpStatusCode.OK);
+            return Request.CreateResponse(HttpStatusCode.OK, "Message sent to: " + to);
         }
     }
 }

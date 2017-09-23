@@ -165,7 +165,7 @@ namespace Shelfalytics.Service
                 distanceReadingsList.Add(distRead);
             }
 
-            if (reading.DistanceSensors.Any(x => x.Distance == equipment.EmptyDistance))
+            if (reading.DistanceSensors.Any(x => x.Distance >= equipment.EmptyDistance))
             {
                 var emptyPushers = reading.DistanceSensors.Where(x => x.Distance == equipment.EmptyDistance);
                 var OosProductList = new List<ProductOOSDTO>();
@@ -176,6 +176,7 @@ namespace Shelfalytics.Service
                     {
                         Row = oosProductTemp.Row,
                         EquipmentId = oosProductTemp.EquipmentId,
+                        EquipmentModel = equipment.ModelName,
                         ProductName = oosProductTemp.ProductName,
                         BottleDiameter = oosProductTemp.BottleDiameter,
                         PhotoPath = oosProductTemp.PhotoPath,
