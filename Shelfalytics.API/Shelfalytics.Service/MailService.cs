@@ -147,11 +147,6 @@ namespace Shelfalytics.Service
             }
         }
 
-        private async Task DeleteOutdatedQueues()
-        {
-            await _mailQueueRepository.DeleteOutdatedQueues(_timespanForDeletion);
-        }
-
         private void ExceptionCatcher(Exception ex)
         {
             using (var client = new SmtpClient("mail.shelf.work"))
