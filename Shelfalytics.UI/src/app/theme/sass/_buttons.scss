@@ -312,6 +312,7 @@ button.progress-button {
   border:1px solid $primary-light;
   // border-radius: 0!important;
   color: $primary!important;
+  cursor: pointer;
   &.text-white{
     color:white!important;
   }
@@ -336,3 +337,9 @@ button.progress-button {
 //       }
 //     }
 //   }
+
+
+.cancelBtn{
+  margin-left: 8px;
+  color: #fff!important;
+}

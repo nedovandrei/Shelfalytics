@@ -8,6 +8,7 @@
   }
 }
   .page-top {
+    color: $sidebar-text!important;
     daterangepicker{
         display: inline-flex;
           @media screen and (min-width: 992px) {
@@ -16,7 +17,8 @@
     }
     background-color: $sidebar;
     position: fixed;
-    z-index: 904;
+    // z-index: 904;
+    z-index: 1100;
     box-shadow: 2px 0 3px rgba(0, 0, 0, 0.5);
     height: 66px;
     width: 100%;
