@@ -43,6 +43,15 @@ export const PAGES_MENU = [
           }
         }
       },
+      {
+        path: "editors",
+        data: {
+          menu: {
+            title: "editors.title",
+            icon: "fa fa-user",
+          }
+        }
+      },
       // {
       //   data: {
       //     menu: {
