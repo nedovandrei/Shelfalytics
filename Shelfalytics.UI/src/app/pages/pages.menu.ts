@@ -34,20 +34,20 @@ export const PAGES_MENU = [
           }
         }
       },
+      // {
+      //   path: "settings",
+      //   data: {
+      //     menu: {
+      //       title: "settings.title",
+      //       icon: "fa fa-edit",
+      //     }
+      //   }
+      // },
       {
-        path: "settings",
+        path: "profile",
         data: {
           menu: {
-            title: "settings.title",
-            icon: "fa fa-edit",
-          }
-        }
-      },
-      {
-        path: "editors",
-        data: {
-          menu: {
-            title: "editors.title",
+            title: "general.menu.profile",
             icon: "fa fa-user",
           }
         }
