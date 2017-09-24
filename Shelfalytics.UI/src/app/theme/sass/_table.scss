@@ -57,12 +57,32 @@
 
 }
 .old-alert{
-  .d-flex{
     .card{
-        // background-color: $warning-old-rgba;
-    }
+        background-color: $warning-old-rgba;
+        color: #fff;
+    } 
+}
+.warning-alert{
+  .card{
+    background-color: $warning-rgba;
+    color: #fff;
+  } 
+}
+.danger-alert{
+  .card{
+    background-color: $danger-rgba;
+    color:#fff;
   }
 }
+.info-alert{
+  .card{
+  background-color: $info-rgba;
+  color:#fff;
+  }
+}
+
+
+
 ba-card, ad-ba-card{
   .card{
       background-color: $bacard-bg;

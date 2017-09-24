@@ -1,10 +1,10 @@
-<div class="row pie-charts old-alert">
+<div class="row pie-charts ">
 <div class="col-md-12">
   <ba-card baCardClass="with-scroll table-panel">
     <div class="horizontal-scroll">
       <div *ngFor="let chartsRow of chartArrays; let i = index" class="d-flex justify-content-between" >
 
-          <ba-card *ngFor="let chart of chartsRow.data" [style.margin-right.%]="i !== chartArrays.length - 1 ? chartsRow.width : 0" [style.flex-basis.%]="chart.WidthPercentage" [ngClass]="{ 'undefined-row': chart.isEmpty, 'empty-row': chart.stats === 0 }" [ngStyle]="{'height': 'calc(100% -' + chart.WidthPercentage + 'px)'}">
+          <ba-card class="info-alert" *ngFor="let chart of chartsRow.data" [style.margin-right.%]="i !== chartArrays.length - 1 ? chartsRow.width : 0" [style.flex-basis.%]="chart.WidthPercentage" [ngClass]="{ 'undefined-row': chart.isEmpty, 'empty-row': chart.stats === 0 }" [ngStyle]="{'height': 'calc(100% -' + chart.WidthPercentage + 'px)'}">
 
             <div *ngIf="!chart.isEmpty" class="pie-chart-item text-center">
               <!-- <div class="item" style="background-image:url('imagePath + chart.PhotoPath')"></div> -->
