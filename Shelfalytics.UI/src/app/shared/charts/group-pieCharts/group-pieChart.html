@@ -4,7 +4,7 @@
       <div class="horizontal-scroll">
         <div *ngFor="let chartsRow of chartArrays; let i = index" class="d-flex justify-content-between">
 
-          <ba-card class="info-alert" *ngFor="let chart of chartsRow.data" [style.margin-right.%]="i !== chartArrays.length - 1 ? chartsRow.width : 0"
+          <ba-card [ngClass]="{'warning-alert': chart.Percentage <= 40 && chart.Percentage > 10, 'danger-alert': chart.Percentage <= 10 }" *ngFor="let chart of chartsRow.data" [style.margin-right.%]="i !== chartArrays.length - 1 ? chartsRow.width : 0"
             [style.flex-basis.%]="chart.WidthPercentage" [ngClass]="{ 'undefined-row': chart.isEmpty, 'empty-row': chart.stats === 0 }"
             [ngStyle]="{'height': 'calc(100% -' + chart.WidthPercentage + 'px)'}">
 
@@ -23,9 +23,6 @@
 
             </div>
           </ba-card>
-
-
-ß
         </div>
       </div>
     </ba-card>
