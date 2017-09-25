@@ -43,15 +43,15 @@ export const PAGES_MENU = [
       //     }
       //   }
       // },
-      {
-        path: "profile",
-        data: {
-          menu: {
-            title: "general.menu.profile",
-            icon: "fa fa-user",
-          }
-        }
-      },
+      // {
+      //   path: "profile",
+      //   data: {
+      //     menu: {
+      //       title: "general.menu.profile",
+      //       icon: "fa fa-user",
+      //     }
+      //   }
+      // },
       // {
       //   data: {
       //     menu: {

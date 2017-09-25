@@ -41,7 +41,7 @@ export const routes: Routes = [
       { path: "main", component: MainComponent, canActivate: [AuthGuard] },
       { path: "statistics", component: StatisticsComponent, canActivate: [AuthGuard] },
       // { path: "settings", component: SettingsComponent, canActivate: [AuthGuard] },
-      { path: "profile", component: ProfileComponent, canActivate: [AuthGuard] },
+      // { path: "profile", component: ProfileComponent, canActivate: [AuthGuard] },
     ]
   },
 
