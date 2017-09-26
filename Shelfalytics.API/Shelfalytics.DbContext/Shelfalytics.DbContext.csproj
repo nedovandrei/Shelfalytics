@@ -93,6 +93,22 @@
     <Compile Include="Migrations\Main\201709231731175_addedMailOosQueue.Designer.cs">
       <DependentUpon>201709231731175_addedMailOosQueue.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Main\201709241350046_AddedMissingInfoOnPos.cs" />
+    <Compile Include="Migrations\Main\201709241350046_AddedMissingInfoOnPos.Designer.cs">
+      <DependentUpon>201709241350046_AddedMissingInfoOnPos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Main\201709241357434_MadePosFieldsRequired.cs" />
+    <Compile Include="Migrations\Main\201709241357434_MadePosFieldsRequired.Designer.cs">
+      <DependentUpon>201709241357434_MadePosFieldsRequired.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Main\201709241408545_AddedChainName.cs" />
+    <Compile Include="Migrations\Main\201709241408545_AddedChainName.Designer.cs">
+      <DependentUpon>201709241408545_AddedChainName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Main\201709241411089_MadeRequiredCHainName.cs" />
+    <Compile Include="Migrations\Main\201709241411089_MadeRequiredCHainName.Designer.cs">
+      <DependentUpon>201709241411089_MadeRequiredCHainName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Main\Configuration.cs" />
     <Compile Include="ShelfalyticsDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -115,6 +131,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\Main\201709231731175_addedMailOosQueue.resx">
       <DependentUpon>201709231731175_addedMailOosQueue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\Main\201709241350046_AddedMissingInfoOnPos.resx">
+      <DependentUpon>201709241350046_AddedMissingInfoOnPos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\Main\201709241357434_MadePosFieldsRequired.resx">
+      <DependentUpon>201709241357434_MadePosFieldsRequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\Main\201709241408545_AddedChainName.resx">
+      <DependentUpon>201709241408545_AddedChainName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\Main\201709241411089_MadeRequiredCHainName.resx">
+      <DependentUpon>201709241411089_MadeRequiredCHainName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

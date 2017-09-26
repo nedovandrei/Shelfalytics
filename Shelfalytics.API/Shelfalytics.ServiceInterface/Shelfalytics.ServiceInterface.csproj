@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Constants\GlobalConstants.cs" />
     <Compile Include="IEquipmentDataService.cs" />
+    <Compile Include="IExportService.cs" />
     <Compile Include="IMailService.cs" />
     <Compile Include="IPointOfSaleService.cs" />
     <Compile Include="IStatisticsService.cs" />

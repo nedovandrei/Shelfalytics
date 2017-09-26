@@ -365,6 +365,7 @@
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\EquipmentDataController.cs" />
     <Compile Include="Controllers\ExceptionLogController.cs" />
+    <Compile Include="Controllers\ExportController.cs" />
     <Compile Include="Controllers\PointOfSaleController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\TestController.cs" />

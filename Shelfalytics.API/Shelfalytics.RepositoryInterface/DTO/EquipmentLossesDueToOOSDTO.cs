@@ -8,6 +8,7 @@ namespace Shelfalytics.RepositoryInterface.DTO
 {
     public class EquipmentLossesDueToOOSDTO
     {
+        public int ProductId { get; set; }
         public string SKUName { get; set; }
         public string ShortSKUName { get; set; }
         public DateTime OOSStart { get; set; }

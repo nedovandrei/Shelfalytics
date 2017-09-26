@@ -30,10 +30,12 @@ namespace Shelfalytics.API.App_Start
             builder.RegisterType<ExceptionLogRepository>().As<IExceptionLogRepository>().InstancePerLifetimeScope();
             builder.RegisterType<SaleRepository>().As<ISaleRepository>().InstancePerLifetimeScope();
             builder.RegisterType<MailQueueRepository>().As<IMailQueueRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<ExportRepository>().As<IExportRepository>().InstancePerLifetimeScope();
             builder.RegisterType<EquipmentDataService>().As<IEquipmentDataService>().InstancePerLifetimeScope();
             builder.RegisterType<PointOfSaleService>().As<IPointOfSaleService>().InstancePerLifetimeScope();
             builder.RegisterType<StatisticsService>().As<IStatisticsService>().InstancePerLifetimeScope();
             builder.RegisterType<MailService>().As<IMailService>().InstancePerLifetimeScope();
+            builder.RegisterType<ExportService>().As<IExportService>().InstancePerLifetimeScope();
             var container = builder.Build();
             var resolver = new AutofacWebApiDependencyResolver(container);
 

@@ -104,6 +104,30 @@ namespace Shelfalytics.Repository.Repositories
             }
         }
 
+        //for export
+        public async Task<IEnumerable<EquipmentDTO>> GetEquipments(ExportFilter filter)
+        {
+            using (var uow = _unitOfWorkFactory.GetShelfalyticsDbContext())
+            {
+                var query = from equipment in uow.Set<Equipment>()
+                            where (filter.IsAdmin ? true : equipment.ClientId == filter.ClientId)
+                            select new EquipmentDTO
+                            {
+                                Id = equipment.Id,
+                                PointOfSaleId = equipment.PointOfSaleId,
+                                RowCount = equipment.RowCount,
+                                IMEI = equipment.IMEI,
+                                ClientId = equipment.ClientId,
+                                ModelName = equipment.ModelName,
+                                EquipmentTypeId = equipment.EquipmentTypeId,
+                                YCount = equipment.YCount,
+                                FullDistance = equipment.FullDistance,
+                                EmptyDistance = equipment.EmptyDistance
+                            };
+                return await query.ToListAsync();
+            }
+        }
+
         public async Task<EquipmentDTO> GetEquipmentById(int equipmentId)
         {
             using (var uow = _unitOfWorkFactory.GetShelfalyticsDbContext())
@@ -156,6 +180,40 @@ namespace Shelfalytics.Repository.Repositories
                         Width = equipment.Width,
                         YCount = equipment.YCount
                     };
+                return await query.ToListAsync();
+
+            }
+        }
+
+        public async Task<IEnumerable<EqiupmentDataDTO>> GetFilteredEquipmentData(int equipmentId, ExportFilter filter)
+        {
+            using (var uow = _unitOfWorkFactory.GetShelfalyticsDbContext())
+            {
+                var query = from equipment in uow.Set<Equipment>()
+                            join equipmentReading in uow.Set<EquipmentReading>() on equipment.Id equals
+                            equipmentReading.EquipmentId
+                            join equipmentDistanceReading in uow.Set<EquipmentDistanceReading>() on equipmentReading.Id equals
+                            equipmentDistanceReading.EquipmentReadingId into distanceReadings
+                            where
+                            equipment.Id == equipmentId && equipmentReading.TimeSpamp >= filter.StartTime &&
+                            equipmentReading.TimeSpamp <= filter.EndTime &&
+                            filter.Equipments.Count() > 0 ? filter.Equipments.Contains(equipment.Id) : true
+                            select new EqiupmentDataDTO
+                            {
+                                Id = equipment.Id,
+                                RowCount = equipment.RowCount,
+                                ClientName = equipment.Client.ClientName,
+                                EquipmentType = equipment.EquipmentType.Name,
+                                ModelName = equipment.ModelName,
+                                PointOfSaleName = equipment.PointOfSale.PointOfSaleName,
+                                PointOfSaleAddress = equipment.PointOfSale.Address,
+                                PointOfSaleTelephone = equipment.PointOfSale.Telephone,
+                                Temperature = equipmentReading.Temperature,
+                                TimeStamp = equipmentReading.TimeSpamp,
+                                DistanceReadings = distanceReadings,
+                                Width = equipment.Width,
+                                YCount = equipment.YCount
+                            };
                 return await query.ToListAsync();
 
             }

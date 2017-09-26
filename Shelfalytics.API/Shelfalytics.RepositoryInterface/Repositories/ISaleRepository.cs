@@ -12,5 +12,6 @@ namespace Shelfalytics.RepositoryInterface.Repositories
         Task<IEnumerable<EquipmentProductSalesDTO>> GetEquipmentSales(int equipmentId, GlobalFilter filter);
         Task<IEnumerable<EquipmentProductSalesDTO>> GetProductSalesSummary(GlobalFilter filter);
         Task<IEnumerable<ProductSalesAverageDTO>> GetProductSalesAverage(int productId, GlobalFilter filter);
+        Task<IEnumerable<EquipmentProductSalesDTO>> GetProductSalesSummary(ExportFilter filter);
     }
 }

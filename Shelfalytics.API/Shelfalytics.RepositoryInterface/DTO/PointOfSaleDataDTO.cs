@@ -11,7 +11,10 @@ namespace Shelfalytics.RepositoryInterface.DTO
     {
         public int PointOfSaleId { get; set; }
         public string PointOfSaleName { get; set; }
+        public string ChainName { get; set; }
         public string PointOfSaleAddress { get; set; }
+        public string City { get; set; }
+        public string TradeChannel { get; set; }
         public string PointOfSaleTelephone { get; set; }
         public string ContactPersonName { get; set; }
         public DateTime OpeningHours { get; set; }

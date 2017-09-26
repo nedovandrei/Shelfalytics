@@ -8,6 +8,7 @@ namespace Shelfalytics.RepositoryInterface.DTO
 {
     public class EquipmentProductSalesDTO
     {
+        public int ProductId { get; set; }
         public string ProductName { get; set; }
         public string ShortProductName { get; set; }
         public string TradeMark { get; set; }
