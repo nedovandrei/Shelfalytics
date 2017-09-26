@@ -34,24 +34,24 @@ export const PAGES_MENU = [
           }
         }
       },
-      {
-        path: "settings",
-        data: {
-          menu: {
-            title: "settings.title",
-            icon: "fa fa-edit",
-          }
-        }
-      },
-      {
-        path: "editors",
-        data: {
-          menu: {
-            title: "editors.title",
-            icon: "fa fa-user",
-          }
-        }
-      },
+      // {
+      //   path: "settings",
+      //   data: {
+      //     menu: {
+      //       title: "settings.title",
+      //       icon: "fa fa-edit",
+      //     }
+      //   }
+      // },
+      // {
+      //   path: "profile",
+      //   data: {
+      //     menu: {
+      //       title: "general.menu.profile",
+      //       icon: "fa fa-user",
+      //     }
+      //   }
+      // },
       // {
       //   data: {
       //     menu: {

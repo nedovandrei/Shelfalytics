@@ -4,7 +4,7 @@ import { ModuleWithProviders } from "@angular/core";
 import { MainComponent } from "./main/main.component";
 import { StatisticsComponent } from "./statistics/statistics.component";
 import { SettingsComponent } from "./settings/settings.component";
-import { Editors } from "./editors/editors.component";
+import { ProfileComponent } from "./profile/profile.component";
 import { AuthGuard } from "../auth/auth.guard";
 // noinspection TypeScriptValidateTypes
 
@@ -40,8 +40,8 @@ export const routes: Routes = [
       },
       { path: "main", component: MainComponent, canActivate: [AuthGuard] },
       { path: "statistics", component: StatisticsComponent, canActivate: [AuthGuard] },
-      { path: "settings", component: SettingsComponent, canActivate: [AuthGuard] },
-      { path: "editors", component: Editors, canActivate: [AuthGuard] }
+      // { path: "settings", component: SettingsComponent, canActivate: [AuthGuard] },
+      // { path: "profile", component: ProfileComponent, canActivate: [AuthGuard] },
     ]
   },
 

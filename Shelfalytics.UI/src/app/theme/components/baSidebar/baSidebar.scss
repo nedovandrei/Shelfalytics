@@ -82,9 +82,9 @@ $angle-right: '\f101';
     &.selected:not(.with-sub-menu) {
       // background-color: #edf0f2;
       a.al-sidebar-list-link {
-        color: #ff6d00;
+        color: $info;
         b {
-          color: #ff6d00;
+          color: $info;
         }
       }
     }
@@ -125,9 +125,9 @@ $angle-right: '\f101';
     cursor: pointer;
     &:hover {
       background-color: #edf0f2;
-      color: #ff6d00;
+      color: $info;
       b {
-        color: #ff6d00;
+        color:$info;
       }
     }
     i {
@@ -165,7 +165,7 @@ $angle-right: '\f101';
 
   .sidebar-hover-elem {
     width: $sidebar-scroll-width;
-    background: #ff6d00;
+    background: $info;
     position: absolute;
     top: -150px;
     left: $sidebar-width - $sidebar-scroll-width;

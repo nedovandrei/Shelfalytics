@@ -1,7 +1,7 @@
 <div class="auth-main">
   <div class="auth-block" style="min-height: 422px">
-    <img class="logo" width="80%" src="assets/img/logo_Shelfalytics.png"/>
-    <h1 translate>{{'login.title'}}</h1>
+    <img class="logo mb-5" width="80%" src="assets/img/logo_Shelfalytics.png"/>
+    <!-- <h1 translate>{{'login.title'}}</h1> -->
     <!--<a routerLink="/register" class="auth-link" translate>{{'login.signup_link'}}</a>-->
     <span *ngIf="invalidData && !loadingFlag">Invalid User name or Password</span>
     <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="form-horizontal">

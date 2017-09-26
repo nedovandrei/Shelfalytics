@@ -1,3 +1,15 @@
+.row{
+  & > ba-card, & > ad-ba-card{
+    padding-left: 10px;
+    padding-right: 10px;
+    .card{
+      margin-bottom: 20px;
+    }
+  }
+  
+}
+
+
 .card{
    &.mb-0{
      .card{
