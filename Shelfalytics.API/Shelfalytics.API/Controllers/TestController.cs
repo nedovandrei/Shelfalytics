@@ -10,6 +10,7 @@ using System.Web.Http;
 
 namespace Shelfalytics.API.Controllers
 {
+    [Authorize]
     [RoutePrefix("api/test")]
     public class TestController : ApiController
     {

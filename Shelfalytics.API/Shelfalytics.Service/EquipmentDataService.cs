@@ -97,7 +97,7 @@ namespace Shelfalytics.Service
                 EquipmentId = equipment.Id,
                 Temperature = reading.Temperature,
                 TimeSpamp = DateTime.Now,
-                WasOpened = true
+                WasOpened = false
             };
 
             var planogramData = await _productDataRepository.GetEquipmentPlanogram(equipment.Id);
@@ -192,6 +192,62 @@ namespace Shelfalytics.Service
 
             await _equipmentDataRepository.RegisterEquipmentDistanceReadings(distanceReadingsList);
 
+        }
+
+        public async Task RegisterDoorOpen(EquipmentReadingDTO reading)
+        {
+            var equipment = await _equipmentDataRepository.GetEquipmentByIMEI(reading.IMEI);
+            var equipmentHasReadings = await _equipmentDataRepository.EquipmentHasReadings(equipment.Id);
+
+            var previousReading = new EquipmentReadingGetDTO();
+
+            var readingModel = new EquipmentReading();
+            if (equipmentHasReadings)
+            {
+                previousReading = await _equipmentDataRepository.GetLatestReading(equipment.Id);
+                readingModel = new EquipmentReading()
+                {
+                    EquipmentId = equipment.Id,
+                    Temperature = previousReading.Temperature,
+                    TimeSpamp = previousReading.TimeSpamp,
+                    WasOpened = true
+                };
+
+                var registeredReading = await _equipmentDataRepository.RegisterEquipmentReading(readingModel);
+
+                var newDistanceReadings = previousReading.SensorReadings.Select(x => new EquipmentDistanceReading
+                {
+                    EquipmentReadingId = registeredReading.Id,
+                    Distance = x.Distance,
+                    Row = x.Row,
+                });
+                await _equipmentDataRepository.RegisterEquipmentDistanceReadings(newDistanceReadings);
+            }
+            else
+            {
+                readingModel = new EquipmentReading
+                {
+                    EquipmentId = equipment.Id,
+                    Temperature = 0,
+                    TimeSpamp = DateTime.UtcNow,
+                    WasOpened = true
+                };
+
+                var registeredReading = await _equipmentDataRepository.RegisterEquipmentReading(readingModel);
+
+                var newDistanceReadings = new List<EquipmentDistanceReading>();
+                for(var i = 0; i < equipment.RowCount; i++)
+                {
+                    var item = new EquipmentDistanceReading
+                    {
+                        Distance = equipment.EmptyDistance,
+                        EquipmentReadingId = registeredReading.Id,
+                        Row = i + 1
+                    };
+                    newDistanceReadings.Add(item);
+                }
+                await _equipmentDataRepository.RegisterEquipmentDistanceReadings(newDistanceReadings);
+            }
         }
 
         public async Task<IEnumerable<UserDTO>> GetEquipmentUsers(int equipmentId)

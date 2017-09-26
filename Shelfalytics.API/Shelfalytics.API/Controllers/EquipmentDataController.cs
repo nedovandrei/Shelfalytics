@@ -59,5 +59,27 @@ namespace Shelfalytics.API.Controllers
             return Request.CreateResponse(HttpStatusCode.OK);
             
         }
+
+        [Route("open")]
+        [HttpPost]
+        public async Task<HttpResponseMessage> EquipmentDoorOpened(EquipmentReadingModel model)
+        {
+            var dataToSend = new EquipmentReadingDTO()
+            {
+                IMEI = model.IMEI,
+                //Temperature = model.Temperature,
+                //DistanceSensors = model.DistanceSensors.Select(x => new EquipmentDistanceReadingDTO
+                //{
+                //    Row = x.Row,
+                //    Distance = x.Distance
+                //}),
+                //IsPoweredOn = model.IsPoweredOn
+            };
+
+            await _equipmentDataService.RegisterDoorOpen(dataToSend);
+
+
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
     }
 }

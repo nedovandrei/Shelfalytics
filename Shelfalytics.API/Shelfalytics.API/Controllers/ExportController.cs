@@ -11,7 +11,7 @@ using System.Web.Http;
 
 namespace Shelfalytics.API.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [RoutePrefix("api/export")]
     public class ExportController : ApiController
     {
