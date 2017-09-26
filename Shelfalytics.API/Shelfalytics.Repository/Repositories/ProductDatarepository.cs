@@ -52,7 +52,7 @@ namespace Shelfalytics.Repository.Repositories
                 var query = from eq in uow.Set<Equipment>()
                             join pl in uow.Set<EquipmentPlanogram>() on eq.Id equals pl.EquipmentId
                             join product in uow.Set<Product>() on pl.ProductId equals product.Id
-                            where (isAdmin ? true : eq.ClientId == clientId)
+                            where (isAdmin || eq.ClientId == clientId)
                             select new ProductDTO
                             {
                                 Id = product.Id,
@@ -74,15 +74,15 @@ namespace Shelfalytics.Repository.Repositories
 
         public async Task<IEnumerable<ProductDTO>> GetClientsProducts(ExportFilter filter)
         {
-            var productFilterCount = filter.Products.Count();
+            var productFilterCount = filter.Products.Count;
 
             using (var uow = _unitOfWorkFactory.GetShelfalyticsDbContext())
             {
                 var query = from eq in uow.Set<Equipment>()
                             join pl in uow.Set<EquipmentPlanogram>() on eq.Id equals pl.EquipmentId
                             join product in uow.Set<Product>() on pl.ProductId equals product.Id
-                            where (filter.IsAdmin ? true : eq.ClientId == filter.ClientId) &&
-                                productFilterCount > 0 ? filter.Products.Contains(product.Id) : true
+                            where (filter.IsAdmin || eq.ClientId == filter.ClientId) &&
+                                (productFilterCount <= 0 || filter.Products.Contains(product.Id))
                             select new ProductDTO
                             {
                                 Id = product.Id,

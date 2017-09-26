@@ -4,7 +4,7 @@ import { GlobalFilter } from "../../shared/services/global-filter.service";
 import { MainService } from "./main.service";
 import { TabDateRanges } from "../../shared/ui/baCard/baCard.model";
 import * as _ from "underscore";
-import * as moment from "moment";
+// import * as moment from "moment";
 import { IGoogleMapsData, IMarker } from "app/shared/maps/google-maps/google-maps.model";
 
 @Component({
