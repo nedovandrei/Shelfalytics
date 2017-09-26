@@ -22,7 +22,7 @@ import { GlobalFilter } from "../shared/services/global-filter.service";
 import { MainComponent } from "./main/main.component";
 import { StatisticsComponent } from "./statistics/statistics.component";
 import { SettingsComponent } from "./settings/settings.component";
-import { ProfileComponent } from "./profile/profile.component";
+// import { ProfileComponent } from "./profile/profile.component";
 
 @NgModule({
   imports: [
@@ -42,7 +42,7 @@ import { ProfileComponent } from "./profile/profile.component";
     BrowserModule,
       AnimateOnScrollModule.forRoot()
   ],
-  declarations: [Pages, MainComponent, StatisticsComponent, SettingsComponent, ProfileComponent],
+  declarations: [Pages, MainComponent, StatisticsComponent, SettingsComponent],
   providers: [GlobalFilter, AjaxService, AuthGuard]
 
 })

@@ -4,7 +4,7 @@ import { ModuleWithProviders } from "@angular/core";
 import { MainComponent } from "./main/main.component";
 import { StatisticsComponent } from "./statistics/statistics.component";
 import { SettingsComponent } from "./settings/settings.component";
-import { ProfileComponent } from "./profile/profile.component";
+// import { ProfileComponent } from "./profile/profile.component";
 import { AuthGuard } from "../auth/auth.guard";
 // noinspection TypeScriptValidateTypes
 

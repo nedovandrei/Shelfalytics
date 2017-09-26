@@ -20,7 +20,7 @@ export const PAGES_MENU = [
             selected: false,
             expanded: false,
             order: 0,
-            icon: 'fa fa-building'
+            icon: 'icon-shop'
           }
         }
       },
