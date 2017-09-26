@@ -1,5 +1,7 @@
 .row{
-  & > ba-card, & > ad-ba-card{
+  margin-left: -10px;
+  margin-right: -10px;
+  & > * {
     padding-left: 10px;
     padding-right: 10px;
     .card{
@@ -7,8 +9,29 @@
     }
   }
   
+  // &.meshes{
+  //   & > .d-flex{
+  //     .row{
+  //     margin-left: -10px;
+  //     margin-right: -10px;
+  //     }
+  //   }
+  //   .row{
+  //     & > *{
+  //       padding-left: 10px;
+  //       padding-right: 10px;
+  //       .card{
+  //         margin-bottom: 20px;
+  //       }
+  //     }
+  //   }
+  // }
 }
-
+.d-flex{
+  & > .row{
+    min-width: calc(100% + 10px);
+  }
+}
 
 .card{
    &.mb-0{
