@@ -21,19 +21,26 @@ namespace Shelfalytics.Service
         private readonly IEquipmentDataRepository _equipmentDataRepository;
         private readonly IProductDataRepository _productDataRepository;
         private readonly ISaleRepository _saleRepository;
+        private readonly IPointOfSaleRepository _pointOfSaleRepository;
         private readonly IMailService _mailService;
 
         public EquipmentDataService(IEquipmentDataRepository equipmentDataRepository,
-            IProductDataRepository productDataRepository, ISaleRepository saleRepository, IMailService mailService)
+            IProductDataRepository productDataRepository, ISaleRepository saleRepository, IMailService mailService, IPointOfSaleRepository pointOfSaleRepository)
         {
             if (equipmentDataRepository == null) throw new ArgumentNullException(nameof(equipmentDataRepository));
             if (productDataRepository == null) throw new ArgumentNullException(nameof(productDataRepository));
             if (saleRepository == null) throw new ArgumentNullException(nameof(saleRepository));
             if (mailService == null) throw new ArgumentNullException(nameof(mailService));
+            if (pointOfSaleRepository == null)
+            {
+                throw new ArgumentNullException(nameof(pointOfSaleRepository));
+            }
+
             _equipmentDataRepository = equipmentDataRepository;
             _productDataRepository = productDataRepository;
             _saleRepository = saleRepository;
             _mailService = mailService;
+            _pointOfSaleRepository = pointOfSaleRepository;
         }
 
         public async Task<IEnumerable<EquipmentReadingsViewModel>> GetLatestEquipmentData(int equipmentId)
@@ -90,7 +97,8 @@ namespace Shelfalytics.Service
         {
             var equipment = await _equipmentDataRepository.GetEquipmentByIMEI(reading.IMEI);
             var equipmentHasReadings = await _equipmentDataRepository.EquipmentHasReadings(equipment.Id);
-
+            var posList = await _pointOfSaleRepository.GetPointOfSaleData(equipment.PointOfSaleId);
+            var pos = posList.FirstOrDefault();
 
             var readingModel = new EquipmentReading
             {
@@ -184,7 +192,9 @@ namespace Shelfalytics.Service
                         ProductId = oosProductTemp.ProductId,
                         ShortSKUName = oosProductTemp.ShortSKUName,
                         SKUName = oosProductTemp.SKUName,
-                        TimeStamp = DateTime.UtcNow
+                        TimeStamp = DateTime.UtcNow,
+                        POSName = pos.PointOfSaleName,
+                        POSAddress = pos.PointOfSaleAddress
                     }, equipment.Id);
 
                 }

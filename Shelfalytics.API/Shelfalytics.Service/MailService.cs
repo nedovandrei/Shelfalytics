@@ -81,6 +81,9 @@ namespace Shelfalytics.Service
                     mail.Body = mail.Body.Replace("%TimeStamp%", product.TimeStamp.ToString());
                     mail.Body = mail.Body.Replace("%PhotoPath%", product.PhotoPath);
                     mail.Body = mail.Body.Replace("%FirstName%", user.EmployeeName);
+                    mail.Body = mail.Body.Replace("%POSName%", product.POSName);
+                    mail.Body = mail.Body.Replace("%POSAddress%", product.POSAddress);
+                    mail.Body = mail.Body.Replace("%EquipmentName%", product.EquipmentModel);
 
                     mail.To.Clear();
                     mail.To.Add(new MailAddress(user.Email));
