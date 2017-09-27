@@ -249,12 +249,13 @@ namespace Shelfalytics.Service
 
             for (var columnIndex = 0; columnIndex < planogram.Count(); columnIndex++)
             {
+                
                 for (var rowIndex = 0; rowIndex < readingsList.Count(); rowIndex++)
                 {
                     var rowSkip = 0;
 
                     var distanceList = readingsList[rowIndex].DistanceReadings.ToList();
-                    if (columnIndex < distanceList.Count() && distanceList[columnIndex].Distance >= equipment.EmptyDistance)
+                    if (columnIndex < distanceList.Count && columnIndex < distanceList.Count() && distanceList[columnIndex].Distance >= equipment.EmptyDistance)
                     {
                         var oosStartPoint = readingsList[rowIndex].TimeStamp;
                         var oosEndPoint = new DateTime();
@@ -271,21 +272,43 @@ namespace Shelfalytics.Service
                             }
                             else
                             {
-                                var nextDistanceRead = readingsList[rowIndex + endPointIndex].DistanceReadings.ToList();
-                                if (nextDistanceRead[columnIndex].Distance >= equipment.EmptyDistance)
+                                if(rowIndex + endPointIndex < readingsList.Count)
                                 {
-                                    rowSkip++;
-                                    if (endPointIndex == readingsList.Count - rowIndex - 1)
+                                    var nextDistanceRead = readingsList[rowIndex + endPointIndex].DistanceReadings.ToList();
+                                    if (columnIndex < nextDistanceRead.Count && nextDistanceRead[columnIndex].Distance >= equipment.EmptyDistance)
+                                    {
+                                        rowSkip++;
+                                        if (endPointIndex == readingsList.Count - rowIndex - 1)
+                                        {
+                                            oosEndPoint = readingsList[rowIndex + endPointIndex].TimeStamp;
+                                            isOngoing = true;
+                                        }
+                                    }
+                                    else
                                     {
                                         oosEndPoint = readingsList[rowIndex + endPointIndex].TimeStamp;
-                                        isOngoing = true;
+                                        break;
                                     }
                                 }
                                 else
                                 {
-                                    oosEndPoint = readingsList[rowIndex + endPointIndex].TimeStamp;
-                                    break;
+                                    var nextDistanceRead = readingsList[readingsList.Count].DistanceReadings.ToList();
+                                    if (nextDistanceRead[columnIndex].Distance >= equipment.EmptyDistance)
+                                    {
+                                        rowSkip++;
+                                        if (endPointIndex == readingsList.Count - rowIndex - 1)
+                                        {
+                                            oosEndPoint = readingsList[readingsList.Count].TimeStamp;
+                                            isOngoing = true;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        oosEndPoint = readingsList[readingsList.Count].TimeStamp;
+                                        break;
+                                    }
                                 }
+                                
                             }
 
                         }

@@ -60,11 +60,14 @@ namespace Shelfalytics.Service
                     {
                         continue;
                     }
+
+                    var percentage = 100 - ((double)(sensorReading.Distance - equipmentData.FullDistance) / (double)(equipmentData.EmptyDistance - equipmentData.FullDistance) * 100);
+
                     var rowViewModel = new EquipmentRowInfoViewModel
                     {
                         Row = sensorReading.Row,
                         BottleDiameter = productData.BottleDiameter,
-                        Percentage = 100 - ((double)(sensorReading.Distance - equipmentData.FullDistance) / (double)(equipmentData.EmptyDistance - equipmentData.FullDistance) * 100),
+                        Percentage = percentage <= 0 ? 0.0f : percentage > 100 ? 100.0f : percentage,
                         ProductName = productData.ProductName,
                         SKUName = productData.SKUName,
                         PhotoPath = productData.PhotoPath
@@ -103,7 +106,7 @@ namespace Shelfalytics.Service
             var readingModel = new EquipmentReading
             {
                 EquipmentId = equipment.Id,
-                Temperature = reading.Temperature,
+                Temperature = Convert.ToInt32(reading.Temperature),
                 TimeSpamp = DateTime.Now,
                 WasOpened = false
             };

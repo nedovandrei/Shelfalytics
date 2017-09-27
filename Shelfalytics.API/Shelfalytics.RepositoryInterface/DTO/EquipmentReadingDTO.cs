@@ -9,7 +9,7 @@ namespace Shelfalytics.RepositoryInterface.DTO
     public class EquipmentReadingDTO
     {
         public string IMEI { get; set; }
-        public int Temperature { get; set; }
+        public decimal Temperature { get; set; }
         public IEnumerable<EquipmentDistanceReadingDTO> DistanceSensors { get; set; }
         public bool IsPoweredOn { get; set; }
     }

@@ -44,7 +44,7 @@ namespace Shelfalytics.API.Controllers
             var dataToSend = new EquipmentReadingDTO()
             {
                 IMEI = model.IMEI,
-                Temperature = model.Temperature,
+                Temperature = Math.Round(model.Temperature),
                 DistanceSensors = model.DistanceSensors.Select(x => new EquipmentDistanceReadingDTO
                 {
                     Row = x.Row,
