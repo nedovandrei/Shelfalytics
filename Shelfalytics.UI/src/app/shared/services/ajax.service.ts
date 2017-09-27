@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs/Observable";
 import { Router } from "@angular/router";
-import { RequestOptions, ResponseContentType, Http } from "@angular/http";
+import { RequestOptions, ResponseContentType, Http, Headers } from "@angular/http";
 // import { JwtHelper } from "angular2-jwt";
 
 @Injectable()
@@ -100,7 +100,7 @@ export class AjaxService {
         //     };
         //     xhr.send(JSON.stringify(data));
         // });
-        let options = new RequestOptions({responseType: ResponseContentType.Blob });
+        let options = new RequestOptions({responseType: ResponseContentType.Blob, headers: new Headers({"Authorization": `Bearer ${token}`}) });
         return this.http.post(url, data, options)
             .map(res => res.blob());
             // .catch(console.log("error"));

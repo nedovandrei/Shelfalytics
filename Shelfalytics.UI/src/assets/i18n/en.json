@@ -11,21 +11,21 @@
       "sales": "Sales",
       "oos": "OOS",
       "oosUnits": "Units",
-      "moneyLoss": "Approx Losses"
+      "moneyLoss": "Estimated Loss"
     },
     "cards": {
-      "topSkuOos": "Top SKU OOS",
+      "topSkuOos": "Top SKU in OOS",
       "topPosBeingInOos": "Top POS Being in OOS",
       "posInOosMap": "Map With POS in OOS",
-      "lossesDueToOos": "Losses Due to OOS In $ per SKU",
-      "topBestBusinessDevs": "Top Best Business Developers",
+      "lossesDueToOos": "Losses Due to OOS est. in $ per SKU",
+      "topBestBusinessDevs": "Best Business Developers",
       "topPos": "Top Pos",
-      "topSkuSales": "Top Sku Sales"
+      "topSkuSales": "SKU Sales"
     }
 
   },
   "pointsOfSale": {
-    "title": "Points of Sale",
+    "title": "Points of Sales",
     "loading": "Loading data...",
     "posOnMap": "POS On Map",
     "posList": "POS List",
@@ -35,42 +35,42 @@
         "prefix": "Showing",
         "to": "to",
         "of": "of",
-        "pos": "Points of sale"
+        "pos": "Point of sale"
       },
-      "error": "Error when trying to load",
+      "error": "Error during loading",
       "posName": "POS Name",
       "posAddress": "POS Address",
-      "posTelephone": "POS Telephone",
+      "posTelephone": "Phone number",
       "contactPersonName": "Contact Person Name",
-      "dataFilterButton": "Filter Data"
+      "dataFilterButton": "Data Filter"
     },
     "posInfo": {
       "posName": "POS",
-      "posTelephone": "POS Telephone",
-      "posAddress": "POS Addres",
+      "posTelephone": "POS phone nr.",
+      "posAddress": "POS Address",
       "schedule": "Schedule",
       "contactPersonName": "Contact Person Name",
-      "posOos": "Out Of Stock (POS)",
-      "posActualFill": "Product Fill (Actual)",
+      "posOos": "Out Of Stock (in POS)",
+      "posActualFill": "Real-time shelf filling",
       "equipmentInfo": {
         "model": "Model",
-        "equipmentType": "Equipment Type",
+        "equipmentType": "Shelf Type",
         "temperature": "Temperature",
-        "openCount": "Open Count",
+        "openCount": "Door openings",
         "lastPing": "Last Ping",
         "oos": "Out Of Stock",
-        "actualFill": "Product Fill",
+        "actualFill": "current product filling",
         "sales": "Sales",
         "productOosTable": {
-          "title": "Product Out Of Stock in %",
+          "title": "SKU Out Of Stock in %",
           "skuName": "SKU Name",
           "oosPercentage": "OOS Percentage"
         },
         "lossesDueToOosTable": {
-          "title": "Losses due to out of stock by product",
+          "title": "Losses due to out of stock by SKU",
           "skuName": "SKU Name",
-          "oosPeriod": "Period in OOS",
-          "potentialLoss": "Potential Loss",
+          "oosPeriod": "OOS Duration",
+          "potentialLoss": "Estimated Loss",
           "days": "days",
           "hours": "hours",
           "min": "min",

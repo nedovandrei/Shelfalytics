@@ -11,70 +11,70 @@
             "sales": "Продажи",
             "oos": "OOS",
             "oosUnits": "Шт.",
-            "moneyLoss": "Приблиз. Потери"
+            "moneyLoss": "Расчётные потери"
         },
         "cards": {
-            "topSkuOos": "Top SKU OOS RU",
-            "topPosBeingInOos": "Top POS Being in OOS RU",
-            "posInOosMap": "Map With POS in OOS RU",
-            "lossesDueToOos": "Losses Due to OOS In $ per SKU RU",
-            "topBestBusinessDevs": "Top Best Business Developers RU",
-            "topPos": "Top Pos RU",
-            "topSkuSales": "Top Sku Sales RU"
+            "topSkuOos": "Топ товаров попавших в OOS",
+            "topPosBeingInOos": "Топ ТТ находящихся в OOS",
+            "posInOosMap": "Карта с ТТ находящимся в OOS",
+            "lossesDueToOos": "Расчётные потери в деньгах в следствие OOS",
+            "topBestBusinessDevs": "Лучшие торговые представители",
+            "topPos": "Личшие ТТ",
+            "topSkuSales": "Топ продаж по товарам"
         }
     },
     "pointsOfSale": {
-        "title": "Точки продаж",
+        "title": "Торговые точки",
         "loading": "Загрузка данных...",
-        "posOnMap": "Точки Продаж на Карте",
-        "posList": "Список Точек Продаж",
+        "posOnMap": "Торговые точки на карте",
+        "posList": "Список торговых точек",
         "posTable": {
             "header": {
-                "noData": "Нет Данных",
-                "prefix": "Показано",
+                "noData": "нет Данных",
+                "prefix": "показано",
                 "to": "по",
                 "of": "из",
-                "pos": "Точек Продаж"
+                "pos": "торговых точек"
             },
             "error": "Ошибка при попытке загрузить",
-            "posName": "Имя Точки Продаж",
-            "posAddress": "Адрес Точки Продаж",
-            "posTelephone": "Телефон Точки Продаж",
-            "contactPersonName": "Имя Контактного Лица",
-            "dataFilterButton": "Фильтр Данных"
+            "posName": "Наименование торговой точки",
+            "posAddress": "Адрес ТТ",
+            "posTelephone": "Телефон ТТ",
+            "contactPersonName": "Имя контактного лица",
+            "dataFilterButton": "Фильтр данных"
         },
         "posInfo": {
-            "posName": "Точка Продаж",
+            "posName": "Торговая точка",
             "posTelephone": "Телефон",
             "posAddress": "Адрес",
             "schedule": "График работы",
             "contactPersonName": "Имя Контактного Лица",
-            "posOos": "Out Of Stock (POS)",
-            "posActualFill": "Заполненность Полок (В данный момент)",
+            "posOos": "Out Of Stock в ТТ",
+            "posActualFill": "Заполненность Полок (в реальном времени)",
             "equipmentInfo": {
                 "model": "Модель",
-                "equipmentType": "Тип Оборудования",
+                "equipmentType": "Тип полки",
                 "temperature": "Температура",
-                "openCount": "Количество Открытий/Закрытий",
+                "openCount": "Количество Открытий",
                 "lastPing": "Последний Опрос",
                 "oos": "Out Of Stock",
                 "actualFill": "Заполненность",
                 "sales": "Продажи",
                 "productOosTable": {
-                    "title": "Out of Stock по продуктам в %",
-                    "skuName": "SKU Имя",
-                    "oosPercentage": "OOS Процентаж"
+                    "title": "Out of Stock по товарам в %",
+                    "skuName": "Наименования товара",
+                    "oosPercentage": "OOS в процентах"
                 },
                 "lossesDueToOosTable": {
-                    "title": "Потери из-за Out of Stock по продуктам",
-                    "skuName": "SKU Имя",
-                    "oosPeriod": "Период OOS",
-                    "potentialLoss": "Потенциальные Потери",
+                    "title": "Потери в следствие Out of Stock по продуктам",
+                    "skuName": "Наименования товара",
+                    "oosPeriod": "Продолжительность OOS",
+                    "potentialLoss": "Расчетные потери",
                     "days": "дней",
                     "hours": "часов",
                     "min": "минут",
                     "sec": "сек",
-                    "ongoing": "В прогрессе с",
+                    "ongoing": "В процессе",
                     "na": "Не Доступно"
                 }
             }
