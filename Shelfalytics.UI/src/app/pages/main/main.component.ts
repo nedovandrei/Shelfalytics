@@ -267,7 +267,10 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
     this.topBestBusinessDevelopersInit = false;
 
     this.mainService.getTopSkuOos().subscribe((result: any) => {
-      this.topSkuOosChart.dataProvider = result.OOSProducts;
+      this.topSkuOosChart.dataProvider = _.map(result.OOSProducts, (item: any) => {
+        item.OOSPercentage = item.OOSPercentage.toFixed(2);
+        return item;
+      });
       this.totalOOSPercentage = result.TotalOOS.toFixed(2);
       this.skuOosChartsInit = true;
     });

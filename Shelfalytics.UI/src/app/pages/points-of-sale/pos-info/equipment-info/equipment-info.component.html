@@ -1,36 +1,44 @@
-<div *ngIf="initFlag" class="row meshes">
+<div  class="row meshes">
   <div class="col-xl-6 col-md-6 d-flex align-items-stretch" >
     <ba-card style="min-width: 100%;">
-
-      <h4><i class="ion ion-information"></i><span translate>{{'pointsOfSale.posInfo.equipmentInfo.model'}}</span>: <span class="text-info">{{equipmentData.ModelName}}</span></h4>
-      <h4><i class="ion ion-cube"></i><span translate>{{'pointsOfSale.posInfo.equipmentInfo.equipmentType'}}</span>: <span class="text-info">{{equipmentData.EquipmentType}}</span></h4>
-      <h4>
+        <div *ngIf="!initFlag" class="preloader-baCard" style="margin-top: -9px; margin-bottom: 170px; transform: scale(1.1)">
+            <div></div>
+        </div>
+      <h4 *ngIf="initFlag"><i class="ion ion-information"></i><span translate>{{'pointsOfSale.posInfo.equipmentInfo.model'}}</span>: <span class="text-info">{{equipmentData.ModelName}}</span></h4>
+      <h4 *ngIf="initFlag"><i class="ion ion-cube"></i><span translate>{{'pointsOfSale.posInfo.equipmentInfo.equipmentType'}}</span>: <span class="text-info">{{equipmentData.EquipmentType}}</span></h4>
+      <h4 *ngIf="initFlag">
         <i class="fa fa-thermometer"></i>
         <span translate>{{'pointsOfSale.posInfo.equipmentInfo.temperature'}}</span>:
         <span class="text-info">{{equipmentData.Temperature}}&deg;C / {{equipmentData.Temperature | fahrenheit}}&deg;F</span>
       </h4>
-      <h4><i class="ion ion-speedometer"></i><span translate>{{'pointsOfSale.posInfo.equipmentInfo.openCount'}}</span>: <span class="text-info">{{equipmentData.OpenCloseCountToday}}</span></h4>
-      <h4><i class="fa fa-calendar-check-o"></i><span translate>{{'pointsOfSale.posInfo.equipmentInfo.lastPing'}}</span>: <span class="text-info">{{timeStamp}}</span></h4>
+      <h4 *ngIf="initFlag"><i class="ion ion-speedometer"></i><span translate>{{'pointsOfSale.posInfo.equipmentInfo.openCount'}}</span>: <span class="text-info">{{equipmentData.OpenCloseCountToday}}</span></h4>
+      <h4 *ngIf="initFlag"><i class="fa fa-calendar-check-o"></i><span translate>{{'pointsOfSale.posInfo.equipmentInfo.lastPing'}}</span>: <span class="text-info">{{timeStamp}}</span></h4>
 
     </ba-card>
   </div>
-  <div class="col-xl-6 col-md-6 d-flex align-items-stretch" >
+  <div  class="col-xl-6 col-md-6 d-flex align-items-stretch" >
     <div class="row">
       <div class="col-md-6">
-        <ba-card *ngIf="initFlag" title="{{'pointsOfSale.posInfo.equipmentInfo.actualFill'}}" style="min-width: 100%;">
+        <ba-card title="{{'pointsOfSale.posInfo.equipmentInfo.actualFill'}}" style="min-width: 100%;">
           <div class="row justify-content-center">
             <div class="col-12 col-xl-12 col-md-10 col-sm-8 col-12">
-              <easy-pie-chart [chartData]="fillChartData"></easy-pie-chart>
+                <div *ngIf="!initFlag" class="preloader-baCard" style="margin-top: -9px; margin-bottom: 170px; transform: scale(1.1)">
+                    <div></div>
+                </div>
+              <easy-pie-chart *ngIf="initFlag" [chartData]="fillChartData"></easy-pie-chart>
             </div>
           </div>
         </ba-card>
       </div>
      
         <div class="col-md-6">
-          <ba-card *ngIf="initFlag" title="{{'pointsOfSale.posInfo.equipmentInfo.oos'}}" style="min-width: 100%;">
+          <ba-card  title="{{'pointsOfSale.posInfo.equipmentInfo.oos'}}" style="min-width: 100%;">
             <div class="row justify-content-center">
               <div class="col-12 col-xl-12 col-md-10 col-sm-8 col-12">
-                <easy-pie-chart [chartData]="oosChartData"></easy-pie-chart>
+                  <div *ngIf="!initFlag" class="preloader-baCard" style="margin-top: -9px; margin-bottom: 170px; transform: scale(1.1)">
+                      <div></div>
+                  </div>
+                <easy-pie-chart *ngIf="initFlag" [chartData]="oosChartData"></easy-pie-chart>
               </div>
             </div>
           </ba-card>
@@ -39,6 +47,9 @@
     </div>
 </div>
 <div class="col-12">
+    <div *ngIf="!initFlag" class="preloader-baCard" style="margin-top: -20px; margin-bottom: 335px; transform: scale(1.4)">
+        <div></div>
+    </div>
   <pie-chart *ngIf="initFlag" [chartData]="equipmentData" [rowCount]="equipmentData.RowCount"></pie-chart>
 </div>
 </div>

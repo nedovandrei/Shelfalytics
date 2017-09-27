@@ -28,6 +28,9 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges, AfterVie
         this.initChart();
         this.sortData();
         
+
+        $(".amcharts-legend-div").css("overflow-y", "auto");
+        $(".amcharts-legend-div").css("max-height", "300px");
     }
 
     private initConfig() {
@@ -54,6 +57,8 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges, AfterVie
         }
     }
     ngOnInit() {
+        
+
         this.chartConfig = new AmChartConfig(this.chartType ? this.chartType : "serial");
         this.initConfig();
 
@@ -98,6 +103,7 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges, AfterVie
                         });
                         this.chartConfig["dataProvider"] = [noData];
                     } else {
+                        
                         this.chartConfig["dataProvider"] = this.chartData.dataProvider;
                     }
                 }
@@ -140,6 +146,8 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges, AfterVie
     private initChart() {
         this.chart =
             this.amChartsService.makeChart(this.chartName ? this.chartName : "chartdiv", this.chartConfig );
+            // $(".amcharts-legend-div").css("overflow-y", "auto!important");
+            // $(".amcharts-legend-div").css("max-height", "300px");
 
         if (this.chartType === "pie") {
             this.chart.labelsEnabled = false;
@@ -150,11 +158,14 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges, AfterVie
             legend.valueAlign = "right";
             legend.valueWidth = 80;
             this.chart.addLegend(legend);
+
+            
         }
         
     }
 
     private sortData() {
+        
         if (this.chartData.dataProvider.length !== 0) {
             const sortedArr = _.sortBy(this.chartData.dataProvider, (item: any) => {
                 return item[this.chartData.valueFields[0]];

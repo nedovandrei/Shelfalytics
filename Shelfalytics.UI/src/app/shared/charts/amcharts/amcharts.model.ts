@@ -202,7 +202,8 @@ export class AmChartConfig implements IAmChartConfig {
         } else if (this.type === "pie") {
           this.chartLegend = {
             "position": 'right',
-
+            // "marginRight": 100,
+            //"autoMargins": false,
             "valueText" : '[value]',
             "valueAlign" : 'right',
             "valueWidth" : 120

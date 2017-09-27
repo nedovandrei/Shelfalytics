@@ -4,30 +4,45 @@
   </div>
 
 </div>
-<div *ngIf="!initFlag" class="preloader-baCard" style="margin-top: 200px; margin-bottom: 200px">
+<!-- <div *ngIf="!initFlag" class="preloader-baCard" style="margin-top: 200px; margin-bottom: 200px">
     <div></div>
-</div>
-<div *ngIf="initFlag">
+</div> -->
+<div>
   <div class="row">
     <ba-card class="col-md-4 d-flex align-items-stretch text-center">
-      <p><i class="fa fa-map-marker"></i><span translate>{{'pointsOfSale.posInfo.posName'}}</span>:</p>
-      <h2>{{posData.PointOfSaleName}}</h2>
+      <div *ngIf="!initFlag" class="preloader-baCard" style="margin-top: 15px; transform:scale(0.6); margin-bottom: -4px">
+          <div></div>
+      </div>
+      <p *ngIf="initFlag"><i class="fa fa-map-marker"></i><span translate>{{'pointsOfSale.posInfo.posName'}}</span>:</p>
+      <h2 *ngIf="initFlag">{{posData.PointOfSaleName}}</h2>
     </ba-card>
     <ba-card class="col-md-4 d-flex align-items-stretch text-center">
-      <p><i class="fa fa-map"></i><span translate>{{'pointsOfSale.posInfo.posAddress'}}</span>:</p>
-          <h2> {{posData.PointOfSaleAddress}}</h2>
+        <div *ngIf="!initFlag" class="preloader-baCard" style="margin-top: 15px; transform:scale(0.6); margin-bottom: -4px">
+            <div></div>
+        </div>
+      <p *ngIf="initFlag"><i class="fa fa-map"></i><span translate>{{'pointsOfSale.posInfo.posAddress'}}</span>:</p>
+          <h2 *ngIf="initFlag"> {{posData.PointOfSaleAddress}}</h2>
     </ba-card>
     <ba-card class="col-md-4 d-flex align-items-stretch text-center">
-      <p><i class="fa fa-phone"></i><span translate>{{'pointsOfSale.posInfo.posTelephone'}}</span>:</p>
-        <h2> {{posData.PointOfSaleTelephone}}</h2>
+        <div *ngIf="!initFlag" class="preloader-baCard" style="margin-top: 15px; transform:scale(0.6); margin-bottom: -4px">
+            <div></div>
+        </div>
+      <p *ngIf="initFlag"><i class="fa fa-phone"></i><span translate>{{'pointsOfSale.posInfo.posTelephone'}}</span>:</p>
+        <h2 *ngIf="initFlag"> {{posData.PointOfSaleTelephone}}</h2>
     </ba-card>
     <ba-card class="col-md-6 d-flex align-items-stretch text-center">
-      <p><i class="fa fa-user-o"></i><span translate>{{'pointsOfSale.posInfo.contactPersonName'}}</span>:</p>
-        <h2> {{posData.ContactPersonName}}</h2>
+        <div *ngIf="!initFlag" class="preloader-baCard" style="margin-top: 15px; transform:scale(0.6); margin-bottom: -4px">
+            <div></div>
+        </div>
+      <p *ngIf="initFlag"><i class="fa fa-user-o"></i><span translate>{{'pointsOfSale.posInfo.contactPersonName'}}</span>:</p>
+        <h2 *ngIf="initFlag"> {{posData.ContactPersonName}}</h2>
     </ba-card>
     <ba-card class="col-md-6 d-flex align-items-stretch text-center">
-      <p><i class="fa fa-calendar-check-o"></i><span translate>{{'pointsOfSale.posInfo.schedule'}}</span>:</p>
-        <h2>{{openHours}} - {{closeHours}}</h2>
+        <div *ngIf="!initFlag" class="preloader-baCard" style="margin-top: 15px; transform:scale(0.6); margin-bottom: -4px">
+            <div></div>
+        </div>
+      <p *ngIf="initFlag"><i class="fa fa-calendar-check-o"></i><span translate>{{'pointsOfSale.posInfo.schedule'}}</span>:</p>
+        <h2 *ngIf="initFlag">{{openHours}} - {{closeHours}}</h2>
     </ba-card>
 
   </div>
@@ -40,8 +55,10 @@
           </div>
         </ba-card> -->
         <ba-card class="col-12 col-md-6" title="{{'pointsOfSale.posInfo.posActualFill'}}">
-
-              <div class="row justify-content-center">
+            <div *ngIf="!initFlag" class="preloader-baCard" style="margin-top: 85px; margin-bottom: 60px; transform: scale(1.4)">
+                <div></div>
+            </div>
+              <div *ngIf="initFlag" class="row justify-content-center">
                 <div class="col-12 col-xl-6 col-md-10 col-sm-8 col-12">
                   <easy-pie-chart [chartData]="POSActualFillChartData"></easy-pie-chart>
                 </div>
@@ -49,8 +66,10 @@
 
         </ba-card>
         <ba-card class="col-12 col-md-6" title="{{'pointsOfSale.posInfo.posOos'}}">
-
-              <div class="row justify-content-center">
+            <div *ngIf="!initFlag" class="preloader-baCard" style="margin-top: 85px; margin-bottom: 60px; transform: scale(1.4)">
+                <div></div>
+            </div>
+              <div *ngIf="initFlag" class="row justify-content-center">
                 <div class="col-12 col-xl-6 col-md-10 col-sm-8 col-12">
                   <easy-pie-chart [chartData]="POSOOSChartData"></easy-pie-chart>
                 </div>
@@ -58,9 +77,13 @@
 
         </ba-card>
     </div>
-  <div class="row">
+  <div class="row" >
+
     <div class="col-md-12">
-      <ul class="nav nav-pills nav-fill">
+        <div *ngIf="!initFlag" class="preloader-baCard" style="margin-top: 5px; margin-bottom: 5px; transform: scale(0.3)">
+            <div></div>
+        </div>
+      <ul *ngIf="initFlag" class="nav nav-pills nav-fill">
         <li class="nav-item mb-1" *ngFor="let equipment of posData.EquipmentIds; let i = index" (click)="changeEquipmentInFocus(equipment)">
           <a [ngClass]="{ 'active': equipment === equipmentInFocus }" class="nav-link">{{i + 1}}</a>
         </li>
@@ -69,7 +92,9 @@
   </div>
 
 
-        <equipment-info *ngIf="equipmentInFocus > 0 && equipmentInitFlag" [equipmentId]="equipmentInFocus" [oosChartData]="equipmentOOSChartData" [fillChartData]="equipmentActualFillChartData"></equipment-info>
+        <equipment-info *ngIf="equipmentInFocus > 0 && initFlag" [equipmentId]="equipmentInFocus" [oosChartData]="equipmentOOSChartData" [fillChartData]="equipmentActualFillChartData"></equipment-info>
+
+        <!-- <equipment-info [equipmentId]="equipmentInFocus" [oosChartData]="equipmentOOSChartData" [fillChartData]="equipmentActualFillChartData"></equipment-info> -->
         <!-- <equipment-info-pusher *ngIf="equipmentInFocus > 0 && equipmentInitFlag" [equipmentId]="equipmentInFocus"></equipment-info> -->
 
         <!-- <angular2-grid></angular2-grid> -->
@@ -82,19 +107,26 @@
     </div>  -->
 
 </div>
-<div class="row">
+<div class="row" *ngIf="initFlag">
   <div class="col-md-12">
-    <ba-card *ngIf="equipmentInitFlag" title="{{'pointsOfSale.posInfo.equipmentInfo.sales'}}">
-      <amchart [chartData]="salesChartData"></amchart>
+      
+    <ba-card title="{{'pointsOfSale.posInfo.equipmentInfo.sales'}}">
+        <div *ngIf="!equipmentInitFlag" class="preloader-baCard" style="margin-top: 125px; margin-bottom: 100px; transform: scale(1.2)">
+            <div></div>
+        </div>
+      <amchart *ngIf="equipmentInitFlag" [chartData]="salesChartData"></amchart>
     </ba-card>
   </div>
 </div>
 
-<div class="row" *ngIf="equipmentInitFlag">
+<div class="row" *ngIf="initFlag">
   <div class="col-md-12 mb-4">
       <ba-card class="card mb-0 with-scroll table-panel" title="{{'pointsOfSale.posInfo.equipmentInfo.productOosTable.title'}}">
-        <div class="horizontal-scroll ">
-          <table class="table table-striped">
+          <div *ngIf="!equipmentInitFlag" class="preloader-baCard" style="margin-top: 125px; margin-bottom: 100px; transform: scale(1.2)">
+              <div></div>
+          </div>
+        <div class="horizontal-scroll " *ngIf="equipmentInitFlag" style="max-height: 400px; overflow-y:auto">
+          <table class="table table-striped" >
             <thead>
             <tr>
               <th id="table-id">#</th>
@@ -102,7 +134,7 @@
               <th translate>{{'pointsOfSale.posInfo.equipmentInfo.productOosTable.oosPercentage'}}</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody style="max-height: 400px; overflow-y:auto">
               <tr *ngIf="equipmentProductOOSTable.length === 0">
                 <td colspan="3">No Data</td>
               </tr>
@@ -118,7 +150,10 @@
   </div>
   <div class="col-md-12 mb-4">
       <ba-card class="card mb-0 with-scroll table-panel" title="{{'pointsOfSale.posInfo.equipmentInfo.lossesDueToOosTable.title'}}">
-        <div class="horizontal-scroll ">
+          <div *ngIf="!equipmentInitFlag" class="preloader-baCard" style="margin-top: 125px; margin-bottom: 100px; transform: scale(1.2)">
+              <div></div>
+          </div>
+        <div class="horizontal-scroll " *ngIf="equipmentInitFlag" style="max-height: 400px; overflow-y:auto">
           <table class="table table-striped">
             <thead>
               <tr >
