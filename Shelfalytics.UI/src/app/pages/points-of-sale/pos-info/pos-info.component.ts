@@ -163,7 +163,7 @@ export class PosInfoComponent implements OnInit, OnDestroy {
           resultData.push(resultItem);
         })
 
-        this.equipmentLossesDueToOOSTable = lossesData;
+        this.equipmentLossesDueToOOSTable = resultData;
       });
     }); 
   }
