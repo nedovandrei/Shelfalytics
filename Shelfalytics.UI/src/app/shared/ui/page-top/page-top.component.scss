@@ -64,6 +64,9 @@
     position: absolute;
     top:0;
     right: 0;
+    a, li{
+      cursor: pointer!important;
+    }
   }
 
   .al-user-profile {
@@ -144,7 +147,13 @@
     color: $sidebar-text;
     padding: 0;
     float: left;
-    margin: 11px 0 0 25px;
+    // margin: 11px 0 0 25px;
+    @media screen and (max-width: $resL) {
+      float: none;
+      display: inline-block;
+      margin-top: 0;
+    }
+    margin-top: 3px;
 
     &:hover {
       text-decoration: none;
@@ -181,6 +190,9 @@
     overflow: hidden;
     max-width: 400px;
     // float: left;
+    daterangepicker span{
+      margin-left: 10px;
+    }
     margin: 10px auto 0;
     .btn:hover {
       transform: scale(1)!important;
@@ -214,11 +226,21 @@
       height: 27px;
     }
   }
-
+  
   @media screen and (max-width: $resL) {
     .search {
-      margin-left: 0;
-      
+      & > *{
+        display: inline-block!important;
+        vertical-align: middle; 
+      }
+      i{
+        margin-left: 4px;
+      }
+      daterangepicker, .fa-check-circle{
+        margin-top: -3px;
+      }
+      // margin-left: 0;
+      text-align: center;
       .form-control{
       display: none;
     }
@@ -249,5 +271,23 @@
 
   .profile-toggle-link {
     cursor: pointer;
+  }
+}
+@media (max-width: $resS) {
+#dropdownMenuButton{
+  .lang-lbl{
+    top:2px!important;
+    &:after{
+      display: none;
+    }
+  }
+}
+}
+@media screen and (max-width: $resXS) {
+  .search {
+    text-align: left;
+  }
+  #dropdownMenuButton{
+    display: none;
   }
 }

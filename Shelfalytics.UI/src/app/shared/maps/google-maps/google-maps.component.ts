@@ -8,6 +8,7 @@ class GoogleMapsData implements IGoogleMapsData {
     disableDefaultUI?: boolean = true;
     zoomControl?: boolean = true;
     clickableIcons?: boolean = true;
+    // scrollwheel: boolean = false;
     draggableCursor?: string = ""; // [draggableCursor]="url(<some address>), pointer"
 }
 

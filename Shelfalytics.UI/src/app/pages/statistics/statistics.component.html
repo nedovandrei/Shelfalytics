@@ -2,9 +2,13 @@
 <ba-card title="Фильтр" >
     
   <div class="row btns-row" *ngIf="initSelects">
-    <div class="col-sm-6 col-6">
+    <div class="col-sm-6">
       <div class="form-group w-100">
-                  <label>Выбор Даты</label>
+                  <label>Выбор Даты
+                      <span *ngIf="currentLanguage === 'ru'"></span>
+                      <span *ngIf="currentLanguage === 'en'"></span>
+                      <span *ngIf="currentLanguage === 'ro'"></span>
+                  </label>
                   <select class="form-control" (change)="dateSelectChanged($event)">
                       <option value="0">Глобально</option>
                       <option value="1">Неделя</option>
@@ -14,7 +18,7 @@
                   </select>
           </div>
     </div>
-    <div class="col-sm-6 col-6">
+    <div class="col-sm-6">
       <div class="form-group w-100">
         <label>Город/Нас. Пункт</label>
         <select class="form-control" (change)="localChanged($event)">
@@ -25,7 +29,7 @@
     </div>
   </div>
   <div class="row btns-row " *ngIf="initSelects">
-    <div class="col-sm-6 col-6">
+    <div class="col-sm-6">
       <div class="form-group w-100">
         <label>Канал Продаж</label>
         <select class="form-control" (change)="tradeChanelChanged($event)">
@@ -34,7 +38,7 @@
         </select>
       </div>
     </div>
-    <div class="col-sm-6 col-6">
+    <div class="col-sm-6">
       <div class="form-group w-100">
           
           <label>Сеть</label>
@@ -46,7 +50,7 @@
     </div>
   </div>
   <div class="row btns-row " *ngIf="initSelects">
-  <div class="col-sm-6 col-6">
+  <div class="col-sm-6 ">
     <div class="form-group w-100">
         <label>Торговые точки</label>
         <select class="form-control" (change)="pointOfSaleChanged($event)">
@@ -56,7 +60,7 @@
         
     </div>
   </div>
-  <div class="col-sm-6 col-12">
+  <div class="col-sm-6 ">
     <div class="form-group w-100">
       <label>Оборудование</label>
       <select class="form-control" (change)="equipmentChanged($event)">
@@ -69,7 +73,7 @@
   </div>
   <div class="row btns-row" *ngIf="initSelects">
 
-    <div class="col-sm-6 col-6">
+    <div class="col-sm-6 ">
       <div class="form-group w-100">
                   <label>Продукты</label>
                   <select class="form-control" (change)="productChanged($event)">
@@ -79,7 +83,7 @@
           </div>
 
     </div>
-    <div class="col-sm-6 col-6">
+    <div class="col-sm-6 ">
       <div class="form-group w-100">
                   <label>Выбор Сети</label>
                   <select class="form-control" >
@@ -89,44 +93,10 @@
           </div>
     </div>
   </div>
-</ba-card>
-<ba-card title="Типы отчётов">
-    <div *ngIf="exportOngoing" class="preloader-baCard" style="display: flex; margin-bottom: 70px; margin-top: 90px">
-        <div></div>
-    </div>
-<fieldset class="form-group" *ngIf="!exportOngoing">
-  <div class="form-check">
-    <label class="form-check-label">
-      <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-      OOS по количеству недопроданных штук
-    </label>
-  </div>
-  <div class="form-check">
-    <label class="form-check-label">
-      <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option1" checked>
-        OOS по сумме недопроданных товар - потенциали потери в деньгах за счёт OOS
-    </label>
-  </div>
-  <div class="form-check">
-    <label class="form-check-label">
-      <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option1" checked>
-      Продажи в пушерах ( Sales by pusher ) - продажи из каждого пушера
-    </label>
-  </div>
-  <div class="form-check">
-    <label class="form-check-label">
-      <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios4" value="option1" checked>
-    Кол-во продаж ( штук ) / Открывание дверей
-    </label>
-  </div>
-  <div class="form-check">
-    <label class="form-check-label">
-      <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios5" value="option1" checked>
-      Кол-во продаж детально / Открывание дверей
-    </label>
-  </div>
-  <button type="button" (click)="exportExcel()" class="btn btn-primary" >
-    Сделать отчет
-  </button>
-</fieldset>
+  <fieldset class="form-group" *ngIf="!exportOngoing">
+      
+      <button type="button" (click)="exportExcel()" class="btn btn-primary" >
+        Сделать отчет
+      </button>
+    </fieldset>
 </ba-card>
