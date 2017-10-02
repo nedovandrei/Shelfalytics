@@ -93,7 +93,23 @@
     "month": "Month"
   },
   "statistics": {
-    "title": "Statistics"
+    "title": "Statistics",
+    "filter": "Filter",
+    "dateSelect": "Date Selection",
+    "locality": "Locality",
+    "salesChannel": "Sales channel",
+    "network": "Network",
+    "outlets": "Outlets",
+    "equipment": "Equipment",
+    "products": "Products",
+    "selectNetwork": "Selecting a Network",
+    "global": "Global",
+    "week": "Week",
+    "month": "Month",
+    "6month": "6 month",
+    "year": "Year",
+    "all": "All",
+    "create": "Make report"
   },
   "settings": {
     "title": "Settings"

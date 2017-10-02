@@ -81,7 +81,24 @@
         }   
     },
     "statistics": {
-        "title": "Статистика"
+        "title": "Статистика",
+        "filter": "Фильтр",
+        "dateSelect": "Выбор Даты",
+        "locality": "Город/Нас. Пункт",
+        "salesChannel": "Канал Продаж",
+        "network": "Сеть",
+        "outlets": "Торговые точки",
+        "equipment": "Оборудование",
+        "products": "Продукты",
+        "selectNetwork": "Выбор Сети",
+        "global": "Глобально",
+        "week": "Неделя",
+        "month": "Месяц",
+        "6month": "6 месяцев",
+        "year": "Год",
+        "all": "Все",
+        "create": "Сделать отчет"
+
     },
     "settings": {
         "title": "Настройки"

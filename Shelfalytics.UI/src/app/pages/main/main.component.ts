@@ -13,6 +13,7 @@ import { IGoogleMapsData, IMarker } from "app/shared/maps/google-maps/google-map
   styleUrls: ["./main.component.scss"],
   providers: [MainService]
 })
+
 export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(private mainService: MainService, private globalFilter: GlobalFilter) { }
