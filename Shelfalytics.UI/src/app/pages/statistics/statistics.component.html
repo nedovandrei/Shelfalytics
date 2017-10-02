@@ -69,7 +69,8 @@
   </div>
   <div class="row btns-row" *ngIf="initSelects">
 
-    <div class="col-sm-6 ">
+    <!-- <div class="col-sm-6 "> -->
+    <div class="col-sm-12 "> 
       <div class="form-group w-100">
         <label translate>{{'statistics.products'}}</label>
                   <select class="form-control" (change)="productChanged($event)">
@@ -79,7 +80,7 @@
           </div>
 
     </div>
-    <div class="col-sm-6 ">
+    <!-- <div class="col-sm-6 ">
       <div class="form-group w-100">
         <label translate>{{'statistics.selectNetwork'}}</label>
                   <select class="form-control" >
@@ -87,7 +88,7 @@
                       <option>Грин Хиллс – Алеку Руссо 28</option>
                   </select>
           </div>
-    </div>
+    </div> -->
   </div>
   <fieldset class="form-group" *ngIf="!exportOngoing">
       

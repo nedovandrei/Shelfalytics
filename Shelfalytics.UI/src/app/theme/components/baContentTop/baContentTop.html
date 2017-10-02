@@ -1,7 +1,7 @@
 <div class="content-top clearfix">
   <h1 class="al-title" translate>{{ activePageTitle }}</h1>
 
-  <ul class="breadcrumb al-breadcrumb">
+  <ul *ngIf="!isMain" class="breadcrumb al-breadcrumb">
     <li class="breadcrumb-item">
       <a routerLink="/pages/main" translate>{{'main.title'}}</a>
     </li>
