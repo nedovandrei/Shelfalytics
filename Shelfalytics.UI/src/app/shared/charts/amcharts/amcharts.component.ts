@@ -16,6 +16,7 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges, AfterVie
     @Input() chartType: string;
     @Input() chartData: any;
     @Input() chartName: string;
+    private dataProvider: any = [];
     private initFlag: boolean = false;
     private chart: any;
     private sortDirection: "asc" | "desc" = "desc";
@@ -58,7 +59,7 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges, AfterVie
     }
     ngOnInit() {
         
-
+        this.dataProvider = this.chartData.dataProvider;
         this.chartConfig = new AmChartConfig(this.chartType ? this.chartType : "serial");
         this.initConfig();
 
@@ -73,14 +74,17 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges, AfterVie
     }
 
     ngOnChanges() {
+
         // this.initChart();
         // this.sortData();
         // this.pieChartNoData = false;
         if (!this.chartData.dataProvider || this.chartData.dataProvider.length === 0) {
             this.pieChartNoData = true;
         } else {
+            this.dataProvider = this.chartData.dataProvider;
             this.pieChartNoData = false;
         }
+        this.sortData();
         this.initializeDataProvider();
     }
 
@@ -103,8 +107,8 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges, AfterVie
                         });
                         this.chartConfig["dataProvider"] = [noData];
                     } else {
-                        
-                        this.chartConfig["dataProvider"] = this.chartData.dataProvider;
+                        //this.dataProvider = this.chartData.dataProvider;
+                        this.chartConfig["dataProvider"] = this.dataProvider;
                     }
                 }
                 
@@ -114,8 +118,9 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges, AfterVie
                 //         this.pieChartNoData = true;
                 //     }
                 // }
+                //this.dataProvider = this.chartData.dataProvider;
                 this.amChartsService.updateChart( this.chart, () => {
-                    this.chart.dataProvider = this.chartData.dataProvider;
+                    this.chart.dataProvider = this.dataProvider;
                 });
             }
         } else {
@@ -137,10 +142,9 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges, AfterVie
             this.initConfig();
             this.initChart();
             this.amChartsService.updateChart( this.chart, () => {
-                this.chart.dataProvider = this.chartData.dataProvider;
+                this.chart.dataProvider = this.dataProvider;
             });
         }
-
     }
 
     private initChart() {
@@ -166,15 +170,15 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges, AfterVie
 
     private sortData() {
         
-        if (this.chartData.dataProvider.length !== 0) {
-            const sortedArr = _.sortBy(this.chartData.dataProvider, (item: any) => {
+        if (this.dataProvider.length !== 0) {
+            const sortedArr = _.sortBy(this.dataProvider, (item: any) => {
                 return item[this.chartData.valueFields[0]];
             });
             if (this.sortDirection === "asc") {
-                this.chartData.dataProvider = sortedArr;
+                this.dataProvider = sortedArr;
                 this.initializeDataProvider();
             } else {
-                this.chartData.dataProvider = sortedArr.reverse();
+                this.dataProvider = sortedArr.reverse();
                 this.initializeDataProvider();
             }
         }

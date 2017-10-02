@@ -1,9 +1,10 @@
+<main>
 <div class="row animated">
   <ba-card class="col-md-6 col-lg-3 col-sm-12 col-12 text-center" >
       <div *ngIf="salesSummaryCount === undefined" class="preloader-baCard" style="transform: scale(0.5); display: flex; margin-bottom: -7px">
           <div></div>
       </div>
-      <h1 *ngIf="salesSummaryCount !== undefined">{{salesSummaryCount}}</h1>
+      <h2 *ngIf="salesSummaryCount !== undefined">{{salesSummaryCount}}</h2>
       <p translate>{{'main.header.sales'}}</p>
   </ba-card>
   <ba-card class="col-md-6 col-lg-6 col-sm-12 col-12 text-center " >
@@ -11,7 +12,7 @@
     <div *ngIf="totalOOSPercentage === undefined" class="preloader-baCard" style="transform: scale(0.5); display: flex; margin-bottom: -7px">
         <div></div>
     </div>
-    <h1 *ngIf="totalOOSPercentage !== undefined">{{totalOOSPercentage}}% | {{lossesInUnits}} {{'main.header.oosUnits' | translate}}</h1>
+    <h2 *ngIf="totalOOSPercentage !== undefined">{{totalOOSPercentage}}% | {{lossesInUnits}} {{'main.header.oosUnits' | translate}}</h2>
     <p translate>{{'main.header.oos'}}</p>
 
     <!-- <h1>{{totalOOSPercentage}}%</h1>
@@ -26,7 +27,7 @@
       <div *ngIf="lossesDueToOosSummary === undefined" class="preloader-baCard" style="transform: scale(0.5); display: flex; margin-bottom: -7px">
           <div></div>
       </div>
-    <h1 *ngIf="lossesDueToOosSummary !== undefined">{{lossesDueToOosSummary | number}}$</h1>
+    <h2 *ngIf="lossesDueToOosSummary !== undefined">{{lossesDueToOosSummary | number}}$</h2>
     <p translate>{{'main.header.moneyLoss'}}</p>
   </ba-card>
 </div>
@@ -86,3 +87,4 @@
 <div class="row animated" >
   
 </div>
+</main>

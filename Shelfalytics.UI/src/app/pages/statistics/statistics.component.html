@@ -1,66 +1,66 @@
 
-<ba-card title="Фильтр" >
+<ba-card title="{{'statistics.filter'}}" >
     
   <div class="row btns-row" *ngIf="initSelects">
-    <div class="col-sm-6 col-6">
+    <div class="col-sm-6">
       <div class="form-group w-100">
-                  <label>Выбор Даты</label>
+                  <label translate>{{'statistics.dateSelect'}}</label>
                   <select class="form-control" (change)="dateSelectChanged($event)">
-                      <option value="0">Глобально</option>
-                      <option value="1">Неделя</option>
-                      <option value="2">Месяц</option>
-                      <option value="3">6 месяцев</option>
-                      <option value="4">Год</option>
+                      <option translate value="0">{{'statistics.global'}}</option>
+                      <option translate value="1">{{'statistics.week'}}</option>
+                      <option translate value="2">{{'statistics.month'}}</option>
+                      <option translate value="3">{{'statistics.6month'}}</option>
+                      <option translate value="4">{{'statistics.year'}}</option>
                   </select>
           </div>
     </div>
-    <div class="col-sm-6 col-6">
+    <div class="col-sm-6">
       <div class="form-group w-100">
-        <label>Город/Нас. Пункт</label>
+        <label translate>{{'statistics.locality'}}</label>
         <select class="form-control" (change)="localChanged($event)">
-            <option>Все</option>
+            <option translate>{{'statistics.all'}}</option>
             <option *ngFor="let local of selectsData.Locals" value="{{local}}">{{local}}</option>
         </select>
       </div>
     </div>
   </div>
   <div class="row btns-row " *ngIf="initSelects">
-    <div class="col-sm-6 col-6">
+    <div class="col-sm-6">
       <div class="form-group w-100">
-        <label>Канал Продаж</label>
+        <label translate>{{'statistics.salesChannel'}}</label>
         <select class="form-control" (change)="tradeChanelChanged($event)">
-            <option>Все</option>
+          <option translate>{{'statistics.all'}}</option>
             <option *ngFor="let tradeChan of selectsData.TradeChanels" value="{{tradeChan}}">{{tradeChan}}</option>
         </select>
       </div>
     </div>
-    <div class="col-sm-6 col-6">
+    <div class="col-sm-6">
       <div class="form-group w-100">
           
-          <label>Сеть</label>
+        <label translate>{{'statistics.network'}}</label>
           <select class="form-control" (change)="retailChainChanged($event)">
-              <option>Все</option>
+            <option translate>{{'statistics.all'}}</option>
               <option *ngFor="let chain of selectsData.RetailChain" value="{{chain}}">{{chain}}</option>
           </select>
       </div>
     </div>
   </div>
   <div class="row btns-row " *ngIf="initSelects">
-  <div class="col-sm-6 col-6">
+  <div class="col-sm-6 ">
     <div class="form-group w-100">
-        <label>Торговые точки</label>
+      <label translate>{{'statistics.outlets'}}</label>
         <select class="form-control" (change)="pointOfSaleChanged($event)">
-            <option>Все</option>
+          <option translate>{{'statistics.all'}}</option>
             <option *ngFor="let pos of selectsData.PointsOfSale" value="{{pos.PointOfSaleId}}">{{pos.ChainName}} - {{pos.PointOfSaleAddress}}</option>
         </select>
         
     </div>
   </div>
-  <div class="col-sm-6 col-12">
+  <div class="col-sm-6 ">
     <div class="form-group w-100">
-      <label>Оборудование</label>
+      <label translate>{{'statistics.equipment'}}</label>
       <select class="form-control" (change)="equipmentChanged($event)">
-          <option>Все</option>
+        <option translate>{{'statistics.all'}}</option>
           <option *ngFor="let equipment of selectsData.Equipments" value="{{equipment.Id}}">{{equipment.ModelName}}</option>
       </select>
     </div>
@@ -69,19 +69,19 @@
   </div>
   <div class="row btns-row" *ngIf="initSelects">
 
-    <div class="col-sm-6 col-6">
+    <div class="col-sm-6 ">
       <div class="form-group w-100">
-                  <label>Продукты</label>
+        <label translate>{{'statistics.products'}}</label>
                   <select class="form-control" (change)="productChanged($event)">
-                      <option>Все</option>
+                    <option translate>{{'statistics.all'}}</option>
                       <option *ngFor="let prod of selectsData.Products" value="{{prod.Id}}">{{prod.ShortSKUName}}</option>
                   </select>
           </div>
 
     </div>
-    <div class="col-sm-6 col-6">
+    <div class="col-sm-6 ">
       <div class="form-group w-100">
-                  <label>Выбор Сети</label>
+        <label translate>{{'statistics.selectNetwork'}}</label>
                   <select class="form-control" >
                       <option>Грин Хиллс – Куза Водэ 21</option>
                       <option>Грин Хиллс – Алеку Руссо 28</option>
@@ -89,44 +89,10 @@
           </div>
     </div>
   </div>
-</ba-card>
-<ba-card title="Типы отчётов">
-    <div *ngIf="exportOngoing" class="preloader-baCard" style="display: flex; margin-bottom: 70px; margin-top: 90px">
-        <div></div>
-    </div>
-<fieldset class="form-group" *ngIf="!exportOngoing">
-  <div class="form-check">
-    <label class="form-check-label">
-      <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-      OOS по количеству недопроданных штук
-    </label>
-  </div>
-  <div class="form-check">
-    <label class="form-check-label">
-      <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option1" checked>
-        OOS по сумме недопроданных товар - потенциали потери в деньгах за счёт OOS
-    </label>
-  </div>
-  <div class="form-check">
-    <label class="form-check-label">
-      <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option1" checked>
-      Продажи в пушерах ( Sales by pusher ) - продажи из каждого пушера
-    </label>
-  </div>
-  <div class="form-check">
-    <label class="form-check-label">
-      <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios4" value="option1" checked>
-    Кол-во продаж ( штук ) / Открывание дверей
-    </label>
-  </div>
-  <div class="form-check">
-    <label class="form-check-label">
-      <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios5" value="option1" checked>
-      Кол-во продаж детально / Открывание дверей
-    </label>
-  </div>
-  <button type="button" (click)="exportExcel()" class="btn btn-primary" >
-    Сделать отчет
-  </button>
-</fieldset>
+  <fieldset class="form-group" *ngIf="!exportOngoing">
+      
+      <button type="button" (click)="exportExcel()" class="btn btn-primary" translate>
+        {{'statistics.create'}}
+      </button>
+    </fieldset>
 </ba-card>

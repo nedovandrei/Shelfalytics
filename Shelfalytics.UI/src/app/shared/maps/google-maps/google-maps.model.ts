@@ -7,6 +7,7 @@ export interface IGoogleMapsData {
     clickableIcons?: boolean;
     draggableCursor?: string; // [draggableCursor]="url(<some address>), pointer"
     height?: number; // in px. default = 400
+    // scrollwheel: boolean;
 }
 
 export interface ICoordinates {
