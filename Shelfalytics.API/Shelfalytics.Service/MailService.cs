@@ -16,7 +16,7 @@ namespace Shelfalytics.Service
         private readonly IEquipmentDataRepository _equipmentDataRepository;
         private readonly IMailQueueRepository _mailQueueRepository;
 
-        private readonly int _timespanForDeletion = 1;
+        //private readonly int _timespanForDeletion = 1;
 
         public MailService(IEquipmentDataRepository equipmentDataRepository, IMailQueueRepository mailQueueRepository)
         {

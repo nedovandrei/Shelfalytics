@@ -114,9 +114,11 @@ namespace Shelfalytics.Service
                     OOSPercentage = Math.Round(g.Count(x => x.ProductId == key) / ZeroOOSCount * 100, 2)
                 }
             ).ToList();
+
+            var actualFill = 100 - Math.Round((double)latestReading.SensorReadings.Sum(x => x.Distance) /
+                                                   (double)(equipment.EmptyDistance * equipment.RowCount) * 100.00f, 2);
             detailedOOSData.TotalOOS = result;
-            detailedOOSData.ActualFill = 100 - Math.Round((double) latestReading.SensorReadings.Sum(x => x.Distance) /
-                                                   (double) (equipment.EmptyDistance * equipment.RowCount) * 100.00f, 2);
+            detailedOOSData.ActualFill = actualFill <= 0 ? 0.0f : actualFill > 100 ? 100.0f : actualFill;
 
             return detailedOOSData;
 

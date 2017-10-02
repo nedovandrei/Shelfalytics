@@ -61,7 +61,7 @@ namespace Shelfalytics.Service
                         continue;
                     }
 
-                    var percentage = 100 - ((double)(sensorReading.Distance - equipmentData.FullDistance) / (double)(equipmentData.EmptyDistance - equipmentData.FullDistance) * 100);
+                    var percentage = Math.Round(100 - ((double)(sensorReading.Distance - equipmentData.FullDistance) / (double)(equipmentData.EmptyDistance - equipmentData.FullDistance) * 100), 2);
 
                     var rowViewModel = new EquipmentRowInfoViewModel
                     {

@@ -1,4 +1,7 @@
-﻿using Shelfalytics.RepositoryInterface.DTO;
+﻿using Shelfalytics.Model.DbModels;
+using Shelfalytics.RepositoryInterface.DTO;
+using Shelfalytics.RepositoryInterface.Helpers;
+using Shelfalytics.RepositoryInterface.Repositories;
 using Shelfalytics.ServiceInterface;
 using System;
 using System.Collections.Generic;
@@ -15,9 +18,21 @@ namespace Shelfalytics.API.Controllers
     public class TestController : ApiController
     {
         private readonly IMailService _mailService;
-        public TestController(IMailService mailService)
+        private readonly ITestService _testService;
+        public TestController(IMailService mailService, ITestService testService)
         {
+            if (mailService == null)
+            {
+                throw new ArgumentNullException(nameof(mailService));
+            }
+
+            if (testService == null)
+            {
+                throw new ArgumentNullException(nameof(testService));
+            }
+
             _mailService = mailService;
+            _testService = testService;
         }
         [HttpGet]
         [Route("mail")]
@@ -33,6 +48,15 @@ namespace Shelfalytics.API.Controllers
             await _mailService.TestSendOOSEmail(product, 5, to);
 
             return Request.CreateResponse(HttpStatusCode.OK, "Message sent to: " + to);
+        }
+
+        [HttpPost]
+        [Route("fillWithTestSales")]
+        public async Task<HttpResponseMessage> FillEquipmentWithFakeSaleData(int equipmentId, GlobalFilter timeSpan)
+        {
+            await _testService.FillEquipmentWithFakeSaleData(equipmentId, timeSpan);
+            return Request.CreateResponse(HttpStatusCode.OK);
+            
         }
     }
 }

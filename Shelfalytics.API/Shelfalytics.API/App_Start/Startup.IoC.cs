@@ -36,6 +36,7 @@ namespace Shelfalytics.API.App_Start
             builder.RegisterType<StatisticsService>().As<IStatisticsService>().InstancePerLifetimeScope();
             builder.RegisterType<MailService>().As<IMailService>().InstancePerLifetimeScope();
             builder.RegisterType<ExportService>().As<IExportService>().InstancePerLifetimeScope();
+            builder.RegisterType<TestService>().As<ITestService>().InstancePerLifetimeScope();
             var container = builder.Build();
             var resolver = new AutofacWebApiDependencyResolver(container);
 

@@ -47,8 +47,9 @@ namespace Shelfalytics.Repository.Repositories
 
             try
             {
+                var role = _roleManager.FindById(user.Role);
                 var result = await _userManager.CreateAsync(newUser, user.Password);
-                await _userManager.AddToRoleAsync(newUser.Id, user.Role);
+                await _userManager.AddToRoleAsync(newUser.Id, role.Name);
                 return result;
             }
             catch (Exception ex)
