@@ -154,11 +154,26 @@ export class PosInfoComponent implements OnInit, OnDestroy {
 
 
           })
-          if(resultItem.TimePeriodHours > 24) {
-            let minutesHigh = resultItem.TimePeriodHours - 24;
-            resultItem.TimePeriodDays += 1;
-            resultItem.TimePeriodHours = resultItem.TimePeriodHours - 24 + minutesHigh;
+
+          if(resultItem.TimePeriodSeconds > 60) {
+            let minutes = Math.floor(resultItem.TimePeriodSeconds / 60);
+            resultItem.TimePeriodMinutes += minutes;
+            resultItem.TimePeriodSeconds = resultItem.TimePeriodSeconds % 60;
           }
+
+          if(resultItem.TimePeriodMinutes > 60) {
+            let minutes = Math.floor(resultItem.TimePeriodMinutes / 60);
+            resultItem.TimePeriodHours += minutes;
+            resultItem.TimePeriodMinutes = resultItem.TimePeriodMinutes % 60;
+          }
+
+          if(resultItem.TimePeriodHours > 24) {
+            let daysInPlus = Math.floor(resultItem.TimePeriodHours / 24);
+            resultItem.TimePeriodDays += daysInPlus;
+            resultItem.TimePeriodHours = resultItem.TimePeriodHours % 24;
+          }
+
+          
 
           resultData.push(resultItem);
         })
@@ -219,6 +234,23 @@ export class PosInfoComponent implements OnInit, OnDestroy {
                 resultItem.TimePeriodSeconds += piece.TimePeriodSeconds;
                 resultItem.Losses += piece.Losses;
               })
+              if(resultItem.TimePeriodSeconds > 60) {
+                let minutes = Math.floor(resultItem.TimePeriodSeconds / 60);
+                resultItem.TimePeriodMinutes += minutes;
+                resultItem.TimePeriodSeconds = resultItem.TimePeriodSeconds % 60;
+              }
+    
+              if(resultItem.TimePeriodMinutes > 60) {
+                let minutes = Math.floor(resultItem.TimePeriodMinutes / 60);
+                resultItem.TimePeriodHours += minutes;
+                resultItem.TimePeriodMinutes = resultItem.TimePeriodMinutes % 60;
+              }
+    
+              if(resultItem.TimePeriodHours > 24) {
+                let daysInPlus = Math.floor(resultItem.TimePeriodHours / 24);
+                resultItem.TimePeriodDays += daysInPlus;
+                resultItem.TimePeriodHours = resultItem.TimePeriodHours % 24;
+              }
               resultData.push(resultItem);
             })
             this.equipmentLossesDueToOOSTable = resultData;

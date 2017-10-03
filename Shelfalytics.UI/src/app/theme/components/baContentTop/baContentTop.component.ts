@@ -34,7 +34,7 @@ export class BaContentTop {
     this._state.subscribe("menu.activeLink", (activeLink) => {
 
       console
-      if(activeLink.route.path === "main") {
+      if(activeLink && activeLink.route && activeLink.route.path === "main") {
         this.isMain = true;
       } else {
         this.isMain = false;
