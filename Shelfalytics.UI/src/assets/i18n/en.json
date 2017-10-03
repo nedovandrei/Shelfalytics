@@ -120,5 +120,11 @@
     "forms": {
       "option1": "Option 1"
     }
+  },
+  "datepicker": {
+    "week": "Last Week",
+    "month": "Last Month",
+    "sixMonths": "Last 6 Months",
+    "year": "Last Year"
   }
 }
