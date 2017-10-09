@@ -8,7 +8,7 @@ class GoogleMapsData implements IGoogleMapsData {
     disableDefaultUI?: boolean = true;
     zoomControl?: boolean = true;
     clickableIcons?: boolean = true;
-    // scrollwheel: boolean = false;
+    scrollwheel?: boolean = false;
     draggableCursor?: string = ""; // [draggableCursor]="url(<some address>), pointer"
 }
 
@@ -25,11 +25,13 @@ export class GoogleMapsComponent implements OnInit {
   private targetMapData: IGoogleMapsData = undefined;
   private mapInit: boolean = false;
 
+
   ngOnInit() {
     this.targetMapData = new GoogleMapsData();
 
     Object.assign(this.targetMapData, this.mapData);
     this.mapInit = true;
+    
   }
   private markerClicked(label: string, index: any) {
     console.log("maps marker clicked", label, index);

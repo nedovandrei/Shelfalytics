@@ -39,6 +39,7 @@ export interface IAmChartConfig {
     valueText?: string;
     valueAlign? : string;
     valueWidth? : number;
+    
 }
 
 export interface IAmChartValueAxis {
@@ -77,6 +78,7 @@ export interface IAmChartScrollBar {
     graphLineColor?: string;
     selectedGraphLineColor?: string;
     selectedGraphLineAlpha?: number;
+    
 }
 
 export interface IAmChartCursor {
@@ -146,6 +148,7 @@ export class AmChartConfig implements IAmChartConfig {
     valueText?: string;
     valueAlign? : string;
     valueWidth? : number;
+    
 
     constructor(chartType: string) {
         this.type = chartType;
@@ -169,6 +172,7 @@ export class AmChartConfig implements IAmChartConfig {
                 "gridAlpha": 0,
                 "color": "transparent",
                 "scrollbarHeight": 55,
+                
                 "backgroundAlpha": 0,
                 "selectedBackgroundAlpha": 1,
                 "selectedBackgroundColor": "#2dacd1",

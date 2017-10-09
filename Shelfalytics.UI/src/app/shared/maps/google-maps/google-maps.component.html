@@ -4,6 +4,7 @@
   [zoom]="targetMapData.zoom"
   [draggableCursor]="targetMapData.draggableCursor"
   [zoomControl]="targetMapData.zoomControl"
+  [scrollwheel]="mapData.scrollwheel"
   (mapClick)="mapClicked($event)">
 
     <agm-marker *ngFor="let marker of mapData.markers"
