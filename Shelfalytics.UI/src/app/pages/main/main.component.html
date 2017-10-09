@@ -4,7 +4,7 @@
       <div *ngIf="salesSummaryCount === undefined" class="preloader-baCard" style="transform: scale(0.5); display: flex; margin-bottom: -7px">
           <div></div>
       </div>
-      <h2 *ngIf="salesSummaryCount !== undefined">{{salesSummaryCount}}</h2>
+      <h2 *ngIf="salesSummaryCount !== undefined">{{salesSummaryCount | number}}</h2>
       <p translate>{{'main.header.sales'}}</p>
   </ba-card>
   <ba-card class="col-md-6 col-lg-6 col-sm-12 col-12 text-center " >

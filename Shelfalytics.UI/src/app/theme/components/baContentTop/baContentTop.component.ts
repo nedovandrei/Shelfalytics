@@ -13,6 +13,8 @@ export class BaContentTop {
   activePageTitle: string = "";
   private crumbs: any[] = [];
 
+  private isMain: boolean = false;
+
   private routes = {
     pos_info: "/pages/points-of-sale/pos-info"
   };
@@ -30,10 +32,17 @@ export class BaContentTop {
 
   constructor(private _state: GlobalState, private router: Router) {
     this._state.subscribe("menu.activeLink", (activeLink) => {
+
+      console
+      if(activeLink && activeLink.route && activeLink.route.path === "main") {
+        this.isMain = true;
+      } else {
+        this.isMain = false;
+      }
       this.crumbs = [];
       console.log("activeLink bacontentTop", activeLink);
       if (activeLink.route) {
-
+        console.log("activeLink bacontentTop", activeLink);
         const crumb = Object.assign({}, { url: "" }, activeLink);
 
         _.each(crumb.route.paths, (item: any, index: number) => {
