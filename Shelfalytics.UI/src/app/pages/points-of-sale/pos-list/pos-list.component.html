@@ -13,7 +13,7 @@
 
 
 <ba-card title="pointsOfSale.posOnMap" class="animated" animateOnScroll animationName="fadeInDown">
-    <div *ngIf="!mapInit" class="preloader-baCard" style="margin-top: 100px; margin-bottom: 100px">
+    <div *ngIf="!mapInit" class="preloader-baCard" style="padding-top: 100px; margin-bottom: 100px">
         <div></div>
     </div>
   <google-maps *ngIf="mapInit" [mapData]="mapSettings"></google-maps>

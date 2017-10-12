@@ -1,7 +1,7 @@
 <div  class="row meshes">
   <div class="col-xl-6 col-md-6 d-flex align-items-stretch" >
     <ba-card style="min-width: 100%;">
-        <div *ngIf="!initFlag" class="preloader-baCard" style="margin-top: -9px; margin-bottom: 170px; transform: scale(1.1)">
+        <div *ngIf="!initFlag" class="preloader-baCard" style="padding-top: 9px; margin-bottom: 170px; transform: scale(1.1)">
             <div></div>
         </div>
       <h4 *ngIf="initFlag"><i class="ion ion-information"></i><span translate>{{'pointsOfSale.posInfo.equipmentInfo.model'}}</span>: <span class="text-info">{{equipmentData.ModelName}}</span></h4>
@@ -22,7 +22,7 @@
         <ba-card title="{{'pointsOfSale.posInfo.equipmentInfo.actualFill'}}" style="min-width: 100%;">
           <div class="row justify-content-center">
             <div class="col-12 col-xl-12 col-md-10 col-sm-8 col-12">
-                <div *ngIf="!initFlag" class="preloader-baCard" style="margin-top: -9px; margin-bottom: 170px; transform: scale(1.1)">
+                <div *ngIf="!initFlag" class="preloader-baCard" style="padding-top: 9px; margin-bottom: 170px; transform: scale(1.1)">
                     <div></div>
                 </div>
               <easy-pie-chart *ngIf="initFlag" [chartData]="fillChartData"></easy-pie-chart>
@@ -35,7 +35,7 @@
           <ba-card  title="{{'pointsOfSale.posInfo.equipmentInfo.oos'}}" style="min-width: 100%;">
             <div class="row justify-content-center">
               <div class="col-12 col-xl-12 col-md-10 col-sm-8 col-12">
-                  <div *ngIf="!initFlag" class="preloader-baCard" style="margin-top: -9px; margin-bottom: 170px; transform: scale(1.1)">
+                  <div *ngIf="!initFlag" class="preloader-baCard" style="padding-top: 9px; margin-bottom: 170px; transform: scale(1.1)">
                       <div></div>
                   </div>
                 <easy-pie-chart *ngIf="initFlag" [chartData]="oosChartData"></easy-pie-chart>
@@ -47,7 +47,7 @@
     </div>
 </div>
 <div class="col-12">
-    <div *ngIf="!initFlag" class="preloader-baCard" style="margin-top: -20px; margin-bottom: 335px; transform: scale(1.4)">
+    <div *ngIf="!initFlag" class="preloader-baCard" style="padding-top: 20px; margin-bottom: 335px; transform: scale(1.4)">
         <div></div>
     </div>
   <pie-chart *ngIf="initFlag" [chartData]="equipmentData" [rowCount]="equipmentData.RowCount"></pie-chart>

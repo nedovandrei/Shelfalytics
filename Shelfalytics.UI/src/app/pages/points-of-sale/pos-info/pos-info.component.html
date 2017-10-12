@@ -10,35 +10,35 @@
 <div>
   <div class="row">
     <ba-card class="col-md-4 d-flex align-items-stretch text-center">
-      <div *ngIf="!initFlag" class="preloader-baCard" style="margin-top: 15px; transform:scale(0.6); margin-bottom: -4px">
+      <div *ngIf="!initFlag" class="preloader-baCard" style="padding-top: 15px; transform:scale(0.6); margin-bottom: -4px">
           <div></div>
       </div>
       <p *ngIf="initFlag"><i class="fa fa-map-marker"></i><span translate>{{'pointsOfSale.posInfo.posName'}}</span>:</p>
       <h2 *ngIf="initFlag">{{posData.PointOfSaleName}}</h2>
     </ba-card>
     <ba-card class="col-md-4 d-flex align-items-stretch text-center">
-        <div *ngIf="!initFlag" class="preloader-baCard" style="margin-top: 15px; transform:scale(0.6); margin-bottom: -4px">
+        <div *ngIf="!initFlag" class="preloader-baCard" style="padding-top: 15px; transform:scale(0.6); margin-bottom: -4px">
             <div></div>
         </div>
       <p *ngIf="initFlag"><i class="fa fa-map"></i><span translate>{{'pointsOfSale.posInfo.posAddress'}}</span>:</p>
           <h2 *ngIf="initFlag"> {{posData.PointOfSaleAddress}}</h2>
     </ba-card>
     <ba-card class="col-md-4 d-flex align-items-stretch text-center">
-        <div *ngIf="!initFlag" class="preloader-baCard" style="margin-top: 15px; transform:scale(0.6); margin-bottom: -4px">
+        <div *ngIf="!initFlag" class="preloader-baCard" style="padding-top: 15px; transform:scale(0.6); margin-bottom: -4px">
             <div></div>
         </div>
       <p *ngIf="initFlag"><i class="fa fa-phone"></i><span translate>{{'pointsOfSale.posInfo.posTelephone'}}</span>:</p>
         <h2 *ngIf="initFlag"> {{posData.PointOfSaleTelephone}}</h2>
     </ba-card>
     <ba-card class="col-md-6 d-flex align-items-stretch text-center">
-        <div *ngIf="!initFlag" class="preloader-baCard" style="margin-top: 15px; transform:scale(0.6); margin-bottom: -4px">
+        <div *ngIf="!initFlag" class="preloader-baCard" style="padding-top: 15px; transform:scale(0.6); margin-bottom: -4px">
             <div></div>
         </div>
       <p *ngIf="initFlag"><i class="fa fa-user-o"></i><span translate>{{'pointsOfSale.posInfo.contactPersonName'}}</span>:</p>
         <h2 *ngIf="initFlag"> {{posData.ContactPersonName}}</h2>
     </ba-card>
     <ba-card class="col-md-6 d-flex align-items-stretch text-center">
-        <div *ngIf="!initFlag" class="preloader-baCard" style="margin-top: 15px; transform:scale(0.6); margin-bottom: -4px">
+        <div *ngIf="!initFlag" class="preloader-baCard" style="padding-top: 15px; transform:scale(0.6); margin-bottom: -4px">
             <div></div>
         </div>
       <p *ngIf="initFlag"><i class="fa fa-calendar-check-o"></i><span translate>{{'pointsOfSale.posInfo.schedule'}}</span>:</p>
@@ -55,7 +55,7 @@
           </div>
         </ba-card> -->
         <ba-card class="col-12 col-md-6" title="{{'pointsOfSale.posInfo.posActualFill'}}">
-            <div *ngIf="!initFlag" class="preloader-baCard" style="margin-top: 85px; margin-bottom: 60px; transform: scale(1.4)">
+            <div *ngIf="!initFlag" class="preloader-baCard" style="padding-top: 85px; padding-bottom: 60px; transform: scale(1.4)">
                 <div></div>
             </div>
               <div *ngIf="initFlag" class="row justify-content-center">
@@ -66,7 +66,7 @@
 
         </ba-card>
         <ba-card class="col-12 col-md-6" title="{{'pointsOfSale.posInfo.posOos'}}">
-            <div *ngIf="!initFlag" class="preloader-baCard" style="margin-top: 85px; margin-bottom: 60px; transform: scale(1.4)">
+            <div *ngIf="!initFlag" class="preloader-baCard" style="padding-top: 85px; padding-bottom: 60px; transform: scale(1.4)">
                 <div></div>
             </div>
               <div *ngIf="initFlag" class="row justify-content-center">
@@ -80,7 +80,7 @@
   <div class="row" >
 
     <div class="col-md-12">
-        <div *ngIf="!initFlag" class="preloader-baCard" style="margin-top: 5px; margin-bottom: 5px; transform: scale(0.3)">
+        <div *ngIf="!initFlag" class="preloader-baCard" style="padding-top: 5px; padding-bottom: 5px; transform: scale(0.3)">
             <div></div>
         </div>
       <ul *ngIf="initFlag" class="nav nav-pills nav-fill">
@@ -111,7 +111,7 @@
   <div class="col-md-12">
       
     <ba-card title="{{'pointsOfSale.posInfo.equipmentInfo.sales'}}">
-        <div *ngIf="!equipmentInitFlag" class="preloader-baCard" style="margin-top: 125px; margin-bottom: 100px; transform: scale(1.2)">
+        <div *ngIf="!equipmentInitFlag" class="preloader-baCard" style="padding-top: 125px; padding-bottom: 100px; transform: scale(1.2)">
             <div></div>
         </div>
       <amchart *ngIf="equipmentInitFlag" [chartData]="salesChartData"></amchart>
@@ -122,7 +122,7 @@
 <div class="row" *ngIf="initFlag">
   <div class="col-md-12 mb-4">
       <ba-card class="card mb-0 with-scroll table-panel" title="{{'pointsOfSale.posInfo.equipmentInfo.productOosTable.title'}}">
-          <div *ngIf="!equipmentInitFlag" class="preloader-baCard" style="margin-top: 125px; margin-bottom: 100px; transform: scale(1.2)">
+          <div *ngIf="!equipmentInitFlag" class="preloader-baCard" style="padding-top: 125px; padding-bottom: 100px; transform: scale(1.2)">
               <div></div>
           </div>
         <div class="horizontal-scroll " *ngIf="equipmentInitFlag" style="max-height: 400px; overflow-y:auto">
@@ -150,7 +150,7 @@
   </div>
   <div class="col-md-12 mb-4">
       <ba-card class="card mb-0 with-scroll table-panel" title="{{'pointsOfSale.posInfo.equipmentInfo.lossesDueToOosTable.title'}}">
-          <div *ngIf="!equipmentInitFlag" class="preloader-baCard" style="margin-top: 125px; margin-bottom: 100px; transform: scale(1.2)">
+          <div *ngIf="!equipmentInitFlag" class="preloader-baCard" style="padding-top: 125px; padding-bottom: 100px; transform: scale(1.2)">
               <div></div>
           </div>
         <div class="horizontal-scroll " *ngIf="equipmentInitFlag" style="max-height: 400px; overflow-y:auto">

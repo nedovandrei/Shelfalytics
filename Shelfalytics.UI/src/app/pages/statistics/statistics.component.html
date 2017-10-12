@@ -90,13 +90,15 @@
           </div>
     </div> -->
   </div>
+  <div style="position: relative">
   <fieldset class="form-group" *ngIf="!exportOngoing">
       <button type="button" (click)="exportExcel()" class="btn btn-primary" translate>
         {{'statistics.create'}}
       </button>
       
     </fieldset>
-    <div *ngIf="exportOngoing" class="preloader-baCard" style="transform: scale(0.5); display: flex; margin-bottom: -7px">
+    <div *ngIf="exportOngoing" class="preloader-baCard" style="transform: scale(0.5); display: flex;  margin-bottom: -7px">
       <div></div>
     </div>
+  </div>
 </ba-card>
