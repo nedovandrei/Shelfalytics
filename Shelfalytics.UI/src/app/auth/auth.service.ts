@@ -12,7 +12,7 @@ export class AuthService {
   constructor(private http: Http, private router: Router, private jwt: JwtHelper, private filter: GlobalFilter) {}
 
   login(credentials: Credentials) {
-      console.log("credentials", credentials);
+    //   console.log("credentials", credentials);
     let header: Headers = new Headers();
     header.append("Content-Type", "application/x-www-form-urlencoded");
     let requestOptions: RequestOptionsArgs = {

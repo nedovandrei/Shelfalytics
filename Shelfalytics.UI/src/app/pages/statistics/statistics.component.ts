@@ -59,13 +59,13 @@ export class StatisticsComponent implements OnInit, OnDestroy {
         return item.ChainName;
       }), false);
       this.initSelects = true;
-      console.log("selects data", data);
+      // console.log("selects data", data);
     });
   }
 
   private exportExcel() {
     this.exportOngoing = true;
-    console.log("export excel filter", this.exportFilter);
+    // console.log("export excel filter", this.exportFilter);
     this.statisticsService.exportExcel(this.exportFilter).subscribe((data: any) => {
       importedSaveAs(data, `export${this.exportFilter.StartTime.format("DD.MM.YYYY")}-${this.exportFilter.EndTime.format("DD.MM.YYYY")}.xlsx`);
 

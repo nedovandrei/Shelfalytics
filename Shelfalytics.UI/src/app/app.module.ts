@@ -100,7 +100,7 @@ export class AppModule {
       // console.log("translation changed", params);
     });
     translate.onLangChange.subscribe((params: any) => {
-      console.log(params);
+      // console.log(params);
       localStorage.setItem("language", params.lang);
       
     });

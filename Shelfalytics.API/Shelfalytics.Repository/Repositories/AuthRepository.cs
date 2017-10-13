@@ -11,6 +11,7 @@ using Shelfalytics.RepositoryInterface.DTO;
 using Shelfalytics.RepositoryInterface.Repositories;
 using Shelfalytics.RepositoryInterface.Helpers;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 
 namespace Shelfalytics.Repository.Repositories
 {
@@ -63,6 +64,20 @@ namespace Shelfalytics.Repository.Repositories
         {
             var result = await _userManager.FindAsync(user.UserName, user.Password);
             return result;
+        }
+
+        public async Task RegisterLoginDate(string userId)
+        {
+            using (var uow = _unitOfWorkFactory.GetShelfalyticsIdentityDbContext())
+            {
+                //var user = await _userManager.FindByIdAsync(userId);
+                
+                var user = await uow.Set<User>().FirstOrDefaultAsync(x => x.Id == userId);
+                user.LastLogin = DateTime.Now;
+                await uow.SaveChangesAsync();
+            }
+            
+            
         }
 
         public async Task<IEnumerable<UserDTO>> GetUsersByClientId(int clientId)

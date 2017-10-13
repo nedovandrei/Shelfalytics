@@ -64,7 +64,7 @@ export class App implements AfterViewInit, OnInit {
         this.filter.supervisorId = decodedToken.supervisorId;
       }
     }
-    console.log("app component, globalFilter", this.filter);
+    // console.log("app component, globalFilter", this.filter);
   }
   // jwtHelper: JwtHelper = new JwtHelper();
   ngOnInit() {

@@ -29,7 +29,7 @@ export class GroupPieChart implements OnInit, AfterViewInit, OnChanges {
   ngOnInit() {
 
 
-    console.log("Group pie charts chart data", this.chartData);
+    // console.log("Group pie charts chart data", this.chartData);
 
     let chartsArray = [];
     let pusherIndex = 0;
@@ -74,7 +74,7 @@ export class GroupPieChart implements OnInit, AfterViewInit, OnChanges {
       arrayWithMargins.width = (100 - percentageSumm) / (arrayWithMargins.data.length - 1);
       targetArray.push(arrayWithMargins);
     }
-    console.log("equipmentInfo [][] array ", chartsArray);
+    // console.log("equipmentInfo [][] array ", chartsArray);
     this.chartArrays = targetArray;
 
     this.charts = this._pieChartService.getData(this.chartData.RowInfo, this.rowCount);
@@ -154,7 +154,7 @@ export class GroupPieChart implements OnInit, AfterViewInit, OnChanges {
         arrayWithMargins.width = (100 - percentageSumm) / (arrayWithMargins.data.length - 1);
         targetArray.push(arrayWithMargins);
       }
-      console.log("equipmentInfo [][] array ", chartsArray);
+      // console.log("equipmentInfo [][] array ", chartsArray);
       this.chartArrays = targetArray;
   
       this.charts = this._pieChartService.getData(this.chartData.RowInfo, this.rowCount);

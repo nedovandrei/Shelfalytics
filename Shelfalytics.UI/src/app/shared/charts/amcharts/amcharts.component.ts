@@ -150,8 +150,6 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges, AfterVie
     private initChart() {
         this.chart =
             this.amChartsService.makeChart(this.chartName ? this.chartName : "chartdiv", this.chartConfig );
-            // $(".amcharts-legend-div").css("overflow-y", "auto!important");
-            // $(".amcharts-legend-div").css("max-height", "300px");
 
         if (this.chartType === "pie") {
             this.chart.labelsEnabled = false;
@@ -164,7 +162,10 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges, AfterVie
             this.chart.addLegend(legend);
 
             
-        }
+        } 
+
+        // console.log(this.chart);
+        // window.AmCharts.AmSerialChart.base.zoomValueScrollBar(2);
         
     }
 

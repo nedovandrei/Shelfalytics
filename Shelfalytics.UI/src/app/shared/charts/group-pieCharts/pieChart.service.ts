@@ -8,7 +8,7 @@ export class PieChartService {
   }
 
   getData(data: any, rowCount: number) {
-    console.log("get data - data", data);
+    // console.log("get data - data", data);
     const pieColor = this._baConfig.get().colors.custom.dashboardPieChart;
 
     const outputData: any[] = [];
@@ -33,30 +33,7 @@ export class PieChartService {
 
       outputData.push(arrayData);
     }
-    console.log("outputData", outputData);
+    // console.log("outputData", outputData);
     return outputData;
-    // return [
-    //   {
-    //     color: pieColor,
-    //     description: 'dashboard.new_visits',
-    //     stats: '57,820',
-    //     icon: 'person',
-    //   }, {
-    //     color: pieColor,
-    //     description: 'dashboard.purchases',
-    //     stats: '$ 89,745',
-    //     icon: 'money',
-    //   }, {
-    //     color: pieColor,
-    //     description: 'dashboard.active_users',
-    //     stats: '178,391',
-    //     icon: 'face',
-    //   }, {
-    //     color: pieColor,
-    //     description: 'dashboard.returned',
-    //     stats: '32,592',
-    //     icon: 'refresh',
-    //   }
-    // ];
   }
 }

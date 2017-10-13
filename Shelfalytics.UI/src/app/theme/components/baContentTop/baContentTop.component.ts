@@ -40,9 +40,9 @@ export class BaContentTop {
         this.isMain = false;
       }
       this.crumbs = [];
-      console.log("activeLink bacontentTop", activeLink);
+      // console.log("activeLink bacontentTop", activeLink);
       if (activeLink.route) {
-        console.log("activeLink bacontentTop", activeLink);
+        // console.log("activeLink bacontentTop", activeLink);
         const crumb = Object.assign({}, { url: "" }, activeLink);
 
         _.each(crumb.route.paths, (item: any, index: number) => {
@@ -56,7 +56,7 @@ export class BaContentTop {
         this.crumbs.push(crumb);
         this.activePageTitle = activeLink.title;
       } else {
-        console.log("activeLink bacontentTop", activeLink);
+        // console.log("activeLink bacontentTop", activeLink);
         _.each(this.routes, (item: string) => {
           if (this.router.url === this.routes[item]) {
             this.activePageTitle = this.names[item];

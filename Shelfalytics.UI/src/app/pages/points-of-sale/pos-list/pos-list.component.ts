@@ -128,7 +128,7 @@ export class PosListComponent implements OnInit, AfterViewInit {
         return memo + item.coordinates.lng;
       }, 0) / (this.mapSettings.markers.length === 0 ? 1 : this.mapSettings.markers.length);
 
-      console.log("mapSettings", this.mapSettings);
+      // console.log("mapSettings", this.mapSettings);
 
       this.mapInit = true;
     });

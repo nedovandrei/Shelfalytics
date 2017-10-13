@@ -44,14 +44,14 @@ export class Login {
     this.loadingFlag = true;
     if (this.form.valid) {
       // your code goes here
-      console.log(values);
+      // console.log(values);
       values.grant_type = "password";
       this.auth.login(values).subscribe(
         // We're assuming the response will be an object
         // with the JWT on an id_token key
         data => { 
           this.invalidData = false;
-          console.log("login data", data);
+          // console.log("login data", data);
           // const decodedJwt = this.jwt.decodeToken(data.access_token);
           localStorage.setItem("token", data.access_token);
           
@@ -65,7 +65,7 @@ export class Login {
         error => {
           this.loadingFlag = false;
           this.invalidData = true;
-          console.log(error);
+          // console.log(error);
         }
       );
 

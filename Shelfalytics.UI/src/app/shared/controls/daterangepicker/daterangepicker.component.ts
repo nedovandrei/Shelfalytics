@@ -66,7 +66,7 @@ export class DaterangepickerComponent implements OnInit {
   // private eventLog: any;
 
   private onDateSelect(value: any) {
-    console.log("selected date ", value);
+    // console.log("selected date ", value);
     this.selectedDate.startDate = value.start;
     this.selectedDate.endDate = value.end;
     this.dateChanged.emit(value);

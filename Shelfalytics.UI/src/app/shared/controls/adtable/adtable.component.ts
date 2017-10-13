@@ -175,7 +175,7 @@ export class ADTableComponent implements OnInit {
     }
 
     private loadDataSuccess(mdata: IMData): void {
-        console.log("loadDataSuccess", mdata);
+        // console.log("loadDataSuccess", mdata);
 
         if (mdata === undefined) {
             this.loadState = MTableLoadState.fail;
@@ -217,7 +217,7 @@ export class ADTableComponent implements OnInit {
     }
 
     private setColumnsWidth() {
-        console.log("setColumnsWidth");
+        // console.log("setColumnsWidth");
         let totalWidth = 0;
         const columnsWithoutWidth: MColumn[] = [];
 
@@ -240,7 +240,7 @@ export class ADTableComponent implements OnInit {
     }
 
     private setDefaultSortDirection() {
-        console.log("setDefaultSortDirection");
+        // console.log("setDefaultSortDirection");
         let column = this.columns.find(x => x.sortable && x.sortDirection !== null);
         if (column === null) {
             column = this.columns.find(x => x.sortable);
@@ -257,7 +257,7 @@ export class ADTableComponent implements OnInit {
             .debounceTime(this.eventTriggerDebounceTime)
             .subscribe(selectedPage => {
 
-                console.log("setPageChangeDebounce");
+                // console.log("setPageChangeDebounce");
 
                 const pnumber = Number(selectedPage);
                 if (
@@ -278,7 +278,7 @@ export class ADTableComponent implements OnInit {
         column.filterValueControl.valueChanges
             .debounceTime(this.eventTriggerDebounceTime)
             .subscribe((filterValue: any) => {
-                console.log("setFilterChangeDebounce");
+                // console.log("setFilterChangeDebounce");
                 let isFilterChanged = false;
                 switch (column.dataType) {
                     case MColumnDataType.number:
@@ -316,7 +316,7 @@ export class ADTableComponent implements OnInit {
     }
 
     private onPageChange($event: Event, page: number): void {
-        console.log("onPageChange");
+        // console.log("onPageChange");
         if ($event && $event.preventDefault) {
             $event.preventDefault();
         }
@@ -325,7 +325,7 @@ export class ADTableComponent implements OnInit {
     }
 
     private onSortDirectionChange(column: MColumn) {
-        console.log("onSortDirectionChange");
+        // console.log("onSortDirectionChange");
 
         if (column.sortable) {
             if (this.tableState.sortedColumn !== column) {
@@ -358,7 +358,7 @@ export class ADTableComponent implements OnInit {
     }
 
     private toggleFilter() {
-        console.log("toggleFilter");
+        // console.log("toggleFilter");
 
         this.isFilterVisible = !this.isFilterVisible;
         if (!this.isFilterVisible) {
@@ -468,7 +468,7 @@ class MColumn implements IMColumn {
         private decimalPipe: DecimalPipe, 
         private datePipe: DatePipe
     ) {
-        console.log("MColumn constructor", moptions, column);
+        // console.log("MColumn constructor", moptions, column);
         Object.assign(this, column);
         if (moptions.sortable && this.sortable === null) {
             this.sortable = moptions.sortable;

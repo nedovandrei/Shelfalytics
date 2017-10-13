@@ -12,5 +12,6 @@ namespace Shelfalytics.RepositoryInterface.Repositories
         Task<IdentityResult> RegisterUser(UserDTO user);
         Task<User> FindUser(UserLoginDTO user);
         Task<IEnumerable<UserDTO>> GetUsersByClientId(int clientId);
+        Task RegisterLoginDate(string userId);
     }
 }

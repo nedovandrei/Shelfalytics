@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using System.Web;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security.OAuth;
 using Shelfalytics.Repository;
 using Shelfalytics.Repository.Repositories;
 using Shelfalytics.RepositoryInterface.DTO;
-using Shelfalytics.RepositoryInterface.Repositories;
-using Microsoft.AspNet.Identity;
 
 namespace Shelfalytics.API.Providers
 {
@@ -42,6 +37,8 @@ namespace Shelfalytics.API.Providers
                 context.SetError("invalid_grant", "The user name or password is incorrect.");
                 return;
             }
+
+            await _repo.RegisterLoginDate(user.Id);
 
             var identity = new ClaimsIdentity(context.Options.AuthenticationType);
             //identity.AddClaim(new Claim("sub", context.UserName));

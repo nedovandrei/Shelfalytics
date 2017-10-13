@@ -38,7 +38,7 @@ export class EquipmentInfoComponent implements OnInit, OnChanges {
     this.initFlag = false;
     this.posInfoService.getShelfData(this.equipmentId).subscribe((data: any) => {
       this.equipmentData = data[0];
-      console.log("equipment info ", data);
+      // console.log("equipment info ", data);
       this.timeStamp = moment(data[0].TimeStamp).format("hh:mm:ss A, dddd, Do MMMM YYYY");
       this.initFlag = true;
       this.firstLoad = false;
@@ -49,7 +49,7 @@ export class EquipmentInfoComponent implements OnInit, OnChanges {
   private reload(){
     this.posInfoService.getShelfData(this.equipmentId).subscribe((data: any) => {
       this.equipmentData = data[0];
-      console.log("equipment info ", data);
+      // console.log("equipment info ", data);
       this.timeStamp = moment(data[0].TimeStamp).format("hh:mm:ss A, dddd, Do MMMM YYYY");
     });
   }

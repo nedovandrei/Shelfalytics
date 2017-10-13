@@ -133,7 +133,7 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
   // }
 
   private tabChanged(event: any) {
-    console.log("tab changed main component", event);
+    // console.log("tab changed main component", event);
 
     if (event.title === "main.cards.topSkuOos") {
       this.reloadTopSkuOosCardData(event);
@@ -253,11 +253,10 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
     this.globalFilter.globalStateSubject.next(true);
     this.globalFilter.globalStateValueSubject.next(true);
     this.globalFilter.onDateRangeChanged.subscribe((dateTimeValue: any) => {
-      console.log("fired onDateRangeChange event");
+      // console.log("fired onDateRangeChange event");
       this.loadData();
     });
     // this.loadData();
-
   }
 
   private loadData() {
@@ -330,7 +329,7 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
         return memo + item.coordinates.lng;
       }, 0) / (this.mapSettings.markers.length === 0 ? 1 : this.mapSettings.markers.length);
 
-      console.log("mapSettings", this.mapSettings);
+      // console.log("mapSettings", this.mapSettings);
 
       this.mapInit = true;
     });

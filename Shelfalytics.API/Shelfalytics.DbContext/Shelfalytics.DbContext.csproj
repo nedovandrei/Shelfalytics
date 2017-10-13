@@ -88,6 +88,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\Identity\201710130942471_AddedLastLoginToUser.cs" />
+    <Compile Include="Migrations\Identity\201710130942471_AddedLastLoginToUser.Designer.cs">
+      <DependentUpon>201710130942471_AddedLastLoginToUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Identity\Configuration.cs" />
     <Compile Include="Migrations\Main\201709231731175_addedMailOosQueue.cs" />
     <Compile Include="Migrations\Main\201709231731175_addedMailOosQueue.Designer.cs">
@@ -129,6 +133,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\Identity\201710130942471_AddedLastLoginToUser.resx">
+      <DependentUpon>201710130942471_AddedLastLoginToUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Main\201709231731175_addedMailOosQueue.resx">
       <DependentUpon>201709231731175_addedMailOosQueue.cs</DependentUpon>
     </EmbeddedResource>

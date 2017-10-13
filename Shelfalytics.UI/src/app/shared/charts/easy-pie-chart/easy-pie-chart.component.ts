@@ -14,7 +14,7 @@ export class EasyPieChartComponent implements OnInit {
   private initFlag: boolean = false;
 
   ngOnInit() {
-    console.log("easypiechart chartData", this.chartData);
+    // console.log("easypiechart chartData", this.chartData);
     this.initFlag = true;
   }
 
@@ -26,7 +26,7 @@ export class EasyPieChartComponent implements OnInit {
 
   private _loadPieCharts() {
 
-    console.log("easypiechart chartData", this.chartData);
+    // console.log("easypiechart chartData", this.chartData);
     jQuery(".easy-pie-chart").easyPieChart({
       easing: "easeOutBounce",
       onStep: function (from, to, percent) {

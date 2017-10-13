@@ -31,11 +31,11 @@ export class Pages implements OnInit {
   }
 
   private dateRangeChanged(value: any) {
-    console.log("date range changed, pages.comp", value);
+    // console.log("date range changed, pages.comp", value);
 
     this.globalFilter.startDate = value.start;
     this.globalFilter.endDate = value.end;
-    console.log("global filter", this.globalFilter);
+    // console.log("global filter", this.globalFilter);
     this.globalFilter.onDateRangeChanged.next(value);
   }
 
