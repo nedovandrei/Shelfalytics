@@ -127,6 +127,7 @@ namespace Shelfalytics.Service
         public async Task<EquipmentDetaildedOOSDTO> GetPOSOOS(int posId, GlobalFilter filter)
         {
             var pos = await _pointOfSaleRepository.GetPosEquipment(posId, filter);
+            var oosSumm = 0.0d;
 
             var result = new EquipmentDetaildedOOSDTO { OOSProducts = new List<EquipmentProductOOSDTO>() };
             foreach (var equipment in pos)
@@ -147,10 +148,12 @@ namespace Shelfalytics.Service
                         }
                     }
                 }
-                result.TotalOOS += equipmentData.TotalOOS;
+                oosSumm += equipmentData.TotalOOS;
+                //result.TotalOOS += equipmentData.TotalOOS;
                 result.ActualFill += equipmentData.ActualFill;
             }
 
+            result.TotalOOS = oosSumm / pos.Count();
             return result;
         }
 
@@ -188,6 +191,7 @@ namespace Shelfalytics.Service
         {
             var posList = await _pointOfSaleRepository.GetPointsOfSales(filter.ClientId, filter.IsAdmin);
             var result = new EquipmentDetaildedOOSDTO { OOSProducts = new List<EquipmentProductOOSDTO>() };
+            var oosSum = 0.0d;
 
             foreach (var pos in posList)
             {
@@ -208,9 +212,10 @@ namespace Shelfalytics.Service
                         }
                     }
                 }
-                
-                result.TotalOOS += posOos.TotalOOS;
+                oosSum += posOos.TotalOOS;
+                //result.TotalOOS += posOos.TotalOOS;
             }
+            result.TotalOOS = oosSum / posList.Count();
 
             return result;
         }
