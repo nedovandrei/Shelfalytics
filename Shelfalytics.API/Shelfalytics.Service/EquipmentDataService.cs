@@ -222,18 +222,36 @@ namespace Shelfalytics.Service
                 {
                     EquipmentId = equipment.Id,
                     Temperature = previousReading.Temperature,
-                    TimeSpamp = previousReading.TimeSpamp,
+                    TimeSpamp = DateTime.UtcNow,
                     WasOpened = true
                 };
 
                 var registeredReading = await _equipmentDataRepository.RegisterEquipmentReading(readingModel);
 
-                var newDistanceReadings = previousReading.SensorReadings.Select(x => new EquipmentDistanceReading
+                var newDistanceReadings = new List<EquipmentDistanceReading>();
+
+                if(previousReading.SensorReadings.Count() == 0)
                 {
-                    EquipmentReadingId = registeredReading.Id,
-                    Distance = x.Distance,
-                    Row = x.Row,
-                });
+                    for(var i = 0; i < equipment.RowCount; i++)
+                    {
+                        newDistanceReadings.Add(new EquipmentDistanceReading
+                        {
+                            EquipmentReadingId = registeredReading.Id,
+                            Distance = equipment.EmptyDistance,
+                            Row = i + 1,
+                        });
+                    }
+                }
+                else
+                {
+                    newDistanceReadings = previousReading.SensorReadings.Select(x => new EquipmentDistanceReading
+                    {
+                        EquipmentReadingId = registeredReading.Id,
+                        Distance = x.Distance,
+                        Row = x.Row,
+                    }).ToList();
+                }
+                
                 await _equipmentDataRepository.RegisterEquipmentDistanceReadings(newDistanceReadings);
             }
             else
