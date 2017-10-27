@@ -3,7 +3,7 @@ import { IGoogleMapsData, IMarker, ICoordinates } from "./google-maps.model";
 
 class GoogleMapsData implements IGoogleMapsData {
     center: ICoordinates;
-    zoom?: number = 11;
+    zoom?: number = 5;
     markers: IMarker[];
     disableDefaultUI?: boolean = true;
     zoomControl?: boolean = true;
