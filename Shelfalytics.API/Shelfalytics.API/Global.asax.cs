@@ -75,7 +75,7 @@ namespace Shelfalytics.API
             {
                 AllowInsecureHttp = true,
                 TokenEndpointPath = new PathString("/api/token"),
-                AccessTokenExpireTimeSpan = TimeSpan.FromHours(1),
+                AccessTokenExpireTimeSpan = TimeSpan.FromHours(5),
                 Provider = new SimpleAuthorizationServerProvider(),
                 //AccessTokenFormat = new MyJwtFormat()
             };
