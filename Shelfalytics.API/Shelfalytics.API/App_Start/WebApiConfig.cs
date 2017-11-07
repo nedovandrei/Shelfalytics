@@ -27,8 +27,8 @@ namespace Shelfalytics.API
             );
 
             //config.Services.Replace(typeof(IExceptionHandler), new CustomExceptionHandler());
-            config.Services.Add(typeof(IExceptionLogger), new CustomExceptionLogger());
-            config.MessageHandlers.Add(new CustomMessageHandler());
+            //config.Services.Add(typeof(IExceptionLogger), new CustomExceptionLogger());
+            //config.MessageHandlers.Add(new CustomMessageHandler());
         }
     }
 }

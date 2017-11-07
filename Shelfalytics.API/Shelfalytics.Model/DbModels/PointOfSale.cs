@@ -13,6 +13,8 @@ namespace Shelfalytics.Model.DbModels
         [MaxLength(200)]
         public string PointOfSaleName { get; set; }
         [Required]
+        public string ChainName { get; set; }
+        [Required]
         [MaxLength(300)]
         public string Address { get; set; }
         [Required]
@@ -32,6 +34,10 @@ namespace Shelfalytics.Model.DbModels
         public double Latitude { get; set; }
         [Required]
         public double Longitude { get; set; }
-        
+        [Required]
+        public string City { get; set; }
+        [Required]
+        public string TradeChannel { get; set; }
+
     }
 }

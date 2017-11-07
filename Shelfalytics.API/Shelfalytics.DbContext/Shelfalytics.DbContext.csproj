@@ -88,38 +88,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\Identity\201707181902365_Init.cs" />
-    <Compile Include="Migrations\Identity\201707181902365_Init.Designer.cs">
-      <DependentUpon>201707181902365_Init.cs</DependentUpon>
+    <Compile Include="Migrations\Identity\201710130942471_AddedLastLoginToUser.cs" />
+    <Compile Include="Migrations\Identity\201710130942471_AddedLastLoginToUser.Designer.cs">
+      <DependentUpon>201710130942471_AddedLastLoginToUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Identity\Configuration.cs" />
-    <Compile Include="Migrations\Main\201707181900199_Init.cs" />
-    <Compile Include="Migrations\Main\201707181900199_Init.Designer.cs">
-      <DependentUpon>201707181900199_Init.cs</DependentUpon>
+    <Compile Include="Migrations\Main\201709231731175_addedMailOosQueue.cs" />
+    <Compile Include="Migrations\Main\201709231731175_addedMailOosQueue.Designer.cs">
+      <DependentUpon>201709231731175_addedMailOosQueue.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Main\201707182045239_AddedExceptionTime.cs" />
-    <Compile Include="Migrations\Main\201707182045239_AddedExceptionTime.Designer.cs">
-      <DependentUpon>201707182045239_AddedExceptionTime.cs</DependentUpon>
+    <Compile Include="Migrations\Main\201709241350046_AddedMissingInfoOnPos.cs" />
+    <Compile Include="Migrations\Main\201709241350046_AddedMissingInfoOnPos.Designer.cs">
+      <DependentUpon>201709241350046_AddedMissingInfoOnPos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Main\201707182048483_AddedExceptionType.cs" />
-    <Compile Include="Migrations\Main\201707182048483_AddedExceptionType.Designer.cs">
-      <DependentUpon>201707182048483_AddedExceptionType.cs</DependentUpon>
+    <Compile Include="Migrations\Main\201709241357434_MadePosFieldsRequired.cs" />
+    <Compile Include="Migrations\Main\201709241357434_MadePosFieldsRequired.Designer.cs">
+      <DependentUpon>201709241357434_MadePosFieldsRequired.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Main\201707182121168_AddedExceptionResponseFiled.cs" />
-    <Compile Include="Migrations\Main\201707182121168_AddedExceptionResponseFiled.Designer.cs">
-      <DependentUpon>201707182121168_AddedExceptionResponseFiled.cs</DependentUpon>
+    <Compile Include="Migrations\Main\201709241408545_AddedChainName.cs" />
+    <Compile Include="Migrations\Main\201709241408545_AddedChainName.Designer.cs">
+      <DependentUpon>201709241408545_AddedChainName.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Main\201707212301315_AddedLatitudeAndLongitude.cs" />
-    <Compile Include="Migrations\Main\201707212301315_AddedLatitudeAndLongitude.Designer.cs">
-      <DependentUpon>201707212301315_AddedLatitudeAndLongitude.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Main\201707232226316_AddSalesTable.cs" />
-    <Compile Include="Migrations\Main\201707232226316_AddSalesTable.Designer.cs">
-      <DependentUpon>201707232226316_AddSalesTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Main\201707232232519_AddedXandYaxisToEquipmentData.cs" />
-    <Compile Include="Migrations\Main\201707232232519_AddedXandYaxisToEquipmentData.Designer.cs">
-      <DependentUpon>201707232232519_AddedXandYaxisToEquipmentData.cs</DependentUpon>
+    <Compile Include="Migrations\Main\201709241411089_MadeRequiredCHainName.cs" />
+    <Compile Include="Migrations\Main\201709241411089_MadeRequiredCHainName.Designer.cs">
+      <DependentUpon>201709241411089_MadeRequiredCHainName.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Main\Configuration.cs" />
     <Compile Include="ShelfalyticsDbContext.cs" />
@@ -141,29 +133,23 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\Identity\201707181902365_Init.resx">
-      <DependentUpon>201707181902365_Init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\Identity\201710130942471_AddedLastLoginToUser.resx">
+      <DependentUpon>201710130942471_AddedLastLoginToUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\Main\201707181900199_Init.resx">
-      <DependentUpon>201707181900199_Init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\Main\201709231731175_addedMailOosQueue.resx">
+      <DependentUpon>201709231731175_addedMailOosQueue.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\Main\201707182045239_AddedExceptionTime.resx">
-      <DependentUpon>201707182045239_AddedExceptionTime.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\Main\201709241350046_AddedMissingInfoOnPos.resx">
+      <DependentUpon>201709241350046_AddedMissingInfoOnPos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\Main\201707182048483_AddedExceptionType.resx">
-      <DependentUpon>201707182048483_AddedExceptionType.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\Main\201709241357434_MadePosFieldsRequired.resx">
+      <DependentUpon>201709241357434_MadePosFieldsRequired.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\Main\201707182121168_AddedExceptionResponseFiled.resx">
-      <DependentUpon>201707182121168_AddedExceptionResponseFiled.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\Main\201709241408545_AddedChainName.resx">
+      <DependentUpon>201709241408545_AddedChainName.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\Main\201707212301315_AddedLatitudeAndLongitude.resx">
-      <DependentUpon>201707212301315_AddedLatitudeAndLongitude.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\Main\201707232226316_AddSalesTable.resx">
-      <DependentUpon>201707232226316_AddSalesTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\Main\201707232232519_AddedXandYaxisToEquipmentData.resx">
-      <DependentUpon>201707232232519_AddedXandYaxisToEquipmentData.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\Main\201709241411089_MadeRequiredCHainName.resx">
+      <DependentUpon>201709241411089_MadeRequiredCHainName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

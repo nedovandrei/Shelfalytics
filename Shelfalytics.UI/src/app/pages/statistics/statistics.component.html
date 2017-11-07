@@ -1,103 +1,104 @@
-<ba-card title="Фильтр">
 
-<div class="row btns-row">
-  <div class="col-sm-4 col-6">
-    <daterangepicker></daterangepicker>
-  </div>
-  <div class="col-sm-4 col-6">
-    <div class="btn-group w-100" ngbDropdown>
-      <button type="button" class="btn btn-default w-100" ngbDropdownToggle>
-        Default
-      </button>
-      <ul class="dropdown-menu w-100">
-        <li class="dropdown-item"><a href="#">Action</a></li>
-        <li class="dropdown-item"><a href="#">Another action</a></li>
-        <li class="dropdown-item"><a href="#">Something else here</a></li>
-        <li class="dropdown-divider"></li>
-        <li class="dropdown-item"><a href="#">Separated link</a></li>
-      </ul>
+<ba-card title="{{'statistics.filter'}}" >
+    
+  <div class="row btns-row" *ngIf="initSelects">
+    <div class="col-sm-6">
+      <div class="form-group w-100">
+                  <label translate>{{'statistics.dateSelect'}}</label>
+                  <select class="form-control" (change)="dateSelectChanged($event)">
+                      <option translate value="0">{{'statistics.global'}}</option>
+                      <option translate value="1">{{'statistics.week'}}</option>
+                      <option translate value="2">{{'statistics.month'}}</option>
+                      <option translate value="3">{{'statistics.6month'}}</option>
+                      <option translate value="4">{{'statistics.year'}}</option>
+                  </select>
+          </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group w-100">
+        <label translate>{{'statistics.locality'}}</label>
+        <select class="form-control" (change)="localChanged($event)">
+            <option translate>{{'statistics.all'}}</option>
+            <option *ngFor="let local of selectsData.Locals" value="{{local}}">{{local}}</option>
+        </select>
+      </div>
     </div>
   </div>
-  <div class="col-sm-4 col-6">
-    <div class="btn-group w-100" ngbDropdown>
-      <button type="button" class="btn btn-default w-100" ngbDropdownToggle>
-        Default
-      </button>
-      <ul class="dropdown-menu w-100">
-        <li class="dropdown-item"><a href="#">Action</a></li>
-        <li class="dropdown-item"><a href="#">Another action</a></li>
-        <li class="dropdown-item"><a href="#">Something else here</a></li>
-        <li class="dropdown-divider"></li>
-        <li class="dropdown-item"><a href="#">Separated link</a></li>
-      </ul>
+  <div class="row btns-row " *ngIf="initSelects">
+    <div class="col-sm-6">
+      <div class="form-group w-100">
+        <label translate>{{'statistics.salesChannel'}}</label>
+        <select class="form-control" (change)="tradeChanelChanged($event)">
+          <option translate>{{'statistics.all'}}</option>
+            <option *ngFor="let tradeChan of selectsData.TradeChanels" value="{{tradeChan}}">{{tradeChan}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group w-100">
+          
+        <label translate>{{'statistics.network'}}</label>
+          <select class="form-control" (change)="retailChainChanged($event)">
+            <option translate>{{'statistics.all'}}</option>
+              <option *ngFor="let chain of selectsData.RetailChain" value="{{chain}}">{{chain}}</option>
+          </select>
+      </div>
     </div>
   </div>
-</div>
-<div class="row btns-row mt-3">
-  <div class="col-sm-4 col-6">
-    <div class="btn-group w-100" ngbDropdown>
-      <button type="button" class="btn btn-default w-100" ngbDropdownToggle>
-        Default
-      </button>
-      <ul class="dropdown-menu w-100">
-        <li class="dropdown-item"><a href="#">Action</a></li>
-        <li class="dropdown-item"><a href="#">Another action</a></li>
-        <li class="dropdown-item"><a href="#">Something else here</a></li>
-        <li class="dropdown-divider"></li>
-        <li class="dropdown-item"><a href="#">Separated link</a></li>
-      </ul>
+  <div class="row btns-row " *ngIf="initSelects">
+  <div class="col-sm-6 ">
+    <div class="form-group w-100">
+      <label translate>{{'statistics.outlets'}}</label>
+        <select class="form-control" (change)="pointOfSaleChanged($event)">
+          <option translate>{{'statistics.all'}}</option>
+            <option *ngFor="let pos of selectsData.PointsOfSale" value="{{pos.PointOfSaleId}}">{{pos.ChainName}} - {{pos.PointOfSaleAddress}}</option>
+        </select>
+        
     </div>
   </div>
-  <div class="col-sm-4 col-6">
-    <div class="btn-group w-100" ngbDropdown>
-      <button type="button" class="btn btn-default w-100" ngbDropdownToggle>
-        Default
-      </button>
-      <ul class="dropdown-menu w-100">
-        <li class="dropdown-item"><a href="#">Action</a></li>
-        <li class="dropdown-item"><a href="#">Another action</a></li>
-        <li class="dropdown-item"><a href="#">Something else here</a></li>
-        <li class="dropdown-divider"></li>
-        <li class="dropdown-item"><a href="#">Separated link</a></li>
-      </ul>
+  <div class="col-sm-6 ">
+    <div class="form-group w-100">
+      <label translate>{{'statistics.equipment'}}</label>
+      <select class="form-control" (change)="equipmentChanged($event)">
+        <option translate>{{'statistics.all'}}</option>
+          <option *ngFor="let equipment of selectsData.Equipments" value="{{equipment.Id}}">{{equipment.ModelName}}</option>
+      </select>
     </div>
   </div>
-</div>
-</ba-card>
-<ba-card title="Типы отчётов">
-<fieldset class="form-group">
-  <div class="form-check">
-    <label class="form-check-label">
-      <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-      OOS по количеству недопроданных штук
-    </label>
+
   </div>
-  <div class="form-check">
-    <label class="form-check-label">
-      <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option1" checked>
-        OOS по сумме недопроданных товар - потенциали потери в деньгах за счёт OOS
-    </label>
+  <div class="row btns-row" *ngIf="initSelects">
+
+    <!-- <div class="col-sm-6 "> -->
+    <div class="col-sm-12 "> 
+      <div class="form-group w-100">
+        <label translate>{{'statistics.products'}}</label>
+                  <select class="form-control" (change)="productChanged($event)">
+                    <option translate>{{'statistics.all'}}</option>
+                      <option *ngFor="let prod of selectsData.Products" value="{{prod.Id}}">{{prod.ShortSKUName}}</option>
+                  </select>
+          </div>
+
+    </div>
+    <!-- <div class="col-sm-6 ">
+      <div class="form-group w-100">
+        <label translate>{{'statistics.selectNetwork'}}</label>
+                  <select class="form-control" >
+                      <option>Грин Хиллс – Куза Водэ 21</option>
+                      <option>Грин Хиллс – Алеку Руссо 28</option>
+                  </select>
+          </div>
+    </div> -->
   </div>
-  <div class="form-check">
-    <label class="form-check-label">
-      <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option1" checked>
-      Продажи в пушерах ( Sales by pusher ) - продажи из каждого пушера
-    </label>
+  <div style="position: relative">
+  <fieldset class="form-group" *ngIf="!exportOngoing">
+      <button type="button" (click)="exportExcel()" class="btn btn-primary" translate>
+        {{'statistics.create'}}
+      </button>
+      
+    </fieldset>
+    <div *ngIf="exportOngoing" class="preloader-baCard" style="transform: scale(0.5); display: flex;  margin-bottom: -7px">
+      <div></div>
+    </div>
   </div>
-  <div class="form-check">
-    <label class="form-check-label">
-      <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios4" value="option1" checked>
-    Кол-во продаж ( штук ) / Открывание дверей
-    </label>
-  </div>
-  <div class="form-check">
-    <label class="form-check-label">
-      <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios5" value="option1" checked>
-      Кол-во продаж детально / Открывание дверей
-    </label>
-  </div>
-  <button type="button" class="btn btn-primary" >
-    Сделать отчет
-  </button>
-</fieldset>
 </ba-card>

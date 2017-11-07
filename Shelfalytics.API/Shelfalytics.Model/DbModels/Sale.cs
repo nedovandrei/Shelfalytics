@@ -12,6 +12,9 @@ namespace Shelfalytics.Model.DbModels
     {
         [Key]
         public int Id { get; set; }
+        public int EquipmentId { get; set; }
+        [ForeignKey("EquipmentId")]
+        public Equipment Equipment { get; set; }
         public int ProductId { get; set; }
         [ForeignKey("ProductId")]
         public Product Product { get; set; }

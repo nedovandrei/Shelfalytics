@@ -2,171 +2,194 @@
   <div class="col-md-2">
     <button class="btn btn-primary mb-3" routerLink="/pages/points-of-sale">Back</button>
   </div>
-  
+
 </div>
-<div *ngIf="initFlag">
+<!-- <div *ngIf="!initFlag" class="preloader-baCard" style="margin-top: 200px; margin-bottom: 200px">
+    <div></div>
+</div> -->
+<div>
   <div class="row">
-    <div class="col-md-12">
-      <ba-card>
-        <div class="row">
-          <div class="col-lg-6 col-sm-12 col-12 ">
-            <h2><i class="fa fa-ravelry"></i>POS:</h2>
-              <p class="text-info"> {{posData.PointOfSaleName}}</p>
-          </div>
-          <div class="col-lg-6 col-sm-12 col-12 ">
-            <h2><i class="fa fa-ravelry"></i>POS Address:</h2>
-                <p class="text-info"> {{posData.PointOfSaleAddress}}</p>
-          </div>
-          <div class="col-lg-6 col-sm-12 col-12 ">
-            <h2><i class="fa fa-ravelry"></i>POS Telephone:</h2>
-              <p class="text-info"> {{posData.PointOfSaleTelephone}}</p>
-          </div>
-          <div class="col-lg-6 col-sm-12 col-12 ">
-            <h2><i class="fa fa-ravelry"></i>Contact Person Name:</h2>
-              <p class="text-info"> {{posData.ContactPersonName}}</p>
-          </div>
-          <div class="col-lg-6 col-sm-12 col-12 ">
-            <h2><i class="fa fa-ravelry"></i>Schedule: </h2>
-              <p class="text-info">{{openHours}} - {{closeHours}}</p>
-          </div>
+    <ba-card class="col-md-4 d-flex align-items-stretch text-center">
+      <div *ngIf="!initFlag" class="preloader-baCard" style="padding-top: 15px; transform:scale(0.6); margin-bottom: -4px">
+          <div></div>
+      </div>
+      <p *ngIf="initFlag"><i class="fa fa-map-marker"></i><span translate>{{'pointsOfSale.posInfo.posName'}}</span>:</p>
+      <h2 *ngIf="initFlag">{{posData.PointOfSaleName}}</h2>
+    </ba-card>
+    <ba-card class="col-md-4 d-flex align-items-stretch text-center">
+        <div *ngIf="!initFlag" class="preloader-baCard" style="padding-top: 15px; transform:scale(0.6); margin-bottom: -4px">
+            <div></div>
         </div>
-      </ba-card>
-    </div>
+      <p *ngIf="initFlag"><i class="fa fa-map"></i><span translate>{{'pointsOfSale.posInfo.posAddress'}}</span>:</p>
+          <h2 *ngIf="initFlag"> {{posData.PointOfSaleAddress}}</h2>
+    </ba-card>
+    <ba-card class="col-md-4 d-flex align-items-stretch text-center">
+        <div *ngIf="!initFlag" class="preloader-baCard" style="padding-top: 15px; transform:scale(0.6); margin-bottom: -4px">
+            <div></div>
+        </div>
+      <p *ngIf="initFlag"><i class="fa fa-phone"></i><span translate>{{'pointsOfSale.posInfo.posTelephone'}}</span>:</p>
+        <h2 *ngIf="initFlag"> {{posData.PointOfSaleTelephone}}</h2>
+    </ba-card>
+    <ba-card class="col-md-6 d-flex align-items-stretch text-center">
+        <div *ngIf="!initFlag" class="preloader-baCard" style="padding-top: 15px; transform:scale(0.6); margin-bottom: -4px">
+            <div></div>
+        </div>
+      <p *ngIf="initFlag"><i class="fa fa-user-o"></i><span translate>{{'pointsOfSale.posInfo.contactPersonName'}}</span>:</p>
+        <h2 *ngIf="initFlag"> {{posData.ContactPersonName}}</h2>
+    </ba-card>
+    <ba-card class="col-md-6 d-flex align-items-stretch text-center">
+        <div *ngIf="!initFlag" class="preloader-baCard" style="padding-top: 15px; transform:scale(0.6); margin-bottom: -4px">
+            <div></div>
+        </div>
+      <p *ngIf="initFlag"><i class="fa fa-calendar-check-o"></i><span translate>{{'pointsOfSale.posInfo.schedule'}}</span>:</p>
+        <h2 *ngIf="initFlag">{{openHours}} - {{closeHours}}</h2>
+    </ba-card>
+
   </div>
     <div class="row">
-        <ba-card class="col-xlg-6 col-xl-6 col-lg-6 col-sm-12 col-12 text-center" title="CK Filling(P.O.S)">
-          <div class="row">
-            <div class="offset-3 col-xlg-6 col-xl-6 col-lg-6 col-sm-12 col-12">
-              <easy-pie-chart [chartData]="OOSChartData"></easy-pie-chart>
+        <!-- <ba-card class="col-12 col-sm-6 " title="CK Filling (P.O.S)">
+          <div class="row justify-content-center">
+            <div class="col-6">
+              <easy-pie-chart [chartData]="POSOOSChartData"></easy-pie-chart>
             </div>
           </div>
+        </ba-card> -->
+        <ba-card class="col-12 col-md-6" title="{{'pointsOfSale.posInfo.posActualFill'}}">
+            <div *ngIf="!initFlag" class="preloader-baCard" style="padding-top: 85px; padding-bottom: 60px; transform: scale(1.4)">
+                <div></div>
+            </div>
+              <div *ngIf="initFlag" class="row justify-content-center">
+                <div class="col-12 col-xl-6 col-md-10 col-sm-8 col-12">
+                  <easy-pie-chart [chartData]="POSActualFillChartData"></easy-pie-chart>
+                </div>
+              </div>
+
         </ba-card>
-        <ba-card class="col-xlg-6 col-xl-6 col-lg-6 col-sm-12 col-12 text-center" title="Out Of Stoc(P.O.S)">
-          <div class="row">
-            <div class="offset-3 col-xlg-6 col-xl-6 col-lg-6 col-sm-12 col-12">
-              <easy-pie-chart [chartData]="OOSChartData"></easy-pie-chart>
+        <ba-card class="col-12 col-md-6" title="{{'pointsOfSale.posInfo.posOos'}}">
+            <div *ngIf="!initFlag" class="preloader-baCard" style="padding-top: 85px; padding-bottom: 60px; transform: scale(1.4)">
+                <div></div>
             </div>
-          </div>
+              <div *ngIf="initFlag" class="row justify-content-center">
+                <div class="col-12 col-xl-6 col-md-10 col-sm-8 col-12">
+                  <easy-pie-chart [chartData]="POSOOSChartData"></easy-pie-chart>
+                </div>
+              </div>
+
         </ba-card>
     </div>
-  <div class="row">
+  <div class="row" >
+
     <div class="col-md-12">
-      <ul class="nav nav-pills nav-fill">
+        <div *ngIf="!initFlag" class="preloader-baCard" style="padding-top: 5px; padding-bottom: 5px; transform: scale(0.3)">
+            <div></div>
+        </div>
+      <ul *ngIf="initFlag" class="nav nav-pills nav-fill">
         <li class="nav-item mb-1" *ngFor="let equipment of posData.EquipmentIds; let i = index" (click)="changeEquipmentInFocus(equipment)">
           <a [ngClass]="{ 'active': equipment === equipmentInFocus }" class="nav-link">{{i + 1}}</a>
         </li>
       </ul>
     </div>
   </div>
-  <div class="row">
-    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-9">
 
-        <equipment-info *ngIf="equipmentInFocus > 0 && initFlag" [equipmentId]="equipmentInFocus"></equipment-info>
+
+        <equipment-info *ngIf="equipmentInFocus > 0 && initFlag" [equipmentId]="equipmentInFocus" [oosChartData]="equipmentOOSChartData" [fillChartData]="equipmentActualFillChartData"></equipment-info>
+
+        <!-- <equipment-info [equipmentId]="equipmentInFocus" [oosChartData]="equipmentOOSChartData" [fillChartData]="equipmentActualFillChartData"></equipment-info> -->
+        <!-- <equipment-info-pusher *ngIf="equipmentInFocus > 0 && equipmentInitFlag" [equipmentId]="equipmentInFocus"></equipment-info> -->
+
         <!-- <angular2-grid></angular2-grid> -->
 
-    </div>
-    <div class="col-md-3 col-xl-3">
-      <ba-card title="CK Filling">
-        <easy-pie-chart [chartData]="OOSChartData"></easy-pie-chart>
+
+     <!-- <div class="col-12 col-sm-3">
+      <ba-card *ngIf="equipmentInitFlag" title="{{'pointsOfSale.posInfo.equipmentInfo.oos'}}">
+        <easy-pie-chart [chartData]="equipmentOOSChartData"></easy-pie-chart>
       </ba-card>
-      <ba-card title="Out Of Stock">
-        <easy-pie-chart [chartData]="OOSChartData"></easy-pie-chart>
-      </ba-card>
-    </div>
-  </div>
+    </div>  -->
+
 </div>
-<div class="row">
+<div class="row" *ngIf="initFlag">
   <div class="col-md-12">
-    <ba-card *ngIf="initFlag" title="Sales by day">
-      <amchart [chartData]="sampleChartData"></amchart>
+      
+    <ba-card title="{{'pointsOfSale.posInfo.equipmentInfo.sales'}}">
+        <div *ngIf="!equipmentInitFlag" class="preloader-baCard" style="padding-top: 125px; padding-bottom: 100px; transform: scale(1.2)">
+            <div></div>
+        </div>
+      <amchart *ngIf="equipmentInitFlag" [chartData]="salesChartData"></amchart>
     </ba-card>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-6">
-      <ba-card title="Details on Out Of Stock(Now)">
-        <div class="horizontal-scroll">
-          <table class="table table-hover">
+<div class="row" *ngIf="initFlag">
+  <div class="col-md-12 mb-4">
+      <ba-card class="card mb-0 with-scroll table-panel" title="{{'pointsOfSale.posInfo.equipmentInfo.productOosTable.title'}}">
+          <div *ngIf="!equipmentInitFlag" class="preloader-baCard" style="padding-top: 125px; padding-bottom: 100px; transform: scale(1.2)">
+              <div></div>
+          </div>
+        <div class="horizontal-scroll " *ngIf="equipmentInitFlag" style="max-height: 400px; overflow-y:auto">
+          <table class="table table-striped" >
             <thead>
-            <tr class="black-muted-bg">
-              <th class="browser-icons"></th>
-              <th>Numbers</th>
-              <th class="align-right">Time</th>
-              <th class="table-arr"></th>
-              <th class="align-right">Money</th>
-              <th class="table-arr"></th>
+            <tr>
+              <th id="table-id">#</th>
+              <th translate>{{'pointsOfSale.posInfo.equipmentInfo.productOosTable.skuName'}}</th>
+              <th translate>{{'pointsOfSale.posInfo.equipmentInfo.productOosTable.oosPercentage'}}</th>
             </tr>
             </thead>
-            <tbody>
-            <tr class="no-top-border">
-              <td class="browser-icons"></td>
-              <td>1</td>
-              <td class="align-right">2:30</td>
-              <td class="table-arr"></td>
-              <td class="align-right">1990$</td>
-              <td class="table-arr"></td>
-            </tr>
-            <tr class="no-top-border">
-              <td class="browser-icons"></td>
-              <td>2</td>
-              <td class="align-right">2:00</td>
-              <td class="table-arr"></td>
-              <td class="align-right">1500$</td>
-              <td class="table-arr"></td>
-            </tr>
-            <tr class="no-top-border">
-              <td class="browser-icons"></td>
-              <td>3</td>
-              <td class="align-right">1:00</td>
-              <td class="table-arr"></td>
-              <td class="align-right">1000$</td>
-              <td class="table-arr"></td>
-            </tr>
+            <tbody style="max-height: 400px; overflow-y:auto">
+              <tr *ngIf="equipmentProductOOSTable.length === 0">
+                <td colspan="3">No Data</td>
+              </tr>
+              <tr *ngFor="let tableData of equipmentProductOOSTable; let i = index" >
+                <td id="table-id">{{i + 1}}</td>
+                <td>{{tableData.SKUName}}</td>
+                <td>{{tableData.OOSPercentage}}%</td>
+              </tr>
             </tbody>
           </table>
         </div>
     </ba-card>
   </div>
-  <div class="col-md-6">
-      <ba-card title="Details on Out Of Stock(24 hours)">
-        <div class="horizontal-scroll">
-          <table class="table table-hover">
+  <div class="col-md-12 mb-4">
+      <ba-card class="card mb-0 with-scroll table-panel" title="{{'pointsOfSale.posInfo.equipmentInfo.lossesDueToOosTable.title'}}">
+          <div *ngIf="!equipmentInitFlag" class="preloader-baCard" style="padding-top: 125px; padding-bottom: 100px; transform: scale(1.2)">
+              <div></div>
+          </div>
+        <div class="horizontal-scroll " *ngIf="equipmentInitFlag" style="max-height: 400px; overflow-y:auto">
+          <table class="table table-striped">
             <thead>
-            <tr class="black-muted-bg">
-              <th class="browser-icons"></th>
-              <th>Numbers</th>
-              <th class="align-right">Time</th>
-              <th class="table-arr"></th>
-              <th class="align-right">Money</th>
-              <th class="table-arr"></th>
-            </tr>
+              <tr >
+                 <th id="table-id">#</th>
+                <th translate>{{'pointsOfSale.posInfo.equipmentInfo.lossesDueToOosTable.skuName'}}</th>
+                <th translate>{{'pointsOfSale.posInfo.equipmentInfo.lossesDueToOosTable.oosPeriod'}}</th>
+
+                <th translate>{{'pointsOfSale.posInfo.equipmentInfo.lossesDueToOosTable.potentialLoss'}}</th>
+
+              </tr>
             </thead>
             <tbody>
-            <tr class="no-top-border">
-              <td class="browser-icons"></td>
-              <td>1</td>
-              <td class="align-right">2:30</td>
-              <td class="table-arr"></td>
-              <td class="align-right">1990$</td>
-              <td class="table-arr"></td>
-            </tr>
-            <tr class="no-top-border">
-              <td class="browser-icons"></td>
-              <td>2</td>
-              <td class="align-right">2:00</td>
-              <td class="table-arr"></td>
-              <td class="align-right">1500$</td>
-              <td class="table-arr"></td>
-            </tr>
-            <tr class="no-top-border">
-              <td class="browser-icons"></td>
-              <td>3</td>
-              <td class="align-right">1:00</td>
-              <td class="table-arr"></td>
-              <td class="align-right">1000$</td>
-              <td class="table-arr"></td>
-            </tr>
+            <tr  *ngFor="let lossData of equipmentLossesDueToOOSTable; let i = index">
+              <td id="table-id">{{i + 1}}</td>
+              <td>{{lossData.ShortSKUName}}</td>
+              <td>
+                <div *ngIf="!lossData.isOngoing">
+                  <span *ngIf="lossData.TimePeriodDays !== 0">{{lossData.TimePeriodDays}} {{'pointsOfSale.posInfo.equipmentInfo.lossesDueToOosTable.days' | translate}}</span>
+                  <span *ngIf="lossData.TimePeriodHours !== 0">{{lossData.TimePeriodHours}} {{'pointsOfSale.posInfo.equipmentInfo.lossesDueToOosTable.hours' | translate}}</span>
+                  <span *ngIf="lossData.TimePeriodMinutes !== 0">{{lossData.TimePeriodMinutes}} {{'pointsOfSale.posInfo.equipmentInfo.lossesDueToOosTable.min' | translate}}</span>
+                  <span >{{lossData.TimePeriodSeconds}} {{'pointsOfSale.posInfo.equipmentInfo.lossesDueToOosTable.sec' | translate}}</span>
+                </div>
+                <span *ngIf="lossData.isOngoing">{{'pointsOfSale.posInfo.equipmentInfo.lossesDueToOosTable.ongoing' | translate}} {{lossData.OOSStart | timespan}}</span>
+
+              </td>
+              <!-- <td class="table-arr"></td> -->
+              <td>
+                <span *ngIf="!lossData.isOngoing">{{lossData.Losses | number}}$</span>
+                <span *ngIf="lossData.isOngoing" translate>{{'pointsOfSale.posInfo.equipmentInfo.lossesDueToOosTable.na'}}</span>
+              </td>
+              
+              <!-- <td class="table-arr"></td> -->
+              </tr>
+              <tr *ngIf="equipmentLossesDueToOOSTable.length === 0">
+                  <td colspan="4">No Data</td>
+              </tr>
             </tbody>
           </table>
         </div>

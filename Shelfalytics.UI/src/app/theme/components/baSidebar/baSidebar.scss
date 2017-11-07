@@ -6,6 +6,7 @@ $angle-right: '\f101';
 
 @mixin default-sublist() {
   padding: 0;
+  
   list-style: none;
   position: relative;
   display: none;
@@ -44,6 +45,7 @@ $angle-right: '\f101';
 
 :host /deep/ {
   .al-sidebar {
+    box-shadow:1px 0px 5px 0px rgba(0, 0, 0, 0.5);
     width: $sidebar-width;
     top: $top-height;
     left: 0;
@@ -78,11 +80,11 @@ $angle-right: '\f101';
     float: none;
     padding: 0;
     &.selected:not(.with-sub-menu) {
-      background-color: $primary;
+      // background-color: #edf0f2;
       a.al-sidebar-list-link {
-        color: $sidebar-text;
+        color: $info;
         b {
-          color: $sidebar-text;
+          color: $info;
         }
       }
     }
@@ -114,7 +116,7 @@ $angle-right: '\f101';
     height: 42px;
     padding-left: 18px;
     text-shadow: none;
-    font-size: 13px;
+    font-size: 15px;
     text-decoration: none;
     color: $sidebar-text;
     line-height: 42px;
@@ -122,9 +124,10 @@ $angle-right: '\f101';
     overflow: hidden;
     cursor: pointer;
     &:hover {
-      color: $primary;
+      background-color: #edf0f2;
+      color: $info;
       b {
-        color: $primary;
+        color:$info;
       }
     }
     i {
@@ -162,7 +165,7 @@ $angle-right: '\f101';
 
   .sidebar-hover-elem {
     width: $sidebar-scroll-width;
-    background: $primary;
+    background: $info;
     position: absolute;
     top: -150px;
     left: $sidebar-width - $sidebar-scroll-width;

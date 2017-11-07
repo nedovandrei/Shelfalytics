@@ -3,11 +3,12 @@ import { IGoogleMapsData, IMarker, ICoordinates } from "./google-maps.model";
 
 class GoogleMapsData implements IGoogleMapsData {
     center: ICoordinates;
-    zoom?: number = 11;
+    zoom?: number = 5;
     markers: IMarker[];
     disableDefaultUI?: boolean = true;
     zoomControl?: boolean = true;
     clickableIcons?: boolean = true;
+    scrollwheel?: boolean = false;
     draggableCursor?: string = ""; // [draggableCursor]="url(<some address>), pointer"
 }
 
@@ -17,18 +18,20 @@ class GoogleMapsData implements IGoogleMapsData {
   styleUrls: ["./google-maps.component.scss"]
 })
 export class GoogleMapsComponent implements OnInit {
-  
+
   constructor() { }
 
   @Input() mapData: IGoogleMapsData;
   private targetMapData: IGoogleMapsData = undefined;
   private mapInit: boolean = false;
 
+
   ngOnInit() {
     this.targetMapData = new GoogleMapsData();
 
     Object.assign(this.targetMapData, this.mapData);
     this.mapInit = true;
+    
   }
   private markerClicked(label: string, index: any) {
     console.log("maps marker clicked", label, index);

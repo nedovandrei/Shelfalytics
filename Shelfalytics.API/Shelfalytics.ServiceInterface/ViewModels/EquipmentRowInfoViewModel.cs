@@ -12,5 +12,7 @@ namespace Shelfalytics.ServiceInterface.ViewModels
         public double Percentage { get; set; }
         public string ProductName { get; set; }
         public string SKUName { get; set; }
+        public double BottleDiameter { get; set; }
+        public string PhotoPath { get; set; }
     }
 }

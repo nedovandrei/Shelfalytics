@@ -81,6 +81,7 @@ button.btn.btn-default {
   }
 }
 
+
 button.btn.btn-success {
   @include buttonColor($success, $success);
   &:active, &:target {
@@ -310,13 +311,37 @@ button.progress-button {
   // background-color: $primary-light;
   border:1px solid $primary-light;
   // border-radius: 0!important;
+  color: $primary!important;
+  cursor: pointer;
+  &.text-white{
+    color:white!important;
+  }
   &:hover, &.active{
+    color:$border!important;
     border-color: $primary;
     background-color: $primary!important;
   }
 }
+points-of-sale{
 .nav-item + .nav-item{
 .nav-link{
-  margin-left: 0.25rem!important;
+  margin-left: 20px!important;
 }
+}
+}
+// .nav-defult{
+//     .nav-link{
+//       border:1px solid $border;
+//     // border-radius: 0!important;
+//       &:hover, &.active{
+//         border-color: $border;
+//         background-color: transparent!important;
+//       }
+//     }
+//   }
+
+
+.cancelBtn{
+  margin-left: 8px;
+  color: #fff!important;
 }

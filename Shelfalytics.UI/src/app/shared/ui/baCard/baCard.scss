@@ -1,0 +1,21 @@
+.nav-tabs {
+    display: inline-flex;
+    position: absolute;
+    right: 18px;
+    top: 11px;
+    @media screen and (max-width: 660px) {
+      right: -22px!important;
+    }
+    // .nav-item{
+    //   &:last-of-type{
+    //     .nav-link{
+    //       padding: 0;
+    //       & > *{
+    //         padding: 0.5em 1em!important;
+    //       }
+    //     }
+    //   }
+    // }
+}
+
+

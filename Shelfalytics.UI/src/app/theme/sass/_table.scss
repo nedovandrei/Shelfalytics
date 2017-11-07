@@ -1,3 +1,154 @@
+.pie-charts canvas{
+  width: 100%!important;
+  height: 100%!important;
+}
+.row{
+  margin-left: -10px;
+  margin-right: -10px;
+  & > * {
+    padding-left: 10px;
+    padding-right: 10px;
+    .card{
+      margin-bottom: 20px;
+    }
+  }
+  
+  // &.meshes{
+  //   & > .d-flex{
+  //     .row{
+  //     margin-left: -10px;
+  //     margin-right: -10px;
+  //     }
+  //   }
+  //   .row{
+  //     & > *{
+  //       padding-left: 10px;
+  //       padding-right: 10px;
+  //       .card{
+  //         margin-bottom: 20px;
+  //       }
+  //     }
+  //   }
+  // }
+}
+.d-flex{
+  & > .row{
+    min-width: calc(100% + 10px);
+  }
+}
+
+.card{
+   &.mb-0{
+     .card{
+       margin-bottom: 0!important;
+     }
+   }
+
+}
+.daterangepicker{
+  &:before, &:after{
+    display: none!important;
+  }
+}
+@media screen and (max-width: $resS) {
+
+  a.nav-link{
+    padding-left: 5px;
+    padding-right: 5px;
+
+  }
+  .amcharts-chart-div *{
+    font-size: 10px;
+  }
+
+}
+
+.d-flex{
+  ba-card{
+
+    // width: calc(100% / 6 - 25px);
+    // min-width: calc(100% / 6 - 25px);
+    // display: none!important;
+      display: flex!important;
+
+    @media screen and (max-width: $resL) {
+      min-width: 200px;
+      margin-right: 0!important;
+    }
+
+
+
+
+
+  }
+  .push{
+    &-6, &-7, &-8, &-9{
+      .card{
+
+          background-color: $body-bg;
+      }
+    }
+  }
+  .card{
+    width: 100%;
+
+  }
+
+}
+.old-alert{
+    .card{
+        background-color: $warning-old-rgba;
+        color: #fff;
+    } 
+}
+.warning-alert{
+  .card{
+    background-color: $warning-rgba;
+    color: #fff;
+  } 
+}
+.danger-alert{
+  .card{
+    background-color: $danger-rgba;
+    color:#fff;
+  }
+}
+.info-alert{
+  .card{
+  background-color: $info-rgba;
+  color:#fff;
+  }
+}
+
+
+
+ba-card, ad-ba-card{
+  .card{
+      background-color: $bacard-bg;
+  }
+}
+ad-ba-card{
+  .nav.nav-tabs{
+    top:auto;
+    bottom: -14px;
+    right: -5px;
+    position: relative;
+    float: right;
+  }
+    .card-header{
+      height: auto!important;
+    }
+}
+
+
+
+.progress-bar-title{
+  width: 100% ;
+text-align: center ;
+display: block ;
+position: absolute ;
+}
+
 .table {
   margin-bottom: 0px;
   & > thead {
@@ -348,4 +499,3 @@ th {
 .ng2-smart-pagination-nav {
   margin-top: 16px;
 }
-

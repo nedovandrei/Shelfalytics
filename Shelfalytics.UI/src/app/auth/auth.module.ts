@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Http, RequestOptions } from "@angular/http";
-import { AuthHttp, AuthConfig } from "angular2-jwt";
+import { AuthHttp, AuthConfig, JwtHelper } from "angular2-jwt";
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
@@ -16,7 +16,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
       provide: AuthHttp,
       useFactory: authHttpServiceFactory,
       deps: [Http, RequestOptions]
-    }
+    },
+    JwtHelper
   ]
 })
 export class AuthModule {}

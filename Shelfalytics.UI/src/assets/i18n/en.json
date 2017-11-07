@@ -1,0 +1,130 @@
+{
+  "login": {
+    "title": "Sign in",
+    "email": "User",
+    "password": "Password",
+    "sign_in": "Sign in"
+  },
+  "main": {
+    "title": "Main",
+    "header": {
+      "sales": "Sales",
+      "oos": "OOS",
+      "oosUnits": "Units",
+      "moneyLoss": "Estimated Loss"
+    },
+    "cards": {
+      "topSkuOos": "Top SKU in OOS",
+      "topPosBeingInOos": "Top POS Being in OOS",
+      "posInOosMap": "Map With POS in OOS",
+      "lossesDueToOos": "Losses Due to OOS est. in $ per SKU",
+      "topBestBusinessDevs": "Best Business Developers",
+      "topPos": "Top Pos",
+      "topSkuSales": "SKU Sales"
+    }
+
+  },
+  "pointsOfSale": {
+    "title": "Points of Sales",
+    "loading": "Loading data...",
+    "posOnMap": "POS On Map",
+    "posList": "POS List",
+    "posTable": {
+      "header": {
+        "noData": "No Data",
+        "prefix": "Showing",
+        "to": "to",
+        "of": "of",
+        "pos": "Point of sale"
+      },
+      "error": "Error during loading",
+      "posName": "POS Name",
+      "posAddress": "POS Address",
+      "posTelephone": "Phone number",
+      "contactPersonName": "Contact Person Name",
+      "dataFilterButton": "Data Filter"
+    },
+    "posInfo": {
+      "posName": "POS",
+      "posTelephone": "POS phone nr.",
+      "posAddress": "POS Address",
+      "schedule": "Schedule",
+      "contactPersonName": "Contact Person Name",
+      "posOos": "Out Of Stock (in POS)",
+      "posActualFill": "Real-time shelf filling",
+      "equipmentInfo": {
+        "model": "Model",
+        "equipmentType": "Shelf Type",
+        "temperature": "Temperature",
+        "openCount": "Door openings",
+        "lastPing": "Last Ping",
+        "oos": "Out Of Stock",
+        "actualFill": "current product filling",
+        "sales": "Sales",
+        "productOosTable": {
+          "title": "SKU Out Of Stock in %",
+          "skuName": "SKU Name",
+          "oosPercentage": "OOS Percentage"
+        },
+        "lossesDueToOosTable": {
+          "title": "Losses due to out of stock by SKU",
+          "skuName": "SKU Name",
+          "oosPeriod": "OOS Duration",
+          "potentialLoss": "Estimated Loss",
+          "days": "days",
+          "hours": "hours",
+          "min": "min",
+          "sec": "sec",
+          "ongoing": "Ongoing from",
+          "na": "N/A"
+        }
+      }
+    }
+  },
+  "sortButtons": {
+    "asc": "Ascending",
+    "desc": "Descending",
+    "sortBySelect": "Sort By:"
+  },
+  "bacardButtons": {
+    "global": "Global",
+    "day": "Day",
+    "week": "Week",
+    "month": "Month"
+  },
+  "statistics": {
+    "title": "Statistics",
+    "filter": "Filter",
+    "dateSelect": "Date Selection",
+    "locality": "Locality",
+    "salesChannel": "Sales channel",
+    "network": "Network",
+    "outlets": "Outlets",
+    "equipment": "Equipment",
+    "products": "Products",
+    "selectNetwork": "Selecting a Network",
+    "global": "Global",
+    "week": "Week",
+    "month": "Month",
+    "6month": "6 month",
+    "year": "Year",
+    "all": "All",
+    "create": "Make report"
+  },
+  "settings": {
+    "title": "Settings"
+  },
+  "general": {
+    "shelfalytics": "Shelfalytics",
+    "home": "Home",
+    "forms": {
+      "option1": "Option 1"
+    }
+  },
+  "datepicker": {
+    "week": "Last Week",
+    "month": "Last Month",
+    "sixMonths": "Last 6 Months",
+    "year": "Last Year"
+  }
+}

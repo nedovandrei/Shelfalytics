@@ -113,7 +113,7 @@
   left: auto;
   right: -47px;
   top: 26px;
-  @include scrollbars(.4em, rgba(0,0,0,0.5), #fff);
+  @include scrollbars(.4em, rgba(0,0,0,0.5), $sidebar-text);
   .header {
     padding: 10px 12px;
     border-bottom: 1px solid $default;
@@ -126,9 +126,9 @@
       float: right;
       margin-left: 12px;
       text-decoration: none;
-      &:hover {
-        color: $dropdown-text;
-      }
+      // &:hover {
+      //   color: $dropdown-text;
+      // }
     }
   }
   .msg-list {

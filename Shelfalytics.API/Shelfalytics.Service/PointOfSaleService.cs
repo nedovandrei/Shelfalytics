@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using Shelfalytics.RepositoryInterface.DTO;
 using Shelfalytics.RepositoryInterface.Repositories;
 using Shelfalytics.ServiceInterface;
+using Shelfalytics.RepositoryInterface.Helpers;
+using System.Linq;
 
 namespace Shelfalytics.Service
 {
@@ -21,10 +23,10 @@ namespace Shelfalytics.Service
             _equipmentDataRepository = equipmentDataRepository;
         }
 
-        public async Task<IEnumerable<PointOfSaleDataDTO>> GetPointOfSaleData(int posId)
+        public async Task<IEnumerable<PointOfSaleDataDTO>> GetPointOfSaleData(int posId, int clientId)
         {
             var posData = await _pointOfSaleRepository.GetPointOfSaleData(posId);
-            var equipmentIds = await _equipmentDataRepository.GetPointOfSaleEquipment(posId);
+            var equipmentIds = await _equipmentDataRepository.GetPointOfSaleEquipment(posId, clientId);
 
             foreach (var pos in posData)
             {
@@ -34,14 +36,15 @@ namespace Shelfalytics.Service
             return posData;
         }
 
-        public async Task<IEnumerable<PointOfSaleDataDTO>> GetPointsOfSales()
+        public async Task<IEnumerable<PointOfSaleDataDTO>> GetPointsOfSales(GlobalFilter filter)
         {
-            var posData = await _pointOfSaleRepository.GetPointsOfSales();
+            var posData = await _pointOfSaleRepository.GetPointsOfSales(filter.ClientId, filter.IsAdmin);
             
 
             foreach (var pos in posData)
             {
-                var equipmentIds = await _equipmentDataRepository.GetPointOfSaleEquipment(pos.PointOfSaleId);
+                //var equipmentIds = await _equipmentDataRepository.GetPointOfSaleEquipment(pos.PointOfSaleId, filter.ClientId);
+                var equipmentIds = pos.Equipment.Where(x => x.ClientId == filter.ClientId).Select(x => x.Id).ToList();
                 pos.EquipmentIds = equipmentIds;
             }
 

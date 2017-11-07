@@ -1,19 +1,28 @@
 @import "../../../theme/sass/conf/conf";
 
+
+
 //valid row
-
-
+ba-card{
+  &:last-of-type{
+    margin-right: 0!important;
+  }
+}
+.progress-bar-title{
+  width: 100%!important;
+  text-align: center!important;
+}
 
 :host /deep/.pie-charts {
   color: $content-text;
   .empty-row{
     .card{
-      border:1px solid red!important;
+      background-color: $warning-rgba!important;
     }
   }
   .undefined-row{
     .card{
-      border: 1px solid rgba(255, 0 , 0,  0.5);
+      background-color: $danger-rgba!important;
     }
   }
   .pie-chart-item-container {

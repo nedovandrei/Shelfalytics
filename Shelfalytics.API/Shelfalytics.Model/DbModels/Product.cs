@@ -14,6 +14,8 @@ namespace Shelfalytics.Model.DbModels
         [Required]
         public string SKUName { get; set; }
         [Required]
+        public string ShortSKUName { get; set; }
+        [Required]
         [MaxLength(100)]
         public string TradeMark { get; set; }
         [Required]        
@@ -26,5 +28,9 @@ namespace Shelfalytics.Model.DbModels
         public int PackagingTypeId { get; set; }
         [ForeignKey("PackagingTypeId")]
         public PackagingType PackagingType { get; set; }
+        [Required]
+        [Range(1, 30)]
+        public double BottleDiameter { get; set; }
+        public string PhotoPath { get; set; }
     }
 }

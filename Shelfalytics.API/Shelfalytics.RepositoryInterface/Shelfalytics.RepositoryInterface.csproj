@@ -60,17 +60,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\BusinessDevelopersDTO.cs" />
     <Compile Include="DTO\EqiupmentDataDTO.cs" />
+    <Compile Include="DTO\EquipmentDetaildedOOSDTO.cs" />
     <Compile Include="DTO\EquipmentDistanceReadingDTO.cs" />
     <Compile Include="DTO\EquipmentDTO.cs" />
+    <Compile Include="DTO\EquipmentLossesDueToOOSDTO.cs" />
     <Compile Include="DTO\EquipmentPlanogramDTO.cs" />
+    <Compile Include="DTO\EquipmentProductOOSDTO.cs" />
+    <Compile Include="DTO\EquipmentProductSalesDTO.cs" />
     <Compile Include="DTO\EquipmentReadingDTO.cs" />
     <Compile Include="DTO\EquipmentReadingGetDTO.cs" />
     <Compile Include="DTO\ExceptionLogDTO.cs" />
+    <Compile Include="DTO\Export\ProductExportDTO.cs" />
+    <Compile Include="DTO\Export\ProductExportHelperDTO.cs" />
+    <Compile Include="DTO\Export\ProductOpensDTO.cs" />
+    <Compile Include="DTO\Export\PusherSales.cs" />
+    <Compile Include="DTO\LossesDueToOOSSummaryDTO.cs" />
+    <Compile Include="DTO\MailOosQueueDTO.cs" />
     <Compile Include="DTO\PointOfSaleDataDTO.cs" />
+    <Compile Include="DTO\PointOfSaleDTO.cs" />
+    <Compile Include="DTO\PointOfSaleOOSSummary.cs" />
+    <Compile Include="DTO\ProductDTO.cs" />
+    <Compile Include="DTO\ProductOOSDTO.cs" />
+    <Compile Include="DTO\ProductSalesAverageDTO.cs" />
+    <Compile Include="DTO\SalesSummaryDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="DTO\UserLoginDTO.cs" />
+    <Compile Include="Helpers\ExportFilter.cs" />
+    <Compile Include="Helpers\ExportSelects.cs" />
     <Compile Include="Helpers\GlobalFilter.cs" />
+    <Compile Include="Helpers\UserRoles.cs" />
     <Compile Include="IIdentityUnitOfWork.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
@@ -79,9 +99,11 @@
     <Compile Include="Repositories\IExceptionLogRepository.cs" />
     <Compile Include="Repositories\IAuthRepository.cs" />
     <Compile Include="Repositories\IEquipmentDataRepository.cs" />
+    <Compile Include="Repositories\IExportRepository.cs" />
     <Compile Include="Repositories\IPointOfSaleRepository.cs" />
     <Compile Include="Repositories\IProductDataRepository.cs" />
     <Compile Include="Repositories\ISaleRepository.cs" />
+    <Compile Include="Repositories\IMailQueueRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

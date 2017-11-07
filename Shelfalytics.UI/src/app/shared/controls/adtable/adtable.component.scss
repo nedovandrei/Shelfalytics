@@ -16,10 +16,13 @@
       // line-height: 35px;
       vertical-align: middle;
       text-align: left!important;
+
     }
 
     table tr td {
       padding: 0 8px;
+
+
     }
 
 
@@ -29,13 +32,13 @@
     }
 
     ng2-smart-table-cell {
-      color: $default-text;
+      color: $black-text;
       line-height: 35px;
     }
 
     tbody {
       tr {
-        color: $default-text;
+        color: $black-text;
       }
       tr:hover {
         background: rgba(0, 0, 0, 0.03);
@@ -44,13 +47,13 @@
 
     a.ng2-smart-sort-link {
       font-size: 14px !important;
-      color: $default-text;
+      color: $black-text;
       font-weight: $font-bolder;
       &.sort {
         font-weight: $font-bolder !important;
 
         &::after {
-          border-bottom-color: $default-text !important;
+          border-bottom-color: $black-text !important;
         }
       }
     }
@@ -70,7 +73,7 @@
 
     a.ng2-smart-action, .ng2-smart-title {
       font-size: 14px !important;
-      color: $default-text;
+      color: $black-text;
       padding: 0 5px;
       display: inline-block;
 
@@ -140,6 +143,7 @@
 
                     li{
                         a{
+
                             min-width:41px;
                             input{
                                 height:20px;

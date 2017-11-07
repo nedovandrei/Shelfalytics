@@ -60,6 +60,8 @@
     <Compile Include="Repositories\AuthRepository.cs" />
     <Compile Include="Repositories\EquipmentDataRepository.cs" />
     <Compile Include="Repositories\ExceptionLogRepository.cs" />
+    <Compile Include="Repositories\ExportRepository.cs" />
+    <Compile Include="Repositories\MailQueueRepository.cs" />
     <Compile Include="Repositories\PointOfSaleRepository.cs" />
     <Compile Include="Repositories\ProductDataRepository.cs" />
     <Compile Include="Repositories\SaleRepository.cs" />

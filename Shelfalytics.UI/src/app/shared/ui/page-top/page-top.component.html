@@ -1,0 +1,49 @@
+<div class="page-top clearfix" baScrollPosition maxHeight="50" (scrollChange)="scrolledChanged($event)"
+     [ngClass]="{scrolled: isScrolled}">
+  <a routerLink="/pages/dashboard" class="al-logo clearfix"><img src="assets/img/logo_Shelfalytics.png"></a>
+  
+
+  <div class="search">
+      <a href (click)="toggleMenu()" class="collapse-menu-link ion-navicon"></a>
+    <daterangepicker [params]="daterangeParams" (dateChanged)="dateChangedHandler($event)" ></daterangepicker>
+    <!-- <i *ngIf="showGlobalStateIndicator && !globalStateIndicatorValue" class="fa fa-times-circle" style="display: inline-flex; color:red;"></i> -->
+    <i *ngIf="showGlobalStateIndicator && globalStateIndicatorValue" class="fa fa-check-circle" style="display: inline-flex; color: green;"></i>
+     <!-- <select [(ngModel)]="currentLanguage" (change)="changeLanguage(currentLanguage)" class="form-control">
+      <option value="en">English</option>
+      <option value="ru">Русский</option>
+    </select>  -->
+
+  </div>
+
+  <div class="user-profile clearfix">
+
+    <div class="dropdown al-user-profile">
+      <a *ngIf="loggedUser" class="profile-toggle-link dropdown-toggle" id="user-profile-dd" data-toggle="dropdown" aria-expanded="false">
+        <!-- <img src="{{ ( 'Nasta' | baProfilePicture ) }}"> -->
+        {{loggedUser.name}}
+      </a>
+      <ul class="dropdown-menu top-dropdown-menu profile-dropdown" aria-labelledby="user-profile-dd">
+        <li class="dropdown-item"><a><i class="fa fa-user"></i>Profile</a></li>
+        <!-- <li class="dropdown-item"><a><i class="fa fa-cog"></i>Settings</a></li> -->
+        <li class="dropdown-item"><a (click)="logout()" class="signout"><i class="fa fa-power-off"></i>Sign out</a></li>
+      </ul>
+    </div>
+    <div class="dropdown mt-1 mr-3 " style="float:right;">
+  <button class="btn btn-primary dropdown-toggle text-white" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span *ngIf="currentLanguage === 'ru'" class="lang-xs lang-lbl" lang="ru"></span>
+      <span *ngIf="currentLanguage === 'en'" class="lang-xs lang-lbl" lang="en"></span>
+      <span *ngIf="currentLanguage === 'ro'" class="lang-xs lang-lbl" lang="ro"></span>
+    <!-- <span *ngIf="currentLanguage === 'ru'">Русский</span>
+    <span *ngIf="currentLanguage === 'en'">English</span>
+    <span *ngIf="currentLanguage === 'ro'">Româna</span> -->
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <li class="dropdown-item" (click)="changeLanguage('ru')"><a><span class="lang-xs lang-lbl" lang="ru"></span></a></li>
+    <li class="dropdown-item" (click)="changeLanguage('ro')"><a><span class="lang-xs lang-lbl" lang="ro"></span></a></li>
+    <li class="dropdown-item" (click)="changeLanguage('en')"><a><span class="lang-xs lang-lbl" lang="en"></span></a></li>
+  </ul>
+</div>
+<!-- <span *ngIf="loggedUser" class="user-name" style="float: right; position: relative; top: 12px; margin-right: 16px">{{loggedUser.name}}</span> -->
+    <!-- <ba-msg-center></ba-msg-center> -->
+  </div>
+</div>

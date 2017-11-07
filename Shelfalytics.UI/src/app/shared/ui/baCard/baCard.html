@@ -1,0 +1,45 @@
+<div baCardBlur class=" card {{cardType}} {{baCardClass || ''}}" zoom-in>
+    <div *ngIf="title" class="card-header clearfix">
+      <div class="card-title mb-0">
+        <span translate>{{title}}</span>
+        <span (click)="dismissHandler()" *ngIf="removeBacard" class="glyphicon glyphicon-remove pull-right fa fa-close"></span>
+      </div>
+      <ul class="nav nav-tabs" *ngIf="navTabs">
+        <li class="nav-item " *ngFor="let tab of navTabs; let i = index">
+          <a *ngIf="tab.type === 'text'" class="nav-link text-white" [ngClass]="{ 'active': selectedTab === i }" (click)="tabChanged(tab.range, i)" translate>
+            {{tab.title}}
+          </a>
+          <a *ngIf="tab.type === 'datepicker'" class="nav-link text-white" [ngClass]="{ 'active': selectedTab === i }" (click)="tabChanged(tab.range, i)">
+            <daterangepicker [params]="daterangeParams" (dateChanged)="dateChangedHandler($event)"></daterangepicker>
+          </a>
+        </li>
+        <!-- <li class="nav-item ">
+          <a class="nav-link text-white" [ngClass]="{ 'active': selectedTab === i }" (click)="onTabChange(i)">
+            <daterangepicker [params]="daterangeParams" (dateChanged)="dateChangedHandler($event)"></daterangepicker>
+          </a>
+        </li> -->
+      </ul>
+    </div>
+
+
+        <!-- <h3 class="card-title" translate>{{title}}</h3>
+        <ul class="card-title nav nav-tabs" *ngIf="navTabs">
+          <li class="nav-item " *ngFor="let tab of navTabs; let i = index">
+            <a class="nav-link" [ngClass]="{ 'active': selectedTab === i }" (click)="onTabChange(i)">{{tab.title}}</a>
+          </li>
+        </ul> -->
+
+    <!-- <div *ngIf="navTabs" class="card-header clearfix">
+      <ul class="nav nav-tabs">
+        <li class="nav-item ">
+          <a class="nav-link active">1</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link">2</a>
+        </li>
+      </ul>
+    </div> -->
+    <div class="card-body">
+        <ng-content></ng-content>
+    </div>
+</div>

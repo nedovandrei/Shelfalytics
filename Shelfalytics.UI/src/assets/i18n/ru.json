@@ -1,0 +1,123 @@
+{
+    "login": {
+        "title": "Войти в Систему",
+        "email": "Пользователь",
+        "password": "Пароль",
+        "sign_in": "Войти"
+    },
+    "main": {
+        "title": "Главная",
+        "header": {
+            "sales": "Продажи",
+            "oos": "OOS",
+            "oosUnits": "Шт.",
+            "moneyLoss": "Расчётные потери"
+        },
+        "cards": {
+            "topSkuOos": "Топ товаров попавших в OOS",
+            "topPosBeingInOos": "Топ ТТ находящихся в OOS",
+            "posInOosMap": "Карта с ТТ находящимся в OOS",
+            "lossesDueToOos": "Расчётные потери в деньгах в следствие OOS",
+            "topBestBusinessDevs": "Лучшие торговые представители",
+            "topPos": "Личшие ТТ",
+            "topSkuSales": "Топ продаж по товарам"
+        }
+    },
+    "pointsOfSale": {
+        "title": "Торговые точки",
+        "loading": "Загрузка данных...",
+        "posOnMap": "Торговые точки на карте",
+        "posList": "Список торговых точек",
+        "posTable": {
+            "header": {
+                "noData": "нет Данных",
+                "prefix": "показано",
+                "to": "по",
+                "of": "из",
+                "pos": "торговых точек"
+            },
+            "error": "Ошибка при попытке загрузить",
+            "posName": "Наименование торговой точки",
+            "posAddress": "Адрес ТТ",
+            "posTelephone": "Телефон ТТ",
+            "contactPersonName": "Имя контактного лица",
+            "dataFilterButton": "Фильтр данных"
+        },
+        "posInfo": {
+            "posName": "Торговая точка",
+            "posTelephone": "Телефон",
+            "posAddress": "Адрес",
+            "schedule": "График работы",
+            "contactPersonName": "Имя Контактного Лица",
+            "posOos": "Out Of Stock в ТТ",
+            "posActualFill": "Заполненность Полок (в реальном времени)",
+            "equipmentInfo": {
+                "model": "Модель",
+                "equipmentType": "Тип полки",
+                "temperature": "Температура",
+                "openCount": "Количество Открытий",
+                "lastPing": "Последний Опрос",
+                "oos": "Out Of Stock",
+                "actualFill": "Заполненность",
+                "sales": "Продажи",
+                "productOosTable": {
+                    "title": "Out of Stock по товарам в %",
+                    "skuName": "Наименования товара",
+                    "oosPercentage": "OOS в процентах"
+                },
+                "lossesDueToOosTable": {
+                    "title": "Потери в следствие Out of Stock по продуктам",
+                    "skuName": "Наименования товара",
+                    "oosPeriod": "Продолжительность OOS",
+                    "potentialLoss": "Расчетные потери",
+                    "days": "дней",
+                    "hours": "часов",
+                    "min": "минут",
+                    "sec": "сек",
+                    "ongoing": "В процессе",
+                    "na": "Не Доступно"
+                }
+            }
+        }   
+    },
+    "statistics": {
+        "title": "Статистика",
+        "filter": "Фильтр",
+        "dateSelect": "Выбор Даты",
+        "locality": "Город/Нас. Пункт",
+        "salesChannel": "Канал Продаж",
+        "network": "Сеть",
+        "outlets": "Торговые точки",
+        "equipment": "Оборудование",
+        "products": "Продукты",
+        "selectNetwork": "Выбор Сети",
+        "global": "Глобально",
+        "week": "Неделя",
+        "month": "Месяц",
+        "6month": "6 месяцев",
+        "year": "Год",
+        "all": "Все",
+        "create": "Сделать отчет"
+
+    },
+    "settings": {
+        "title": "Настройки"
+    },
+    "sortButtons": {
+        "asc": "По Возрастанию",
+        "desc": "По Убыванию",
+        "sortBySelect": "Сортировать:"
+    },
+    "bacardButtons": {
+        "global": "Глобальный",
+        "day": "День",
+        "week": "Неделя",
+        "month": "Месяц"
+    },
+    "datepicker": {
+        "week": "За Неделю",
+        "month": "За Прошлый Месяц",
+        "sixMonths": "За Прошлые 6 Месяцев",
+        "year": "За Прошлый Год"
+      }
+}

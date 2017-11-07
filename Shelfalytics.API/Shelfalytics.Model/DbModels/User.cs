@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -25,7 +26,8 @@ namespace Shelfalytics.Model.DbModels
         [Required]
         [Phone]
         public override string PhoneNumber { get; set; }
-        public int GeneralManagerId { get; set; }
-        public int SupervisorId { get; set; }
+        public string GeneralManagerId { get; set; }
+        public string SupervisorId { get; set; }
+        public DateTime LastLogin { get; set; }
     }
 }

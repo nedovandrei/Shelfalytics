@@ -1,122 +1,90 @@
-
-<div class="row">
-  <ba-card class="col-xlg-3 col-xl-3 col-lg-3 col-sm-12 col-12 text-center">
-
-      <h1>6546</h1>
-      <p>Sales</p>
+<main>
+<div class="row animated">
+  <ba-card class="col-md-6 col-lg-3 col-sm-12 col-12 text-center" >
+      <div *ngIf="salesSummaryCount === undefined" class="preloader-baCard" style="transform: scale(0.5); display: flex; margin-bottom: -7px">
+          <div></div>
+      </div>
+      <h2 *ngIf="salesSummaryCount !== undefined">{{salesSummaryCount | number}}</h2>
+      <p translate>{{'main.header.sales'}}</p>
   </ba-card>
-  <ba-card class="col-xlg-3 col-xl-3 col-lg-3 col-sm-12 col-12 text-center">
+  <ba-card class="col-md-6 col-lg-6 col-sm-12 col-12 text-center " >
 
-    <h1>8%</h1>
-    <p>OOS</p>
+    <div *ngIf="totalOOSPercentage === undefined" class="preloader-baCard" style="transform: scale(0.5); display: flex; margin-bottom: -7px">
+        <div></div>
+    </div>
+    <h2 *ngIf="totalOOSPercentage !== undefined">{{totalOOSPercentage}}% | {{lossesInUnits}} {{'main.header.oosUnits' | translate}}</h2>
+    <p translate>{{'main.header.oos'}}</p>
+
+    <!-- <h1>{{totalOOSPercentage}}%</h1>
+    <p translate>{{'main.header.oosInPercent'}}</p> -->
+  <!-- </ba-card>
+  <ba-card class="col-md-6 col-lg-3 col-sm-12 col-12 text-center"> -->
+
+    <!-- <h1>534</h1>
+    <p>OOS</p> -->
   </ba-card>
-  <ba-card class="col-xlg-3 col-xl-3 col-lg-3 col-sm-12 col-12 text-center">
-
-    <h1>534</h1>
-    <p>OOS</p>
-  </ba-card>
-  <ba-card class="col-xlg-3 col-xl-3 col-lg-3 col-sm-12 col-12 text-center">
-
-    <h1>5250$</h1>
-    <p>Money</p>
+  <ba-card class="col-md-12 col-lg-3 col-sm-12 col-12 text-center " >
+      <div *ngIf="lossesDueToOosSummary === undefined" class="preloader-baCard" style="transform: scale(0.5); display: flex; margin-bottom: -7px">
+          <div></div>
+      </div>
+    <h2 *ngIf="lossesDueToOosSummary !== undefined">{{lossesDueToOosSummary | number}}$</h2>
+    <p translate>{{'main.header.moneyLoss'}}</p>
   </ba-card>
 </div>
 
 
-<div class="row">
-  <ba-card class="col-xlg-6 col-xl-6 col-lg-6 col-sm-12 col-12" title="Top SKU OOS">
-      <ul class="nav nav-pills nav-fill">
-        <li class="nav-item">
-          <a class="nav-link active">1</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link">2</a>
-        </li>
-      </ul>
-      <p>test</p>
-      <ol class="mt-2">
-        <li>asdasdas</li>
-          <li>asdasdas</li>
-            <li>asdasdas</li>
-      </ol>
-  </ba-card>
-  <ba-card class="col-xlg-6 col-xl-6 col-lg-6 col-sm-12 col-12" title="TOP POS being in OOS">
-      <ul class="nav nav-pills nav-fill">
-        <li class="nav-item">
-          <a class="nav-link active">1</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link">2</a>
-        </li>
-      </ul>
-      <ol class="mt-2">
-        <li>asdasdas</li>
-          <li>asdasdas</li>
-            <li>asdasdas</li>
-      </ol>
-  </ba-card>
+<div class="row animated">
+  <ad-ba-card class="col-xl-6 col-12 " title="main.cards.topSkuOos" [navTabs]="baCardTabs" (onTabChange)="tabChanged($event)">
+      <div *ngIf="!skuOosChartsInit" class="preloader-baCard" style="padding-top: 165px; margin-bottom: 160px">
+          <div></div>
+      </div>
+      <amchart *ngIf="skuOosChartsInit" [chartType]="'pie'" [chartData]="topSkuOosChart" [chartName]="'topSkuOos'"></amchart>
+  </ad-ba-card>
+  <ad-ba-card class="col-xl-6 col-12 " title="main.cards.topPosBeingInOos" [navTabs]="baCardTabs" (onTabChange)="tabChanged($event)">
+      <div *ngIf="!posInOosSummaryChartInit" class="preloader-baCard" style="padding-top: 165px; margin-bottom: 160px">
+          <div></div>
+      </div>
+    <amchart *ngIf="posInOosSummaryChartInit" [chartData]="posInOosSummaryChart" [chartName]="'posInOos'"></amchart>
+  </ad-ba-card>
 </div>
-<div class="row">
-  <ba-card class="col-xlg-6 col-xl-6 col-lg-6 col-sm-12 col-12" title="Map with POS in OOS">
-      <ul class="nav nav-pills nav-fill">
-        <li class="nav-item">
-          <a class="nav-link active">1</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link">2</a>
-        </li>
-      </ul>
-      <ol class="mt-2">
-        <li>asdasdas</li>
-          <li>asdasdas</li>
-            <li>asdasdas</li>
-      </ol>
-  </ba-card>
-  <ba-card class="col-xlg-6 col-xl-6 col-lg-6 col-sm-12 col-12" title="Looses due to OOS in $ per sku">
-      <ul class="nav nav-pills nav-fill">
-        <li class="nav-item">
-          <a class="nav-link active">1</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link">2</a>
-        </li>
-      </ul>
-      <ol class="mt-2">
-        <li>asdasdas</li>
-          <li>asdasdas</li>
-            <li>asdasdas</li>
-      </ol>
-  </ba-card>
+<div class="row animated" >
+  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12 " title="main.cards.posInOosMap" [navTabs]="baCardTabs">
+      <div *ngIf="!mapInit" class="preloader-baCard" style="padding-top: 165px; margin-bottom: 160px">
+          <div></div>
+      </div>
+    <google-maps *ngIf="mapInit" [mapData]="mapSettings"></google-maps>
+  </ad-ba-card >
+  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12 " title="main.cards.lossesDueToOos" [navTabs]="baCardTabs" (onTabChange)="tabChanged($event)">
+      <div *ngIf="!lossesDueToOosChartInit" class="preloader-baCard" style="padding-top: 165px; margin-bottom: 160px">
+          <div></div>
+      </div>
+      <amchart *ngIf="lossesDueToOosChartInit" [chartData]="lossesDueToOosChart" [chartName]="'lossesDueToOos'"></amchart>
+  </ad-ba-card >
 </div>
-<div class="row">
-  <ba-card class="col-xlg-6 col-xl-6 col-lg-6 col-sm-12 col-12" title="Top best business developers">
-      <ul class="nav nav-pills nav-fill">
-        <li class="nav-item">
-          <a class="nav-link active">1</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link">2</a>
-        </li>
-      </ul>
+<div class="row animated" >
+  <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12 " title="main.cards.topBestBusinessDevs" [navTabs]="baCardTabs" (onTabChange)="tabChanged($event)">
+    <div *ngIf="!topBestBusinessDevelopersInit" class="preloader-baCard" style="padding-top: 165px; margin-bottom: 160px">
+        <div></div>
+    </div>
+    <amchart *ngIf="topBestBusinessDevelopersInit" [chartData]="topBestBusinessDevelopersChart" [chartName]="'topBestBusinessDevelopers'"></amchart>
+  </ad-ba-card >
+  <!-- <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12 " title="main.cards.topPos" [navTabs]="baCardTabs" (onTabChange)="tabChanged($event)" >
+
       <ol class="mt-2">
         <li>asdasdas</li>
           <li>asdasdas</li>
             <li>asdasdas</li>
       </ol>
-  </ba-card>
-  <ba-card class="col-xlg-6 col-xl-6 col-lg-6 col-sm-12 col-12" title="TOP POS">
-      <ul class="nav nav-pills nav-fill">
-        <li class="nav-item">
-          <a class="nav-link active">1</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link">2</a>
-        </li>
-      </ul>
-      <ol class="mt-2">
-        <li>asdasdas</li>
-          <li>asdasdas</li>
-            <li>asdasdas</li>
-      </ol>
-  </ba-card>
+  </ad-ba-card > -->
+    <ad-ba-card *ngIf="initFlag" class="col-xl-6 col-12 animated" title="main.cards.topSkuSales" [navTabs]="baCardTabs" (onTabChange)="tabChanged($event)" >
+        <div *ngIf="!salesSummaryChartInit" class="preloader-baCard" style="padding-top: 165px; margin-bottom: 160px">
+            <div></div>
+        </div>
+        <amchart *ngIf="salesSummaryChartInit" [chartData]="salesSummaryChart" [chartName]="'salesSummary'"></amchart>
+    </ad-ba-card>
 </div>
+
+<div class="row animated" >
+  
+</div>
+</main>

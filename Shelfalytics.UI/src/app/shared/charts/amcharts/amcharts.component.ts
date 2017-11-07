@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, Input, OnChanges, AfterViewInit } from "@angular/core";
 import { AmChartsService } from "@amcharts/amcharts3-angular";
-import { AmChartConfig } from "./amcharts.model";
+import { AmChartConfig, IAmChartGraph } from "./amcharts.model";
+import * as _ from "underscore";
 
 @Component({
     selector: "amchart",
@@ -12,89 +13,60 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges, AfterVie
 
     constructor(private amChartsService: AmChartsService) { }
 
+    @Input() chartType: string;
     @Input() chartData: any;
+    @Input() chartName: string;
+    private dataProvider: any = [];
     private initFlag: boolean = false;
     private chart: any;
+    private sortDirection: "asc" | "desc" = "desc";
+    private pieChartNoData: boolean = false;
+    private viewInit: boolean = false;
 
-    private chartConfig = new AmChartConfig("serial");
-    // private chartConfig = {
-    //     "type": "serial",
-    //     "theme": "light",
-    //     "marginTop": 0,
-    //     "marginRight": 80,
-    //     "valueAxes": [{
-    //         "axisAlpha": 0,
-    //         "position": "left"
-    //     }],
-    //     "graphs": [
-    //         {
-    //             "id": "g1",
-    //             "balloonText": "[[category]]<br><b><span style='font-size:14px;'>[[value]]</span></b>",
-    //             "bullet": "round",
-    //             "bulletSize": 8,
-    //             "lineColor": "#d1655d",
-    //             "lineThickness": 2,
-    //             "negativeLineColor": "#637bb6",
-    //             "type": "smoothedLine",
-    //             "valueField": "valueLol"
-    //         },
-    //         {
-    //             "id": "g2",
-    //             "balloonText": "[[category]]<br><b><span style='font-size:14px;'>[[value]]</span></b>",
-    //             "bullet": "round",
-    //             "bulletSize": 8,
-    //             "lineColor": "yellow",
-    //             "lineThickness": 2,
-    //             "negativeLineColor": "blue",
-    //             "type": "smoothedLine",
-    //             "valueField": "valueKek"
-    //         },
-    //     ],
-    //     "chartScrollbar": {
-    //         "dragIcon": "../../assets/icon/dragIconRoundBig",
-    //         "graph": "g1",
-    //         "gridAlpha": 0,
-    //         "color": "#ffffff",
-    //         "scrollbarHeight": 55,
-    //         "backgroundAlpha": 0,
-    //         "selectedBackgroundAlpha": 0.1,
-    //         "selectedBackgroundColor": "#d282f2",
-    //         "graphFillAlpha": 0,
-    //         "autoGridCount": true,
-    //         "selectedGraphFillAlpha": 0,
-    //         "graphLineAlpha": 0.2,
-    //         "graphLineColor": "#c2c2c2",
-    //         "selectedGraphLineColor": "#ffffff",
-    //         "selectedGraphLineAlpha": 1,
-    //     },
-    //     "chartCursor": {
-    //         "categoryBalloonDateFormat": "YYYY",
-    //         "cursorAlpha": 0,
-    //         "valueLineEnabled": true,
-    //         "valueLineBalloonEnabled": true,
-    //         "valueLineAlpha": 0.5,
-    //         "fullWidth": true
-    //     },
-    //     "dataDateFormat": "YYYY",
-    //     "categoryField": "year",
-    //     "categoryAxis": {
-    //         "minPeriod": "YYYY",
-    //         "parseDates": true,
-    //         "minorGridAlpha": 0.1,
-    //         "minorGridEnabled": true
-    //     },
-    //     "export": {
-    //         "enabled": true
-    //     }
-    // };
+    private chartConfig: any;
 
     ngAfterViewInit() {
         this.initChart();
+        this.sortData();
+        
+
+        $(".amcharts-legend-div").css("overflow-y", "auto");
+        $(".amcharts-legend-div").css("max-height", "300px");
     }
 
+    private initConfig() {
+        this.chartConfig.categoryField = this.chartData.legendField;
+        if (this.chartType === "pie") {
+            this.chartConfig.titleField = this.chartData.legendField;
+            this.chartConfig.valueField = this.chartData.valueFields[0];
+        } else {
+            this.chartConfig.graphs = _.map(this.chartData.valueFields, (item: any, index: number) => {
+                const returnItem: IAmChartGraph = {
+                    id: `g${index}`,
+                    balloonText: "[[category]]<br><b><span style='font-size:14px;'>[[value]]</span></b>",
+                    fillAlphas: 0.9,
+                    lineAlpha: 0.2,
+                    // lineColor: "#2dacd1",
+                    // negativeLineColor: "#2dacd1",
+                    type: "column",
+                    valueField: item
+
+
+                };
+                return returnItem;
+            });
+        }
+    }
     ngOnInit() {
+        
+        this.dataProvider = this.chartData.dataProvider;
+        this.chartConfig = new AmChartConfig(this.chartType ? this.chartType : "serial");
+        this.initConfig();
+
+        this.initFlag = true;
+
         // if (this.chartData !== undefined) {
-        //     this.chartConfig["dataProvider"] = this.chartData.dataProvider;            
+        //     this.chartConfig["dataProvider"] = this.chartData.dataProvider;
         // } else {
         //     this.chartConfig["dataProvider"] = [];
         // }
@@ -102,21 +74,116 @@ export class AmChartsComponent implements OnInit, OnDestroy, OnChanges, AfterVie
     }
 
     ngOnChanges() {
-        if (this.chart === undefined) {
-            if (this.chartData === undefined) {
-                this.chartConfig["dataProvider"] = [];
+
+        // this.initChart();
+        // this.sortData();
+        // this.pieChartNoData = false;
+        if (!this.chartData.dataProvider || this.chartData.dataProvider.length === 0) {
+            this.pieChartNoData = true;
+        } else {
+            this.dataProvider = this.chartData.dataProvider;
+            this.pieChartNoData = false;
+        }
+        this.sortData();
+        this.initializeDataProvider();
+    }
+
+    private initializeDataProvider() {
+        if (this.chartConfig !== undefined) {
+            if (this.chart === undefined) {
+                if (this.chartData) {
+                    if (this.chartData.dataProvider === undefined || this.chartData.dataProvider.length === 0) {
+                        // if (this.chartType === "pie") {
+                        //     this.pieChartNoData = true;
+                        // }
+                        const noData: any = {};
+                        Object.defineProperty(noData, this.chartData.legendField, {
+                            value: "No Data"
+                        });
+                        _.each(this.chartData.valueFields, (item: string) => {
+                            Object.defineProperty(noData, item, {
+                                value: 0
+                            });
+                        });
+                        this.chartConfig["dataProvider"] = [noData];
+                    } else {
+                        //this.dataProvider = this.chartData.dataProvider;
+                        this.chartConfig["dataProvider"] = this.dataProvider;
+                    }
+                }
+                
             } else {
-                this.chartConfig["dataProvider"] = this.chartData.dataProvider;
+                // if (this.chartData.dataProvider === undefined || this.chartData.dataProvider.length === 0) {
+                //     if (this.chartType === "pie") {
+                //         this.pieChartNoData = true;
+                //     }
+                // }
+                //this.dataProvider = this.chartData.dataProvider;
+                this.amChartsService.updateChart( this.chart, () => {
+                    this.chart.dataProvider = this.dataProvider;
+                });
             }
         } else {
+            this.chartConfig = new AmChartConfig(this.chartType ? this.chartType : "serial");
+
+            const noData: any = {};
+            Object.defineProperty(noData, this.chartData.legendField, {
+                value: "No Data"
+            });
+            _.each(this.chartData.valueFields, (item: string) => {
+                Object.defineProperty(noData, item, {
+                    value: 0
+                });
+            });
+            this.chartConfig["dataProvider"] = [noData];
+            // if (this.chartType === "pie") {
+            //     this.pieChartNoData = true;
+            // }
+            this.initConfig();
+            this.initChart();
             this.amChartsService.updateChart( this.chart, () => {
-                this.chart.dataProvider = this.chartData.dataProvider;
+                this.chart.dataProvider = this.dataProvider;
             });
         }
     }
 
     private initChart() {
-        this.chart = this.amChartsService.makeChart("chartdiv", this.chartConfig );
+        this.chart =
+            this.amChartsService.makeChart(this.chartName ? this.chartName : "chartdiv", this.chartConfig );
+
+        if (this.chartType === "pie") {
+            this.chart.labelsEnabled = false;
+
+            const legend = new AmCharts.AmLegend();
+            legend.position = "right";
+            legend.valueText = "[[value]]%";
+            legend.valueAlign = "right";
+            legend.valueWidth = 80;
+            this.chart.addLegend(legend);
+
+            
+        } 
+
+        // console.log(this.chart);
+        // window.AmCharts.AmSerialChart.base.zoomValueScrollBar(2);
+        
+    }
+
+    private sortData() {
+        
+        if (this.dataProvider.length !== 0) {
+            const sortedArr = _.sortBy(this.dataProvider, (item: any) => {
+                return item[this.chartData.valueFields[0]];
+            });
+            if (this.sortDirection === "asc") {
+                this.dataProvider = sortedArr;
+                this.initializeDataProvider();
+            } else {
+                this.dataProvider = sortedArr.reverse();
+                this.initializeDataProvider();
+            }
+        }
+
     }
 
     ngOnDestroy() {

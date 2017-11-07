@@ -1,36 +1,45 @@
-import { Component } from '@angular/core';
-import { Routes } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { Routes } from "@angular/router";
 
-import { BaMenuService } from '../theme';
-import { PAGES_MENU } from './pages.menu';
+import { BaMenuService } from "../theme";
+import { GlobalFilter } from "../shared/services/global-filter.service";
+import { IDateRangePickerParams } from "../shared/controls/daterangepicker/daterangepicker.model";
+import { TranslateService } from "@ngx-translate/core";
+
+import { PAGES_MENU } from "./pages.menu";
+
+import * as moment from "moment";
 
 @Component({
-  selector: 'pages',
-  template: `
-    <ba-sidebar></ba-sidebar>
-    <ba-page-top></ba-page-top>
-    <div class="al-main">
-      <div class="al-content">
-        <ba-content-top></ba-content-top>
-        <router-outlet></router-outlet>
-      </div>
-    </div>
-    <footer class="al-footer clearfix">
-      <div class="al-footer-main clearfix">
-        <div class="al-copy">
-          &copy; <span translate>{{'general.shelfalytics'}}</span> 2017
-        </div>
-      </div>
-    </footer>
-    <ba-back-top position="200"></ba-back-top>
-    `
+  selector: "pages",
+  templateUrl: "pages.component.html"
 })
-export class Pages {
+export class Pages implements OnInit {
 
-  constructor(private _menuService: BaMenuService) {
-  }
+  constructor(private _menuService: BaMenuService,
+    private globalFilter: GlobalFilter,
+    private translate: TranslateService
+  ) { }
+
+  private dateRangePickerParams: IDateRangePickerParams = {
+    startDate: this.globalFilter.startDate,
+    endDate: this.globalFilter.endDate
+  };
 
   ngOnInit() {
     this._menuService.updateMenuByRoutes(<Routes>PAGES_MENU);
+  }
+
+  private dateRangeChanged(value: any) {
+    // console.log("date range changed, pages.comp", value);
+
+    this.globalFilter.startDate = value.start;
+    this.globalFilter.endDate = value.end;
+    // console.log("global filter", this.globalFilter);
+    this.globalFilter.onDateRangeChanged.next(value);
+  }
+
+  private languageChange(lang: string) {
+    this.translate.use(lang);
   }
 }

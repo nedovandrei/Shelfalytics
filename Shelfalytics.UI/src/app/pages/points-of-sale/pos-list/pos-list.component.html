@@ -8,11 +8,18 @@
   <div class="col-md-12">
     <smart-table *ngIf="initFlag" [tableColumns]="tableColumns" [tableData]="tableData"></smart-table>
   </div>
+  style="margin-top: 265px; margin-bottom: 260px"
 </div> -->
 
-<ba-card title="Points of Sale">
-  <adtable [moptions]="posTable" *ngIf="initFlag"></adtable>
-</ba-card>
-<ba-card title="POS on Map">
+
+<ba-card title="pointsOfSale.posOnMap" class="animated" animateOnScroll animationName="fadeInDown">
+    <div *ngIf="!mapInit" class="preloader-baCard" style="padding-top: 100px; margin-bottom: 100px">
+        <div></div>
+    </div>
   <google-maps *ngIf="mapInit" [mapData]="mapSettings"></google-maps>
+</ba-card>
+<ba-card [title]="'pointsOfSale.posList'" baCardClass="with-scroll table-panel animated" animateOnScroll animationName="fadeInDown">
+  <div class="horizontal-scroll">
+    <adtable [moptions]="posTable" *ngIf="initFlag"></adtable>
+  </div>
 </ba-card>

@@ -2,7 +2,10 @@
 
 :host /deep/.pie-charts {
   color: $content-text;
-
+  canvas{
+    width: 100%!important;
+    height: 100%!important;
+  }
   .pie-chart-item-container {
     position: relative;
     padding: 0 15px;

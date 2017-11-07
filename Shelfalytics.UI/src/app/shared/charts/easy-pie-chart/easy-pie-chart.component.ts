@@ -1,10 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input } from "@angular/core";
 import * as $ from "jquery";
 
 @Component({
-  selector: 'easy-pie-chart',
-  templateUrl: './easy-pie-chart.component.html',
-  styleUrls: ['./easy-pie-chart.component.scss']
+  selector: "easy-pie-chart",
+  templateUrl: "./easy-pie-chart.component.html",
+  styleUrls: ["./easy-pie-chart.component.scss"]
 })
 export class EasyPieChartComponent implements OnInit {
 
@@ -14,7 +14,7 @@ export class EasyPieChartComponent implements OnInit {
   private initFlag: boolean = false;
 
   ngOnInit() {
-    console.log("easypiechart chartData", this.chartData);
+    // console.log("easypiechart chartData", this.chartData);
     this.initFlag = true;
   }
 
@@ -25,29 +25,29 @@ export class EasyPieChartComponent implements OnInit {
   }
 
   private _loadPieCharts() {
-    
-    console.log("easypiechart chartData", this.chartData);
-    jQuery('.easy-pie-chart').easyPieChart({
-      easing: 'easeOutBounce',
+
+    // console.log("easypiechart chartData", this.chartData);
+    jQuery(".easy-pie-chart").easyPieChart({
+      easing: "easeOutBounce",
       onStep: function (from, to, percent) {
-        jQuery(this.el).find('.percent').text(Math.round(percent));
+        jQuery(this.el).find(".percent").text(percent.toFixed(2));
       },
-      barColor: this.chartData.color,
-      trackColor: 'rgba(0,0,0,0.4)',
+      // barColor: this.chartData.color,
+      barColor: "#2dacd1",
+      trackColor: "#eaf7fb",
       size: 250,
       scaleLength: 0,
       animation: 2000,
       lineWidth: 15,
-      lineCap: 'round',
+      lineCap: "round",
     });
-
 
 
   }
 
   private _updatePieCharts() {
-    jQuery('.pie-charts .easy-pie-chart').each(function(index, chart) {
-      jQuery(chart).data('easyPieChart').update(parseInt(jQuery(chart).attr("data-percent")));
+    jQuery(".pie-charts .easy-pie-chart").each(function(index, chart) {
+      jQuery(chart).data("easyPieChart").update(parseFloat(jQuery(chart).attr("data-percent")));
     });
   }
 }

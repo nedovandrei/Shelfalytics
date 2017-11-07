@@ -21,16 +21,26 @@ namespace Shelfalytics.Service
         private readonly IEquipmentDataRepository _equipmentDataRepository;
         private readonly IProductDataRepository _productDataRepository;
         private readonly ISaleRepository _saleRepository;
+        private readonly IPointOfSaleRepository _pointOfSaleRepository;
+        private readonly IMailService _mailService;
 
         public EquipmentDataService(IEquipmentDataRepository equipmentDataRepository,
-            IProductDataRepository productDataRepository, ISaleRepository saleRepository)
+            IProductDataRepository productDataRepository, ISaleRepository saleRepository, IMailService mailService, IPointOfSaleRepository pointOfSaleRepository)
         {
             if (equipmentDataRepository == null) throw new ArgumentNullException(nameof(equipmentDataRepository));
             if (productDataRepository == null) throw new ArgumentNullException(nameof(productDataRepository));
+            if (saleRepository == null) throw new ArgumentNullException(nameof(saleRepository));
+            if (mailService == null) throw new ArgumentNullException(nameof(mailService));
+            if (pointOfSaleRepository == null)
+            {
+                throw new ArgumentNullException(nameof(pointOfSaleRepository));
+            }
 
             _equipmentDataRepository = equipmentDataRepository;
             _productDataRepository = productDataRepository;
             _saleRepository = saleRepository;
+            _mailService = mailService;
+            _pointOfSaleRepository = pointOfSaleRepository;
         }
 
         public async Task<IEnumerable<EquipmentReadingsViewModel>> GetLatestEquipmentData(int equipmentId)
@@ -50,12 +60,17 @@ namespace Shelfalytics.Service
                     {
                         continue;
                     }
+
+                    var percentage = Math.Round(100 - ((double)(sensorReading.Distance - equipmentData.FullDistance) / (double)(equipmentData.EmptyDistance - equipmentData.FullDistance) * 100), 2);
+
                     var rowViewModel = new EquipmentRowInfoViewModel
                     {
                         Row = sensorReading.Row,
-                        Percentage = 100 - ((double)(sensorReading.Distance - _fullStockDistance) / (double)(_emptyDistance - _fullStockDistance) * 100),
+                        BottleDiameter = productData.BottleDiameter,
+                        Percentage = percentage <= 0 ? 0.0f : percentage > 100 ? 100.0f : percentage,
                         ProductName = productData.ProductName,
-                        SKUName = productData.SKUName
+                        SKUName = productData.SKUName,
+                        PhotoPath = productData.PhotoPath
                     };
                     rowViewModelList.Add(rowViewModel);
                 }
@@ -72,7 +87,9 @@ namespace Shelfalytics.Service
                     OpenCloseCountToday = equipmentData.OpenCloseCountToday,
                     RowCount = equipmentData.RowCount,
                     RowInfo = rowViewModelList,
-                    TimeStamp = equipmentData.TimeStamp
+                    TimeStamp = equipmentData.TimeStamp,
+                    Width = equipmentData.Width,
+                    YCount = equipmentData.YCount
                 };
                 viewModelList.Add(viewModel);
             }
@@ -83,14 +100,15 @@ namespace Shelfalytics.Service
         {
             var equipment = await _equipmentDataRepository.GetEquipmentByIMEI(reading.IMEI);
             var equipmentHasReadings = await _equipmentDataRepository.EquipmentHasReadings(equipment.Id);
-
+            var posList = await _pointOfSaleRepository.GetPointOfSaleData(equipment.PointOfSaleId);
+            var pos = posList.FirstOrDefault();
 
             var readingModel = new EquipmentReading
             {
                 EquipmentId = equipment.Id,
-                Temperature = reading.Temperature,
+                Temperature = Convert.ToInt32(reading.Temperature),
                 TimeSpamp = DateTime.Now,
-                WasOpened = true
+                WasOpened = false
             };
 
             var planogramData = await _productDataRepository.GetEquipmentPlanogram(equipment.Id);
@@ -108,19 +126,23 @@ namespace Shelfalytics.Service
             var distanceReadingsList = new List<EquipmentDistanceReading>();
             for(var i = 0; i < reading.DistanceSensors.Count(); i++)
             {
+
                 // sales registration logic
-                if (equipmentHasReadings && i != previousReading.SensorReadings.Count())
+                if (equipmentHasReadings && i != (previousReading.SensorReadings.Count() - 1) && previousReading.SensorReadings.Count() > 0)
                 {
+                    //getting planogram data with bottle diameters
+                    var product = planogramData.First(x => x.Row == reading.DistanceSensors.ToList()[i].Row);
+
                     // calculate difference between new reading data and previous
                     var delta = previousReading.SensorReadings.ToList()[i].Distance - reading.DistanceSensors.ToList()[i].Distance;
 
                     // if difference is higher than 3/4 of predefined one bottle length;
                     // just a precaution, since the code below will result 0 in any case that
                     // Delta is below _oneBottleLength
-                    if (delta < -(_oneBottleLength / 1.5))
+                    if (delta < -(product.BottleDiameter / 1.5))
                     {
                         delta *= -1;
-                        var salesQtyUnrounded = Math.Round((double)delta / _oneBottleLength, 1);
+                        var salesQtyUnrounded = Math.Round(delta / product.BottleDiameter, 1);
 
                         // the whole point of the code below is to shift the Round Logic
                         // so that the midpoint of Round is 0.7.
@@ -129,9 +151,10 @@ namespace Shelfalytics.Service
                             (int)Math.Round(salesQtyUnrounded) : (int)Math.Floor(salesQtyUnrounded);
                         if (salesQty != 0)
                         {
-                            var product = planogramData.First(x => x.Row == reading.DistanceSensors.ToList()[i].Row);
+                            //var product = planogramData.First(x => x.Row == reading.DistanceSensors.ToList()[i].Row);
                             var saleRecord = new Sale
                             {
+                                EquipmentId = equipment.Id,
                                 ProductId = product.ProductId,
                                 Quantity = salesQty,
                                 TimeStamp = DateTime.Now
@@ -139,9 +162,10 @@ namespace Shelfalytics.Service
                             await _saleRepository.RegisterSale(saleRecord);
                         }
                     }
-                    
                 }
+
                 
+
                 var distRead = new EquipmentDistanceReading
                 {
                     EquipmentReadingId = registeredReading.Id,
@@ -152,8 +176,115 @@ namespace Shelfalytics.Service
                 distanceReadingsList.Add(distRead);
             }
 
+            if (reading.DistanceSensors.Any(x => x.Distance >= equipment.EmptyDistance))
+            {
+                var emptyPushers = reading.DistanceSensors.Where(x => x.Distance == equipment.EmptyDistance);
+                var OosProductList = new List<ProductOOSDTO>();
+                foreach (var emptyPusher in emptyPushers)
+                {
+                    var oosProductTemp = planogramData.FirstOrDefault(x => x.Row == emptyPusher.Row);
+                    await _mailService.SendOOSEmail(new ProductOOSDTO
+                    {
+                        Row = oosProductTemp.Row,
+                        EquipmentId = oosProductTemp.EquipmentId,
+                        EquipmentModel = equipment.ModelName,
+                        ProductName = oosProductTemp.ProductName,
+                        BottleDiameter = oosProductTemp.BottleDiameter,
+                        PhotoPath = oosProductTemp.PhotoPath,
+                        Price = oosProductTemp.Price,
+                        ProductId = oosProductTemp.ProductId,
+                        ShortSKUName = oosProductTemp.ShortSKUName,
+                        SKUName = oosProductTemp.SKUName,
+                        TimeStamp = DateTime.UtcNow,
+                        POSName = pos.PointOfSaleName,
+                        POSAddress = pos.PointOfSaleAddress
+                    }, equipment.Id);
+
+                }
+            }
+
             await _equipmentDataRepository.RegisterEquipmentDistanceReadings(distanceReadingsList);
 
+        }
+
+        public async Task RegisterDoorOpen(EquipmentReadingDTO reading)
+        {
+            var equipment = await _equipmentDataRepository.GetEquipmentByIMEI(reading.IMEI);
+            var equipmentHasReadings = await _equipmentDataRepository.EquipmentHasReadings(equipment.Id);
+
+            var previousReading = new EquipmentReadingGetDTO();
+
+            var readingModel = new EquipmentReading();
+            if (equipmentHasReadings)
+            {
+                previousReading = await _equipmentDataRepository.GetLatestReading(equipment.Id);
+                readingModel = new EquipmentReading()
+                {
+                    EquipmentId = equipment.Id,
+                    Temperature = previousReading.Temperature,
+                    TimeSpamp = DateTime.UtcNow,
+                    WasOpened = true
+                };
+
+                var registeredReading = await _equipmentDataRepository.RegisterEquipmentReading(readingModel);
+
+                var newDistanceReadings = new List<EquipmentDistanceReading>();
+
+                if(previousReading.SensorReadings.Count() == 0)
+                {
+                    for(var i = 0; i < equipment.RowCount; i++)
+                    {
+                        newDistanceReadings.Add(new EquipmentDistanceReading
+                        {
+                            EquipmentReadingId = registeredReading.Id,
+                            Distance = equipment.EmptyDistance,
+                            Row = i + 1,
+                        });
+                    }
+                }
+                else
+                {
+                    newDistanceReadings = previousReading.SensorReadings.Select(x => new EquipmentDistanceReading
+                    {
+                        EquipmentReadingId = registeredReading.Id,
+                        Distance = x.Distance,
+                        Row = x.Row,
+                    }).ToList();
+                }
+                
+                await _equipmentDataRepository.RegisterEquipmentDistanceReadings(newDistanceReadings);
+            }
+            else
+            {
+                readingModel = new EquipmentReading
+                {
+                    EquipmentId = equipment.Id,
+                    Temperature = 0,
+                    TimeSpamp = DateTime.UtcNow,
+                    WasOpened = true
+                };
+
+                var registeredReading = await _equipmentDataRepository.RegisterEquipmentReading(readingModel);
+
+                var newDistanceReadings = new List<EquipmentDistanceReading>();
+                for(var i = 0; i < equipment.RowCount; i++)
+                {
+                    var item = new EquipmentDistanceReading
+                    {
+                        Distance = equipment.EmptyDistance,
+                        EquipmentReadingId = registeredReading.Id,
+                        Row = i + 1
+                    };
+                    newDistanceReadings.Add(item);
+                }
+                await _equipmentDataRepository.RegisterEquipmentDistanceReadings(newDistanceReadings);
+            }
+        }
+
+        public async Task<IEnumerable<UserDTO>> GetEquipmentUsers(int equipmentId)
+        {
+            var result = await _equipmentDataRepository.GetEquipmentUsers(equipmentId);
+            return result;
         }
     }
 }
