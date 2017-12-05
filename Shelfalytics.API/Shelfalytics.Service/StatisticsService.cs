@@ -115,8 +115,8 @@ namespace Shelfalytics.Service
                 }
             ).ToList();
 
-            var actualFill = 100 - Math.Round((double)latestReading.SensorReadings.Sum(x => x.Distance) /
-                                                   (double)(equipment.EmptyDistance * equipment.RowCount) * 100.00f, 2);
+            var actualFill = 100 - Math.Round((double)(latestReading.SensorReadings.Sum(x => x.Distance) - equipment.FullDistance * latestReading.SensorReadings.Count()) /
+                                                   (double)((equipment.EmptyDistance - equipment.FullDistance) * latestReading.SensorReadings.Count()) * 100.00f, 2);
             detailedOOSData.TotalOOS = result;
             detailedOOSData.ActualFill = actualFill <= 0 ? 0.0f : actualFill > 100 ? 100.0f : actualFill;
 
