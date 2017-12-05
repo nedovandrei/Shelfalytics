@@ -22,7 +22,19 @@ export class EquipmentInfoComponent implements OnInit, OnChanges {
   private firstLoad: boolean = true;
 
   ngOnInit() {
+    // initialize input widgets first
+    $('#datepairExample .time').timepicker({
+        'showDuration': true,
+        'timeFormat': 'g:ia'
+    });
 
+    $('#datepairExample .date').datepicker({
+        'format': 'yyyy-m-d',
+        'autoclose': true
+    });
+
+    // initialize datepair
+    $('#datepairExample').datepair();
   }
 
   ngOnChanges() {
@@ -31,10 +43,14 @@ export class EquipmentInfoComponent implements OnInit, OnChanges {
     } else {
       this.reload();
     }
+    $(".popup").click(function(){
+      $(this).next().modal();
+      });
     
   }
 
   private init() {
+    
     this.initFlag = false;
     this.posInfoService.getShelfData(this.equipmentId).subscribe((data: any) => {
       this.equipmentData = data[0];

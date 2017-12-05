@@ -13,6 +13,89 @@
       </h4>
       <h4 *ngIf="initFlag"><i class="ion ion-speedometer"></i><span translate>{{'pointsOfSale.posInfo.equipmentInfo.openCount'}}</span>: <span class="text-info">{{equipmentData.OpenCloseCountToday}}</span></h4>
       <h4 *ngIf="initFlag"><i class="fa fa-calendar-check-o"></i><span translate>{{'pointsOfSale.posInfo.equipmentInfo.lastPing'}}</span>: <span class="text-info">{{timeStamp}}</span></h4>
+      <h4><i class="fa-signal fa"></i><span>Signal</span>: <span class="text-info">Good</span></h4>
+      <h4><i class="fa-key fa"></i><span>Pin</span>: <span class="text-info">1231</span></h4>
+      <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-primary active">
+            <input type="radio" name="options" id="option1" autocomplete="off" checked> On
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" name="options" id="option2" autocomplete="off"> Off
+          </label>
+          
+        </div>
+      <div>
+      <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary popup" data-toggle="modal" data-target="#exampleModal">
+  <i class="fa-picture-o fa"></i>
+  Show Photo
+</button>
+<!-- Modal -->
+<div class="modal fade full" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Photo</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <img  class="img-fluid img-responsive mx-auto d-block" alt="100%x250" src="http://static.liebherr.com.ua:88/images/uploads/aef1d63acf4b859fb2cf120bfb9578de.jpg" data-holder-rendered="true" >
+        </div>
+        
+      </div>
+    </div>
+  </div>
+<button type="button" class="btn btn-primary">
+  <i class="fa-refresh fa"></i>
+  Reset
+</button>
+<button type="button" class="btn btn-primary popup" data-toggle="modal" data-target=".bd-example-modal-sm">
+    <i class="fa-money fa"></i>
+    Bill
+</button>
+<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Bill</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              999.99 $
+          </div>
+      
+    </div>
+  </div>
+</div>
+<button class="btn btn-primary popup" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-clock-o"></i>Select Time</button>
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Select Time</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body text-center">
+              <div class="form-group d-inline-block " id="datepairExample">
+                  
+                  <input id="dateStart" type="text" class="time start form-control d-inline-block" /> to
+                  <input type="text" class="time end form-control d-inline-block" />
+                </div>
+          </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- Large modal -->
+
+
+
 
     </ba-card>
   </div>
