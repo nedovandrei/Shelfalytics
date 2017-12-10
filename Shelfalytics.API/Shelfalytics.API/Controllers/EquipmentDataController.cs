@@ -8,23 +8,30 @@ using Shelfalytics.API.Models;
 using Shelfalytics.RepositoryInterface.DTO;
 using Shelfalytics.ServiceInterface;
 using System.Web.Hosting;
+using Shelfalytics.API.Models.SShelfModels;
 
 namespace Shelfalytics.API.Controllers
 {
-    [Authorize]
+    
     [RoutePrefix("api/EquipmentData")]
     public class EquipmentDataController : ApiController
     {
         private readonly IEquipmentDataService _equipmentDataService;
-
+        private readonly ISShelfService _sShelfService;
         
-        public EquipmentDataController(IEquipmentDataService equipmentDataService)
+        public EquipmentDataController(IEquipmentDataService equipmentDataService, ISShelfService sShelfService)
         {
+            if (sShelfService == null)
+            {
+                throw new ArgumentNullException(nameof(sShelfService));
+            }
+
             _equipmentDataService = equipmentDataService;
+            _sShelfService = sShelfService;
         }
 
         [HttpGet]
-        
+        [Authorize]
         public async Task<HttpResponseMessage> GetLatestEquipmentData(int equipmentId)
         {
             var response = await _equipmentDataService.GetLatestEquipmentData(equipmentId);
@@ -32,6 +39,7 @@ namespace Shelfalytics.API.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public HttpResponseMessage TestEquipmentReadingSave(EquipmentReadingTest obj)
         {
             return Request.CreateResponse(obj.Message);
@@ -39,6 +47,7 @@ namespace Shelfalytics.API.Controllers
 
         [Route("register")]
         [HttpPost]
+        [Authorize]
         public async Task<HttpResponseMessage> EquipmentReadingSave(EquipmentReadingModel model)
         {
             var dataToSend = new EquipmentReadingDTO()
@@ -62,6 +71,7 @@ namespace Shelfalytics.API.Controllers
 
         [Route("open")]
         [HttpPost]
+        [Authorize]
         public async Task<HttpResponseMessage> EquipmentDoorOpened(EquipmentReadingModel model)
         {
             var dataToSend = new EquipmentReadingDTO()
@@ -79,6 +89,14 @@ namespace Shelfalytics.API.Controllers
             await _equipmentDataService.RegisterDoorOpen(dataToSend);
 
 
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
+
+        
+        [Route("registerForeign")]
+        public async Task<HttpResponseMessage> SShelfEquipmentReadingSave(SShelfEquipmentReadingModel model)
+        {
+            await _sShelfService.Test();
             return Request.CreateResponse(HttpStatusCode.OK);
         }
     }

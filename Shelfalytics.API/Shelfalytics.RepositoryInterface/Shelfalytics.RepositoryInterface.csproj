@@ -104,6 +104,7 @@
     <Compile Include="Repositories\IProductDataRepository.cs" />
     <Compile Include="Repositories\ISaleRepository.cs" />
     <Compile Include="Repositories\IMailQueueRepository.cs" />
+    <Compile Include="Repositories\ISShelfRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

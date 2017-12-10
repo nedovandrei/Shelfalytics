@@ -48,6 +48,7 @@
     <Compile Include="IExportService.cs" />
     <Compile Include="IMailService.cs" />
     <Compile Include="IPointOfSaleService.cs" />
+    <Compile Include="ISShelfService.cs" />
     <Compile Include="IStatisticsService.cs" />
     <Compile Include="ITestService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
