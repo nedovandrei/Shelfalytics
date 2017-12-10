@@ -27,14 +27,6 @@ export class EquipmentInfoComponent implements OnInit, OnChanges {
         'showDuration': true,
         'timeFormat': 'g:ia'
     });
-
-    $('#datepairExample .date').datepicker({
-        'format': 'yyyy-m-d',
-        'autoclose': true
-    });
-
-    // initialize datepair
-    $('#datepairExample').datepair();
   }
 
   ngOnChanges() {
@@ -43,10 +35,13 @@ export class EquipmentInfoComponent implements OnInit, OnChanges {
     } else {
       this.reload();
     }
+    
     $(".popup").click(function(){
       $(this).next().modal();
       });
+     
     
+     
   }
 
   private init() {
