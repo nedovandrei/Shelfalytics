@@ -97,7 +97,7 @@ namespace Shelfalytics.API.Controllers
         #region Integration endpoints
 
         // Register for SShelf data
-        [Route("registerForeign")]
+        [Route("importData")]
         public async Task<HttpResponseMessage> SShelfEquipmentReadingSave(SShelfEquipmentReadingModel model)
         {
             var pushers = new List<SShelfEquipmentPusherReadingDTO>();
