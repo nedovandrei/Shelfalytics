@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -9,6 +10,7 @@ using Shelfalytics.RepositoryInterface.DTO;
 using Shelfalytics.ServiceInterface;
 using System.Web.Hosting;
 using Shelfalytics.API.Models.SShelfModels;
+using Shelfalytics.RepositoryInterface.DTO.SShelfIntegration;
 
 namespace Shelfalytics.API.Controllers
 {
@@ -92,15 +94,56 @@ namespace Shelfalytics.API.Controllers
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
-        
+        #region Integration endpoints
+
+        // Register for SShelf data
         [Route("registerForeign")]
         public async Task<HttpResponseMessage> SShelfEquipmentReadingSave(SShelfEquipmentReadingModel model)
         {
+            var pushers = new List<SShelfEquipmentPusherReadingDTO>();
+            var sales = new List<SShelfEquipmentSalesReadingDTO>();
 
+            foreach (var pusher in model.Pushers)
+            {
+                pushers.Add(new SShelfEquipmentPusherReadingDTO()
+                {
+                    PusherId = pusher.Id,
+                    Percentage = pusher.Percent,
+                    Status = pusher.Status,
+                    Balance = pusher.Balance,
+                    Error = pusher.Error
+                });
+            }
 
+            foreach (var mark in model.Marks)
+            {
+                sales.Add( new SShelfEquipmentSalesReadingDTO()
+                {
+                    ProductId = mark.Id,
+                    SalesCount = mark.Delta
+                });
+            }
 
-            await _sShelfService.Test();
+            var modelDto = new SShelfEquipmentReadingDTO()
+            {
+                ModemId = model.Modem,
+                Power = model.Power == "Y",
+                Signal = model.Signal,
+                GpsLongitude = model.Gps_long,
+                GpsLatitude = model.Gps_lat,
+                BatteryLevel = model.Bat,
+                GsmLongitude = model.Gsm_long,
+                GsmLatitude = model.Gsm_lat,
+                Pushers = pushers,
+                Marks = sales
+            };
+
+            await _sShelfService.RegisterReading(modelDto);
+
+            //await _sShelfService.Test();
             return Request.CreateResponse(HttpStatusCode.OK);
         }
+
+        #endregion
     }
 }

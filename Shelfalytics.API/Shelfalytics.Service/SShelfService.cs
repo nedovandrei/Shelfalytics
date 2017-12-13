@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Shelfalytics.RepositoryInterface.DTO.SShelfIntegration;
 
 namespace Shelfalytics.Service
 {
@@ -25,6 +26,11 @@ namespace Shelfalytics.Service
         public async Task Test()
         {
             await _sShelfRepository.Authorize();
+        }
+
+        public async Task RegisterReading(SShelfEquipmentReadingDTO reading)
+        {
+            await _sShelfRepository.RegisterReading(reading);
         }
     }
 }

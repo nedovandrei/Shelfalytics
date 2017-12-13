@@ -6,5 +6,6 @@ namespace Shelfalytics.RepositoryInterface
     {
         IUnitOfWork GetShelfalyticsDbContext();
         DbContext GetShelfalyticsIdentityDbContext();
+        IUnitOfWork GetSShelfIntegrationDbContext();
     }
 }

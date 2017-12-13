@@ -8,8 +8,9 @@ namespace Shelfalytics.API.Models.SShelfModels
     public class SShelfEquipmentReadingModel
     {
         public string Modem { get; set; } // modem ID
+        public int Signal { get; set; } // signal levels
         public string Power { get; set; } // "Y" or "N" depending on power
-        public string Bat { get; set; } // battery level
+        public int Bat { get; set; } // battery level
         public string Imei { get; set; } // modem imei number
         public string Loctype { get; set; } // location services supported
         public double Gps_long { get; set; } // gps longitude

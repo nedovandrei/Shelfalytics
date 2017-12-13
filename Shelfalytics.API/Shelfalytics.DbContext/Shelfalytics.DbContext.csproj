@@ -122,6 +122,10 @@
     <Compile Include="Migrations\SShelfIntegration\201712131534459_AddedTimeStampForReading.Designer.cs">
       <DependentUpon>201712131534459_AddedTimeStampForReading.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\SShelfIntegration\201712131620584_AddedPowerFieldToReading.cs" />
+    <Compile Include="Migrations\SShelfIntegration\201712131620584_AddedPowerFieldToReading.Designer.cs">
+      <DependentUpon>201712131620584_AddedPowerFieldToReading.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\SShelfIntegration\Configuration.cs" />
     <Compile Include="ShelfalyticsDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -166,6 +170,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\SShelfIntegration\201712131534459_AddedTimeStampForReading.resx">
       <DependentUpon>201712131534459_AddedTimeStampForReading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\SShelfIntegration\201712131620584_AddedPowerFieldToReading.resx">
+      <DependentUpon>201712131620584_AddedPowerFieldToReading.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

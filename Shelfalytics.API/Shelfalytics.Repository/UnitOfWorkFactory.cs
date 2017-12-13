@@ -14,5 +14,10 @@ namespace Shelfalytics.Repository
         {
             return new ShelfalyticsIdentityDbContext();
         }
+
+        public IUnitOfWork GetSShelfIntegrationDbContext()
+        {
+            return new SShelfIntegrationDbContext();
+        }
     }
 }

@@ -85,6 +85,9 @@
     <Compile Include="DTO\ProductOOSDTO.cs" />
     <Compile Include="DTO\ProductSalesAverageDTO.cs" />
     <Compile Include="DTO\SalesSummaryDTO.cs" />
+    <Compile Include="DTO\SShelfIntegration\SShelfEquipmentPusherReadingDTO.cs" />
+    <Compile Include="DTO\SShelfIntegration\SShelfEquipmentReadingDTO.cs" />
+    <Compile Include="DTO\SShelfIntegration\SShelfEquipmentSalesReadingDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="DTO\UserLoginDTO.cs" />
     <Compile Include="Helpers\ExportFilter.cs" />
