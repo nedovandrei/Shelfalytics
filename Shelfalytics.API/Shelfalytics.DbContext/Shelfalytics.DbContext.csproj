@@ -114,9 +114,19 @@
       <DependentUpon>201709241411089_MadeRequiredCHainName.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Main\Configuration.cs" />
+    <Compile Include="Migrations\SShelfIntegration\201712131526367_Initial.cs" />
+    <Compile Include="Migrations\SShelfIntegration\201712131526367_Initial.Designer.cs">
+      <DependentUpon>201712131526367_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\SShelfIntegration\201712131534459_AddedTimeStampForReading.cs" />
+    <Compile Include="Migrations\SShelfIntegration\201712131534459_AddedTimeStampForReading.Designer.cs">
+      <DependentUpon>201712131534459_AddedTimeStampForReading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\SShelfIntegration\Configuration.cs" />
     <Compile Include="ShelfalyticsDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShelfalyticsIdentityDbContext.cs" />
+    <Compile Include="SShelfIntegrationDbContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -150,6 +160,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Main\201709241411089_MadeRequiredCHainName.resx">
       <DependentUpon>201709241411089_MadeRequiredCHainName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\SShelfIntegration\201712131526367_Initial.resx">
+      <DependentUpon>201712131526367_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\SShelfIntegration\201712131534459_AddedTimeStampForReading.resx">
+      <DependentUpon>201712131534459_AddedTimeStampForReading.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

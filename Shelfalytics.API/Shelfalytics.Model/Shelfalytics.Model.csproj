@@ -70,6 +70,9 @@
     <Compile Include="DbModels\EquipmentPlanogram.cs" />
     <Compile Include="DbModels\ExceptionLog.cs" />
     <Compile Include="DbModels\Sale.cs" />
+    <Compile Include="DbModels\SShelfIntegration\SShelfEquipmentPusherReading.cs" />
+    <Compile Include="DbModels\SShelfIntegration\SShelfEquipmentReading.cs" />
+    <Compile Include="DbModels\SShelfIntegration\SShelfEquipmentSalesReading.cs" />
     <Compile Include="DbModels\User.cs" />
     <Compile Include="DbModels\Equipment.cs" />
     <Compile Include="DbModels\EquipmentReading.cs" />

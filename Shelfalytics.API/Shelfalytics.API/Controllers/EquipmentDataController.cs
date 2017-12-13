@@ -96,6 +96,9 @@ namespace Shelfalytics.API.Controllers
         [Route("registerForeign")]
         public async Task<HttpResponseMessage> SShelfEquipmentReadingSave(SShelfEquipmentReadingModel model)
         {
+
+
+
             await _sShelfService.Test();
             return Request.CreateResponse(HttpStatusCode.OK);
         }
