@@ -144,6 +144,13 @@ namespace Shelfalytics.API.Controllers
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
+        [Route("testApi")]
+        public async Task<HttpResponseMessage> Test()
+        {
+            await _sShelfService.Test();
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
+
         #endregion
     }
 }

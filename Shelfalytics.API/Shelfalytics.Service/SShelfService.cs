@@ -25,7 +25,11 @@ namespace Shelfalytics.Service
 
         public async Task Test()
         {
-            await _sShelfRepository.Authorize();
+            var responseStores = await _sShelfRepository.GetSShelfStores();
+            var responseEquipment = await _sShelfRepository.GetSShelfEquipment();
+            var responseProducts = await _sShelfRepository.GetSShelfProducts();
+
+
         }
 
         public async Task RegisterReading(SShelfEquipmentReadingDTO reading)

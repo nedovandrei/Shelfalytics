@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Shelfalytics.Model.DbModels.SShelfIntegration;
 
 namespace Shelfalytics.RepositoryInterface.DTO.SShelfIntegration
 {
@@ -16,7 +17,7 @@ namespace Shelfalytics.RepositoryInterface.DTO.SShelfIntegration
         public double GpsLatitude { get; set; }
         public double GsmLongitude { get; set; }
         public double GsmLatitude { get; set; }
-        public IEnumerable<SShelfEquipmentPusherReadingDTO> Pushers { get; set; }
-        public IEnumerable<SShelfEquipmentSalesReadingDTO> Marks { get; set; }
+        public IEnumerable<SShelfEquipmentPusherReading> Pushers { get; set; }
+        public IEnumerable<SShelfEquipmentSalesReading> Marks { get; set; }
     }
 }

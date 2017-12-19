@@ -85,6 +85,9 @@
     <Compile Include="DTO\ProductOOSDTO.cs" />
     <Compile Include="DTO\ProductSalesAverageDTO.cs" />
     <Compile Include="DTO\SalesSummaryDTO.cs" />
+    <Compile Include="DTO\SShelfIntegration\API\SShelfBrandDTO.cs" />
+    <Compile Include="DTO\SShelfIntegration\API\SShelfEquipmentDTO.cs" />
+    <Compile Include="DTO\SShelfIntegration\API\SShelfStoreDTO.cs" />
     <Compile Include="DTO\SShelfIntegration\SShelfEquipmentPusherReadingDTO.cs" />
     <Compile Include="DTO\SShelfIntegration\SShelfEquipmentReadingDTO.cs" />
     <Compile Include="DTO\SShelfIntegration\SShelfEquipmentSalesReadingDTO.cs" />
@@ -119,6 +122,7 @@
       <Name>Shelfalytics.Model</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
