@@ -11,6 +11,7 @@ using Shelfalytics.ServiceInterface;
 using System.Web.Hosting;
 using Shelfalytics.API.Models.SShelfModels;
 using Shelfalytics.RepositoryInterface.DTO.SShelfIntegration;
+using Shelfalytics.Model.DbModels.SShelfIntegration;
 
 namespace Shelfalytics.API.Controllers
 {
@@ -100,12 +101,12 @@ namespace Shelfalytics.API.Controllers
         [Route("importData")]
         public async Task<HttpResponseMessage> SShelfEquipmentReadingSave(SShelfEquipmentReadingModel model)
         {
-            var pushers = new List<SShelfEquipmentPusherReadingDTO>();
-            var sales = new List<SShelfEquipmentSalesReadingDTO>();
+            var pushers = new List<SShelfEquipmentPusherReading>();
+            var sales = new List<SShelfEquipmentSalesReading>();
 
             foreach (var pusher in model.Pushers)
             {
-                pushers.Add(new SShelfEquipmentPusherReadingDTO()
+                pushers.Add(new SShelfEquipmentPusherReading()
                 {
                     PusherId = pusher.Id,
                     Percentage = pusher.Percent,
@@ -117,7 +118,7 @@ namespace Shelfalytics.API.Controllers
 
             foreach (var mark in model.Marks)
             {
-                sales.Add( new SShelfEquipmentSalesReadingDTO()
+                sales.Add( new SShelfEquipmentSalesReading()
                 {
                     ProductId = mark.Id,
                     SalesCount = mark.Delta

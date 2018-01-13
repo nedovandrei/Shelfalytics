@@ -35,6 +35,7 @@ namespace Shelfalytics.Model.DbModels
         [Required]
         public int FullDistance { get; set; }
         public int Width { get; set; }
+        public string IntegrationModemId { get; set; }
 
     }
 }
